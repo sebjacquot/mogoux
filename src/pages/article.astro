@@ -24,6 +24,11 @@ import { Image } from "astro:assets";
             que poétique et salutaire. Florilège amoureux des préférés des
             Bandapartistes.
           </p>
+          <div class="separation">
+            <div class="background">
+              <h3 class="date">Le 18 Jan 2024 à 07:30</h3>
+            </div>
+          </div>
         </div>
       </div>
       <img
@@ -54,6 +59,38 @@ import { Image } from "astro:assets";
   strong {
     font-weight: bold;
   }
+
+  .separation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background: white;
+    margin-top: 20px;
+
+    h3 {
+      font-size: 11px;
+    }
+
+    .background {
+      padding: 0 10px;
+      background: white;
+      z-index: 3;
+    }
+  }
+  .background {
+    padding: 0 10px;
+    background: white;
+  }
+  .separation::after {
+    content: " ";
+    border-bottom: 1px solid #d9d9d9;
+    display: block;
+    width: 100%;
+    position: absolute;
+    top: 10px;
+    z-index: 0;
+  }
   .intro {
     background: white;
     width: 100%;
@@ -61,10 +98,11 @@ import { Image } from "astro:assets";
     height: 156px;
     margin-bottom: 0;
     margin-top: 80px;
-    padding: 0px 40px 0px 40px;
+    padding: 20px 40px 0px 40px;
     /* padding: 100px; */
 
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-content: center;
 
