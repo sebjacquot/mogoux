@@ -38,6 +38,45 @@ import { Image } from "astro:assets";
       />
       <div class="overlay"></div>
     </section>
+    <section class="contenu-article">
+      <h2 class="titres">Pas de larmes pour Joy (1967)</h2>
+      <div class="paragraphe">
+        <p>
+          <i>« Quand on n’a que l’amour, à s’offrir en partage (…) ».</i> Cette chanson
+          de Jacques Brel aurait pu illustrer la vie de Joy, l’héroïne du premier
+          long-métrage de Ken Loach, si le réalisateur ne lui avait pas préféré des
+          tubes anglo-saxons des années 1960. L’amour est si polysémique ici qu’il
+          nous fait un peu oublier le caractère social du propos, soit ce qui allait
+          devenir l’empreinte du cinéaste. Joy aime comme une enfant, comme une mère,
+          comme une maîtresse. Et Joy vit des désamours, épisodiques ou permanents.
+        </p>
+        <p>
+          « Be Not Too Hard », chante Donovan, quand Joy s’auto-flagelle en
+          promenant avec ennui et désespoir son bébé. Pour faire passer le temps
+          consacré à laver son linge ou à changer ses couches, elle allume la
+          radio. Les mélodies entraînantes fusent. « Day Dream » du groupe folk
+          The Lovin’ Spoonful ou encore « Something’s Coming Along » du groupe
+          montréalais anglophone Les Sceptres lui font de nouveau voir la vie en
+          rose. C’est qu’elle ne se laisse jamais longtemps abattre, Joy. Elle
+          cherche la joie, Joy. Avec sa coiffure blonde et son physique de
+          midinette, on confondrait presque la pétillante Carol White avec
+          Brigitte Bardot. Même charme magnétique, mêmes amours passionnelles et
+          destructrices. D’abord mère au foyer désenchantée et épouse battue,
+          Joy devient femme indépendante et audacieuse. Mais l’argent manque
+          toujours. Un peu, beaucoup.
+        </p>
+      </div>
+      <div class="image">
+        <img
+          src="https://www.olivierroller.com/archives/photos/normal/goux-jean-paul3.jpg"
+          alt="images test"
+        />
+        <p>
+          Le mal n’existe pas de Ryūsuke Hamaguchi. Droits photographiques :
+          Copyright 2023 NEOPA Fictive.
+        </p>
+      </div>
+    </section>
   </main>
 </html>
 
@@ -59,6 +98,47 @@ import { Image } from "astro:assets";
   strong {
     font-weight: bold;
   }
+  i {
+    font-style: italic;
+  }
+
+  .contenu-article {
+    max-width: 700px;
+    margin: 0 auto;
+    padding-top: 50px;
+    padding-bottom: 90px;
+
+    font-family: "Helvetica Neue", sans-serif;
+  }
+  .titres {
+    font-size: 24px;
+
+    font-weight: bold;
+    margin-bottom: 60px;
+  }
+  .paragraphe {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding-bottom: 90px;
+
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+  .image {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+
+    p {
+      font-size: 12px;
+      align-self: flex-end;
+      font-style: italic;
+    }
+  }
 
   .separation {
     display: flex;
@@ -74,14 +154,11 @@ import { Image } from "astro:assets";
 
     .background {
       padding: 0 10px;
-      background: white;
+      background: #ffffff;
       z-index: 3;
     }
   }
-  .background {
-    padding: 0 10px;
-    background: white;
-  }
+
   .separation::after {
     content: " ";
     border-bottom: 1px solid #d9d9d9;
