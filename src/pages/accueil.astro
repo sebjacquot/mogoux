@@ -1,0 +1,178 @@
+---
+import "../styles/global.css";
+import { Image } from "astro:assets";
+---
+
+<head>
+  <meta charset="UTF-8" />
+</head>
+
+<html>
+  <main>
+    <section class="gauche">
+      <div class="texte">
+        <h2>Mémoires ouvrières</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur. Sodales tellus pretium quam
+          imperdiet. Blandit sapien aliquam venenatis et.
+        </p>
+        <a href="#" class="lien"
+          ><img src="/public/icones/fleche-goux.svg" alt="" /><h3>
+            Découvrez les thématiques
+          </h3>
+        </a>
+        <a href="#" class="button">
+          <img src="/public/icones/fleche-goux.svg" alt="" /><h3>
+            Découvrir la carte
+          </h3>
+        </a>
+      </div>
+      <div class="cover"></div>
+    </section>
+    <section class="droite">
+      <div class="texte">
+        <h2>A travers Goux</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur. Sodales tellus pretium quam
+          imperdiet. Blandit sapien aliquam venenatis et.
+        </p>
+        <a href="#" class="lien"
+          ><img src="/public/icones/fleche-goux.svg" alt="" /><h3>
+            Biographie
+          </h3>
+        </a>
+        <a href="/chapitrage" class="lien">
+          <img src="/public/icones/fleche-goux.svg" alt="" /><h3>
+            La fabrique de l'Enclave
+          </h3>
+        </a>
+      </div>
+      <div class="cover2"></div>
+    </section>
+  </main>
+</html>
+
+<style scoped>
+  main {
+    display: flex;
+  }
+  .texte {
+    font-family: var(--titres-font);
+    margin-left: 80px;
+    margin-bottom: 175px;
+    height: 40%;
+
+    z-index: 100;
+
+    color: white;
+
+    a {
+      color: white;
+    }
+  }
+
+  .gauche {
+    background-color: #f0f0f0;
+    width: 50%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: relative;
+    overflow-x: hidden;
+  }
+  .cover {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url("https://www.communitystories.ca/v2/l-industrie-de-la-chaussure-contrecoeur_shoe-story/wp-content/uploads/sites/82/2020/09/inauguration-Sidbec-allocution-Bourassa-1972-photgraphe-Jules-Rochon-BANQ-434.jpg");
+    background-size: cover;
+    /* background-position: center; */
+  }
+  .cover2 {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url("https://maisondelapoesieparis.com/wp-content/uploads/2022/06/06-01-Jean-Paul-Goux-%C2%A9Olivier-Roller-2-scaled.jpg");
+    background-size: cover;
+    background-position: center;
+  }
+  .cover2::after,
+  .cover::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      180deg,
+      rgba(22, 22, 22, 0.4) 0%,
+      rgba(22, 22, 22, 1) 100%
+    );
+    opacity: 0.8;
+    z-index: 10;
+  }
+
+  .droite {
+    background-color: #ffffff;
+    width: 50%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  h2 {
+    font-weight: 800;
+    font-size: 72px;
+    line-height: 80px;
+    width: 60%;
+  }
+  p {
+    font-size: 18px;
+    line-height: 30px;
+    width: 55%;
+    margin-top: 15px;
+    margin-bottom: 25px;
+  }
+  .lien {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 15px;
+
+    font-weight: 700;
+    font-size: 18px;
+
+    margin-top: 10px;
+  }
+
+  .button {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 15px;
+
+    font-weight: 700;
+    font-size: 18px;
+
+    background: #e22b40;
+    color: white;
+    margin-top: 10px;
+
+    width: fit-content;
+    padding: 15px 25px;
+
+    svg {
+      fill: white;
+      color: white;
+    }
+  }
+</style>

@@ -478,11 +478,16 @@ import { Image } from "astro:assets";
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    margin-top: 80px;
   }
   .rectangle {
     background: #242424;
     width: 100vw;
     height: 80px;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
   }
   .img-cover {
     position: absolute;
