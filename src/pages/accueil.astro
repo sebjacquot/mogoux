@@ -31,7 +31,7 @@ import { Image } from "astro:assets";
     </section>
     <section class="droite">
       <div class="texte">
-        <h2>A travers Goux</h2>
+        <h2 class="italique">Mémoires de l'Enclave</h2>
         <p>
           Lorem ipsum dolor sit amet consectetur. Sodales tellus pretium quam
           imperdiet. Blandit sapien aliquam venenatis et.
@@ -43,7 +43,7 @@ import { Image } from "astro:assets";
         </a>
         <a href="/chapitrage" class="lien">
           <img src="/public/icones/fleche-goux.svg" alt="" /><h3>
-            La fabrique de l'Enclave
+            La fabrique des <i>Mémoires de l'Enclave</i>
           </h3>
         </a>
       </div>
@@ -71,6 +71,11 @@ import { Image } from "astro:assets";
     }
   }
 
+  .italique,
+  i {
+    font-style: italic;
+  }
+
   .gauche {
     background-color: #f0f0f0;
     width: 50%;
@@ -95,6 +100,7 @@ import { Image } from "astro:assets";
     width: 100%;
     height: 100%;
     position: absolute;
+    font-size: var(--legende-font-size);
     top: 0;
     left: 0;
     background-image: url("https://maisondelapoesieparis.com/wp-content/uploads/2022/06/06-01-Jean-Paul-Goux-%C2%A9Olivier-Roller-2-scaled.jpg");
@@ -133,7 +139,7 @@ import { Image } from "astro:assets";
     font-weight: 800;
     font-size: 72px;
     line-height: 80px;
-    width: 60%;
+    width: 70%;
   }
   p {
     font-size: 18px;

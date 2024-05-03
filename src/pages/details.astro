@@ -1,0 +1,154 @@
+---
+import "../styles/global.css";
+import { Image } from "astro:assets";
+---
+
+<head>
+  <meta charset="UTF-8" />
+</head>
+
+<html>
+  <main>
+    <div class="row">
+      <div class="texte">
+        <h1 class="titre">Le transpalette BF658</h1>
+        <h3 class="date">10 juillet 1983</h3>
+        <p class="description">
+          Un moteur de chariot électrique installé dans un TUB Citroën ? C’est
+          le pari fait par Fenwick et Citroën dès 1940. Un véhicule électrique
+          permettant de palier à la pénurie
+        </p>
+        <ul class="liste">
+          <li>1 carte postale</li>
+          <li>Noir et Blanc</li>
+          <li>21,3x13cm</li>
+        </ul>
+        <div class="datas">
+          <div class="gauche">
+            <h3>Lieu</h3>
+            <h3>Type</h3>
+            <h3>Crédits</h3>
+          </div>
+          <div class="droite">
+            <h3>Colmars</h3>
+            <h3>Image</h3>
+            <h3>Lorem Ipsum</h3>
+          </div>
+        </div>
+        <!-- <h3 class="lieu">Lieu : <a href="/google.com">Colmars</a></h3>
+        <h3>Type : Image</h3>
+        <h3 class="credits">Crédits : Lorem Ipsum</h3> -->
+      </div>
+
+      <div class="rectangle-image">
+        <div class="carre"></div>
+      </div>
+    </div>
+  </main>
+</html>
+<style scoped>
+  html {
+    background: rgba(22, 22, 22, 1);
+    color: white;
+  }
+
+  main {
+    width: 100%;
+    height: 100vh;
+    background: rgba(22, 22, 22, 0.8);
+  }
+  .row {
+    display: flex;
+    align-items: center;
+    padding: 6% 8%;
+    gap: 5em;
+
+    height: 80%;
+  }
+  .texte {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    width: 40%;
+    height: 100%;
+
+    font-size: 20px;
+    font-family: var(--merryweather);
+
+    .titre {
+      font-size: 50px;
+      line-height: 56px;
+      margin-bottom: 6px;
+      font-family: var(--merryweather);
+      font-weight: 700;
+
+      margin-top: 60px;
+    }
+    .description {
+      margin-bottom: 1.5em;
+      width: 90%;
+    }
+    .liste {
+      margin-bottom: 1em;
+      list-style: none;
+
+      li {
+        margin: -0px 0;
+      }
+    }
+    .date {
+      background: #3c4e77;
+
+      width: fit-content;
+      padding: 5px 10px;
+      border-radius: 10px;
+      margin: 0 0 10px 0;
+      font-family: var(--merryweather);
+      font-size: 17px;
+    }
+    .datas {
+      display: flex;
+      justify-content: flex-start;
+      margin-top: auto;
+      .gauche {
+        margin-right: 50px;
+        font-weight: bold;
+        font-size: 21px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+      }
+      .droite {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+      }
+    }
+  }
+  .rectangle-image {
+    width: 1200px;
+    height: 650px;
+    background-color: rgba(0, 0, 255, 0.4);
+
+    position: relative;
+
+    .carre {
+      width: 50px;
+      height: 50px;
+      background-color: red;
+
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+  }
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+</style>

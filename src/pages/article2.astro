@@ -12,9 +12,9 @@ import { Image } from "astro:assets";
     <div class="rectangle"></div>
     <section class="entete">
       <div class="hero">
-        <h2 class="tag">Chapitre 1</h2>
+        <h2 class="tag">Chapitre 9</h2>
         <h1 class="titre">Jean-Paul Goux, écrivain du Temps</h1>
-        <h2 class="soustitre">Saine colère</h2>
+        <h2 class="soustitre">Biographie</h2>
         <div class="intro">
           <p>
             Le <strong>Festival Premiers Plans d’Angers</strong>, pour sa 36e
@@ -39,20 +39,24 @@ import { Image } from "astro:assets";
       <div class="overlay"></div>
     </section>
     <section class="contenu-article">
-      <h2 class="titres">1.1. Qui est Jean-Paul Goux ?</h2>
-      <div class="image">
-        <img
-          src="https://www.olivierroller.com/archives/photos/normal/goux-jean-paul3.jpg"
-          alt="images test"
-        />
-        <p>Jean-Paul Goux en 2011</p>
-      </div>
+      <h2 class="titres">Qui est Jean-Paul Goux ?</h2>
+      <!-- <Image
+        src={"/images/cover_chapitre/0096.jpg"}
+        alt={"Jean-Paul Goux"}
+        class="fougere"
+      /> -->
       <div class="paragraphe">
         <p>
           Né à Vesoul en 1948, Goux a longtemps vécu à Paris. Agrégé de lettres,
           il a enseigné dans le secondaire puis en tant que maître de
           conférences à l’université de Tours. Il habite aujourd’hui à Besançon.
         </p>
+      </div>
+      <div class="img-short">
+        <img src="/images/Goux2011.PNG" alt="images test" />
+        <p>Jean-Paul Goux en 2011</p>
+      </div>
+      <div class="paragraphe">
         <p>
           Son premier livre, Le Montreur d’ombres, est paru en 1977. En 2019, il
           a publié Sourdes contrées. En 2016, il a obtenu le prix Marcel Aymé
@@ -62,11 +66,8 @@ import { Image } from "astro:assets";
           1995, 1999) et Les Quartiers d’hiver (2005, 2009, 2012).
         </p>
       </div>
-      <div class="image">
-        <img
-          src="https://www.olivierroller.com/archives/photos/normal/goux-jean-paul3.jpg"
-          alt="images test"
-        />
+      <div class="img-short">
+        <img src="/images/Goux2008.PNG" alt="images test" />
         <p>Jean-Paul Goux en 2008</p>
       </div>
       <div class="paragraphe">
@@ -84,25 +85,24 @@ import { Image } from "astro:assets";
           Lampes de Ronchamp (2001).
         </p>
       </div>
-      <h2 class="titres">1.2. L’« Art du temps », principe d’unité</h2>
-      <div class="image">
-        <img
-          src="https://www.olivierroller.com/archives/photos/normal/goux-jean-paul3.jpg"
-          alt="images test"
-        />
-        <p>
-          Fonds MSHE, Plaquette accompagnant la 1re édition des Mémoires,
-          GOU_04_B_08_0010
-        </p>
-      </div>
+      <h2 class="titres">L’« Art du temps », principe d’unité</h2>
       <div class="paragraphe">
         <p>
           À la presse qui l’interroge à son arrivée à Montbéliard, il déclare :
           « tous mes romans […] brassent des éléments tels que l’histoire, le
           temps et la mémoire » et ajoute : « je veux mélanger les temps et les
-          histoires pour rendre sensible la multiplicité des voix » (L’Est
-          Républicain, 7 avril 1984).
+          histoires pour rendre sensible la multiplicité des voix » (<i>
+            L’Est Républicain
+          </i>, 7 avril 1984).
         </p>
+      </div>
+      <div class="image">
+        <img src="/images/GOU_04_B_08_0010.jpg" alt="images test" />
+        <p>
+          Plaquette accompagnant la 1re édition des Mémoires, GOU_04_B_08_0010
+        </p>
+      </div>
+      <div class="paragraphe">
         <p>
           Si le sous‑titre de Mémoires de l’Enclave n’est pas « roman » mais «
           récits d’industrie », le livre, « une sorte de récit d’enquête aux
@@ -125,13 +125,8 @@ import { Image } from "astro:assets";
         </p>
       </div>
       <div class="image">
-        <img
-          src="https://www.olivierroller.com/archives/photos/normal/goux-jean-paul3.jpg"
-          alt="images test"
-        />
-        <p>
-          Fonds MSHE, article Les Nouvelles Littéraires, 1986, Gou-04_D_02_008
-        </p>
+        <img src="/images/GOU_04_D_02_0007.jpg" alt="images test" />
+        <p>Article Les Nouvelles Littéraires, 1986, Gou-04_D_02_008</p>
       </div>
       <div class="paragraphe">
         <p>
@@ -170,28 +165,23 @@ import { Image } from "astro:assets";
         </p>
       </div>
     </section>
-
     <div class="suggestions-tag"><h4>Suggestions</h4></div>
     <section class="suggestions">
       <div class="card">
-        <img
-          src="https://www.bande-a-part.fr/wp-content/uploads/2020/02/magazine-cinema-stephane-demoustier-la-fille-au-bracelet-entretien-home-300x200.jpg"
-          alt=""
-        />
+        <div class="overlay2"></div>
+        <img src="/images/cover_chapitre/0098.jpg" alt="" />
         <div class="tag-card">
-          <h4>CRITIQUES</h4>
+          <h4>CHAPITRE 2</h4>
         </div>
         <h3 class="titre">
           La fille au bracelet : l'interview minutée de Stéphane Demoustier
         </h3>
       </div>
       <div class="card">
-        <img
-          src="https://www.bande-a-part.fr/wp-content/uploads/2020/02/magazine-cinema-fille-au-bracelet-home-300x200.jpg"
-          alt=""
-        />
+        <div class="overlay2"></div>
+        <img src="/images/cover_chapitre/0097.jpg" alt="" />
         <div class="tag-card">
-          <h4>CRITIQUES</h4>
+          <h4>CHAPITRE 3</h4>
         </div>
         <h3 class="titre">
           Notre sélection : La Fille au bracelet de Stéphane Demoustier. Que
@@ -199,12 +189,10 @@ import { Image } from "astro:assets";
         </h3>
       </div>
       <div class="card">
-        <img
-          src="https://www.bande-a-part.fr/wp-content/uploads/2018/04/magazine-de-cinema-allons-enfants-stephane-demoustier-home-300x200.jpg"
-          alt=""
-        />
+        <div class="overlay2"></div>
+        <img src="/images/cover_chapitre/0096.jpg" alt="" />
         <div class="tag-card">
-          <h4>CRITIQUES</h4>
+          <h4>CHAPITRE 4</h4>
         </div>
         <h3 class="titre">Allons Enfants de Stéphane Demoustier</h3>
       </div>
@@ -214,6 +202,10 @@ import { Image } from "astro:assets";
 </html>
 
 <style scoped>
+  .fougere {
+    width: 600px;
+    height: 600px;
+  }
   @import url("https://fonts.cdnfonts.com/css/helvetica-neue-5");
   * {
     box-sizing: border-box;
@@ -323,6 +315,23 @@ import { Image } from "astro:assets";
       left: 0;
       z-index: 20;
     }
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      transition: transform 0.3s ease;
+      position: relative;
+      scale: 1.2;
+      z-index: 1;
+    }
+    .overlay2 {
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 5;
+    }
   }
 
   .tag-card {
@@ -333,7 +342,7 @@ import { Image } from "astro:assets";
     padding: 5px 10px;
 
     border-radius: 2px;
-    background: #f9a725 !important;
+    background: #e72465 !important;
     h4 {
       width: auto !important;
       text-transform: uppercase;
@@ -381,10 +390,12 @@ import { Image } from "astro:assets";
     font-size: var(--titre-paragraphe-font-size);
 
     font-weight: bold;
-    padding-bottom: 20px;
+    padding-bottom: 5px;
 
     margin: 0 auto;
     max-width: 700px;
+
+    color: rgb(22, 22, 22);
   }
   .paragraphe {
     display: flex;
@@ -394,11 +405,15 @@ import { Image } from "astro:assets";
     max-width: 700px;
     margin: 0 auto;
 
+    /* text-indent: 5%; */
+
+    color: #222222;
+
     p {
       margin-bottom: 20px;
     }
     p:last-of-type {
-      padding-bottom: 50px;
+      padding-bottom: 20px;
     }
 
     font-size: var(--texte-article-font-size);
@@ -408,18 +423,36 @@ import { Image } from "astro:assets";
     display: flex;
     flex-direction: column;
     gap: 0px;
-    max-width: 850px;
+    max-width: 500px;
+    /* max-width: 850px; */
+    /* max-width: 1000px; */
     margin: 0 auto;
 
-    padding-bottom: 60px;
+    padding-bottom: 25px;
 
     p {
       font-size: var(--legende-font-size);
       align-self: flex-end;
       font-style: italic;
+      color: #666666;
     }
   }
 
+  .img-short {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    max-width: 400px;
+    /* max-width: 850px; */
+    /* max-width: 1000px; */
+    margin: 0 auto;
+
+    padding-bottom: 25px;
+
+    p {
+      color: #666666;
+    }
+  }
   .separation {
     display: flex;
     justify-content: center;
@@ -506,7 +539,7 @@ import { Image } from "astro:assets";
     width: 100%;
     height: 75vh;
     background: rgba(0, 0, 0, 0.3);
-    z-index: 1;
+    z-index: 2;
   }
   main {
     position: relative;
@@ -538,7 +571,7 @@ import { Image } from "astro:assets";
       border-radius: 4px;
       margin-bottom: 30px;
 
-      background-color: #009587;
+      background-color: #e72465;
     }
 
     .titre {
