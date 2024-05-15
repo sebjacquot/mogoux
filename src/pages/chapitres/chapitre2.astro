@@ -1,0 +1,630 @@
+---
+import "../../styles/global.css";
+import { Image } from "astro:assets";
+---
+
+<head>
+  <meta charset="UTF-8" />
+</head>
+
+<html>
+  <main>
+    <div class="rectangle"></div>
+    <section class="entete">
+      <div class="hero">
+        <h2 class="tag">Chapitre 2</h2>
+        <h1 class="titre">Du côté de l'Enclave</h1>
+        <h2 class="soustitre">Paternalisme contre lutte des classes</h2>
+        <div class="intro">
+          <p>
+            Façonné par l’activité industrielle, le Pays de Montbéliard,
+            ancienne enclave germanique et protestante sur le territoire
+            français, prend, chez Goux, le seul nom d’”Enclave”, ce qui lui
+            confère une dimension quasi mythique et légendaire.
+          </p>
+          <div class="separation">
+            <div class="background">
+              <h3 class="date">Le 18 Jan 2024 à 07:30</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      <img
+        class="img-cover"
+        src="/images/GOU_A_08_04_083.png"
+        alt="Ken Loach"
+      />
+      <div class="overlay"></div>
+    </section>
+    <section class="contenu-article">
+      <h2 class="titres">Qui est Jean-Paul Goux ?</h2>
+      <!-- <Image
+        src={"/images/cover_chapitre/0096.jpg"}
+        alt={"Jean-Paul Goux"}
+        class="fougere"
+      /> -->
+      <div class="image">
+        <img
+          src="/images/Chapitres/Chapitre2/GOU_04_D_0004.jpg"
+          alt="images test"
+        />
+        <p>
+          Reconstitution Serroz-Mülhenheim d’après des documents d’archives ©
+          Fonds Goux, GOU 04 D 0004
+        </p>
+      </div>
+      <div class="paragraphe">
+        <p>
+          Les chapitres d’entretiens, qui constituent environ la moitié du
+          volume des <i>Mémoires de l’Enclave</i>, portent souvent le titre du
+          lieu de travail et de vie des enquêtés : « Du côté de Beaucourt », «
+          Du côté d’Héricourt ».
+        </p>
+        <p>
+          Jean-Paul Goux est très attentif aux configurations spatiales et aux
+          noms de lieux, à ce qu’ils révèlent des relations et des pratiques
+          sociales. Le livre s’ouvre sur le dessin en forme d’oiseau d’un
+          territoire, qui reprend une carte ancienne.
+        </p>
+        <p>Il l'appelle l'Enclave</p>
+      </div>
+
+      <h2 class="titres">Enclave et nébuleuse</h2>
+      <div class="image">
+        <img
+          src="/images/Chapitres/Captures/GOU_03_05_0020.PNG"
+          alt="images test"
+        />
+        <p>
+          Manuscrit des Mémoires, Chap. IV « La Bastille » © Fonds Goux, GOU 03
+          05 0020
+        </p>
+      </div>
+      <div class="paragraphe">
+        <p>
+          Le pays de Montbéliard, « que la géographie voue au passage et que
+          l’histoire constitue en monde clos » (Mémoires, p. 21), a été une
+          principauté wurtembourgeoise dont le rattachement définitif à la
+          France date de 1793 seulement, et une enclave religieuse luthérienne
+          en terre catholique.
+        </p>
+        <p>
+          C’est surtout une enclave économique où l’activité des forges est
+          présente dès le XVIIe siècle, et que de grandes familles tiennent sous
+          leur emprise tout au long des XIXe et XXe siècles, en employant la
+          population dans les industries mécaniques et textiles, avant l’ère de
+          l’automobile.
+        </p>
+        <p>
+          « Au niveau du pays, j’avais imaginé une espèce d’enclave, de monde
+          clos, et en fait je l’ai trouvé ! Mais contradictoirement, j’ai aussi
+          découvert un univers très éclaté, une nébuleuse, des mondes juxtaposés
+          mais isolés […], espaces urbains aux constructions anarchiques, mode
+          de vie des gens très autonomisé » (<i>L’Est Républicain</i>, 7 octobre
+          1984). Dans cette interview, comme dans son livre, Goux utilise
+          l’image de la nébuleuse pour désigner l’« agrégat confus », le «
+          paysage indéchiffrable » (<i>Mémoires</i>, p. 73) qui traduit les
+          intentions des « bâtisseurs d’industrie » : « dissoudre la ville ».
+          Dès lors le « Pays de Montbéliard prend des allures de faubourg
+          pavillonnaire », écrit François Moulin de L’Est Républicain qui
+          consacre une série d’articles au livre à sa sortie en 1986.
+        </p>
+      </div>
+
+      <h2 class="titres">Cimetière ou conservatoire</h2>
+      <div class="image">
+        <img
+          src="/images/Chapitres/Chapitre2/GOU_05_01_0031.jpg"
+          alt="images test"
+        />
+        <p>Usine d’Héricourt (1984) © Fonds Goux, GOU 05 01 0031</p>
+      </div>
+      <div class="image">
+        <img
+          src="/images/Chapitres/Chapitre2/GOU_05_03_0027.jpg"
+          alt="images test"
+        />
+        <p>Usine de Fesches-le-Châtel (1984) © Fonds Goux, GOU 05 03 0027</p>
+      </div>
+
+      <div class="paragraphe">
+        <p>
+          « L’Enclave est aujourd’hui tout entière dominée par l’activité des
+          usines Peugeot : histoire présente qui pousse dans l’oubli l’histoire
+          passée » (Plaquette accompagnant la 1re édition, 1986).
+        </p>
+        <p>
+          En 1984-85, les traces de cette histoire passée, de cette « diversité
+          économique » révolue, ce sont d’une part les « cimetières d’usines »,
+          « de foyers » ; d’autre part les cités ouvrières anciennes plus ou
+          moins bien entretenues qui donnent l’impression que rien n’a changé
+          depuis plusieurs générations. Les vieux bâtiments, industriels ou
+          d’habitation, semblent voués à la destruction ou à la muséification.
+        </p>
+      </div>
+      <div class="image">
+        <img
+          src="/images/Chapitres/Chapitre2/GOU_04_B_01_0003.jpg"
+          alt="images test"
+        />
+        <p>
+          Carte postale « Le Grand Charmont - Les Fougères - Montbéliard »
+          envoyée par Hubert Truxler (1985) © Fonds Goux, GOU 04 B 01 0003
+        </p>
+      </div>
+      <div class="image">
+        <img
+          src="/images/Chapitres/Chapitre2/GOU_05_01_0011.jpg"
+          alt="images test"
+        />
+        <p>Habitations d’Héricourt (1984) © Fonds Goux, GOU 05 01 0011</p>
+      </div>
+
+      <div class="paragraphe">
+        <p>
+          « J’accumule […] les photos d’usines abandonnées, de maisons, de
+          cités, de pierres tombales, de plaques émaillées, de potagers et de
+          rues » (<i>Mémoires</i>, p. 37). Les photographies, prises par
+          l’écrivain et évoquées dans son « Journal » en première partie des
+          Mémoires de l’Enclave, témoignent de l’abandon de pans entiers
+          d’activités, mais aussi des vestiges du modèle qui structure l’espace
+          des vies ouvrières, à travers son habitat en cités, et l’organisation
+          de sa consommation comme de ses loisirs. En ce sens, le paysage est un
+          conservatoire qui porte « les marques successives du pouvoir qui l’a
+          […] modelé » (<i>Mémoires</i>, p. 186).
+        </p>
+        <p>
+          « L’Enclave pour Jean-Paul Goux désigne aussi le territoire du
+          patronat […]. Tout au long du XIXe siècle celui-ci a déployé un
+          paternalisme [...] qui n’a pas disparu avec la fin de la 2e guerre
+          mondiale mais a pris des formes nouvelles » (<i>Libération</i>,
+          juillet 1986). Il produit une violence latente.
+        </p>
+      </div>
+    </section>
+    <section class="credits">
+      <div class="gauche">
+        <h3>Ex Machina</h3>
+        <p>
+          Écrits par <strong>Pascal Lécroart</strong> et <strong
+            >Andrée Chauvin</strong
+          >
+        </p>
+        <p>
+          Droits photographiques : Copyright Petit Film & France 3 cinema / Le
+          Pacte.
+        </p>
+      </div>
+    </section>
+    <div class="suggestions-tag"><h4>Suggestions</h4></div>
+    <section class="suggestions">
+      <div class="card">
+        <div class="overlay2"></div>
+        <img src="/images/cover_chapitre/0098.jpg" alt="" />
+        <div class="tag-card">
+          <h4>CHAPITRE 2</h4>
+        </div>
+        <h3 class="titre">
+          La fille au bracelet : l'interview minutée de Stéphane Demoustier
+        </h3>
+      </div>
+      <div class="card">
+        <div class="overlay2"></div>
+        <img src="/images/cover_chapitre/0097.jpg" alt="" />
+        <div class="tag-card">
+          <h4>CHAPITRE 3</h4>
+        </div>
+        <h3 class="titre">
+          Notre sélection : La Fille au bracelet de Stéphane Demoustier. Que
+          savons-nous ?
+        </h3>
+      </div>
+      <div class="card">
+        <div class="overlay2"></div>
+        <img src="/images/cover_chapitre/0096.jpg" alt="" />
+        <div class="tag-card">
+          <h4>CHAPITRE 4</h4>
+        </div>
+        <h3 class="titre">Allons Enfants de Stéphane Demoustier</h3>
+      </div>
+    </section>
+    <div class="footer"></div>
+  </main>
+</html>
+
+<style scoped>
+  .fougere {
+    width: 600px;
+    height: 600px;
+  }
+  @import url("https://fonts.cdnfonts.com/css/helvetica-neue-5");
+  * {
+    box-sizing: border-box;
+  }
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-article-color);
+    position: relative;
+
+    overflow-x: hidden;
+  }
+  strong {
+    font-weight: bold;
+  }
+  i {
+    font-style: italic;
+  }
+
+  .credits {
+    margin-bottom: 150px;
+  }
+  .gauche {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    font-family: var(--article-font);
+    font-weight: 300;
+
+    max-width: 1100px;
+    margin: 0 auto;
+
+    font-size: 13px;
+
+    h3 {
+      font-size: 20px;
+      line-height: 30px;
+      font-weight: 300;
+      font-family: var(--article-intro-font);
+      font-style: italic;
+
+      margin-bottom: 10px;
+    }
+  }
+
+  .suggestions-tag {
+    font-family: var(--article-intro-font);
+    font-size: 27px;
+    font-weight: 300;
+    font-style: italic;
+
+    display: flex;
+    justify-content: center;
+    color: #8d8d8d;
+
+    h4::after {
+      content: "";
+      display: block;
+      border: 1px solid #e4e4e4;
+      background: #e4e4e4;
+
+      height: 50px;
+      width: 1px;
+      margin: 10px auto 0px auto;
+    }
+  }
+
+  .suggestions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 220px;
+
+    gap: 20px;
+
+    background: #e4e4e4;
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .card {
+    width: 300px;
+    height: 180px;
+    overflow: hidden;
+    border-radius: 2px;
+    position: relative;
+
+    h3 {
+      font-size: 16px;
+      line-height: 18px;
+      font-family: var(--article-font); /* Helvetica */
+      font-weight: 600;
+
+      padding: 0 20px;
+
+      text-align: center;
+
+      color: white;
+      position: absolute;
+      bottom: 10px;
+      left: 0;
+      z-index: 20;
+    }
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      transition: transform 0.3s ease;
+      position: relative;
+      scale: 1.2;
+      z-index: 1;
+    }
+    .overlay2 {
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 5;
+    }
+  }
+
+  .tag-card {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 5;
+    padding: 5px 10px;
+
+    border-radius: 2px;
+    background: #e72465 !important;
+    h4 {
+      width: auto !important;
+      text-transform: uppercase;
+      text-align: center;
+      color: #fff;
+      font-family: var(--article-font);
+      font-weight: bold;
+      font-size: 0.75rem;
+      line-height: 1rem;
+    }
+  }
+
+  /* .tag::before {
+    width: 100%;
+    height: 4px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    content: "";
+    border-radius: 2px;
+    -webkit-transition: all 0.2s ease-in;
+    -moz-transition: all 0.2s ease-in;
+    -o-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
+  } */
+  .footer {
+    background: var(--bg-color);
+    width: 100%;
+    height: 439px;
+
+    box-sizing: border-box;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    z-index: 100;
+  }
+
+  .contenu-article {
+    padding-top: 50px;
+    padding-bottom: 50px;
+
+    font-family: var(--article-font);
+  }
+  .titres {
+    font-size: var(--titre-paragraphe-font-size);
+
+    font-weight: bold;
+    padding-bottom: 5px;
+
+    margin: 0 auto;
+    max-width: 700px;
+
+    color: rgb(22, 22, 22);
+  }
+  .paragraphe {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 700px;
+    margin: 0 auto;
+
+    /* text-indent: 5%; */
+
+    color: #222222;
+
+    p {
+      margin-bottom: 20px;
+    }
+    p:last-of-type {
+      padding-bottom: 20px;
+    }
+
+    font-size: var(--texte-article-font-size);
+    line-height: 1.6;
+  }
+  .image {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    max-width: 500px;
+    /* max-width: 850px; */
+    /* max-width: 1000px; */
+    margin: 0 auto;
+
+    padding-bottom: 25px;
+
+    p {
+      font-size: var(--legende-font-size);
+      align-self: flex-end;
+      font-style: italic;
+      color: #666666;
+    }
+  }
+
+  .img-short {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    max-width: 400px;
+    /* max-width: 850px; */
+    /* max-width: 1000px; */
+    margin: 0 auto;
+
+    padding-bottom: 25px;
+
+    p {
+      color: #666666;
+    }
+  }
+  .separation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-top: 20px;
+
+    h3 {
+      font-size: var(--date-article-font-size);
+    }
+
+    .background {
+      padding: 0 10px;
+      background: var(--bg-article-color);
+      z-index: 3;
+    }
+  }
+
+  .separation::after {
+    content: " ";
+    border-bottom: 1px solid #d9d9d9;
+    display: block;
+    width: 100%;
+    position: absolute;
+    top: 10px;
+    z-index: 0;
+  }
+  .intro {
+    background: var(--bg-article-color);
+    width: 100%;
+    max-width: 75em;
+    height: 156px;
+    margin-bottom: 0;
+    margin-top: 80px;
+    padding: 20px 40px 0px 40px;
+    /* padding: 100px; */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+
+    p {
+      font-family: var(--article-intro-font);
+      font-style: italic;
+      font-size: var(--texte-article-font-size);
+      text-align: center;
+      align-self: center;
+    }
+  }
+  .entete {
+    position: relative;
+    width: 100%;
+    height: 75vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin-top: 80px;
+  }
+  .rectangle {
+    background: #242424;
+    width: 100vw;
+    height: 80px;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+  }
+  .img-cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 75vh;
+    object-fit: cover;
+    z-index: 1;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 75vh;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 2;
+  }
+  main {
+    position: relative;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .hero {
+    background-image: url("img/kenloach.jpg");
+    font-family: "Graphik", sans-serif;
+    height: 75vh;
+    /* margin-top: 150px; */
+    z-index: 100;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+
+    .tag {
+      font-weight: bold;
+      color: var(--secondary-color);
+      font-size: 12px !important;
+      line-height: 19.2px;
+      text-transform: uppercase;
+      padding: 1px 10px 1px 10px;
+      border-radius: 4px;
+      margin-bottom: 30px;
+
+      background-color: #e72465;
+    }
+
+    .titre {
+      font-weight: bold;
+      color: var(--secondary-color);
+      font-size: 60px !important;
+      line-height: 60px !important;
+      /* margin-bottom: 5px; */
+    }
+    .soustitre {
+      font-weight: bold;
+      color: var(--secondary-color);
+      font-size: 30px !important;
+      font-weight: 300;
+    }
+    .soustitre::before {
+      content: "";
+      display: block;
+      border-left: 1px solid #d9d9d9;
+      height: 50px;
+      width: 1px;
+      margin: 20px auto 5px auto;
+    }
+  }
+</style>

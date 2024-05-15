@@ -1,0 +1,87 @@
+---
+import "../../styles/global.css";
+import { Image } from "astro:assets";
+---
+
+<h1>test</h1>
+<div class="custom-audio-container">
+  <audio preload="metadata">
+    <source
+      src="/audios/GOUX_Du_cote_de_Bethoncourt_accidents_de_travail.wav"
+      type="audio/wav"
+    />
+    Your browser does not support the audio element.
+  </audio>
+  <div class="custom-controls">
+    <button id="playpausebtn">Play/Pause</button>
+    <input id="seekslider" type="range" min="0" step="1" value="0" />
+    <span id="curtimetext">0:00</span> / <span id="durtimetext">0:00</span>
+    <button id="mutebtn">Mute</button>
+    <input
+      id="volumeslider"
+      type="range"
+      min="0"
+      max="100"
+      value="100"
+      step="1"
+    />
+  </div>
+</div>
+
+<audio controls>
+  <source
+    src="/audios/GOUX_Du_cote_de_Bethoncourt_accidents_de_travail.wav"
+    type="audio/wav"
+  />
+  Your browser does not support the audio element.
+</audio>
+
+<style scoped>
+  .custom-audio-container {
+    position: relative;
+    margin-top: 100px;
+  }
+
+  .custom-controls {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px;
+  }
+</style>
+
+<script setup>
+  var audio = document.querySelector("audio");
+  var playpausebtn = document.getElementById("playpausebtn");
+  var seekslider = document.getElementById("seekslider");
+  var curtimetext = document.getElementById("curtimetext");
+  var durtimetext = document.getElementById("durtimetext");
+  var mutebtn = document.getElementById("mutebtn");
+  var volumeslider = document.getElementById("volumeslider");
+
+  function initAudioPlayer() {
+    audio.controls = false;
+    audio.addEventListener("timeupdate", function () {
+      seekslider.value = audio.currentTime;
+      curtimetext.innerHTML = formatTime(Math.floor(audio.currentTime));
+    });
+    seekslider.addEventListener("input", function () {
+      audio.currentTime = seekslider.value;
+      curtimetext.innerHTML = formatTime(Math.floor(audio.currentTime));
+    });
+  }
+
+  function formatTime(seconds) {
+    var min = Math.floor(seconds / 60);
+    var sec = Math.floor(seconds % 60);
+    if (sec < 10) {
+      sec = "0" + sec;
+    }
+    return min + ":" + sec;
+  }
+
+  window.onload = initAudioPlayer;
+</script>
