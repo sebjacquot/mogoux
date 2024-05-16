@@ -1,0 +1,133 @@
+---
+type Props = {
+  src: string;
+};
+
+const { src } = Astro.props;
+---
+
+<div class="custom-audio-container">
+  <audio preload="metadata" id="audio">
+    <source src={src} type="audio/wav" />
+    Your browser does not support the audio element.
+  </audio>
+  <div class="custom-controls">
+    <button id="playpausebtn"
+      ><img src="/pause.png" alt="oicone controle son" id="playicon" /></button
+    >
+    <input id="seekslider" type="range" step="any" value="0" />
+    <span id="curtimetext">0:00</span> / <span id="durtimetext">0:00</span>
+    <button id="mutebtn">Mute</button>
+    <input
+      id="volumeslider"
+      type="range"
+      min="0"
+      max="1"
+      value="0.5"
+      step="0.1"
+    />
+    <button id="closeBtn"> STOP </button>
+  </div>
+</div>
+
+<script>
+  const audio = document.querySelector("#audio") as HTMLAudioElement;
+  const playBtn = document.querySelector("#playpausebtn") as HTMLButtonElement;
+  const mutebtn = document.querySelector("#mutebtn") as HTMLButtonElement;
+  const closeBtn = document.querySelector("#closeBtn") as HTMLButtonElement;
+  const seekslider = document.querySelector("#seekslider") as HTMLInputElement;
+  const volumeslider = document.querySelector(
+    "#volumeslider"
+  ) as HTMLInputElement;
+  const playIcon = document.querySelector("#playicon") as HTMLImageElement;
+  const curtimetext = document.querySelector("#curtimetext") as HTMLSpanElement;
+  const durtimetext = document.querySelector("#durtimetext") as HTMLSpanElement;
+  const startBtn = document.querySelector(".rectangle") as HTMLDivElement;
+
+  const closeEvent = new CustomEvent("audioclose", {
+    bubbles: true,
+  });
+
+  const formatTime = (seconds: number) => {
+    const min = Math.floor(seconds / 60);
+    const sec = Math.floor(seconds % 60);
+
+    let second = sec.toString();
+    if (sec < 10) {
+      second = "0" + sec;
+    }
+    return min + ":" + second;
+  };
+
+  startBtn.addEventListener("audiostart", () => {
+    if (!audio.paused) {
+      playIcon.src = "/play-button.png";
+      return audio.pause();
+    }
+    if (audio.currentTime <= 0) {
+      audio.volume = 1;
+      audio.currentTime = 0;
+      volumeslider.value = "1";
+    }
+    playIcon.src = "/pause.png";
+    audio.play();
+  });
+
+  audio.addEventListener("loadedmetadata", () => {
+    const duration = audio.duration.toString();
+
+    volumeslider.value = "1";
+    seekslider.value = "0";
+    seekslider.max = duration;
+    durtimetext.innerHTML = formatTime(+duration);
+  });
+
+  audio.addEventListener("timeupdate", () => {
+    const currentTime = audio.currentTime.toString();
+
+    seekslider.value = currentTime;
+    curtimetext.innerHTML = formatTime(+currentTime);
+  });
+
+  playBtn.addEventListener("click", () => {
+    if (!audio.paused) {
+      playIcon.src = "/play-button.png";
+      return audio.pause();
+    }
+    playIcon.src = "/pause.png";
+    audio.play();
+  });
+
+  closeBtn.addEventListener("click", () => {
+    audio.currentTime = 0;
+    audio.pause();
+    closeBtn.dispatchEvent(closeEvent);
+  });
+
+  mutebtn.addEventListener("click", () => {
+    if (audio.volume > 0) {
+      audio.volume = 0;
+      volumeslider.value = "0";
+    } else {
+      audio.volume = 1;
+      volumeslider.value = "1";
+    }
+  });
+
+  volumeslider.addEventListener("change", () => {
+    audio.volume = +volumeslider.value;
+  });
+
+  seekslider.addEventListener("change", () => {
+    if (audio.paused) audio.play();
+    audio.currentTime = +seekslider.value;
+  });
+</script>
+
+<style scoped>
+  #playicon {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+  }
+</style>

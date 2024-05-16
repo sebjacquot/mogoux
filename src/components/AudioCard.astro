@@ -1,0 +1,49 @@
+---
+import "../styles/global.css";
+import Audio from "./Audio.astro";
+type Props = {
+  src: string;
+};
+
+const { src } = Astro.props;
+---
+
+<div class="audio">
+  <Audio src={src} />
+</div>
+<div class="rectangle"></div>
+
+<style scoped>
+  .audio {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: red;
+    opacity: 0;
+    transition: opacity 1.5s;
+  }
+  .rectangle {
+    width: 100px;
+    height: 100px;
+    background: blue;
+  }
+</style>
+
+<script>
+  const audio = document.querySelector(".audio") as HTMLDivElement;
+  const rectangle = document.querySelector(".rectangle") as HTMLDivElement;
+
+  const audioStart = new CustomEvent("audiostart");
+
+  document.querySelector("#closeBtn")?.addEventListener("audioclose", () => {
+    audio.style.opacity = "0";
+    audio.style.zIndex = "-1";
+  });
+
+  rectangle.addEventListener("click", () => {
+    audio.style.opacity = "1";
+    audio.style.zIndex = "100";
+
+    rectangle.dispatchEvent(audioStart);
+  });
+</script>
