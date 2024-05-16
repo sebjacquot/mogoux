@@ -1,0 +1,109 @@
+---
+import "../styles/global.css";
+import { Image } from "astro:assets";
+---
+
+<head>
+  <meta charset="UTF-8" />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+  />
+</head>
+
+<html>
+  <main>
+    <div class="gauche">
+      <div class="texte">
+        <h1>Discover 18th Century rural life in penn</h1>
+        <p>
+          A historic house museum, the 1738 Wright’s Ferry Mansion celebrates
+          important examples of pre-1750 fine art, decorative arts, and
+          architecture, as well as a multi-generational narrative reflective of
+          Columbia, Pennsylvania, and its surrounding region.
+        </p>
+        <div class="button">
+          <h2>Learn more</h2>
+          <div class="rectangle"></div>
+        </div>
+      </div>
+    </div>
+    <div class="droite"></div>
+  </main>
+
+  <style scoped>
+    .texte {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      justify-content: start;
+      padding: 0px 250px 0px 120px;
+
+      font-family: "Inter", sans-serif;
+      color: var(--secondary-color);
+
+      h1 {
+        font-size: 80px;
+        line-height: 81px;
+        padding-right: 100px;
+
+        text-transform: uppercase;
+      }
+      p {
+        font-size: 16px;
+        line-height: 24px;
+        padding-right: 30px;
+
+        font-weight: 400;
+        color: var(--text-color);
+      }
+
+      h2 {
+        font-size: 13px;
+        text-transform: uppercase;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+
+        transition: all 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+      }
+    }
+
+    .button {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .button:hover h2,
+    .button:hover {
+      cursor: pointer;
+      letter-spacing: 1px;
+    }
+    .rectangle {
+      width: 40px;
+      height: 40px;
+      background-color: white;
+    }
+
+    main {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      height: 100vh;
+    }
+    .gauche {
+      background-color: var(--bg-color);
+      max-width: 60%;
+      height: 100vh;
+      /* padding-top: 84px; */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .droite {
+      background-color: blue;
+      width: 40%;
+      height: 100vh;
+    }
+  </style>
+</html>
