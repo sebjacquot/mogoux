@@ -10,7 +10,7 @@ import { Image } from "astro:assets";
   <main>
     <section class="carousel">
       <div class="chapitrage">
-        <div class="gauche"></div>
+        <img src="/images/Header_Chapitre/C1_GOU_P17-04_01-P.jpg" alt="test" class="gauche"></img>
         <div class="droite">
           <h3>Chapitre 1</h3>
           <h2>Une commande de la Cité	</h2>
@@ -22,7 +22,7 @@ import { Image } from "astro:assets";
         </div>
       </div>
       <div class="chapitrage">
-        <div class="gauche"></div>
+       <img src="/images/Header_Chapitre/C2_0363.jpg" alt="test" class="gauche"></img>
         <div class="droite">
           <h3>Chapitre 2</h3>
           <h2>Du côté de l'Enclave</h2>
@@ -35,7 +35,7 @@ import { Image } from "astro:assets";
         </div>
       </div>
       <div class="chapitrage">
-        <div class="gauche"></div>
+       <img src="/images/Header_Chapitre/C3_Ouvriers filature_2_APB.jpg" alt="test" class="gauche"></img>
         <div class="droite">
           <h3>Chapitre 3</h3>
           <h2>Discours du Maître, traces des luttes</h2>
@@ -48,7 +48,7 @@ import { Image } from "astro:assets";
         </div>
       </div>
       <div class="chapitrage">
-        <div class="gauche"></div>
+       <img src="/images/Header_Chapitre/C4_GOU_P8-03_03-P.jpg" alt="test" class="gauche"></img>
         <div class="droite">
           <h3>Chapitre 4</h3>
           <h2>Enquête sur la mémoire collective</h2>
@@ -59,7 +59,7 @@ import { Image } from "astro:assets";
         </div>
       </div>
       <div class="chapitrage">
-        <div class="gauche"></div>
+       <img src="/images/Header_Chapitre/C5_0407.jpg" alt="test" class="gauche"></img>
         <div class="droite">
           <h3>Chapitre 5</h3>
           <h2>Une œuvre littéraire</h2>
@@ -70,7 +70,7 @@ import { Image } from "astro:assets";
         </div>
       </div>
       <div class="chapitrage">
-        <div class="gauche"></div>
+       <img src="/images/Header_Chapitre/C6_0100.jpg" alt="test" class="gauche"></img>
         <div class="droite">
           <h3>Chapitre 6</h3>
           <h2>La structuration des Mémoires</h2>
@@ -81,7 +81,7 @@ import { Image } from "astro:assets";
       </div>
     
       <div class="chapitrage">
-        <div class="gauche"></div>
+       <img src="/images/Header_Chapitre/C7_GOU_P17-05_04-P.jpg" alt="test" class="gauche"></img>
         <div class="droite">
           <h3>Chapitre 7</h3>
           <h2>La fabrique du texte</h2>
@@ -90,7 +90,7 @@ import { Image } from "astro:assets";
         </div>
       </div>
       <div class="chapitrage">
-        <div class="gauche"></div>
+       <img src="/images/Header_Chapitre/C8_GOU_P23-04_05-P.jpg" alt="test" class="gauche"></img>
         <div class="droite">
           <h3>Chapitre 8</h3>
           <h2>Du manuscrit au(x) livre(s)</h2>
@@ -100,7 +100,7 @@ import { Image } from "astro:assets";
         </div>
       </div>
       <div class="chapitrage">
-        <div class="gauche"></div>
+        <img src="/images/Header_Chapitre/C9_GOU_A_08_04_083.jpg" alt="test" class="gauche"></img>
         <div class="droite">
           <h3>Chapitre 9</h3>
           <h2>Le fonds photographique</h2>
@@ -134,8 +134,28 @@ import { Image } from "astro:assets";
       height: 650px;
       background-color: blue;
 
+
+      object-fit: cover;
+
       margin-top: 30px;
     }
+
+    .chapitrage:nth-of-type(1) .gauche{
+      object-position: 60% 0;
+    }
+    .chapitrage:nth-of-type(4) .gauche{
+      object-position: 40% 0;
+    }
+    .chapitrage:nth-of-type(7) .gauche{
+      object-position: 55% 0;
+    }
+    .chapitrage:nth-of-type(8) .gauche{
+      object-position: 40% 0;
+    }
+    .chapitrage:nth-of-type(9) .gauche{
+      object-position: 40% 0;
+    }
+    
 
     .droite {
       display: flex;

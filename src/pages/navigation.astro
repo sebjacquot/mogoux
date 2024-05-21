@@ -36,7 +36,7 @@ import { Image } from "astro:assets";
           Découvrez comment Mémoires de l’Enclave a été conçu et réalisé par son
           auteur, puis reçu par le public.
         </p>
-        <a href="#" class="lien"
+        <a href="/chapitres/biographie" class="lien"
           ><img src="/public/icones/fleche-goux.svg" alt="" /><h3>
             Biographie
           </h3>
@@ -96,9 +96,9 @@ import { Image } from "astro:assets";
     position: absolute;
     top: 0;
     left: 0;
-    background-image: url("https://www.communitystories.ca/v2/l-industrie-de-la-chaussure-contrecoeur_shoe-story/wp-content/uploads/sites/82/2020/09/inauguration-Sidbec-allocution-Bourassa-1972-photgraphe-Jules-Rochon-BANQ-434.jpg");
+    background-image: url("/images/0466.jpg");
     background-size: cover;
-    /* background-position: center; */
+    background-position: 70%;
   }
   .cover2 {
     width: 100%;
@@ -107,9 +107,9 @@ import { Image } from "astro:assets";
     font-size: var(--legende-font-size);
     top: 0;
     left: 0;
-    background-image: url("https://maisondelapoesieparis.com/wp-content/uploads/2022/06/06-01-Jean-Paul-Goux-%C2%A9Olivier-Roller-2-scaled.jpg");
+    background-image: url("/images/GOU_P23-03_02-P.jpg");
     background-size: cover;
-    background-position: center;
+    background-position: 10%;
   }
   .cover2::after,
   .cover::after {
@@ -124,7 +124,7 @@ import { Image } from "astro:assets";
       rgba(22, 22, 22, 0.4) 0%,
       rgba(22, 22, 22, 1) 100%
     );
-    opacity: 0.8;
+    opacity: 0.85;
     z-index: 10;
   }
 
@@ -137,6 +137,10 @@ import { Image } from "astro:assets";
     justify-content: flex-end;
     position: relative;
     overflow-x: hidden;
+  }
+  a > img {
+    color: black;
+    fill: red;
   }
 
   h2 {
@@ -162,6 +166,11 @@ import { Image } from "astro:assets";
     font-size: 18px;
 
     margin-top: 10px;
+  }
+
+  .lien img {
+    fill: white;
+    color: white;
   }
 
   .button {

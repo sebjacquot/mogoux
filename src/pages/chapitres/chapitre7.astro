@@ -34,7 +34,7 @@ import { Image } from "astro:assets";
       </div>
       <img
         class="img-cover"
-        src="/images/GOU_A_08_04_083.png"
+        src="/images/Header_Chapitre/C7_GOU_P17-05_04-P.jpg"
         alt="Ken Loach"
       />
       <div class="overlay"></div>
@@ -59,7 +59,10 @@ import { Image } from "astro:assets";
           src="/images/Chapitres/Chapitre7/GOU_03_13_0010.jpg"
           alt="Manuscrit (avec découpages) des Mémoires de l’Enclave © Fonds Goux, GOU 03 13 00010 "
         />
-        <p>Manuscrit (avec découpages) des <i>Mémoires de l’Enclave</i> © Fonds Goux, GOU 03 13 00010 </p>
+        <p>
+          Manuscrit (avec découpages) des <i>Mémoires de l’Enclave</i> © Fonds Goux,
+          GOU 03 13 00010
+        </p>
       </div>
       <div class="paragraphe">
         <p>
@@ -123,7 +126,7 @@ import { Image } from "astro:assets";
         </p>
       </div>
       <h2 class="titres">En remontant le fil d’un entretien</h2>
-      
+
       <div class="paragraphe">
         <p>
           Pour mettre en évidence ce travail, voici l’exemple du chapitre X : «
@@ -151,14 +154,20 @@ import { Image } from "astro:assets";
           src="/images/Chapitres/Chapitre7/GOU_01_02_29_30_0005.jpg"
           alt="Manuscrit (avec découpages) des Mémoires de l’Enclave © Fonds Goux, GOU 03 13 00010 "
         />
-        <p>Transcription entretien cassette 29-30, Mme B., p. 1-2, (extraits) © Fonds Goux</p>
+        <p>
+          Transcription entretien cassette 29-30, Mme B., p. 1-2, (extraits) ©
+          Fonds Goux
+        </p>
       </div>
       <div class="image">
         <img
           src="/images/Chapitres/Chapitre7/GOU_01_02_29_30_0007.jpg"
           alt="Manuscrit (avec découpages) des Mémoires de l’Enclave © Fonds Goux, GOU 03 13 00010 "
         />
-        <p>Transcription entretien cassette 29-30, Mme B., p. 1-2, (extraits) © Fonds Goux</p>
+        <p>
+          Transcription entretien cassette 29-30, Mme B., p. 1-2, (extraits) ©
+          Fonds Goux
+        </p>
       </div>
       <div class="paragraphe">
         <p>
@@ -173,12 +182,15 @@ import { Image } from "astro:assets";
           charge les tisserandes.
         </p>
       </div>
-     <div class="image">
+      <div class="image">
         <img
           src="/images/Chapitres/Chapitre7/GOU_01_02_29_30_0005.jpg"
           alt="Manuscrit (avec découpages) des Mémoires de l’Enclave © Fonds Goux, GOU 03 13 00010 "
         />
-        <p>Transcription entretien cassette 29-30, Mme B., p. 7, (extraits) © Fonds Goux</p>
+        <p>
+          Transcription entretien cassette 29-30, Mme B., p. 7, (extraits) ©
+          Fonds Goux
+        </p>
       </div>
 
       <div class="paragraphe">
@@ -193,7 +205,10 @@ import { Image } from "astro:assets";
           src="/images/Chapitres/Chapitre7/GOU_03_10_bis0006.jpg"
           alt="Manuscrit (avec découpages) des Mémoires de l’Enclave © Fonds Goux, GOU 03 13 00010 "
         />
-        <p>Manuscrit correspondant au chapitre X © Fonds Goux, GOU 03 10 bis 0006</p>
+        <p>
+          Manuscrit correspondant au chapitre X © Fonds Goux, GOU 03 10 bis
+          0006
+        </p>
       </div>
       <div class="paragraphe">
         <p>
@@ -218,7 +233,10 @@ import { Image } from "astro:assets";
           src="/images/Chapitres/Chapitre7/GOU_05_01_0005.jpg"
           alt="Manuscrit (avec découpages) des Mémoires de l’Enclave © Fonds Goux, GOU 03 13 00010 "
         />
-        <p>Photographie Tissage du Paquis, Héricourt © Fonds Goux, GOU 05 01 0005</p>
+        <p>
+          Photographie Tissage du Paquis, Héricourt © Fonds Goux, GOU 05 01
+          0005
+        </p>
       </div>
     </section>
     <section class="credits">
@@ -272,6 +290,14 @@ import { Image } from "astro:assets";
 </html>
 
 <style scoped>
+  ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    padding-left: 30px;
+    li {
+      text-transform: lowercase;
+    }
+  }
   .fougere {
     width: 600px;
     height: 600px;
@@ -471,7 +497,7 @@ import { Image } from "astro:assets";
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     max-width: 700px;
     margin: 0 auto;
 
@@ -599,6 +625,7 @@ import { Image } from "astro:assets";
     width: 100%;
     height: 75vh;
     object-fit: cover;
+    object-position: 0 40%;
     z-index: 1;
   }
 

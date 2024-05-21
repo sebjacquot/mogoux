@@ -22,16 +22,20 @@ import { Image } from "astro:assets";
           architecture, as well as a multi-generational narrative reflective of
           Columbia, Pennsylvania, and its surrounding region.
         </p>
-        <div class="button">
+        <a href="/navigation" class="button">
           <h2>Learn more</h2>
           <div class="rectangle"></div>
-        </div>
+        </a>
       </div>
     </div>
     <div class="droite"></div>
   </main>
 
   <style scoped>
+    a {
+      text-decoration: none;
+      color: var(--secondary-color);
+    }
     .texte {
       display: flex;
       flex-direction: column;
@@ -102,6 +106,10 @@ import { Image } from "astro:assets";
     }
     .droite {
       background-color: blue;
+
+      background-image: url("/images/0456.jpg");
+      background-size: cover;
+      background-position: 54%; /* 426 20% et 55%-60% 456 54% thomas D  */
       width: 40%;
       height: 100vh;
     }
