@@ -1,0 +1,38 @@
+version: "3"
+
+services:
+  payload:
+    image: node:18-alpine
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/home/node/app
+      - node_modules:/home/node/app/node_modules
+    networks:
+      - gou
+    working_dir: /home/node/app/
+    command: sh -c "yarn install && yarn dev"
+    depends_on:
+      - postgres
+    env_file:
+      - .env
+
+  postgres:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=gou_db
+      - POSTGRES_USER=thomas
+      - POSTGRES_PASSWORD=test
+    volumes:
+      - data:/var/lib/postgresql/data
+    networks:
+      - gou
+
+volumes:
+  data:
+  node_modules:
+
+networks:
+  gou:

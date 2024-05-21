@@ -1,115 +1,111 @@
 ---
+import { ViewTransitions } from "astro:transitions";
 import "../styles/global.css";
 import { Image } from "astro:assets";
 ---
 
-<head>
-  <meta charset="UTF-8" />
-</head>
 <html>
-  <main>
-    <section class="carousel">
-      <div class="chapitrage">
-        <img src="/images/Header_Chapitre/C1_GOU_P17-04_01-P.jpg" alt="test" class="gauche"></img>
-        <div class="droite">
-          <h3>Chapitre 1</h3>
-          <h2>Une commande de la Cité	</h2>
-          <p>
-            Qu’une Association de culture et de loisirs nommée la Cité, liée au Comité d’établissements des automobiles Peugeot,  passe commande d’un ouvrage sur la mémoire industrielle à un écrivain peut paraître bien étonnant : c’est le fruit de circonstances et de coïncidences remarquables.
-              
-          </p>
-          <button onclick="window.location.href='/chapitres/chapitre1'">Lire la suite</button>
-        </div>
-      </div>
-      <div class="chapitrage">
-       <img src="/images/Header_Chapitre/C2_0363.jpg" alt="test" class="gauche"></img>
-        <div class="droite">
-          <h3>Chapitre 2</h3>
-          <h2>Du côté de l'Enclave</h2>
-          <p>
-           Façonné par l’activité industrielle, le Pays de Montbéliard, ancienne enclave germanique et protestante sur le territoire français, prend, chez Goux, le seul nom d’”Enclave”, ce qui lui confère une dimension quasi mythique et légendaire.
-
-          </p>
-          <button onclick="window.location.href='/chapitres/chapitre2'">Lire la suite</button>
-
-        </div>
-      </div>
-      <div class="chapitrage">
-       <img src="/images/Header_Chapitre/C3_Ouvriers filature_2_APB.jpg" alt="test" class="gauche"></img>
-        <div class="droite">
-          <h3>Chapitre 3</h3>
-          <h2>Discours du Maître, traces des luttes</h2>
-          <p>
-           Singulier par son capitalisme animé par un patronat d’origine protestante, le monde industriel du pays de Montbéliard est inséparable d’un paternalisme qui, promouvant un mieux vivre collectif, contrôle tout et s’efforce de contenir toute forme de luttes, sans parvenir à les empêcher.
-
-          </p>
-        <button onclick="window.location.href='/chapitres/chapitre3'">Lire la suite</button>
-
-        </div>
-      </div>
-      <div class="chapitrage">
-       <img src="/images/Header_Chapitre/C4_GOU_P8-03_03-P.jpg" alt="test" class="gauche"></img>
-        <div class="droite">
-          <h3>Chapitre 4</h3>
-          <h2>Enquête sur la mémoire collective</h2>
-          <p>
-           Pendant sa résidence, Jean-Paul Goux a longuement travaillé sur des ouvrages et des archives, tout en menant de très nombreux entretiens, multipliant les rencontres avec des ouvrières et des ouvriers, qu’ils soient à la retraite ou toujours actifs et engagés dans leur activité professionnelle.</p>
-          <button onclick="window.location.href='/chapitres/chapitre4'">Lire la suite</button>
-
-        </div>
-      </div>
-      <div class="chapitrage">
-       <img src="/images/Header_Chapitre/C5_0407.jpg" alt="test" class="gauche"></img>
-        <div class="droite">
-          <h3>Chapitre 5</h3>
-          <h2>Une œuvre littéraire</h2>
-          <p>Si les auteurs de la commande s’attendaient plutôt à un roman, Goux leur a finalement proposé un ouvrage littéraire très singulier et divers, empruntant partiellement à la forme du journal intime tout en jouant sur la fiction, et revendiquant parallèlement une vraie valeur historique.
-</p>
-          <button onclick="window.location.href='/chapitres/chapitre5'">Lire la suite</button>
-
-        </div>
-      </div>
-      <div class="chapitrage">
-       <img src="/images/Header_Chapitre/C6_0100.jpg" alt="test" class="gauche"></img>
-        <div class="droite">
-          <h3>Chapitre 6</h3>
-          <h2>La structuration des Mémoires</h2>
-          <p>Dans la première partie de l’ouvrage, Goux met en scène les problèmes d’organisation qui se sont posés à lui : désireux de favoriser une pluralité de discours et de types d’écriture, il allait néanmoins progressivement élaborer une structuration souple et inventive, parfaitement élaborée et réfléchie.</p>
-          <button onclick="window.location.href='/chapitres/chapitre6'">Lire la suite</button>
-
-        </div>
-      </div>
+  <head>
+    <meta charset="UTF-8" />
+    <ViewTransitions />
+  </head>
+  <body>
+    <main>
+      <section class="carousel">
+        <div class="chapitrage">
+          <img transition:name="test" src="/images/Header_Chapitre/C1_GOU_P17-04_01-P.jpg" alt="test" class="gauche"></img>
+          <div class="droite">
+            <h3>Chapitre 1</h3>
+            <h2>Une commande de la Cité	</h2>
+            <p>
+              Qu’une Association de culture et de loisirs nommée la Cité, liée au Comité d’établissements des automobiles Peugeot,  passe commande d’un ouvrage sur la mémoire industrielle à un écrivain peut paraître bien étonnant : c’est le fruit de circonstances et de coïncidences remarquables.
     
-      <div class="chapitrage">
-       <img src="/images/Header_Chapitre/C7_GOU_P17-05_04-P.jpg" alt="test" class="gauche"></img>
-        <div class="droite">
-          <h3>Chapitre 7</h3>
-          <h2>La fabrique du texte</h2>
-          <p>L’ensemble des entretiens oraux réalisés a donné lieu à une transcription écrite. Sur cette base, Jean-Paul Goux a réalisé un travail complexe de réélaboration, parfois divers dans sa pratique, soucieux de traduire l’oralité dans l’écriture, tout en faisant systématiquement disparaître sa voix.</p>
-          <button onclick="window.location.href='/chapitres/chapitre7'">Lire la suite</button>
+            </p>
+            <button onclick="window.location.href='/chapitres/chapitre1'">Lire la suite</button>
+          </div>
         </div>
-      </div>
-      <div class="chapitrage">
-       <img src="/images/Header_Chapitre/C8_GOU_P23-04_05-P.jpg" alt="test" class="gauche"></img>
-        <div class="droite">
-          <h3>Chapitre 8</h3>
-          <h2>Du manuscrit au(x) livre(s)</h2>
-          <p><i>Mémoires de l’Enclave</i> est un ouvrage qui, au sens propre, initialement, dérange : Flammarion, qui avait édité les deux précédents romans de Goux, n’en veut pas et une certaine presse communiste le réprouve. Edité chez Mazarine en 1986, l’ouvrage est réédité par Actes sud en 2003 et a fait, depuis, école.</p>
-          <button onclick="window.location.href='/chapitres/chapitre8'">Lire la suite</button>
-
+        <div class="chapitrage">
+         <img src="/images/Header_Chapitre/C2_0363.jpg" alt="test" class="gauche"></img>
+          <div class="droite">
+            <h3>Chapitre 2</h3>
+            <h2>Du côté de l'Enclave</h2>
+            <p>
+             Façonné par l’activité industrielle, le Pays de Montbéliard, ancienne enclave germanique et protestante sur le territoire français, prend, chez Goux, le seul nom d’”Enclave”, ce qui lui confère une dimension quasi mythique et légendaire.
+            </p>
+            <button onclick="window.location.href='/chapitres/chapitre2'">Lire la suite</button>
+          </div>
         </div>
-      </div>
-      <div class="chapitrage">
-        <img src="/images/Header_Chapitre/C9_GOU_A_08_04_083.jpg" alt="test" class="gauche"></img>
-        <div class="droite">
-          <h3>Chapitre 9</h3>
-          <h2>Le fonds photographique</h2>
-          <p>Au-delà des mots, l’ouvrage aurait dû comprendre un dossier photographique finalement abandonné. Grâce aux archives, il est possible de donner une large place à l’ensemble des documents photographiques qui ont accompagné la genèse et la publication de l’ouvrage.</p>
-          <button onclick="window.location.href='/chapitres/chapitre9'">Lire la suite</button>
+        <div class="chapitrage">
+         <img src="/images/Header_Chapitre/C3_Ouvriers filature_2_APB.jpg" alt="test" class="gauche"></img>
+          <div class="droite">
+            <h3>Chapitre 3</h3>
+            <h2>Discours du Maître, traces des luttes</h2>
+            <p>
+             Singulier par son capitalisme animé par un patronat d’origine protestante, le monde industriel du pays de Montbéliard est inséparable d’un paternalisme qui, promouvant un mieux vivre collectif, contrôle tout et s’efforce de contenir toute forme de luttes, sans parvenir à les empêcher.
+            </p>
+          <button onclick="window.location.href='/chapitres/chapitre3'">Lire la suite</button>
+          </div>
         </div>
-      </div>
-    </section>
-  </main>
+        <div class="chapitrage">
+         <img src="/images/Header_Chapitre/C4_GOU_P8-03_03-P.jpg" alt="test" class="gauche"></img>
+          <div class="droite">
+            <h3>Chapitre 4</h3>
+            <h2>Enquête sur la mémoire collective</h2>
+            <p>
+             Pendant sa résidence, Jean-Paul Goux a longuement travaillé sur des ouvrages et des archives, tout en menant de très nombreux entretiens, multipliant les rencontres avec des ouvrières et des ouvriers, qu’ils soient à la retraite ou toujours actifs et engagés dans leur activité professionnelle.</p>
+            <button onclick="window.location.href='/chapitres/chapitre4'">Lire la suite</button>
+          </div>
+        </div>
+        <div class="chapitrage">
+         <img src="/images/Header_Chapitre/C5_0407.jpg" alt="test" class="gauche"></img>
+          <div class="droite">
+            <h3>Chapitre 5</h3>
+            <h2>Une œuvre littéraire</h2>
+            <p>Si les auteurs de la commande s’attendaient plutôt à un roman, Goux leur a finalement proposé un ouvrage littéraire très singulier et divers, empruntant partiellement à la forme du journal intime tout en jouant sur la fiction, et revendiquant parallèlement une vraie valeur historique.
+    </p>
+            <button onclick="window.location.href='/chapitres/chapitre5'">Lire la suite</button>
+          </div>
+        </div>
+        <div class="chapitrage">
+         <img src="/images/Header_Chapitre/C6_0100.jpg" alt="test" class="gauche"></img>
+          <div class="droite">
+            <h3>Chapitre 6</h3>
+            <h2>La structuration des Mémoires</h2>
+            <p>Dans la première partie de l’ouvrage, Goux met en scène les problèmes d’organisation qui se sont posés à lui : désireux de favoriser une pluralité de discours et de types d’écriture, il allait néanmoins progressivement élaborer une structuration souple et inventive, parfaitement élaborée et réfléchie.</p>
+            <button onclick="window.location.href='/chapitres/chapitre6'">Lire la suite</button>
+          </div>
+        </div>
+    
+        <div class="chapitrage">
+         <img src="/images/Header_Chapitre/C7_GOU_P17-05_04-P.jpg" alt="test" class="gauche"></img>
+          <div class="droite">
+            <h3>Chapitre 7</h3>
+            <h2>La fabrique du texte</h2>
+            <p>L’ensemble des entretiens oraux réalisés a donné lieu à une transcription écrite. Sur cette base, Jean-Paul Goux a réalisé un travail complexe de réélaboration, parfois divers dans sa pratique, soucieux de traduire l’oralité dans l’écriture, tout en faisant systématiquement disparaître sa voix.</p>
+            <button onclick="window.location.href='/chapitres/chapitre7'">Lire la suite</button>
+          </div>
+        </div>
+        <div class="chapitrage">
+         <img src="/images/Header_Chapitre/C8_GOU_P23-04_05-P.jpg" alt="test" class="gauche"></img>
+          <div class="droite">
+            <h3>Chapitre 8</h3>
+            <h2>Du manuscrit au(x) livre(s)</h2>
+            <p><i>Mémoires de l’Enclave</i> est un ouvrage qui, au sens propre, initialement, dérange : Flammarion, qui avait édité les deux précédents romans de Goux, n’en veut pas et une certaine presse communiste le réprouve. Edité chez Mazarine en 1986, l’ouvrage est réédité par Actes sud en 2003 et a fait, depuis, école.</p>
+            <button onclick="window.location.href='/chapitres/chapitre8'">Lire la suite</button>
+          </div>
+        </div>
+        <div class="chapitrage">
+          <img src="/images/Header_Chapitre/C9_GOU_A_08_04_083.jpg" alt="test" class="gauche"></img>
+          <div class="droite">
+            <h3>Chapitre 9</h3>
+            <h2>Le fonds photographique</h2>
+            <p>Au-delà des mots, l’ouvrage aurait dû comprendre un dossier photographique finalement abandonné. Grâce aux archives, il est possible de donner une large place à l’ensemble des documents photographiques qui ont accompagné la genèse et la publication de l’ouvrage.</p>
+            <button onclick="window.location.href='/chapitres/chapitre9'">Lire la suite</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
 
   <style scoped>
     a{
@@ -155,6 +151,8 @@ import { Image } from "astro:assets";
     .chapitrage:nth-of-type(9) .gauche{
       object-position: 40% 0;
     }
+
+    
     
 
     .droite {
