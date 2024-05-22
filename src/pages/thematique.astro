@@ -1,11 +1,16 @@
 ---
+import ThematiqueCard from "../components/ThematiqueCard.astro";
 import "../styles/global.css";
 import { Image } from "astro:assets";
 
-const res = await fetch("http://localhost:3000/api/thematics/1", {
-  credentials: "include",
-});
-const thematics = await res.json();
+let thematics = [];
+try {
+  const res = await fetch("http://localhost:3000/api/thematics/");
+  const data = await res.json();
+  thematics = data.docs || [];
+} catch (error) {
+  console.error("Failed to fetch thematics", error);
+}
 ---
 
 <head>
@@ -14,7 +19,8 @@ const thematics = await res.json();
 
 <html>
   <main>
-    <pre>{JSON.stringify(thematics,null,2)}</pre>
+    <!-- <pre>{JSON.stringify(thematics,null,2)}</pre> -->
+
     <div class="intro">
       <h2>Aller plus loin</h2>
       <p>
@@ -27,42 +33,18 @@ const thematics = await res.json();
     </div>
 
     <section class="thematique">
-      <div class="card">
-        <div class="rectangle"></div>
-        <h3>Interview with Miep Gies</h3>
-      </div>
-      <div class="card">
-        <div class="rectangle"></div>
-        <h3>Interview with Miep Gies</h3>
-      </div>
-      <div class="card">
-        <div class="rectangle"></div>
-        <h3>Interview with Miep Gies</h3>
-      </div>
-      <div class="card">
-        <div class="rectangle"></div>
-        <h3>Interview with Miep Gies</h3>
-      </div>
-      <div class="card">
-        <div class="rectangle"></div>
-        <h3>Interview with Miep Gies</h3>
-      </div>
-      <div class="card">
-        <div class="rectangle"></div>
-        <h3>Interview with Miep Gies</h3>
-      </div>
-      <div class="card">
-        <div class="rectangle"></div>
-        <h3>Interview with Miep Gies</h3>
-      </div>
-      <div class="card">
-        <div class="rectangle"></div>
-        <h3>Interview with Miep Gies</h3>
-      </div>
-      <div class="card">
-        <div class="rectangle"></div>
-        <h3>Interview with Miep Gies</h3>
-      </div>
+      {
+        thematics.length > 0 ? (
+          thematics.map((thematic) => (
+            <ThematiqueCard
+              src={thematic.backgroundImage.url}
+              titre={thematic.title}
+            />
+          ))
+        ) : (
+          <p>No thematics available</p>
+        )
+      }
     </section>
   </main>
 </html>
