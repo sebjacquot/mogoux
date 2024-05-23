@@ -2,6 +2,9 @@ import { CollectionConfig } from "payload/types";
 
 export const Medias: CollectionConfig = {
   slug: "medias",
+  admin: {
+    useAsTitle: "filename",
+  },
   access: {
     read: () => true,
   },
@@ -44,13 +47,13 @@ export const Medias: CollectionConfig = {
     },
     {
       name: "legend",
-      label: "Legend",
+      label: "Légende",
       type: "text",
       required: false,
     },
     {
       name: "title",
-      label: "Title",
+      label: "Titre",
       type: "text",
       required: false,
     },
@@ -61,14 +64,49 @@ export const Medias: CollectionConfig = {
       required: false,
     },
     {
-      name: "credits",
-      label: "Credits",
+      name: "date",
+      label: "Date",
       type: "text",
       required: false,
     },
     {
-      name: "date",
-      label: "Date",
+      name: "tag",
+      label: "Tag",
+      type: "array",
+      minRows: 1,
+      maxRows: 5,
+      fields: [
+        {
+          name: "tag_name",
+          label: "Nom du tag",
+          type: "text",
+          required: false,
+        },
+      ],
+      required: false,
+    },
+    {
+      name: "location",
+      label: "Lieu",
+      type: "group",
+      fields: [
+        {
+          name: "location_name",
+          label: "Nom du lieu",
+          type: "text",
+          required: false,
+        },
+        {
+          name: "location_link",
+          label: "lien du lieu",
+          type: "text",
+          required: false,
+        },
+      ],
+    },
+    {
+      name: "credits",
+      label: "Crédits",
       type: "text",
       required: false,
     },

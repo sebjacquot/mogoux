@@ -9,6 +9,8 @@ import { buildConfig } from "payload/config";
 import Users from "./collections/Users";
 import Thematics from "./collections/Thematics";
 import Medias from "./collections/Medias";
+import Cities from "./collections/Cities";
+import Documents from "./collections/Documents";
 
 export default buildConfig({
   admin: {
@@ -16,7 +18,7 @@ export default buildConfig({
     bundler: webpackBundler(),
   },
   editor: slateEditor({}),
-  collections: [Users, Medias, Thematics],
+  collections: [Users, Medias, Thematics, Cities, Documents],
   csrf: [
     // whitelist of domains to allow cookie auth from
     "http://localhost:4321",

@@ -2,6 +2,9 @@ import { CollectionConfig } from "payload/types";
 
 const Thematics: CollectionConfig = {
   slug: "thematics",
+  admin: {
+    useAsTitle: "title",
+  },
   access: {
     read: () => true,
   },
@@ -14,13 +17,13 @@ const Thematics: CollectionConfig = {
     },
     {
       name: "title",
-      label: "Title",
+      label: "Titre",
       type: "text",
       required: true,
     },
     {
       name: "color",
-      label: "Color",
+      label: "Couleur",
       type: "text",
       required: true,
     },
