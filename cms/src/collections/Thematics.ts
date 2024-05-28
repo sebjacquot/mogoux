@@ -16,6 +16,12 @@ const Thematics: CollectionConfig = {
       required: true,
     },
     {
+      name: "slug",
+      type: "text",
+      required: true,
+      unique: true,
+    },
+    {
       name: "title",
       label: "Titre",
       type: "text",

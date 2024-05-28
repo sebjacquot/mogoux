@@ -11,7 +11,14 @@ export const Documents: CollectionConfig = {
   upload: {
     staticURL: "/documents",
     staticDir: "documents",
-    mimeTypes: ["application/xml"],
+    mimeTypes: [
+      "application/pdf",
+      "application/vnd.ms-excel",
+      "text/plain",
+      "application/pdf",
+      "text/csv",
+      "application/xml",
+    ],
   },
   fields: [{ name: "alt", label: "Alt", type: "text", required: false }],
 };

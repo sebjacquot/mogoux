@@ -11,6 +11,7 @@ import Thematics from "./collections/Thematics";
 import Medias from "./collections/Medias";
 import Cities from "./collections/Cities";
 import Documents from "./collections/Documents";
+import Sections from "./collections/Sections";
 
 export default buildConfig({
   admin: {
@@ -18,7 +19,7 @@ export default buildConfig({
     bundler: webpackBundler(),
   },
   editor: slateEditor({}),
-  collections: [Users, Medias, Thematics, Cities, Documents],
+  collections: [Users, Medias, Thematics, Cities, Documents, Sections],
   csrf: [
     // whitelist of domains to allow cookie auth from
     "http://localhost:4321",

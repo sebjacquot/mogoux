@@ -1,0 +1,305 @@
+---
+import "../styles/global.css";
+type Props = {
+  titre: string;
+  date: string;
+  description: string;
+  tags: string[];
+  lieu_name: string;
+  lieu_link: string;
+  credits_name: string;
+  credits_link: string;
+  type: string;
+  link_notice: string;
+};
+
+const {
+  titre,
+  date,
+  description,
+  tags,
+  credits_link,
+  credits_name,
+  lieu_link,
+  lieu_name,
+  type,
+  link_notice,
+} = Astro.props;
+---
+
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <main>
+    <div class="row">
+      <div class="texte">
+        <h1 class="titre">{titre}</h1>
+        <h3 class="date">{date}</h3>
+        <p class="description">
+          {description}
+        </p>
+        <ul class="liste">
+          {tags.map((t) => <li>{t}</li>)}
+        </ul>
+        <div class="datas">
+          <div class="gauche">
+            <div class="row-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-map-pin"
+                ><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"
+                ></path><circle cx="12" cy="10" r="3"></circle></svg
+              >
+              <h3>Lieu</h3>
+            </div>
+            <div class="row-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-paperclip"
+                ><path
+                  d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"
+                ></path></svg
+              >
+              <h3>Type</h3>
+            </div>
+            <div class="row-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-user-round"
+                ><circle cx="12" cy="8" r="5"></circle><path
+                  d="M20 21a8 8 0 0 0-16 0"></path></svg
+              >
+              <h3>Crédits</h3>
+            </div>
+          </div>
+          <div class="droite">
+            <div class="row-link">
+              <a href={lieu_link} target="_blank" rel="noopener noreferrer"
+                >{lieu_name}</a
+              >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-square-arrow-out-up-right"
+                ><path
+                  d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6"
+                ></path><path d="m21 3-9 9"></path><path d="M15 3h6v6"
+                ></path></svg
+              >
+            </div>
+            <h3>{type}</h3>
+            <div class="row-link">
+              <a href={credits_link} target="_blank" rel="noopener noreferrer"
+                >{credits_name}</a
+              >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-square-arrow-out-up-right"
+                ><path
+                  d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6"
+                ></path><path d="m21 3-9 9"></path><path d="M15 3h6v6"
+                ></path></svg
+              >
+            </div>
+          </div>
+        </div>
+        <!-- <h3 class="lieu">Lieu : <a href="/google.com">Colmars</a></h3>
+        <h3>Type : Image</h3>
+        <h3 class="credits">Crédits : Lorem Ipsum</h3> -->
+      </div>
+
+      <div class="rectangle-image">
+        <a href={link_notice} target="_blank" rel="noopener noreferrer"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-square-arrow-out-up-right"
+            ><path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6"
+            ></path><path d="m21 3-9 9"></path><path d="M15 3h6v6"></path></svg
+          ></a
+        >
+      </div>
+    </div>
+  </main>
+
+  <style scoped>
+    html {
+      background: rgba(22, 22, 22, 1);
+      color: white;
+    }
+
+    main {
+      width: 100%;
+      height: 100vh;
+      background: rgba(22, 22, 22, 0.8);
+    }
+    .row-link {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      svg {
+        width: 18px;
+        height: 18px;
+      }
+    }
+    .row-icon {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+    .row {
+      display: flex;
+      align-items: center;
+      padding: 6% 8%;
+      gap: 5em;
+
+      height: 80%;
+    }
+    .texte {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      width: 40%;
+      height: 100%;
+
+      font-size: 20px;
+      font-family: var(--merryweather);
+
+      .titre {
+        font-size: 50px;
+        line-height: 56px;
+        margin-bottom: 6px;
+        font-family: var(--merryweather);
+        font-weight: 700;
+
+        margin-top: 50px;
+      }
+      .description {
+        margin-bottom: 1.5em;
+        width: 90%;
+      }
+      .liste {
+        margin-bottom: 1em;
+        list-style: none;
+
+        li {
+          margin: -0px 0;
+        }
+      }
+      .date {
+        background: #3c4e77;
+
+        width: fit-content;
+        padding: 5px 10px;
+        border-radius: 10px;
+        margin: 0 0 10px 0;
+        font-family: var(--merryweather);
+        font-size: 17px;
+      }
+      .datas {
+        display: flex;
+        justify-content: flex-start;
+        margin-top: auto;
+        margin-bottom: 10px;
+        .gauche {
+          margin-right: 50px;
+          font-weight: bold;
+          font-size: 21px;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+        }
+        .droite {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+        }
+      }
+    }
+    .rectangle-image {
+      width: 1200px;
+      height: 650px;
+      background-color: rgba(0, 0, 255, 0.4);
+
+      position: relative;
+
+      svg {
+        width: 50px;
+        height: 50px;
+
+        position: absolute;
+        top: 20px;
+        right: 20px;
+      }
+      svg:hover {
+        cursor: pointer;
+        color: rgba(255, 255, 255, 0.7);
+      }
+    }
+
+    a {
+      color: white;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+      cursor: pointer;
+      color: rgba(255, 255, 255, 0.7);
+    }
+  </style>
+
+
+</html>

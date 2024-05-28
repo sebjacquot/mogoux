@@ -1,4 +1,5 @@
 ---
+import CardMedias from "../components/CardMedias.astro";
 import ThematiqueCard from "../components/ThematiqueCard.astro";
 import "../styles/global.css";
 import { Image } from "astro:assets";
@@ -23,6 +24,8 @@ try {
 
     <div class="intro">
       <h2>Aller plus loin</h2>
+      <CardMedias slug="thomas" />
+      <CardMedias slug="test" />
       <p>
         Réalisé sans méthodologie préconçue, l’ensemble des entretiens abordent
         une très grande variété de perspectives, souvent sous la conduite de
@@ -39,6 +42,7 @@ try {
             <ThematiqueCard
               src={thematic.backgroundImage.url}
               titre={thematic.title}
+              slug={thematic.slug}
             />
           ))
         ) : (

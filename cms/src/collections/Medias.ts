@@ -3,7 +3,7 @@ import { CollectionConfig } from "payload/types";
 export const Medias: CollectionConfig = {
   slug: "medias",
   admin: {
-    useAsTitle: "filename",
+    useAsTitle: "slug",
   },
   access: {
     read: () => true,
@@ -40,51 +40,158 @@ export const Medias: CollectionConfig = {
   },
   fields: [
     {
+      name: "identification",
+      label: "Identification",
+      type: "group",
+      fields: [
+        {
+          name: "cote",
+          label: "Cote",
+          type: "text",
+          required: true,
+          unique: true,
+        },
+        {
+          name: "title",
+          label: "Intitulé",
+          type: "text",
+          required: true,
+        },
+        {
+          name: "date",
+          label: "Date",
+          type: "text",
+          required: true,
+        },
+        {
+          name: "tag",
+          label: "Description physique",
+          type: "array",
+          minRows: 1,
+          maxRows: 5,
+          fields: [
+            {
+              name: "tag_name",
+              label: "Nom du tag",
+              type: "text",
+              required: true,
+            },
+          ],
+          required: true,
+        },
+      ],
+    },
+    {
+      name: "contexte",
+      label: "Contexte",
+      type: "group",
+      fields: [
+        {
+          name: "credits_name",
+          label: "Producteur",
+          type: "text",
+          required: true,
+        },
+        {
+          name: "credits_link",
+          label: "Lien du crédit",
+          type: "text",
+          required: false,
+        },
+        {
+          name: "modality",
+          label: "Modalités d'entrée",
+          type: "text",
+          required: false,
+          unique: true,
+        },
+      ],
+    },
+    {
+      name: "access_and_use",
+      label: "Accès et utilisation",
+      type: "group",
+      fields: [
+        {
+          name: "access_condition",
+          label: "Conditions d'accès",
+          type: "textarea",
+          required: false,
+        },
+        {
+          name: "reproduction_condition",
+          label: "Conditions de reproduction",
+          type: "textarea",
+          required: false,
+        },
+      ],
+    },
+    {
+      name: "other_references",
+      label: "Autres références",
+      type: "group",
+      fields: [
+        {
+          name: "conservation_location",
+          label: "Lieu de conservation",
+          type: "textarea",
+          required: false,
+        },
+        {
+          name: "complementary_sources",
+          label: "Sources complémentaires",
+          type: "textarea",
+          required: false,
+        },
+        {
+          name: "bibliography",
+          label: "Bibliographie",
+          type: "textarea",
+          required: false,
+        },
+        {
+          name: "notes",
+          label: "Notes",
+          type: "textarea",
+          required: false,
+        },
+      ],
+    },
+    {
+      name: "contributor",
+      label: "Contributeur",
+      type: "textarea",
+      required: true,
+    },
+    {
+      name: "slug",
+      label: "Slug",
+      type: "text",
+      required: true,
+      unique: true,
+    },
+
+    {
       name: "alt",
       label: "Alt",
       type: "text",
-      required: false,
+      required: true,
     },
     {
       name: "legend",
       label: "Légende",
       type: "text",
-      required: false,
+      required: true,
     },
-    {
-      name: "title",
-      label: "Titre",
-      type: "text",
-      required: false,
-    },
+
     {
       name: "description",
       label: "Description",
-      type: "text",
-      required: false,
+      type: "textarea",
+      maxLength: 180,
+      required: true,
     },
-    {
-      name: "date",
-      label: "Date",
-      type: "text",
-      required: false,
-    },
-    {
-      name: "tag",
-      label: "Tag",
-      type: "array",
-      minRows: 1,
-      maxRows: 5,
-      fields: [
-        {
-          name: "tag_name",
-          label: "Nom du tag",
-          type: "text",
-          required: false,
-        },
-      ],
-      required: false,
-    },
+
     {
       name: "location",
       label: "Lieu",
@@ -94,7 +201,7 @@ export const Medias: CollectionConfig = {
           name: "location_name",
           label: "Nom du lieu",
           type: "text",
-          required: false,
+          required: true,
         },
         {
           name: "location_link",
@@ -104,12 +211,7 @@ export const Medias: CollectionConfig = {
         },
       ],
     },
-    {
-      name: "credits",
-      label: "Crédits",
-      type: "text",
-      required: false,
-    },
+
     {
       name: "type",
       label: "Type",
@@ -128,6 +230,12 @@ export const Medias: CollectionConfig = {
           value: "audio",
         },
       ],
+      required: true,
+    },
+    {
+      name: "notice",
+      label: "Lien vers la notice OmekaS",
+      type: "text",
       required: false,
     },
   ],

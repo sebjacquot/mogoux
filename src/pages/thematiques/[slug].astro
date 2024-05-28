@@ -1,0 +1,20 @@
+---
+import "../../styles/global.css";
+import { Image } from "astro:assets";
+import Details from "../../components/Details.astro";
+
+const { slug } = Astro.params;
+
+let details = [];
+try {
+  const res = await fetch("http://localhost:3000/api/medias/");
+  const data = await res.json();
+  details = data.docs || [];
+} catch (error) {
+  console.error("Failed to fetch medias details", error);
+}
+---
+
+<main>
+  <h1>Un texte avec le slug qui est :<bold>{slug}</bold></h1>
+</main>

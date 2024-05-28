@@ -1,0 +1,91 @@
+---
+import Carrousel from "../components/Carrousel.astro";
+
+const { src, titre, alt, slug } = Astro.props;
+
+let carousel = [];
+try {
+  const res = await fetch("http://localhost:3000/api/cities/");
+  const data = await res.json();
+  carousel = data.docs || [];
+} catch (error) {
+  console.error("Failed to fetch cities", error);
+}
+
+const titres = ["test", "test1", "test2", "test3"];
+const srcs = [
+  "https://picsum.photos/800/600?random=1",
+  "https://picsum.photos/800/600?random=2",
+  "https://picsum.photos/800/600?random=3",
+  "https://picsum.photos/800/600?random=4",
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Horizontal Carousel</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <Carrousel src={srcs} titre={titres} />
+  </body>
+</html>
+
+<style scoped>
+  body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+  }
+
+  .carousel {
+    width: 80%;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .carousel-inner img {
+    width: 100%;
+    flex: 0 0 auto;
+  }
+
+  button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    user-select: none;
+  }
+
+  button.prev {
+    left: 10px;
+  }
+
+  button.next {
+    right: 10px;
+  }
+
+  button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+</style>

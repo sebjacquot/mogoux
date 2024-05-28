@@ -12,6 +12,13 @@ const Users: CollectionConfig = {
       label: "Nom d'utilisateur",
       type: "text",
     },
+    {
+      name: "email",
+      label: "Email",
+      type: "text",
+      required: true,
+      unique: true,
+    },
   ],
 };
 

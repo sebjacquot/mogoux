@@ -4,64 +4,74 @@ type Props = {
   src: string;
   alt: string;
   titre: string;
+  slug: string;
 };
 
-const { src, titre, alt } = Astro.props;
+const { src, titre, alt, slug } = Astro.props;
 ---
 
-<div class="card">
-  <div class="rectangle">
-    <img src=`cms/src/${src}` alt={alt} />
-    <div class="overlay"></div>
+<a href={`/thematiques/${slug}`}>
+  <div class="card">
+    <div class="rectangle">
+      <img src=`cms/src/${src}` alt={alt} />
+      <div class="overlay"></div>
+    </div>
+    <h3>{titre}</h3>
   </div>
-  <h3>{titre}</h3>
-</div>
 
-<style scoped>
-  .card {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-  }
+  <style scoped>
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    a:hover {
+      cursor: pointer;
+    }
+    .card {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
 
-  .card:hover {
+    .card:hover {
+      h3 {
+        color: #ff7979;
+      }
+      .overlay {
+        opacity: 0.502;
+      }
+    }
+
+    .rectangle {
+      width: 300px;
+      height: 200px;
+      position: relative;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 121, 121, 0.502);
+        opacity: 0;
+      }
+    }
+
+    .card:hover .rectangle .overlay {
+      opacity: 0.5;
+    }
+
     h3 {
-      color: #ff7979;
+      font-size: 20px;
+      font-weight: 700;
+      width: 300px;
     }
-    .overlay {
-      opacity: 0.502;
-    }
-  }
-
-  .rectangle {
-    width: 300px;
-    height: 200px;
-    position: relative;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-    }
-    .overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(255, 121, 121, 0.502);
-      opacity: 0;
-    }
-  }
-
-  .card:hover .rectangle .overlay {
-    opacity: 0.5;
-  }
-
-  h3 {
-    font-size: 20px;
-    font-weight: 700;
-    width: 300px;
-  }
-</style>
+  </style>
+</a>

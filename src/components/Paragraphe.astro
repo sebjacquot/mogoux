@@ -1,0 +1,39 @@
+---
+import "../styles/global.css";
+type Props = {
+  texte: string;
+};
+
+const { texte } = Astro.props;
+---
+
+<div class="paragraphe">
+  <p>
+    {texte}
+  </p>
+</div>
+
+<style scoped>
+  .paragraphe {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    max-width: 700px;
+    margin: 0 auto;
+
+    /* text-indent: 5%; */
+
+    color: #222222;
+
+    p {
+      margin-bottom: 20px;
+    }
+    p:last-of-type {
+      padding-bottom: 20px;
+    }
+
+    font-size: var(--texte-article-font-size);
+    line-height: 1.6;
+  }
+</style>

@@ -1,6 +1,18 @@
 ---
-import "../styles/global.css";
+import "../../styles/global.css";
 import { Image } from "astro:assets";
+import Details from "../../components/Details.astro";
+
+const { slug } = Astro.params;
+
+let details = [];
+try {
+  const res = await fetch("http://localhost:3000/api/medias/");
+  const data = await res.json();
+  details = data.docs || [];
+} catch (error) {
+  console.error("Failed to fetch medias details", error);
+}
 ---
 
 <head>
@@ -9,41 +21,27 @@ import { Image } from "astro:assets";
 
 <html>
   <main>
-    <div class="row">
-      <div class="texte">
-        <h1 class="titre">Le transpalette BF658</h1>
-        <h3 class="date">10 juillet 1983</h3>
-        <p class="description">
-          Un moteur de chariot électrique installé dans un TUB Citroën ? C’est
-          le pari fait par Fenwick et Citroën dès 1940. Un véhicule électrique
-          permettant de palier à la pénurie
-        </p>
-        <ul class="liste">
-          <li>1 carte postale</li>
-          <li>Noir et Blanc</li>
-          <li>21,3x13cm</li>
-        </ul>
-        <div class="datas">
-          <div class="gauche">
-            <h3>Lieu</h3>
-            <h3>Type</h3>
-            <h3>Crédits</h3>
-          </div>
-          <div class="droite">
-            <h3>Colmars</h3>
-            <h3>Image</h3>
-            <h3>Lorem Ipsum</h3>
-          </div>
-        </div>
-        <!-- <h3 class="lieu">Lieu : <a href="/google.com">Colmars</a></h3>
-        <h3>Type : Image</h3>
-        <h3 class="credits">Crédits : Lorem Ipsum</h3> -->
-      </div>
+    {
+      details.map((detail) => {
+        // Extraire les noms des tags
+        const tags = detail.identification.tag.map((tag) => tag.tag_name);
 
-      <div class="rectangle-image">
-        <div class="carre"></div>
-      </div>
-    </div>
+        return (
+          <Details
+            titre={detail.identification.title}
+            date={detail.identification.date}
+            description={detail.description}
+            lieu_name={detail.location.location_name}
+            lieu_link={detail.location.location_link}
+            credits_name={detail.contexte.credits_name}
+            credits_link={detail.contexte.credits_link}
+            tags={tags}
+            type={detail.type}
+            link_notice={detail.notice}
+          />
+        );
+      })
+    }
   </main>
 </html>
 <style scoped>
@@ -56,6 +54,7 @@ import { Image } from "astro:assets";
     width: 100%;
     height: 100vh;
     background: rgba(22, 22, 22, 0.8);
+    overflow: hidden;
   }
   .row {
     display: flex;
