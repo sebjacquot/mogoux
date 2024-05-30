@@ -1,35 +1,23 @@
 ---
 import "../styles/global.css";
-import { Image } from "astro:assets";
+
 type Props = {
-  src: string[];
-  alt: string[];
-  titre: string[];
+  items: {
+    src: string;
+    title: string;
+    alt: string;
+    couleur: string;
+    slug: string;
+  }[];
 };
 
-const { src, titre, alt } = Astro.props;
-
-let carousel = [];
-try {
-  const res = await fetch("http://localhost:3000/api/cities/");
-  const data = await res.json();
-  carousel = data.docs || [];
-} catch (error) {
-  console.error("Failed to fetch cities", error);
-}
+const { items } = Astro.props;
 ---
 
 <body>
   <div class="carousel">
     <div class="index">
-      {/* Map over the number of carousel-elements */}
-      {
-        src && src.length > 0 ? (
-          src.map((_, index) => <div class="index-pos" key={index} />)
-        ) : (
-          <p>No images available</p>
-        )
-      }
+      {items.map(() => <div class="index-pos" />)}
     </div>
     <div class="buttons">
       <button class="prev" onclick="moveCarousel(-1)">&#10094;</button>
@@ -37,21 +25,25 @@ try {
     </div>
     <div class="carousel-inner">
       {
-        src && src.length > 0 ? ( // Check if src array is not empty
-          src.map((imageSrc, index) => (
-            <div class="carousel-element" key={index}>
-              <img class="image" src={imageSrc} alt={alt && alt[index]} />{" "}
+        items.map((item) => (
+          <a id="test" href={`/thematiques/${item.slug}`}>
+            <div class="carousel-element">
+              <img
+                class="image"
+                src={`http://localhost:3000/medias/${item.src}`}
+                alt={item.alt}
+              />{" "}
               {/* Check if alt array exists */}
               <div class="texte">
                 <h3>Thématique</h3>
-                <h2 class="titre">{titre && titre[index]}</h2>{" "}
+                <h2 class="titre">{item.title}</h2>{" "}
                 {/* Check if titre array exists */}
               </div>
             </div>
-          ))
-        ) : (
-          <p>No images available</p>
-        )
+            <div class="overlay" style={`background: ${item.couleur}`} />
+            <div class="overlay2" />
+          </a>
+        ))
       }
     </div>
   </div>
@@ -114,7 +106,7 @@ try {
     height: 100%;
   }
 
-  .carousel-element {
+  #test {
     position: relative;
     width: 100%;
     flex: 0 0 100%;
@@ -130,16 +122,35 @@ try {
     object-fit: cover;
     position: relative;
   }
-
-  .carousel-element::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
+  .carousel-element {
+    position: relative;
     width: 100%;
     height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  .overlay {
+    z-index: -10;
+  }
+  .overlay2 {
     background: rgba(0, 0, 0, 0.5);
-    z-index: 2;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+  }
+
+  #test:hover .overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    z-index: 4;
+  }
+  #test:hover .overlay2 {
+    z-index: -10;
   }
 
   .buttons {
@@ -195,11 +206,11 @@ try {
     width: 110px;
     height: 5px;
     border-radius: 5px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.5);
   }
 
   .checked {
-    background-color: blueviolet;
+    background-color: white;
   }
 
   .texte {

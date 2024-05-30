@@ -7,14 +7,23 @@ const { slug } = Astro.params;
 
 let details = [];
 try {
-  const res = await fetch("http://localhost:3000/api/medias/");
+  const res = await fetch(`http://localhost:3000/api/thematics/slug/${slug}`);
   const data = await res.json();
-  details = data.docs || [];
+  details = data;
 } catch (error) {
   console.error("Failed to fetch medias details", error);
 }
 ---
 
 <main>
-  <h1>Un texte avec le slug qui est :<bold>{slug}</bold></h1>
+  <h1>Un texte avec le slug qui est : <bold>{slug}</bold></h1>
+  <pre>{JSON.stringify(details,null,2)}</pre>
 </main>
+
+<style scoped>
+  bold {
+    color: red;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+</style>

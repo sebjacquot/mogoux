@@ -1,3 +1,4 @@
+import payload from "payload";
 import { CollectionConfig } from "payload/types";
 
 export const Medias: CollectionConfig = {
@@ -8,6 +9,25 @@ export const Medias: CollectionConfig = {
   access: {
     read: () => true,
   },
+  endpoints: [
+    {
+      path: "/slug/:slug",
+      method: "get",
+      handler: async (req, res, next) => {
+        const data = await payload.find({
+          collection: "medias",
+          where: {
+            slug: { equals: req.params.slug },
+          },
+        });
+
+        if (data.docs.length === 0) {
+          res.status(404).send({ error: "media not found" });
+        }
+        res.status(200).send(data.docs[0]);
+      },
+    },
+  ],
   upload: {
     staticURL: "/medias",
     staticDir: "medias",

@@ -1,0 +1,22 @@
+---
+import "../styles/global.css";
+import { Image } from "astro:assets";
+type Props = {
+  src: string[];
+  alt: string[];
+  titre: string[];
+};
+
+const { src, titre, alt } = Astro.props;
+
+let carousel = [];
+try {
+  const res = await fetch("http://localhost:3000/api/cities/");
+  const data = await res.json();
+  carousel = data.docs || [];
+} catch (error) {
+  console.error("Failed to fetch cities", error);
+}
+---
+
+<body> <pre>{JSON.stringify(carousel,null,2)}</pre></body>

@@ -5,14 +5,16 @@ import Details from "../../components/Details.astro";
 
 const { slug } = Astro.params;
 
-let details = [];
+let detail = [];
 try {
-  const res = await fetch("http://localhost:3000/api/medias/");
+  const res = await fetch(`http://localhost:3000/api/medias/slug/${slug}`);
   const data = await res.json();
-  details = data.docs || [];
+  detail = data;
+  console.log(data);
 } catch (error) {
   console.error("Failed to fetch medias details", error);
 }
+const tags = detail.identification.tag.map((tag) => tag.tag_name);
 ---
 
 <head>
@@ -21,27 +23,20 @@ try {
 
 <html>
   <main>
-    {
-      details.map((detail) => {
-        // Extraire les noms des tags
-        const tags = detail.identification.tag.map((tag) => tag.tag_name);
-
-        return (
-          <Details
-            titre={detail.identification.title}
-            date={detail.identification.date}
-            description={detail.description}
-            lieu_name={detail.location.location_name}
-            lieu_link={detail.location.location_link}
-            credits_name={detail.contexte.credits_name}
-            credits_link={detail.contexte.credits_link}
-            tags={tags}
-            type={detail.type}
-            link_notice={detail.notice}
-          />
-        );
-      })
-    }
+    <Details
+      titre={detail.identification.title}
+      date={detail.identification.date}
+      description={detail.description}
+      lieu_name={detail.location.location_name}
+      lieu_link={detail.location.location_link}
+      credits_name={detail.contexte.credits_name}
+      credits_link={detail.contexte.credits_link}
+      tags={tags}
+      type={detail.type}
+      link_notice={detail.notice}
+      src={detail.filename}
+      alt={detail.alt}
+    />
   </main>
 </html>
 <style scoped>

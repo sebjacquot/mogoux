@@ -1,3 +1,4 @@
+import payload from "payload";
 import { CollectionConfig } from "payload/types";
 
 const Thematics: CollectionConfig = {
@@ -8,6 +9,25 @@ const Thematics: CollectionConfig = {
   access: {
     read: () => true,
   },
+  endpoints: [
+    {
+      path: "/slug/:slug",
+      method: "get",
+      handler: async (req, res, next) => {
+        const data = await payload.find({
+          collection: "thematics",
+          where: {
+            slug: { equals: req.params.slug },
+          },
+        });
+
+        if (data.docs.length === 0) {
+          res.status(404).send({ error: "thematics not found" });
+        }
+        res.status(200).send(data.docs[0]);
+      },
+    },
+  ],
   fields: [
     {
       name: "backgroundImage", // required
@@ -31,6 +51,14 @@ const Thematics: CollectionConfig = {
       name: "color",
       label: "Couleur",
       type: "text",
+      required: true,
+    },
+    {
+      name: "medias",
+      label: "Medias",
+      type: "relationship",
+      relationTo: "medias",
+      hasMany: true,
       required: true,
     },
   ],

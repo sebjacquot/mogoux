@@ -1,24 +1,37 @@
 ---
 import Carrousel from "../components/Carrousel.astro";
 
-const { src, titre, alt, slug } = Astro.props;
+const { src, titre, alt, slug, couleur } = Astro.props;
 
 let carousel = [];
 try {
   const res = await fetch("http://localhost:3000/api/cities/");
   const data = await res.json();
-  carousel = data.docs || [];
+  carousel = data;
+  console.log("Carousel Data:", carousel); // Ajout d'une console pour vérifier les données récupérées
 } catch (error) {
   console.error("Failed to fetch cities", error);
 }
 
-const titres = ["test", "test1", "test2", "test3"];
-const srcs = [
-  "https://picsum.photos/800/600?random=1",
-  "https://picsum.photos/800/600?random=2",
-  "https://picsum.photos/800/600?random=3",
-  "https://picsum.photos/800/600?random=4",
-];
+const srcs = carousel.flatMap((item) =>
+  item.thematics.map((thematic) => thematic.backgroundImage.filename)
+);
+const titres = carousel.flatMap((item) =>
+  item.thematics.map((thematic) => thematic.title)
+);
+const slugs = carousel.flatMap((item) =>
+  item.thematics.map((thematic) => thematic.slug)
+);
+const couleurs = carousel.flatMap((item) =>
+  item.thematics.map((thematic) => thematic.color)
+);
+
+console.log("Couleurs:", couleurs);
+
+console.log("Srcs:", srcs);
+console.log("Titres:", titres);
+console.log("Slug:", slugs);
+console.log("Couleur:", couleurs);
 ---
 
 <!doctype html>
@@ -26,11 +39,10 @@ const srcs = [
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Simple Horizontal Carousel</title>
-    <link rel="stylesheet" href="styles.css" />
+    <title>{alt}</title>
   </head>
   <body>
-    <Carrousel src={srcs} titre={titres} />
+    <Carrousel src={srcs} titre={titres} slug={slugs} couleur={couleurs} />
   </body>
 </html>
 
@@ -43,49 +55,5 @@ const srcs = [
     height: 100vh;
     margin: 0;
     background-color: #f0f0f0;
-  }
-
-  .carousel {
-    width: 80%;
-    position: relative;
-    overflow: hidden;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-
-  .carousel-inner {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-  }
-
-  .carousel-inner img {
-    width: 100%;
-    flex: 0 0 auto;
-  }
-
-  button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    border-radius: 50%;
-    user-select: none;
-  }
-
-  button.prev {
-    left: 10px;
-  }
-
-  button.next {
-    right: 10px;
-  }
-
-  button:hover {
-    background-color: rgba(0, 0, 0, 0.8);
   }
 </style>

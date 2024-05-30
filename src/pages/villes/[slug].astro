@@ -1,7 +1,30 @@
 ---
+import Carrousel from "../../components/Carrousel.astro";
 import "../../styles/global.css";
 import { Image } from "astro:assets";
+
+
+
 const { slug } = Astro.params;
+
+
+let carousel = [];
+try {
+  const res = await fetch(`http://localhost:3000/api/cities/slug/${slug}`);
+  const data = await res.json();
+  carousel = data;
+  console.log("Carousel Data:", carousel); // Ajout d'une console pour vérifier les données récupérées
+} catch (error) {
+  console.error("Failed to fetch cities", error);
+}
+
+const items = carousel.thematics.map(thematic => ({
+  src: thematic.backgroundImage.filename,
+  title: thematic.title,
+  slug: thematic.slug,
+  alt: thematic.alt,
+  couleur: thematic.color
+}))
 ---
 
 <head>
@@ -12,24 +35,42 @@ const { slug } = Astro.params;
   <main>
     <div class="rectangle"></div>
     <section class="content">
-      <div class="entete">
-        <div class="index">
-          <div class="pos checked"></div>
-          <div class="pos"></div>
-          <div class="pos"></div>
+      <Carrousel items={items} />
+
+      <div class="frise grid-wrapper " style="display: flex; width: 100%; height: 200px; background: blue;">
+        <!-- Col -->
+        <div style="display: grid; grid-template-columns: 2; grid-gap: 10px; grid-template-rows: 2; background: red; width: 200px; height: 100%">
+          <div style="grid-column: span 2;">
+            <img src="https://source.unsplash.com/random/?fruit&1" alt="test">
+          </div>
+          <div>
+            <img src="https://source.unsplash.com/random/?fruit&2" alt="test">
+          </div>
+          <div>
+            <img src="https://source.unsplash.com/random/?fruit&3" alt="test">
+          </div>
         </div>
-        <div class="buttons">
-          <button></button>
-          <button></button>
+
+        <div style="display: grid; grid-template-columns: 2; grid-gap: 10px; grid-template-rows: 2; background: red; width: 200px; height: 100%">
+          <div style="grid-row: span 2;">
+            <img src="https://source.unsplash.com/random/?fruit&1" alt="test">
+          </div>
+          <div>
+            <img src="https://source.unsplash.com/random/?fruit&2" alt="test">
+          </div>
+          <div>
+            <img src="https://source.unsplash.com/random/?fruit&3" alt="test">
+          </div>
         </div>
-        <div class="texte">
-          <h3>A la une</h3>
-          <h2 class="titre">
-            Même si tu vas sur la lune : entretien avec Emmanuel Carrier
-          </h2>
-        </div>
+
+        <!-- Col -->
+        <!-- <div class="frise-col" style="display: flex; flex-direction: column; width: 500px; height: 100%">
+          <div style="display: grid; background: orange; flex: 1;"></div>
+          <div style="display: grid; background: purple; flex: 1;"></div>
+        </div> -->
       </div>
-      <div class="grid-wrapper">
+
+      <!-- <div class="grid-wrapper">
         <div class="tall"><img src="https://source.unsplash.com/random" alt="test"></div>
         <div><img src="https://source.unsplash.com/random" alt="test"></div>
         <div><img src="https://source.unsplash.com/random" alt="test"></div>
@@ -44,7 +85,7 @@ const { slug } = Astro.params;
         <div><img src="https://source.unsplash.com/random" alt="test"></div>
         <div><img src="https://source.unsplash.com/random" alt="test"></div>
         <div class="wide"><img src="https://source.unsplash.com/random" alt="test"></div>
-      </div>
+      </div> -->
     </section>
   </main>
  
