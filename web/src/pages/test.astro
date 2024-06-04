@@ -1,0 +1,318 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="test">
+  <main>
+    <div class="bloc1">
+      <div class="row-large">
+        <div class="rectangle bleu"></div>
+      </div>
+      <div class="row-3-4">
+        <div class="rectangle rouge"></div>
+        <div class="rectangle vert"></div>
+      </div>
+      <div class="row-1-2">
+        <div class="rectangle violet"></div>
+        <div class="rectangle rose"></div>
+      </div>
+    </div>
+
+    <div class="bloc2">
+      <div class="row-2-5">
+        <div class="rectangle violet"></div>
+        <div class="rectangle rouge"></div>
+      </div>
+      <div class="row-big">
+        <div class="rectangle orange"></div>
+      </div>
+    </div>
+    <div class="bloc3">
+      <div class="row-3-4">
+        <div class="rectangle bleu"></div>
+        <div class="rectangle rose"></div>
+      </div>
+      <div class="row-1-2-reversed">
+        <div class="rectangle vert"></div>
+        <div class="rectangle violet"></div>
+      </div>
+      <div class="row-large">
+        <div class="rectangle rouge"></div>
+      </div>
+    </div>
+    <div class="bloc6">
+      <div class="row-1-5-col-right">
+        <div class="rectangle bleu"></div>
+        <div class="col-2-4">
+          <div class="rectangle rose"></div>
+          <div class="rectangle violet"></div>
+        </div>
+      </div>
+      <div class="row-3-4-col-right">
+        <div class="rectangle orange"></div>
+        <div class="col-2-5">
+          <div class="rectangle rouge"></div>
+          <div class="rectangle vert"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bloc4">
+      <div class="row-3-4-col-right">
+        <div class="rectangle orange"></div>
+        <div class="col-2-5">
+          <div class="rectangle rouge"></div>
+          <div class="rectangle vert"></div>
+        </div>
+      </div>
+      <div class="row-1-5-col-right">
+        <div class="rectangle bleu"></div>
+        <div class="col-2-4">
+          <div class="rectangle rose"></div>
+          <div class="rectangle violet"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bloc5">
+      <div class="row-big">
+        <div class="rectangle bleu"></div>
+      </div>
+      <div class="row-2-5-reversed">
+        <div class="rectangle orange"></div>
+        <div class="rectangle rose"></div>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style scoped>
+  body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    height: 100vh;
+
+    margin: 0;
+    background-color: #f0f0f0;
+    overflow: visible;
+  }
+
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 200vw;
+
+    gap: 4px;
+  }
+
+  .bloc4,
+  .bloc6 {
+    display: flex;
+    flex-direction: column;
+    height: 501px;
+    width: 330px;
+    gap: 4px;
+
+    div {
+      gap: 4px;
+    }
+  }
+
+  .row-1-5-col-right {
+    display: flex;
+    flex-direction: row;
+    height: 242px;
+  }
+  .row-1-5-col-right > .rectangle:nth-child(1) {
+    width: 47.6%;
+  }
+  .col-2-4 {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 52.5%;
+  }
+
+  .row-3-4-col-right {
+    display: flex;
+    height: 250px;
+  }
+  .row-3-4-col-right > .rectangle:nth-child(1) {
+    width: 54%;
+  }
+  .col-2-5 {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 46%;
+    height: 100%;
+
+    .rectangle:nth-child(1) {
+      width: 100%;
+      height: 100px;
+    }
+    .rectangle:nth-child(2) {
+      width: 100%;
+      height: 150px;
+    }
+  }
+
+  .bloc5 {
+    display: flex;
+    flex-direction: column;
+    height: 501px;
+    width: 330px;
+    gap: 4px;
+
+    div {
+      gap: 4px;
+    }
+  }
+  .row-2-5-reversed {
+    display: flex;
+    flex-direction: row;
+    height: 227px;
+    width: 100%;
+    .rectangle:nth-child(1) {
+      width: 60%;
+    }
+    .rectangle:nth-child(2) {
+      width: 56%;
+    }
+  }
+  .bloc3 {
+    display: flex;
+    flex-direction: column;
+    height: 501px;
+    width: 330px;
+    gap: 4px;
+
+    div {
+      gap: 4px;
+    }
+  }
+
+  .row-1-2-reversed {
+    display: flex;
+    flex-direction: row;
+    height: 104px;
+    width: 100%;
+
+    .rectangle:nth-child(1) {
+      width: 47.5%;
+    }
+    .rectangle:nth-child(2) {
+      width: 52.5%;
+    }
+  }
+  .bloc2 {
+    display: flex;
+    flex-direction: column;
+    height: 501px;
+    width: 330px;
+    gap: 4px;
+
+    div {
+      gap: 4px;
+    }
+  }
+
+  .row-2-5 {
+    display: flex;
+    flex-direction: row;
+    height: 227px;
+    width: 100%;
+    .rectangle:nth-child(1) {
+      width: 56%;
+    }
+    .rectangle:nth-child(2) {
+      width: 60%;
+    }
+  }
+  .row-big {
+    display: flex;
+    flex-direction: row;
+    height: 266px;
+    width: 100%;
+
+    .rectangle {
+      width: 100%;
+    }
+  }
+
+  .bloc1 {
+    display: flex;
+    flex-direction: column;
+    height: 501px;
+    width: 330px;
+    gap: 4px;
+
+    div {
+      gap: 4px;
+    }
+  }
+
+  .row-large {
+    display: flex;
+    flex-direction: row;
+    height: 207px;
+    width: 100%;
+
+    .rectangle {
+      width: 100%;
+    }
+  }
+
+  .row-3-4 {
+    display: flex;
+    flex-direction: row;
+    height: 177px;
+    width: 100%;
+
+    .rectangle:nth-child(1) {
+      width: 61.6%;
+    }
+    .rectangle:nth-child(2) {
+      width: 38.4%;
+    }
+  }
+
+  .row-1-2 {
+    display: flex;
+    flex-direction: row;
+    height: 104px;
+    width: 100%;
+
+    .rectangle:nth-child(1) {
+      width: 52.5%;
+    }
+    .rectangle:nth-child(2) {
+      width: 47.5%;
+    }
+  }
+
+  .rectangle {
+    height: 100%;
+  }
+
+  .violet {
+    background-color: #8a2be2;
+  }
+  .vert {
+    background-color: #32cd32;
+  }
+  .rouge {
+    background-color: #ff0000;
+  }
+  .bleu {
+    background-color: #0000ff;
+  }
+  .rose {
+    background-color: #ff69b4;
+  }
+  .orange {
+    background-color: #ff8c00;
+  }
+</style>

@@ -14,7 +14,7 @@ try {
 } catch (error) {
   console.error("Failed to fetch medias details", error);
 }
-const tags = detail.identification.tag.map((tag) => tag.tag_name);
+const tags = detail.identification.tag.map((tag: any) => tag.tag_name);
 ---
 
 <head>

@@ -18,7 +18,7 @@ try {
   console.error("Failed to fetch cities", error);
 }
 
-const items = carousel.thematics.map(thematic => ({
+const items = carousel.thematics.map((thematic: any) => ({
   src: thematic.backgroundImage.filename,
   title: thematic.title,
   slug: thematic.slug,

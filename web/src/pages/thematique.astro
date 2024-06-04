@@ -44,11 +44,12 @@ try {
       <div class="thematique-inner">
         {
           thematics.length > 0 ? (
-            thematics.map((thematic) => (
+            thematics.map((thematic: any) => (
               <ThematiqueCard
                 src={thematic.backgroundImage.url}
                 titre={thematic.title}
                 slug={thematic.slug}
+                alt={thematic.alt}
               />
             ))
           ) : (
