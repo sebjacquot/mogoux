@@ -1,4 +1,5 @@
 ---
+import Layout from "../layouts/Layout.astro";
 import "../styles/global.css";
 import { Image } from "astro:assets";
 type Props = {
@@ -11,7 +12,7 @@ const { src, titre, alt } = Astro.props;
 
 let carousel = [];
 try {
-  const res = await fetch("http://localhost:3000/api/cities/");
+  const res = await fetch("http://localhost:3000/api/sections/");
   const data = await res.json();
   carousel = data.docs || [];
 } catch (error) {
@@ -19,4 +20,15 @@ try {
 }
 ---
 
-<body> <pre>{JSON.stringify(carousel,null,2)}</pre></body>
+<Layout>
+  <main>
+    <h2>Un titre très classique</h2>
+  </main>
+  <pre>{JSON.stringify(carousel,null,2)}</pre>
+</Layout>
+
+<style scoped>
+  body {
+    background-color: white;
+  }
+</style>

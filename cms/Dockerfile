@@ -2,25 +2,29 @@ FROM node:18.8-alpine as base
 
 FROM base as builder
 
-WORKDIR /home/node/app
+# Change this path to your own directory
+WORKDIR C:\Users\bptho\Downloads\Gou\test 
 COPY package*.json ./
 
 COPY . .
-RUN yarn install
-RUN yarn build
+RUN npm install
+RUN npm run build
 
 FROM base as runtime
 
 ENV NODE_ENV=production
 ENV PAYLOAD_CONFIG_PATH=dist/payload.config.js
 
-WORKDIR /home/node/app
-COPY package*.json  ./
-COPY yarn.lock ./
 
-RUN yarn install --production
-COPY --from=builder /home/node/app/dist ./dist
-COPY --from=builder /home/node/app/build ./build
+# Change this path  to your own directory
+WORKDIR C:\Users\bptho\Downloads\Gou\test 
+COPY package*.json  ./
+COPY package-lock.json ./
+
+RUN npm install --production
+# Change this path  to your own directory
+COPY --from=builder C:\Users\bptho\Downloads\Gou\test\dist ./dist
+COPY --from=builder C:\Users\bptho\Downloads\Gou\test\build ./build
 
 EXPOSE 3000
 
