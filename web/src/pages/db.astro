@@ -1,0 +1,66 @@
+---
+import Bloc1 from "../components/Blocs/Bloc1.astro";
+import Bloc2 from "../components/Blocs/Bloc2.astro";
+
+const blocs = [
+  {
+    component: Bloc1,
+    tile: 5,
+  },
+  {
+    component: Bloc2,
+    tile: 3,
+  },
+];
+
+const shuffle = (items: string[]) => {
+  return items.sort(() => Math.random() - 0.5);
+};
+
+const res = await fetch(
+  "https://api.slingacademy.com/v1/sample-data/photos?limit=16"
+);
+const data = await res.json();
+
+const urls = data.photos.map((p: any) => p.url);
+
+shuffle(urls);
+
+let results: any[] = [];
+let blocIndex = 0;
+
+for (let i = 1; i <= urls.length; i++) {
+  const { component, tile } = blocs[blocIndex];
+
+  results.push({
+    id: blocIndex,
+    component,
+    src: urls.slice(i - 1, i - 1 + tile) ?? "",
+  });
+
+  if (blocIndex >= blocs.length - 1) {
+    blocIndex = 0;
+  } else {
+    blocIndex++;
+  }
+
+  i += tile - 1;
+}
+
+shuffle(results);
+---
+
+<main>
+  {results.map(({ component: Bloc, src }) => <Bloc src={src} />)}
+</main>
+
+<style scoped>
+  main {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+  }
+  body {
+    background: #1f1f1f;
+  }
+</style>

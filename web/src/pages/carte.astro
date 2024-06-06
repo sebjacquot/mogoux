@@ -1,0 +1,207 @@
+---
+
+---
+
+<html>
+  <main>
+    <img src="/Carte_test.jpg" alt="test" class="carte" id="img-original" />
+    <div id="img-zoom" class="img-zoom-result"></div>
+    <!-- <div id="img-zoom-lens" class="img-zoom-lens"></div> -->
+
+    <a href="/navigation"><img src="/pin.png" alt="pin" class="pin1 pin" /></a>
+    <img src="/pin.png" alt="pin" class="pin2 pin" />
+    <img src="/pin.png" alt="pin" class="pin3 pin" />
+    <img src="/pin.png" alt="pin" class="pin4 pin" />
+    <img src="/pin.png" alt="pin" class="pin5 pin" />
+    <img src="/pin.png" alt="pin" class="pin6 pin" />
+    <img src="/pin.png" alt="pin" class="pin7 pin" />
+    <img src="/pin.png" alt="pin" class="pin8 pin" />
+    <img src="/pin.png" alt="pin" class="pin9 pin" />
+    <img src="/pin.png" alt="pin" class="pin10 pin" />
+  </main>
+
+  <script lang="js">
+    const map = document.querySelector("#img-original");
+    const mapZoom = document.querySelector("#img-zoom");
+    // const mapZoomLens = document.querySelector("#img-zoom-lens");
+
+    const zoom = (event) => {
+      const zoomer = event.currentTarget;
+
+      event.offsetX
+        ? (offsetX = event.offsetX)
+        : (offsetX = event.touches[0].pageX);
+      event.offsetY
+        ? (offsetY = event.offsetY)
+        : (offsetX = event.touches[0].pageX);
+      const x = (offsetX / zoomer.offsetWidth) * 100;
+      const y = (offsetY / zoomer.offsetHeight) * 100;
+
+      // mapZoomLens.style.top = `calc(${y}% - 20px)`;
+      // mapZoomLens.style.left = `calc(${x}% - 20px)`;
+      mapZoom.style.backgroundPosition = `${x}% ${y}%`;
+    };
+
+    map.addEventListener("mousemove", zoom);
+
+    // function imageZoom(imgID, resultID) {
+    //   var img, lens, result, cx, cy;
+    //   img = document.getElementById(imgID);
+    //   result = document.getElementById(resultID);
+
+    //   lens = document.createElement("DIV");
+    //   lens.setAttribute("class", "img-zoom-lens");
+
+    //   img.parentElement.insertBefore(lens, img);
+
+    //   cx = result.offsetWidth / lens.offsetWidth;
+    //   cy = result.offsetHeight / lens.offsetHeight;
+
+    //   result.style.backgroundImage = "url('" + img.src + "')";
+    //   result.style.backgroundSize =
+    //     img.width * cx + "px " + img.height * cy + "px";
+
+    //   lens.addEventListener("mousemove", moveLens);
+    //   img.addEventListener("mousemove", moveLens);
+
+    //   lens.addEventListener("touchmove", moveLens);
+    //   img.addEventListener("touchmove", moveLens);
+
+    //   function moveLens(e) {
+    //     var pos, x, y;
+    //     e.preventDefault();
+    //     pos = getCursorPos(e);
+    //     x = pos.x - lens.offsetWidth / 2;
+    //     y = pos.y - lens.offsetHeight / 2;
+    //     if (x > img.width - lens.offsetWidth) {
+    //       x = img.width - lens.offsetWidth;
+    //     }
+    //     if (x < 0) {
+    //       x = 0;
+    //     }
+    //     if (y > img.height - lens.offsetHeight) {
+    //       y = img.height - lens.offsetHeight;
+    //     }
+    //     if (y < 0) {
+    //       y = 0;
+    //     }
+    //     lens.style.left = x + "px";
+    //     lens.style.top = y + "px";
+    //     result.style.backgroundPosition = "-" + x * cx + "px -" + y * cy + "px";
+    //   }
+
+    //   function getCursorPos(e) {
+    //     var a,
+    //       x = 0,
+    //       y = 0;
+    //     e = e || window.event;
+    //     a = img.getBoundingClientRect();
+    //     x = e.pageX - a.left;
+    //     y = e.pageY - a.top;
+    //     x = x - window.pageXOffset;
+    //     y = y - window.pageYOffset;
+    //     console.log(e.clientX, e.clientY);
+    //     return { x: x, y: y };
+    //   }
+    // }
+    // imageZoom("img-original", "img-zoom");
+  </script>
+
+  <style scoped>
+    .img-zoom-result {
+      background-image: url("/Carte_test.jpg");
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+      position: absolute;
+      border: 3px solid #d4d4d4;
+      width: 300px;
+      height: 300px;
+      background-size: 900%;
+      top: 20px;
+      right: 20px;
+      z-index: 10;
+    }
+    .img-zoom-lens {
+      position: absolute;
+      background: rgb(255, 0, 0, 0.5);
+      border: 1px solid #d4d4d4;
+      width: 40px;
+      height: 40px;
+      z-index: 10;
+      top: 0;
+      left: 0;
+    }
+    body,
+    html,
+    main {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      position: relative;
+    }
+    .carte {
+      height: 100%;
+      width: 100%;
+      z-index: 1;
+    }
+
+    .pin {
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      width: 50px;
+      height: 50px;
+    }
+
+    .pin1 {
+      top: 4%;
+      left: 33%;
+    }
+
+    .pin2 {
+      top: 29.5%;
+      left: 42.5%;
+    }
+
+    .pin3 {
+      top: 46%;
+      left: 45%;
+    }
+
+    .pin4 {
+      top: 92%;
+      left: 65%;
+    }
+
+    .pin5 {
+      top: 86%;
+      left: 52.2%;
+    }
+    .pin6 {
+      top: 60.5%;
+      left: 52.5%;
+    }
+
+    .pin7 {
+      top: 42%;
+      left: 78%;
+    }
+    .pin8 {
+      top: 61%;
+      left: 78%;
+    }
+    .pin9 {
+      top: 63%;
+      left: 34.5%;
+    }
+    .pin10 {
+      top: 43%;
+      left: 51%;
+    }
+  </style>
+
+
+</html>

@@ -1,14 +1,19 @@
 ---
-import CardMedias from "../components/CardMedias.astro";
-import ThematiqueCard from "../components/ThematiqueCard.astro";
+import Sections from "../components/Sections.astro";
 import "../styles/global.css";
 import { Image } from "astro:assets";
 
-let thematics = [];
+import type {
+  Section,
+  Thematic,
+  Document,
+} from "../../../cms/src/generated-types.ts";
+
+let sections: Section[] = [];
 try {
-  const res = await fetch("http://localhost:3000/api/thematics/");
+  const res = await fetch("http://localhost:3000/api/sections/");
   const data = await res.json();
-  thematics = data.docs || [];
+  sections = data.docs;
 } catch (error) {
   console.error("Failed to fetch thematics", error);
 }
@@ -20,8 +25,6 @@ try {
 
 <html>
   <main>
-    <!-- <pre>{JSON.stringify(thematics,null,2)}</pre> -->
-
     <div class="intro">
       <h2>Aller plus loin</h2>
       <p>
@@ -33,31 +36,17 @@ try {
       </p>
     </div>
 
-    <section class="thematique">
-      <div class="row">
-        <h2 class="titre">
-          Un titre vraiment très classique qui parle de tout et de rien
-        </h2>
-        <button>Télécharger</button>
-      </div>
-      <hr />
-      <div class="thematique-inner">
-        {
-          thematics.length > 0 ? (
-            thematics.map((thematic: any) => (
-              <ThematiqueCard
-                src={thematic.backgroundImage.url}
-                titre={thematic.title}
-                slug={thematic.slug}
-                alt={thematic.alt}
-              />
-            ))
-          ) : (
-            <p>No thematics available</p>
-          )
-        }
-      </div>
-    </section>
+    <div class="col">
+      {
+        sections.map((section) => (
+          <Sections
+            title={section.name!}
+            files={(section.documents?.[0] as Document).filename!}
+            thematics={section.thematics as Thematic[]}
+          />
+        ))
+      }
+    </div>
   </main>
 </html>
 
@@ -67,28 +56,15 @@ try {
     background-color: var(--bg-color);
   }
   main {
-    margin: 50px 0;
-
+    /* margin: 50px 0; */
     color: white;
+    max-width: 1600px;
+    margin: 0 auto;
   }
-  hr {
-    width: 86%;
-    border: 0;
-    height: 2px;
-    background-color: rgba(255, 255, 255, 0.1);
-    margin-bottom: 13px;
-  }
-
-  .row {
+  .col {
     display: flex;
-    align-self: flex-start;
-  }
-  .titre {
-    align-self: flex-start;
-    color: var(--secondary-color);
-    font-size: 20px;
-    margin-left: 7vw;
-    margin-bottom: 0px;
+    flex-direction: column;
+    gap: 75px;
   }
 
   .intro {
@@ -105,48 +81,6 @@ try {
       font-weight: 400;
       line-height: 1.2;
     }
-  }
-
-  .thematique {
-    display: flex;
-    flex-direction: column;
-
-    align-items: center;
-    margin: 50px auto 0 auto;
-  }
-  .thematique-inner {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 70px;
-    column-gap: 40px;
-    max-width: 90vw;
-  }
-  .card {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-  }
-
-  .card:hover {
-    h3 {
-      color: #ff7979;
-    }
-  }
-
-  .rectangle {
-    width: 300px;
-    height: 200px;
-    background-image: url("https://source.unsplash.com/random");
-    background-size: cover;
-    background-position: center;
-  }
-
-  .card:hover .rectangle::after {
-    content: "";
-    display: block;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 121, 121, 0.502);
   }
 
   h3 {

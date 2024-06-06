@@ -1,0 +1,100 @@
+---
+type Props = {
+  src: string[];
+};
+
+const { src } = Astro.props;
+---
+
+<div class="bloc1">
+  <div class="row-large">
+    <div class="rectangle bleu">
+      <img class="image" src={src[0]} />
+    </div>
+  </div>
+  <div class="row-3-4">
+    <div class="rectangle rouge">
+      <img class="image" src={src[1]} />
+    </div>
+    <div class="rectangle vert"><img class="image" src={src[2]} /></div>
+  </div>
+  <div class="row-1-2">
+    <div class="rectangle violet"><img class="image" src={src[3]} /></div>
+    <div class="rectangle rose"><img class="image" src={src[4]} /></div>
+  </div>
+</div>
+
+<style scoped>
+  .image {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  .bloc1 {
+    display: flex;
+    flex-direction: column;
+    height: 501px;
+    width: 330px;
+    gap: 4px;
+
+    div {
+      gap: 4px;
+    }
+  }
+  .row-large {
+    display: flex;
+    flex-direction: row;
+    height: 207px;
+    width: 100%;
+
+    .rectangle {
+      width: 100%;
+    }
+  }
+  .row-3-4 {
+    display: flex;
+    flex-direction: row;
+    height: 177px;
+    width: 100%;
+
+    .rectangle:nth-child(1) {
+      width: 61.6%;
+    }
+    .rectangle:nth-child(2) {
+      width: 38.4%;
+    }
+  }
+  .row-1-2 {
+    display: flex;
+    flex-direction: row;
+    height: 104px;
+    width: 100%;
+
+    .rectangle:nth-child(1) {
+      width: 52.5%;
+    }
+    .rectangle:nth-child(2) {
+      width: 47.5%;
+    }
+  }
+  .rectangle {
+    height: 100%;
+  }
+
+  .bleu {
+    background: blue;
+  }
+  .rouge {
+    background: red;
+  }
+  .vert {
+    background: green;
+  }
+  .violet {
+    background: violet;
+  }
+  .rose {
+    background: pink;
+  }
+</style>
