@@ -34,7 +34,7 @@ export default buildConfig({
   plugins: [payloadCloud()],
   db: postgresAdapter({
     pool: {
-      connectionString: "postgres://thomas:test@localhost:5432/gou_db",
+      connectionString: process.env.DATABASE_URI,
     },
   }),
 });

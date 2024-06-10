@@ -18,6 +18,8 @@ export const Documents: CollectionConfig = {
       "application/pdf",
       "text/csv",
       "application/xml",
+      "audio/mpeg",
+      "audio/x-wav",
     ],
   },
   fields: [{ name: "alt", label: "Alt", type: "text", required: false }],

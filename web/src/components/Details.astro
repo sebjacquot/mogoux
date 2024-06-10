@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import ImageFullscreen from "./ImageFullscreen.astro";
 type Props = {
   titre: string;
   date: string;
@@ -153,11 +154,18 @@ const {
       </div>
 
       <div class="rectangle-image">
-        <img
-          src={`http://localhost:3000/medias/${src}`}
+        <!-- <img
+          src={`${import.meta.env.CMS_URL}/medias/${src}`}
           alt={alt}
           class="image"
-        />
+        /> -->
+        <div class="image">
+          <ImageFullscreen
+            src={`${import.meta.env.CMS_URL}/medias/${src}`}
+            caption={alt}
+            legend={alt}
+          />
+        </div>
         <a href={link_notice} target="_blank" rel="noopener noreferrer"
           ><svg
             xmlns="http://www.w3.org/2000/svg"
@@ -239,6 +247,7 @@ const {
       .description {
         margin-bottom: 1.5em;
         width: 90%;
+        line-height: 1.2;
       }
       .liste {
         margin-bottom: 1em;

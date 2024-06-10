@@ -1,0 +1,34 @@
+version: "3.9"
+
+services:
+  web:
+    container_name: gou-web
+    image: gou-web:latest
+    restart: always
+    ports:
+      - 8080:4321
+    env_file: ./web/.env.production
+
+  cms:
+    container_name: gou-cms
+    image: gou-cms:latest
+    restart: always
+    ports:
+      - 3000:3000
+    env_file: ./cms/.env.production
+
+  db:
+    container_name: gou-db
+    image: postgres:latest
+    restart: always
+    ports:
+      - 5432:5432
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: gou_db
+      POSTGRES_USER: thomas
+      POSTGRES_PASSWORD: test
+
+volumes:
+  db_data:

@@ -1,6 +1,10 @@
 ---
 import Bloc1 from "../components/Blocs/Bloc1.astro";
 import Bloc2 from "../components/Blocs/Bloc2.astro";
+import Bloc3 from "../components/Blocs/Bloc3.astro";
+import Bloc4 from "../components/Blocs/Bloc4.astro";
+import Bloc5 from "../components/Blocs/Bloc5.astro";
+import Bloc6 from "../components/Blocs/Bloc6.astro";
 
 const blocs = [
   {
@@ -11,6 +15,10 @@ const blocs = [
     component: Bloc2,
     tile: 3,
   },
+  { component: Bloc3, tile: 5 },
+  { component: Bloc4, tile: 6 },
+  { component: Bloc5, tile: 3 },
+  { component: Bloc6, tile: 6 },
 ];
 
 const shuffle = (items: string[]) => {
@@ -18,7 +26,7 @@ const shuffle = (items: string[]) => {
 };
 
 const res = await fetch(
-  "https://api.slingacademy.com/v1/sample-data/photos?limit=16"
+  "https://api.slingacademy.com/v1/sample-data/photos?limit=126"
 );
 const data = await res.json();
 
@@ -55,10 +63,22 @@ shuffle(results);
 </main>
 
 <style scoped>
-  main {
+  /* main {
     display: flex;
-    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
     gap: 4px;
+  }
+  main > * {
+    flex: 1 1 calc(20% - 4px); 
+    box-sizing: border-box; 
+  } */
+
+  main {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(330px, 100%), 1fr));
+    /* gap: 4px; */
+    column-gap: 4px;
   }
   body {
     background: #1f1f1f;

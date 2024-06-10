@@ -2,6 +2,8 @@
 import "../../styles/global.css";
 import { Image } from "astro:assets";
 import { ViewTransitions } from "astro:transitions";
+
+import ImageFullScreen from "../../components/ImageFullscreen.astro";
 ---
 
 <html>
@@ -30,6 +32,7 @@ import { ViewTransitions } from "astro:transitions";
             </div>
           </div>
         </div>
+
         <img
           class="img-cover"
           src="/images/Header_Chapitre/C1_GOU_P17-04_01-P.jpg"
@@ -61,6 +64,13 @@ import { ViewTransitions } from "astro:transitions";
             francs) qui permettent au « lauréat » de travailler sur place au
             projet qui lui est confié.
           </p>
+        </div>
+        <div class="image">
+          <ImageFullScreen
+            src="/images/Header_Chapitre/C1_GOU_P17-04_01-P.jpg"
+            caption="Ken Loach"
+            legend="Ken Loach"
+          />
         </div>
         <div class="image">
           <img
@@ -507,7 +517,7 @@ import { ViewTransitions } from "astro:transitions";
 
       p {
         font-family: var(--article-intro-font);
-        font-style: italic;
+        /* font-style: italic; */
         font-size: var(--texte-article-font-size);
         text-align: center;
         align-self: center;

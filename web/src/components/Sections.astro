@@ -2,6 +2,7 @@
 import ThematiqueCard from "../components/ThematiqueCard.astro";
 import "../styles/global.css";
 
+// @ts-ignore
 import type { Thematic, Media } from "../../../cms/src/generated-types.ts";
 
 type Props = {
@@ -17,7 +18,11 @@ const { title, files, thematics } = Astro.props;
   <div class="thematique">
     <div class="row">
       <h2 class="titre">{title}</h2>
-      <button>Télécharger {files}</button>
+      <a
+        class="button"
+        href={`${import.meta.env.CMS_URL}/documents/${files}`}
+        download>Télécharger</a
+      >
     </div>
     <hr />
     <div class="thematique-inner">
@@ -41,6 +46,22 @@ const { title, files, thematics } = Astro.props;
     height: 2px;
     background-color: rgba(255, 255, 255, 0.1);
     margin-bottom: 13px;
+  }
+  .button {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 15px;
+    font-weight: 700;
+
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    border-radius: 5px;
+    padding: 5px 10px;
+    transition: all 0.3s ease;
+  }
+
+  .button:hover {
+    background-color: var(--secondary-color);
+    color: var(--bg-color);
   }
 
   .row {

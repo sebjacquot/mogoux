@@ -184,7 +184,7 @@ export const Medias: CollectionConfig = {
       name: "description",
       label: "Description",
       type: "textarea",
-      maxLength: 180,
+      maxLength: 310,
       required: true,
     },
 

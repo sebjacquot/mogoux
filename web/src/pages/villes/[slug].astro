@@ -10,7 +10,7 @@ const { slug } = Astro.params;
 
 let carousel = [];
 try {
-  const res = await fetch(`http://localhost:3000/api/cities/slug/${slug}`);
+  const res = await fetch(`${import.meta.env.CMS_URL}/api/cities/slug/${slug}`);
   const data = await res.json();
   carousel = data;
   console.log("Carousel Data:", carousel); // Ajout d'une console pour vérifier les données récupérées

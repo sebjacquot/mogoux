@@ -11,12 +11,12 @@ const { src, titre, alt, slug } = Astro.props;
 ---
 
 <a href={`/thematiques/${slug}`}>
-  <div class="card">
+  <div class="card" style="hover h3: color blue">
     <div class="rectangle">
-      <img src=`http://localhost:3000/medias/${src}` alt={alt} />
+      <img src=`${import.meta.env.CMS_URL}/medias/${src}` alt={alt} />
       <div class="overlay"></div>
     </div>
-    <h3>{titre}</h3>
+    <h3 style="color: blue;">{titre}</h3>
   </div>
 </a>
 
@@ -33,9 +33,11 @@ const { src, titre, alt, slug } = Astro.props;
     display: flex;
     flex-direction: column;
     gap: 16px;
+    transition: all 2s ease-in-out;
   }
 
   .card:hover {
+    transition: all 2s ease-in-out;
     h3 {
       color: #ff7979;
     }
@@ -61,6 +63,7 @@ const { src, titre, alt, slug } = Astro.props;
       width: 100%;
       height: 100%;
       background: rgba(255, 121, 121, 0.502);
+      transition: all 0.2s ease-in-out;
       opacity: 0;
     }
   }
@@ -73,5 +76,6 @@ const { src, titre, alt, slug } = Astro.props;
     font-size: 20px;
     font-weight: 700;
     width: 300px;
+    transition: all 0.2s ease-in-out;
   }
 </style>

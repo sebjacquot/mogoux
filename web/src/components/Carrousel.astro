@@ -1,6 +1,8 @@
 ---
 import "../styles/global.css";
 
+
+
 type Props = {
   items: {
     src: string;
@@ -30,7 +32,7 @@ const { items } = Astro.props;
             <div class="carousel-element">
               <img
                 class="image"
-                src={`http://localhost:3000/medias/${item.src}`}
+                src={`${import.meta.env.CMS_URL}/medias/${item.src}`}
                 alt={item.alt}
               />{" "}
               {/* Check if alt array exists */}

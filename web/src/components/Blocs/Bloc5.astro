@@ -1,0 +1,65 @@
+---
+type Props = {
+  src: string[];
+};
+
+const { src } = Astro.props;
+---
+
+<div class="bloc5">
+  <div class="row-big">
+    <div class="rectangle bleu">
+      <img src={src[0]} class="image" loading="lazy" />
+    </div>
+  </div>
+  <div class="row-2-5-reversed">
+    <div class="rectangle orange">
+      <img src={src[1]} class="image" loading="lazy" />
+    </div>
+    <div class="rectangle rose">
+      <img src={src[2]} class="image" loading="lazy" />
+    </div>
+  </div>
+</div>
+
+<style scoped>
+  .bloc5 {
+    display: flex;
+    flex-direction: column;
+    height: 501px;
+    width: 100%;
+    gap: 4px;
+
+    div {
+      gap: 4px;
+    }
+  }
+
+  .image {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+  .row-2-5-reversed {
+    display: flex;
+    flex-direction: row;
+    height: 227px;
+    width: 100%;
+    .rectangle:nth-child(1) {
+      width: 60%;
+    }
+    .rectangle:nth-child(2) {
+      width: 56%;
+    }
+  }
+  .row-big {
+    display: flex;
+    flex-direction: row;
+    height: 266px;
+    width: 100%;
+
+    .rectangle {
+      width: 100%;
+    }
+  }
+</style>

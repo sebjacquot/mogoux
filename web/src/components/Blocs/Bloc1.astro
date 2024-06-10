@@ -9,18 +9,24 @@ const { src } = Astro.props;
 <div class="bloc1">
   <div class="row-large">
     <div class="rectangle bleu">
-      <img class="image" src={src[0]} />
+      <img class="image" src={src[0]} loading="lazy" />
     </div>
   </div>
   <div class="row-3-4">
     <div class="rectangle rouge">
-      <img class="image" src={src[1]} />
+      <img class="image" src={src[1]} loading="lazy" />
     </div>
-    <div class="rectangle vert"><img class="image" src={src[2]} /></div>
+    <div class="rectangle vert">
+      <img class="image" src={src[2]} loading="lazy" />
+    </div>
   </div>
   <div class="row-1-2">
-    <div class="rectangle violet"><img class="image" src={src[3]} /></div>
-    <div class="rectangle rose"><img class="image" src={src[4]} /></div>
+    <div class="rectangle violet">
+      <img class="image" src={src[3]} loading="lazy" />
+    </div>
+    <div class="rectangle rose">
+      <img class="image" src={src[4]} loading="lazy" />
+    </div>
   </div>
 </div>
 
@@ -35,7 +41,7 @@ const { src } = Astro.props;
     display: flex;
     flex-direction: column;
     height: 501px;
-    width: 330px;
+    width: 100%;
     gap: 4px;
 
     div {

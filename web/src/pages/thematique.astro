@@ -1,8 +1,11 @@
 ---
+// @ts-nocheck
+
 import Sections from "../components/Sections.astro";
 import "../styles/global.css";
 import { Image } from "astro:assets";
 
+// @ts-ignore
 import type {
   Section,
   Thematic,
@@ -11,7 +14,7 @@ import type {
 
 let sections: Section[] = [];
 try {
-  const res = await fetch("http://localhost:3000/api/sections/");
+  const res = await fetch(`${import.meta.env.CMS_URL}/api/sections/`);
   const data = await res.json();
   sections = data.docs;
 } catch (error) {
