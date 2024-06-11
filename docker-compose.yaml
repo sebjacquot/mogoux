@@ -7,7 +7,7 @@ services:
     restart: always
     ports:
       - 8080:4321
-    env_file: ./web/.env.production
+    env_file: ./web/.env
 
   cms:
     container_name: gou-cms
@@ -15,7 +15,7 @@ services:
     restart: always
     ports:
       - 3000:3000
-    env_file: ./cms/.env.production
+    env_file: ./cms/.env
 
   db:
     container_name: gou-db
