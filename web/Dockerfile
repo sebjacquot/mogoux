@@ -1,5 +1,5 @@
 FROM node:lts AS runtime
-WORKDIR /app
+WORKDIR /goux-web/front
 
 COPY . .
 
