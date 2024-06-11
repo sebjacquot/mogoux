@@ -3,7 +3,7 @@ FROM node:18.8-alpine as base
 FROM base as builder
 
 # Change this path to your own directory
-WORKDIR C:\Users\bptho\Downloads\Gou\test 
+WORKDIR C:/Users/bptho/Downloads/Gou/test 
 COPY package*.json ./
 
 COPY . .
@@ -17,14 +17,14 @@ ENV PAYLOAD_CONFIG_PATH=dist/payload.config.js
 
 
 # Change this path  to your own directory
-WORKDIR C:\Users\bptho\Downloads\Gou\test 
+WORKDIR C:/Users/bptho/Downloads/Gou/test 
 COPY package*.json  ./
 COPY package-lock.json ./
 
 RUN npm install --production
 # Change this path  to your own directory
-COPY --from=builder C:\Users\bptho\Downloads\Gou\test\dist ./dist
-COPY --from=builder C:\Users\bptho\Downloads\Gou\test\build ./build
+COPY --from=builder C:/Users/bptho/Downloads/Gou/test/dist ./dist
+COPY --from=builder C:/Users/bptho/Downloads/Gou/test/build ./build
 
 EXPOSE 3000
 
