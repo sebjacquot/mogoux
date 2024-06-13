@@ -112,7 +112,8 @@ import SuggestionsCard from "../../components/SuggestionsCard.astro";
             alt="images test"
           />
           <p>
-            <i>L’Est républicain</i> (7 avril 1984) © Fonds Goux, GOU 04 C 01 0006
+            <span>L’Est républicain</span> (7 avril 1984) © Fonds Goux, GOU 04 C
+            01 0006
           </p>
         </div>
         <div class="paragraphe">
@@ -148,8 +149,8 @@ import SuggestionsCard from "../../components/SuggestionsCard.astro";
             alt="images test"
           />
           <p>
-            Une de <i>L’Est républicain</i> (7 avril 1984) © Fonds Goux, GOU 04
-            C 01 0009
+            Une de <span>L’Est républicain</span> (7 avril 1984) © Fonds Goux, GOU
+            04 C 01 0009
           </p>
         </div>
         <div class="paragraphe">
@@ -235,6 +236,9 @@ import SuggestionsCard from "../../components/SuggestionsCard.astro";
       font-style: italic;
     }
 
+    span {
+      font-style: normal !important;
+    }
     .credits {
       margin-bottom: 150px;
     }

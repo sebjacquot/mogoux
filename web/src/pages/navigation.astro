@@ -17,7 +17,7 @@ import { Image } from "astro:assets";
           Jean-Paul Goux, accompagnés de documents iconographiques.
         </p>
         <a href="/thematique" class="lien"
-          ><img src="/public/icones/fleche-goux.svg" alt="" /><h3>
+          ><img src="/icones/fleche-goux.svg" alt="flèche" /><h3>
             Découvrez les thématiques
           </h3>
         </a>
@@ -47,12 +47,10 @@ import { Image } from "astro:assets";
           son auteur, puis reçu par le public.
         </p>
         <a href="/chapitres/biographie" class="lien"
-          ><img src="/public/icones/fleche-goux.svg" alt="" /><h3>
-            Biographie
-          </h3>
+          ><img src="/icones/fleche-goux.svg" alt="flèche" /><h3>Biographie</h3>
         </a>
         <a href="/chapitres" class="lien">
-          <img src="/public/icones/fleche-goux.svg" alt="" /><h3>
+          <img src="/icones/fleche-goux.svg" alt="flèche" /><h3>
             La fabrique des <i>Mémoires de l'Enclave</i>
           </h3>
         </a>
@@ -176,6 +174,11 @@ import { Image } from "astro:assets";
     font-size: 18px;
 
     margin-top: 10px;
+
+    transition: all 0.3s ease-in-out;
+  }
+  .lien:hover {
+    color: #e35263;
   }
 
   .lien img {
