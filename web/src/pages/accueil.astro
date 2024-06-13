@@ -15,16 +15,34 @@ import { Image } from "astro:assets";
   <main>
     <div class="gauche">
       <div class="texte">
-        <h1>Discover 18th Century rural life in penn</h1>
+        <h1>
+          <span>Des</span>
+          <span id="first">mémoires ouvrières</span>
+          <span>aux</span>
+          <i>Mémoires de l'Enclave</i>
+        </h1>
         <p>
-          A historic house museum, the 1738 Wright’s Ferry Mansion celebrates
-          important examples of pre-1750 fine art, decorative arts, and
-          architecture, as well as a multi-generational narrative reflective of
-          Columbia, Pennsylvania, and its surrounding region.
+          En 1984, Jean-Paul Goux, jeune écrivain, bénéficie d'une résidence
+          d'écriture pour concevoir un ouvrage sur la mémoire ouvrière du Pays
+          de Montbéliard. Après un long travail de documentation, il publie
+          <i>Mémoires de l'Enclave</i>, ouvrage fondateur de la littérature
+          d'enquête contemporaine. Ce site reconstitue cette aventure.
         </p>
         <a href="/navigation" class="button">
-          <h2>Learn more</h2>
-          <div class="rectangle"></div>
+          <h2>Visiter le site</h2>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-arrow-right"
+            ><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg
+          >
         </a>
       </div>
     </div>
@@ -32,6 +50,9 @@ import { Image } from "astro:assets";
   </main>
 
   <style scoped>
+    i {
+      font-style: italic;
+    }
     a {
       text-decoration: none;
       color: var(--secondary-color);
@@ -41,7 +62,7 @@ import { Image } from "astro:assets";
       flex-direction: column;
       gap: 30px;
       justify-content: start;
-      padding: 0px 250px 0px 120px;
+      padding: 0px 251px 0px 120px;
 
       font-family: "Inter", sans-serif;
       color: var(--secondary-color);
@@ -49,9 +70,14 @@ import { Image } from "astro:assets";
       h1 {
         font-size: 80px;
         line-height: 81px;
-        padding-right: 100px;
 
         text-transform: uppercase;
+      }
+      span {
+        font-size: 50px;
+      }
+      #first {
+        font-size: 78px;
       }
       p {
         font-size: 16px;
@@ -75,13 +101,17 @@ import { Image } from "astro:assets";
     .button {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 10px;
+    }
+    svg {
+      transition: all 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
     }
 
     .button:hover h2,
     .button:hover {
       cursor: pointer;
       letter-spacing: 1px;
+      gap: 20px;
     }
     .rectangle {
       width: 40px;
