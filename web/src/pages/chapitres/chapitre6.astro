@@ -1,4 +1,5 @@
 ---
+import SuggestionsCard from "../../components/SuggestionsCard.astro";
 import "../../styles/global.css";
 import { Image } from "astro:assets";
 ---
@@ -167,35 +168,21 @@ import { Image } from "astro:assets";
       </section>
       <div class="suggestions-tag"><h4>Suggestions</h4></div>
       <section class="suggestions">
-        <div class="card">
-          <div class="overlay2"></div>
-          <img src="/images/cover_chapitre/0098.jpg" alt="" />
-          <div class="tag-card">
-            <h4>CHAPITRE 2</h4>
-          </div>
-          <h3 class="titre">
-            La fille au bracelet : l'interview minutée de Stéphane Demoustier
-          </h3>
-        </div>
-        <div class="card">
-          <div class="overlay2"></div>
-          <img src="/images/cover_chapitre/0097.jpg" alt="" />
-          <div class="tag-card">
-            <h4>CHAPITRE 3</h4>
-          </div>
-          <h3 class="titre">
-            Notre sélection : La Fille au bracelet de Stéphane Demoustier. Que
-            savons-nous ?
-          </h3>
-        </div>
-        <div class="card">
-          <div class="overlay2"></div>
-          <img src="/images/cover_chapitre/0096.jpg" alt="" />
-          <div class="tag-card">
-            <h4>CHAPITRE 4</h4>
-          </div>
-          <h3 class="titre">Allons Enfants de Stéphane Demoustier</h3>
-        </div>
+        <SuggestionsCard
+          titre="Une oeuvre littéraire"
+          numero_chapitre="5"
+          lien_image="C5_0407.jpg"
+        />
+        <SuggestionsCard
+          titre="La fabrique du texte"
+          numero_chapitre="7"
+          lien_image="C7_GOU_P17-05_04-P.jpg"
+        />
+        <SuggestionsCard
+          titre="Du manuscrit au(x) livre(s)"
+          numero_chapitre="8"
+          lien_image="C8_GOU_P23-04_05-P.jpg"
+        />
       </section>
       <div class="footer"></div>
     </section>

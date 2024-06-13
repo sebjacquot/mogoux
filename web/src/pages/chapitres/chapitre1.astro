@@ -4,6 +4,7 @@ import { Image } from "astro:assets";
 import { ViewTransitions } from "astro:transitions";
 
 import ImageFullScreen from "../../components/ImageFullscreen.astro";
+import SuggestionsCard from "../../components/SuggestionsCard.astro";
 ---
 
 <html>
@@ -187,35 +188,21 @@ import ImageFullScreen from "../../components/ImageFullscreen.astro";
       </section>
       <div class="suggestions-tag"><h4>Suggestions</h4></div>
       <section class="suggestions">
-        <div class="card">
-          <div class="overlay2"></div>
-          <img src="/images/cover_chapitre/0098.jpg" alt="" />
-          <div class="tag-card">
-            <h4>CHAPITRE 2</h4>
-          </div>
-          <h3 class="titre">
-            La fille au bracelet : l'interview minutée de Stéphane Demoustier
-          </h3>
-        </div>
-        <div class="card">
-          <div class="overlay2"></div>
-          <img src="/images/cover_chapitre/0097.jpg" alt="" />
-          <div class="tag-card">
-            <h4>CHAPITRE 3</h4>
-          </div>
-          <h3 class="titre">
-            Notre sélection : La Fille au bracelet de Stéphane Demoustier. Que
-            savons-nous ?
-          </h3>
-        </div>
-        <div class="card">
-          <div class="overlay2"></div>
-          <img src="/images/cover_chapitre/0096.jpg" alt="" />
-          <div class="tag-card">
-            <h4>CHAPITRE 4</h4>
-          </div>
-          <h3 class="titre">Allons Enfants de Stéphane Demoustier</h3>
-        </div>
+        <SuggestionsCard
+          numero_chapitre="2"
+          titre="Du côté de l'Enclave"
+          lien_image="C2_0364.jpg"
+        />
+        <SuggestionsCard
+          numero_chapitre="3"
+          titre="Discours du Maître, traces des luttes"
+          lien_image="C3_Ouvriers filature_2_APB.jpg"
+        />
+        <SuggestionsCard
+          numero_chapitre="4"
+          titre="Enquête sur la mémoire collective"
+          lien_image="C4_GOU_P8-02_02-P.jpg"
+        />
       </section>
       <div class="footer"></div>
     </section>
