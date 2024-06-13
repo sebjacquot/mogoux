@@ -6,23 +6,15 @@ import Bloc4 from "../components/Blocs/Bloc4.astro";
 import Bloc5 from "../components/Blocs/Bloc5.astro";
 import Bloc6 from "../components/Blocs/Bloc6.astro";
 
-// @ts-ignore
-import type { Media } from "../../../cms/src/generated-types.ts";
-import AudioCard from "../components/AudioCard.astro";
+type Props = {
+  medias: {
+    type: "image" | "audio" | "video";
+    src: string;
+    slug: string;
+  }[];
+};
 
-let medias: { type: "image" | "audio" | "video"; src: string; slug: string }[] =
-  [];
-try {
-  const res = await fetch(`${import.meta.env.CMS_URL}/api/medias/`);
-  const data = await res.json();
-  medias = (data.docs as Media[]).map((media) => ({
-    type: media.type,
-    src: `${import.meta.env.CMS_URL}${media.url}`,
-    slug: media.slug,
-  }));
-} catch (error) {
-  console.error("Failed to fetch thematics", error);
-}
+const { medias } = Astro.props;
 
 const blocs = [
   {

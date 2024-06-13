@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import AudioCard from "./AudioCard.astro";
 import ImageFullscreen from "./ImageFullscreen.astro";
 type Props = {
   titre: string;
@@ -160,11 +161,17 @@ const {
           class="image"
         /> -->
         <div class="image">
-          <ImageFullscreen
-            src={`${import.meta.env.CMS_URL}/medias/${src}`}
-            caption={alt}
-            legend={alt}
-          />
+          {
+            type === "audio" ? (
+              <AudioCard src={`${import.meta.env.CMS_URL}/medias/${src}`} />
+            ) : (
+              <ImageFullscreen
+                src={`${import.meta.env.CMS_URL}/medias/${src}`}
+                caption={alt}
+                legend={alt}
+              />
+            )
+          }
         </div>
         <a href={link_notice} target="_blank" rel="noopener noreferrer"
           ><svg

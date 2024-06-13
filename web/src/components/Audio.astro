@@ -42,7 +42,7 @@ const { src } = Astro.props;
   const playIcon = document.querySelector("#playicon") as HTMLImageElement;
   const curtimetext = document.querySelector("#curtimetext") as HTMLSpanElement;
   const durtimetext = document.querySelector("#durtimetext") as HTMLSpanElement;
-  const startBtn = document.querySelector(".rectangle") as HTMLDivElement;
+  const startBtn = document.querySelector(".audio-card") as HTMLDivElement;
 
   const closeEvent = new CustomEvent("audioclose", {
     bubbles: true,

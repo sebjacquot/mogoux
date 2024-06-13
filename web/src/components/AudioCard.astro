@@ -11,27 +11,32 @@ const { src } = Astro.props;
 <div class="audio">
   <Audio src={src} />
 </div>
-<div class="rectangle"></div>
+<div
+  class="audio-card"
+  onclick="play()"
+>
+</div>
 
 <style scoped>
   .audio {
     position: fixed;
     bottom: 0;
+    left: 0;
     width: 100%;
     background: red;
     opacity: 0;
     transition: opacity 1.5s;
   }
-  .rectangle {
-    width: 100px;
-    height: 100px;
+  .audio-card {
+    width: 100% !important;
+    height: 100% !important;
     background: blue;
   }
 </style>
 
 <script>
   const audio = document.querySelector(".audio") as HTMLDivElement;
-  const rectangle = document.querySelector(".rectangle") as HTMLDivElement;
+  const rectangle = document.querySelector(".audio-card") as HTMLDivElement;
 
   const audioStart = new CustomEvent("audiostart");
 

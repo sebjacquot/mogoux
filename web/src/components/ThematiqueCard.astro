@@ -5,13 +5,14 @@ type Props = {
   alt: string;
   titre: string;
   slug: string;
+  color: string;
 };
 
-const { src, titre, alt, slug } = Astro.props;
+const { src, titre, alt, slug, color } = Astro.props;
 ---
 
 <a href={`/thematiques/${slug}`}>
-  <div class="card" style="hover h3: color blue">
+  <div class="card">
     <div class="rectangle">
       <img src=`${import.meta.env.CMS_URL}/medias/${src}` alt={alt} />
       <div class="overlay"></div>
@@ -20,7 +21,7 @@ const { src, titre, alt, slug } = Astro.props;
   </div>
 </a>
 
-<style scoped>
+<style scoped define:vars={{ color }}>
   a {
     text-decoration: none;
     color: inherit;
@@ -39,10 +40,12 @@ const { src, titre, alt, slug } = Astro.props;
   .card:hover {
     transition: all 2s ease-in-out;
     h3 {
-      color: #ff7979;
+      /* color: #ff7979; */
+      color: var(--color);
     }
     .overlay {
       opacity: 0.502;
+      background-color: var(--color);
     }
   }
 

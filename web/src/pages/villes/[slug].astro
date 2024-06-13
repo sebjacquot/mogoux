@@ -3,12 +3,15 @@ import Carrousel from "../../components/Carrousel.astro";
 import "../../styles/global.css";
 import { Image } from "astro:assets";
 
+// @ts-ignore
+import type { Media, City } from "../../../../cms/src/generated-types.ts";
+import Galerie from "../../components/Galerie.astro";
 
 
 const { slug } = Astro.params;
 
 
-let carousel = [];
+let carousel: City | null = null;
 try {
   const res = await fetch(`${import.meta.env.CMS_URL}/api/cities/slug/${slug}`);
   const data = await res.json();
@@ -18,13 +21,20 @@ try {
   console.error("Failed to fetch cities", error);
 }
 
-const items = carousel.thematics.map((thematic: any) => ({
+const items = carousel?.thematics?.map((thematic: any) => ({
   src: thematic.backgroundImage.filename,
   title: thematic.title,
   slug: thematic.slug,
   alt: thematic.alt,
   couleur: thematic.color
 }))
+
+
+const medias: any[] = carousel?.medias?.map((media: any) => ({
+    type: media.type,
+    src: `${import.meta.env.CMS_URL}${media.url}`,
+    slug: media.slug,
+})) ?? []
 ---
 
 <head>
@@ -35,61 +45,20 @@ const items = carousel.thematics.map((thematic: any) => ({
   <main>
     <div class="rectangle"></div>
     <section class="content">
-      <Carrousel items={items} />
+      <Carrousel items={items!} />
 
-      <div class="frise grid-wrapper " style="display: flex; width: 100%; height: 200px; background: blue;">
-        <!-- Col -->
-        <div style="display: grid; grid-template-columns: 2; grid-gap: 10px; grid-template-rows: 2; background: red; width: 200px; height: 100%">
-          <div style="grid-column: span 2;">
-            <img src="https://source.unsplash.com/random/?fruit&1" alt="test">
-          </div>
-          <div>
-            <img src="https://source.unsplash.com/random/?fruit&2" alt="test">
-          </div>
-          <div>
-            <img src="https://source.unsplash.com/random/?fruit&3" alt="test">
-          </div>
-        </div>
-
-        <div style="display: grid; grid-template-columns: 2; grid-gap: 10px; grid-template-rows: 2; background: red; width: 200px; height: 100%">
-          <div style="grid-row: span 2;">
-            <img src="https://source.unsplash.com/random/?fruit&1" alt="test">
-          </div>
-          <div>
-            <img src="https://source.unsplash.com/random/?fruit&2" alt="test">
-          </div>
-          <div>
-            <img src="https://source.unsplash.com/random/?fruit&3" alt="test">
-          </div>
-        </div>
-
-        <!-- Col -->
-        <!-- <div class="frise-col" style="display: flex; flex-direction: column; width: 500px; height: 100%">
-          <div style="display: grid; background: orange; flex: 1;"></div>
-          <div style="display: grid; background: purple; flex: 1;"></div>
-        </div> -->
+      <div class="frise grid-wrapper ">
+       <Galerie medias={medias} />
+      
       </div>
 
-      <!-- <div class="grid-wrapper">
-        <div class="tall"><img src="https://source.unsplash.com/random" alt="test"></div>
-        <div><img src="https://source.unsplash.com/random" alt="test"></div>
-        <div><img src="https://source.unsplash.com/random" alt="test"></div>
-        <div class="big"><img src="https://source.unsplash.com/random" alt="test"></div>
-        <div><img src="https://source.unsplash.com/random" alt="test"></div>
-        <div><img src="https://source.unsplash.com/random" alt="test"></div>
-        <div><img src="https://source.unsplash.com/random" alt="test"></div>
-        <div ><img src="https://source.unsplash.com/random" alt="test"></div>
-        <div class="tall"><img src="https://source.unsplash.com/random" alt="test"></div>
-        <div><img src="https://source.unsplash.com/random" alt="test"></div>
-        <div><img src="https://source.unsplash.com/random" alt="test"></div>
-        <div><img src="https://source.unsplash.com/random" alt="test"></div>
-        <div><img src="https://source.unsplash.com/random" alt="test"></div>
-        <div class="wide"><img src="https://source.unsplash.com/random" alt="test"></div>
-      </div> -->
     </section>
   </main>
  
   <style scoped>
+    body{
+      background: none
+    }
     *{ margin: 0;
     padding: 0;
   box-sizing: border-box;}
@@ -144,7 +113,7 @@ const items = carousel.thematics.map((thematic: any) => ({
     }
 
     .rectangle {
-      background: #242424;
+      /* background: #242424; */
       width: 100vw;
       height: 80px;
       position: fixed;
@@ -157,9 +126,9 @@ const items = carousel.thematics.map((thematic: any) => ({
       display: flex;
       flex-direction: column;
       justify-content: center;
+      gap: 50px;
 
       width: 97.5vw;
-      background: red;
       /* margin-top: 96px; */
       margin: 100px auto 0 auto;
     }
@@ -199,7 +168,6 @@ const items = carousel.thematics.map((thematic: any) => ({
       }
     }
     .entete {
-      background: rgba(0, 0, 255, 0.8);
       width: 100%;
       height: 80vh;
       max-height: 700px;
@@ -231,7 +199,6 @@ const items = carousel.thematics.map((thematic: any) => ({
       background-color: white;
     }
     .checked {
-      background-color: blueviolet;
     }
 
     .texte {

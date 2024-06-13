@@ -1,4 +1,5 @@
 ---
+import SuggestionsCard from "../../components/SuggestionsCard.astro";
 import "../../styles/global.css";
 import { Image } from "astro:assets";
 ---
@@ -60,9 +61,9 @@ import { Image } from "astro:assets";
           Son premier livre, Le Montreur d’ombres, est paru en 1977. En 2019, il
           a publié Sourdes contrées. En 2016, il a obtenu le prix Marcel Aymé
           pour son précédent roman, L’Ombre s’allonge. Son œuvre est avant tout
-          romanesque avec, en amont des Mémoires de l’Enclave, quatre romans, et
-          après cet ouvrage, deux trilogies : Les Champs de fouilles (1989,
-          1995, 1999) et Les Quartiers d’hiver (2005, 2009, 2012).
+          romanesque avec, en amont des <i>Mémoires de l’Enclave</i>, quatre
+          romans, et après cet ouvrage, deux trilogies : Les Champs de fouilles
+          (1989, 1995, 1999) et Les Quartiers d’hiver (2005, 2009, 2012).
         </p>
       </div>
       <div class="img-short">
@@ -78,10 +79,12 @@ import { Image } from "astro:assets";
 
         <p>
           Membre du Parti Communiste de 1972 à 1978, il a été lié à deux revues
-          littéraires, Digraphe et Le Nouveau Recueil. Deux de ses livres sont
-          consacrés au monde du travail en Franche‑Comté sans que le propos soit
-          pour autant régionaliste : les Mémoires de l’Enclave (1986) et Les
-          Lampes de Ronchamp (2001).
+          littéraires, <i>Digraphe</i> et <i>Le Nouveau Recueil</i>. Deux de ses
+          livres sont consacrés au monde du travail en Franche‑Comté sans que le
+          propos soit pour autant régionaliste : les <i
+            >Mémoires de l’Enclave (1986)</i
+          > et Les
+          <i>Lampes de Ronchamp (2001)</i>.
         </p>
       </div>
       <h2 class="titres">L’« Art du temps », principe d’unité</h2>
@@ -98,18 +101,19 @@ import { Image } from "astro:assets";
       <div class="image">
         <img src="/images/GOU_04_B_08_0010.jpg" alt="images test" />
         <p>
-          Plaquette accompagnant la 1re édition des Mémoires, GOU_04_B_08_0010
+          Plaquette accompagnant la 1<sup>re</sup> édition des <span>Mémoires</span>,
+          GOU_04_B_08_0010
         </p>
       </div>
       <div class="paragraphe">
         <p>
-          Si le sous‑titre de Mémoires de l’Enclave n’est pas « roman » mais «
-          récits d’industrie », le livre, « une sorte de récit d’enquête aux
-          points de vue très divers » (Plaquette accompagnant la 1re édition,
-          1986) est, selon son auteur, « largement porté […], autant que par
-          l’intérêt pour la classe ouvrière au moment où tout paraît la chasser
-          de l’Histoire, par une fascination pour la voix » (La Voix sans repos,
-          2003). Ainsi le temps et la voix définissent une unité littéraire qui
+          Si le sous‑titre de <i>Mémoires de l’Enclave</i> n’est pas « roman » mais
+          « récits d’industrie », le livre, « une sorte de récit d’enquête aux points
+          de vue très divers » (Plaquette accompagnant la 1<sup>re</sup> édition, 1986) est,
+          selon son auteur, « largement porté […], autant que par l’intérêt pour
+          la classe ouvrière au moment où tout paraît la chasser de l’Histoire, par
+          une fascination pour la voix » (<i>La Voix sans repos</i>, 2003).
+          Ainsi le temps et la voix définissent une unité littéraire qui
           traverse l’ensemble de son œuvre et qu’explicite sa conception du
           roman. Le roman ne se définit pas, selon Goux, par l’intrigue mais par
           la prose et son réseau de liaisons (travail de la langue et de la
@@ -119,24 +123,27 @@ import { Image } from "astro:assets";
           temps dans l’œuvre. Et là, le romancier œuvre tout à la fois dans le
           temps (en fabriquant une expérience temporelle de la durée), […]
           contre le temps (en luttant contre son irréversibilité), et […] avec
-          le temps (en fabriquant du mouvement, une tension vers l’avant) »
-          (remue.net, juillet 2005).
+          le temps (en fabriquant du mouvement, une tension vers l’avant) » (<i
+            >remue.net</i
+          >, juillet 2005).
         </p>
       </div>
       <div class="image">
         <img src="/images/GOU_04_D_02_0007.jpg" alt="images test" />
-        <p>Article Les Nouvelles Littéraires, 1986, Gou-04_D_02_008</p>
+        <p>Article <i>Les Nouvelles Littéraires</i>, 1986, Gou-04_D_02_008</p>
       </div>
       <div class="paragraphe">
         <p>
           En résidence à la Villa Médicis, en juin 1986, il revient sur
-          l’expérience d’écriture des Mémoires pour Les Nouvelles Littéraires :
-          « Au départ, j’avais envie de faire un roman véritable […]. Petit à
-          petit je me suis acheminé vers l’idée que ce livre pouvait être un
-          ensemble très composite fait de l’exhibition de discours d’origines
-          diverses et que mon projet de faire […] un roman, je pouvais le
-          soutenir en donnant la parole à des personnages qui, chacun, mettent
-          en scène l’histoire de la région ».
+          l’expérience d’écriture des <i>Mémoires</i> pour <i
+            >Les Nouvelles Littéraires</i
+          >
+          : « Au départ, j’avais envie de faire un roman véritable […]. Petit à petit
+          je me suis acheminé vers l’idée que ce livre pouvait être un ensemble très
+          composite fait de l’exhibition de discours d’origines diverses et que mon
+          projet de faire […] un roman, je pouvais le soutenir en donnant la parole
+          à des personnages qui, chacun, mettent en scène l’histoire de la région
+          ».
         </p>
 
         <p>
@@ -152,9 +159,8 @@ import { Image } from "astro:assets";
     </section>
     <section class="credits">
       <div class="gauche">
-        <h3>Une production de la MSHE et le centre Elliadd</h3>
         <p>
-          Écrits par<strong>Andrée Chauvin</strong>
+          Écrits par <strong>Andrée Chauvin</strong>
         </p>
         <p>
           Droits photographiques : Copyright Petit Film & France 3 cinema / Le
@@ -164,35 +170,21 @@ import { Image } from "astro:assets";
     </section>
     <div class="suggestions-tag"><h4>Suggestions</h4></div>
     <section class="suggestions">
-      <div class="card">
-        <div class="overlay2"></div>
-        <img src="/images/cover_chapitre/0098.jpg" alt="" />
-        <div class="tag-card">
-          <h4>CHAPITRE 2</h4>
-        </div>
-        <h3 class="titre">
-          La fille au bracelet : l'interview minutée de Stéphane Demoustier
-        </h3>
-      </div>
-      <div class="card">
-        <div class="overlay2"></div>
-        <img src="/images/cover_chapitre/0097.jpg" alt="" />
-        <div class="tag-card">
-          <h4>CHAPITRE 3</h4>
-        </div>
-        <h3 class="titre">
-          Notre sélection : La Fille au bracelet de Stéphane Demoustier. Que
-          savons-nous ?
-        </h3>
-      </div>
-      <div class="card">
-        <div class="overlay2"></div>
-        <img src="/images/cover_chapitre/0096.jpg" alt="" />
-        <div class="tag-card">
-          <h4>CHAPITRE 4</h4>
-        </div>
-        <h3 class="titre">Allons Enfants de Stéphane Demoustier</h3>
-      </div>
+      <SuggestionsCard
+        titre="Une commande de la cité"
+        numero_chapitre="1"
+        lien_image="C1_GOU_P17-04_01-P.jpg"
+      />
+      <SuggestionsCard
+        titre="Du côté de l'Enclave"
+        numero_chapitre="2"
+        lien_image="C2_0363.jpg"
+      />
+      <SuggestionsCard
+        titre="Discours du Maître, traces des luttes"
+        numero_chapitre="3"
+        lien_image="C3_Ouvriers filature_2_APB.jpg"
+      />
     </section>
     <div class="footer"></div>
   </main>

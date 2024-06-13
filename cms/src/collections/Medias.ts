@@ -32,7 +32,7 @@ export const Medias: CollectionConfig = {
     staticURL: "/medias",
     staticDir: "medias",
     adminThumbnail: "thumbnail",
-    mimeTypes: ["image/*"],
+    mimeTypes: ["image/*", "audio/mpeg", "audio/x-wav", "video/*"],
   },
   fields: [
     {

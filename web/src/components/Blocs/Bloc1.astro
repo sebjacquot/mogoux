@@ -1,31 +1,33 @@
 ---
+import BlocMedia from "./BlocMedia.astro";
+
 type Props = {
-  src: string[];
+  medias: { type: "image" | "audio"; src: string; slug: string }[];
 };
 
-const { src } = Astro.props;
+const { medias } = Astro.props;
 ---
 
 <div class="bloc1">
   <div class="row-large">
-    <div class="rectangle bleu">
-      <img class="image" src={src[0]} loading="lazy" />
+    <div class="rectangle">
+      {medias[0] && <BlocMedia {...medias[0]} />}
     </div>
   </div>
   <div class="row-3-4">
-    <div class="rectangle rouge">
-      <img class="image" src={src[1]} loading="lazy" />
+    <div class="rectangle">
+      {medias[1] && <BlocMedia {...medias[1]} />}
     </div>
-    <div class="rectangle vert">
-      <img class="image" src={src[2]} loading="lazy" />
+    <div class="rectangle">
+      {medias[2] && <BlocMedia {...medias[2]} />}
     </div>
   </div>
   <div class="row-1-2">
-    <div class="rectangle violet">
-      <img class="image" src={src[3]} loading="lazy" />
+    <div class="rectangle">
+      {medias[3] && <BlocMedia {...medias[3]} />}
     </div>
-    <div class="rectangle rose">
-      <img class="image" src={src[4]} loading="lazy" />
+    <div class="rectangle">
+      {medias[4] && <BlocMedia {...medias[4]} />}
     </div>
   </div>
 </div>

@@ -1,0 +1,30 @@
+---
+import AudioCard from "../AudioCard.astro";
+
+type Props = {
+  type: "image" | "audio" | "video";
+  src: string;
+  slug: string;
+};
+
+const { type, src, slug } = Astro.props;
+---
+
+<a href={`/medias/${slug}`}>
+  {
+    type === "audio" ? (
+      <AudioCard src={src} />
+    ) : (
+      <img class="image" src={src} loading="lazy" />
+    )
+  }
+</a>
+
+<style scoped>
+  a,
+  .image {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+</style>
