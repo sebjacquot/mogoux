@@ -16,7 +16,7 @@ const { src, titre, alt, slug } = Astro.props;
       <img src=`${import.meta.env.CMS_URL}/medias/${src}` alt={alt} />
       <div class="overlay"></div>
     </div>
-    <h3 style="color: blue;">{titre}</h3>
+    <h3>{titre}</h3>
   </div>
 </a>
 
@@ -75,7 +75,7 @@ const { src, titre, alt, slug } = Astro.props;
   h3 {
     font-size: 20px;
     font-weight: 700;
-    width: 300px;
+    width: 100%;
     transition: all 0.2s ease-in-out;
   }
 </style>
