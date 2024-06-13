@@ -26,6 +26,12 @@ export default buildConfig({
     "http://localhost:3000",
     "http://mogoux-fanum.inframshe.univ-fcomte.fr:3000",
   ],
+  cors: [
+    // whitelist of domains to allow CORS from
+    "http://localhost:4321",
+    "http://localhost:3000",
+    "http://mogoux-fanum.inframshe.univ-fcomte.fr:8080",
+  ],
   typescript: {
     outputFile: path.resolve(__dirname, "generated-types.ts"),
   },
