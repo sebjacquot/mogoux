@@ -1,9 +1,17 @@
 ---
+import { Image } from "astro:assets";
 import SuggestionsCard from "../components/SuggestionsCard.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="test">
+  <div class="contain">
+    <Image
+      src="https://storage.googleapis.com/pod_public/1300/88149.jpg"
+      alt="A bird."
+      inferSize={true}
+    />
+  </div>
   <main>
     <!-- <div class="bloc1">
       <div class="row-large">
@@ -85,7 +93,7 @@ import Layout from "../layouts/Layout.astro";
         <div class="rectangle rose"></div>
       </div>
     </div> -->
-    <SuggestionsCard
+    <!-- <SuggestionsCard
       titre="Une commande de la cité"
       numero_chapitre="1"
       lien_image="C1_GOU_P17-04_01-P.jpg"
@@ -129,11 +137,15 @@ import Layout from "../layouts/Layout.astro";
       titre="Le fonds photographique"
       numero_chapitre="9"
       lien_image="C9_GOU_A_08_04_083.jpg"
-    />
+    /> -->
   </main>
 </Layout>
 
 <style scoped>
+  .contain {
+    width: 300px;
+    height: 180px;
+  }
   body {
     font-family: Arial, sans-serif;
     display: flex;
