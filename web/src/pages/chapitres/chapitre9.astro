@@ -1,4 +1,5 @@
 ---
+import ImageFullscreen from "../../components/ImageFullscreen.astro";
 import SuggestionsCard from "../../components/SuggestionsCard.astro";
 import "../../styles/global.css";
 import { Image } from "astro:assets";
@@ -25,9 +26,7 @@ import { Image } from "astro:assets";
             l’ouvrage.
           </p>
           <div class="separation">
-            <div class="background">
-              <h3 class="date">Le 18 Jan 2024 à 07:30</h3>
-            </div>
+            <div class="background"></div>
           </div>
         </div>
       </div>
@@ -74,16 +73,16 @@ import { Image } from "astro:assets";
         </p>
       </div>
       <div class="image">
-        <img
+        <ImageFullscreen
           src="/images/Chapitres/Captures/pochette_1.PNG"
-          alt="Notes manuscrites © Fonds Goux, GOU 03 B 0010"
+          legend="Notes manuscrites © Fonds Goux, GOU 03 B 0010"
         />
         <p>Légende manquante</p>
       </div>
       <div class="image">
-        <img
+        <ImageFullscreen
           src="/images/Chapitres/Captures/pochette_2.PNG"
-          alt="Notes manuscrites © Fonds Goux, GOU 03 B 0010"
+          legend="Notes manuscrites © Fonds Goux, GOU 03 B 0010"
         />
         <p>Légende manquante</p>
       </div>
@@ -98,9 +97,9 @@ import { Image } from "astro:assets";
         </p>
       </div>
       <div class="image">
-        <img
+        <ImageFullscreen
           src="/images/Chapitres/Chapitre9/GOU_A_08_02_001.jpg"
-          alt="Notes manuscrites © Fonds Goux, GOU 03 B 0010"
+          legend="Notes manuscrites © Fonds Goux, GOU 03 B 0010"
         />
         <p>Légende manquante</p>
       </div>
@@ -131,9 +130,9 @@ import { Image } from "astro:assets";
         <p>Ce fonds est enfin exploité grâce à ce site.</p>
       </div>
       <div class="image">
-        <img
+        <ImageFullscreen
           src="/images/Chapitres/Chapitre9/GOU_A_08_03_041.jpg"
-          alt="Notes manuscrites © Fonds Goux, GOU 03 B 0010"
+          legend=" Jean-Paul Goux dédicaçant son ouvrage à l’occasion de la présentation de l’ouvrage à Montbéliard © Fonds Goux, GOU A 03 08 041"
         />
         <p>
           Jean-Paul Goux dédicaçant son ouvrage à l’occasion de la présentation
@@ -165,16 +164,15 @@ import { Image } from "astro:assets";
         </p>
       </div>
       <div class="image">
-        <img
+        <ImageFullscreen
           src="/images/Chapitres/Chapitre9/GOU_A_08_01_001.jpg"
-          alt="Notes manuscrites © Fonds Goux, GOU 03 B 0010"
+          legend="Notes manuscrites © Fonds Goux, GOU 03 B 0010"
         />
         <p>© Fonds Goux, GOU A 08 01 001</p>
       </div>
     </section>
     <section class="credits">
       <div class="gauche">
-        <h3>Ex Machina</h3>
         <p>
           Écrits par <strong>Pascal Lécroart</strong> et <strong
             >Andrée Chauvin</strong

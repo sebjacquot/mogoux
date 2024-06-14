@@ -1,4 +1,5 @@
 ---
+import ImageFullscreen from "../../components/ImageFullscreen.astro";
 import SuggestionsCard from "../../components/SuggestionsCard.astro";
 import "../../styles/global.css";
 import { Image } from "astro:assets";
@@ -25,187 +26,185 @@ import { Image } from "astro:assets";
             depuis, école.
           </p>
           <div class="separation">
-            <div class="background">
-              <h3 class="date">Le 18 Jan 2024 à 07:30</h3>
-            </div>
+            <div class="background"></div>
           </div>
         </div>
       </div>
-      <imgcd
+      <img
         class="img-cover"
         src="/images/Header_Chapitre/C8_GOU_P23-04_05-P.jpg"
-        alt="Ken Loach"></imgcd>
-      <div class="overlay"></div>
+        alt="Ken Loach"
+      />
     </section>
-    <section class="contenu-article">
-      <!-- <Image
+    <div class="overlay"></div>
+  </main>
+  <section class="contenu-article">
+    <!-- <Image
         src={"/images/cover_chapitre/0096.jpg"}
         alt={"Jean-Paul Goux"}
         class="fougere"
       /> -->
-      <h2 class="titres">
-        Le choix de l’éditeur : de Flammarion aux éditions Mazarine
-      </h2>
-      <div class="image">
-        <img
-          src="/images/Chapitres/Chapitre8/GOU_04_B_0123.jpg"
-          alt="Lettre de Jean-Paul Goux à Oliver Cohen, le 25 novembre 1985 (extrait) © GOU 04 B 0123"
-        />
-        <p>
-          Lettre de Jean-Paul Goux à Oliver Cohen, le 25 novembre 1985 (extrait)
-          © GOU 04 B 0123
-        </p>
-      </div>
-
-      <div class="paragraphe">
-        <p>
-          « Les commanditaires ne sont pas éditeurs ». C’est en ces termes que
-          Jean-Paul Goux désigne le travail qui reste à accomplir, fin 1985,
-          pour publier son manuscrit. Les échanges avec son premier éditeur,
-          Flammarion, sont tendus. Celui-ci ne comprend pas les enjeux du moment
-          qui sont doubles. D’une part, assumer l’originalité d’un travail situé
-          entre histoire et littérature, tout comme l’effort entrepris pour
-          transformer documents et témoignages en une matière littéraire.
-          D’autre part, s’adresser à un lectorat plus large que celui, demeuré
-          confidentiel, de ses quatre premiers romans. Or, en lui demandant de
-          réduire sensiblement le volume de son manuscrit, Flammarion manifeste
-          une incompréhension qui détermine la rupture. Goux exprime ainsi son
-          refus de transiger et de s’accommoder de contingences extérieures à ce
-          qui fait la littérature. Il se tourne alors vers l’éditeur Olivier
-          Cohen, qui l’accueille aux éditions Mazarine.
-        </p>
-      </div>
-      <h2 class="titres">Éloges de la complexité</h2>
-      <div class="paragraphe">
-        <p>
-          Une quinzaine d’articles parus dans la presse écrite entre avril et
-          juillet 1986 témoignent de l’intérêt suscité par le livre.
-        </p>
-      </div>
-      <div class="image">
-        <img
-          src="/images/Chapitres/Chapitre8/GOU_04_D_0022.jpg"
-          alt="Compte-rendu de Laurent Lemire dans La Croix (2 juin 1986) © Fonds Goux, GOU 4 D 0022 "
-        />
-        <p>
-          Compte-rendu de Laurent Lemire dans La Croix (2 juin 1986) © Fonds
-          Goux, GOU 4 D 0022
-        </p>
-      </div>
-
-      <div class="paragraphe">
-        <p>
-          Les critiques parues dans la presse nationale, la presse régionale et
-          dans les magazines littéraires, soulignent toutes l’originalité d’un
-          texte « inclassable » (Laurent Lemire dans La Croix du 2 juin 1986).
-          Monique Houssin, dans <i>L’Humanité-Dimanche</i> du 22 juin 1986, parle
-          « d’une ethnologie littéraire contemporaine ». De manière significative,
-          le livre suscite une lecture qui déplace les frontières traditionnelles
-          entre les disciplines. C’est un historien du mouvement social, Patrick
-          Fridenson, qui consacre un article, élogieux, à l’ouvrage dans <i
-            >Libération</i
-          >, tandis que le critique littéraire Arnaud Malgorn, dans La Quinzaine
-          littéraire, insiste plutôt sur la dimension documentaire du livre.
-        </p>
-        <p>
-          La critique met également en relief un aspect essentiel : la mise en
-          valeur du caractère « consenti » de la domination subie par le monde
-          ouvrier dans l’Enclave. François Moulin, dans une série d’articles
-          pour <i>L’Est républicain</i>, qualifie Goux de « montreur d’ombres »,
-          en référence à son premier roman, paru en 1977, et insiste sur la
-          dimension dérangeante d’un livre qui brouille les schémas réducteurs.
-        </p>
-      </div>
-
-      <h2 class="titres">Une voix dérangeante</h2>
-      <div class="image">
-        <img
-          src="/images/Chapitres/Chapitre8/GOU_04_D_0012.jpg"
-          alt="Compte-rendu d’Henri Lefebvre dans M mensuel, marxisme mouvement (extrait) © Fonds Goux, GOU 04 D 0012 "
-        />
-        <p>
-          Compte-rendu d’Henri Lefebvre dans M mensuel, marxisme mouvement
-          (extrait) © Fonds Goux, GOU 04 D 0012
-        </p>
-      </div>
-
-      <div class="paragraphe">
-        <p>
-          Trois articles parus dans la presse militante, L’Unité, Force ouvrière
-          hebdo et M mensuel, marxisme mouvement, témoignent du trouble suscité
-          par l’ouvrage chez les militants d’extrême gauche.
-        </p>
-        <p>
-          Le plus sévère est alors l’intellectuel communiste Henri Lefebvre. Il
-          reproche à Goux d’avoir oublié son commanditaire, la Cité, et derrière
-          elle le combat des militants communistes – Paul Cèbe en tête – pour
-          rendre visible la condition ouvrière en Franche-Comté, à la Rhodiaceta
-          de Besançon (Chris Marker) ou aux usines Peugeot de Sochaux (les
-          groupes Medvedkine). Selon lui, Goux est trop extérieur au monde qu’il
-          décrit et le témoin « ne se fait pas assez égorger ». Ces crispations
-          montrent combien ce qui touche au mouvement ouvrier et à ses luttes
-          reste très sensible au milieu des années 1980 et expliquent cette
-          réception réservée dans la presse militante.
-        </p>
-      </div>
-      <div class="image">
-        <img
-          src="/images/Chapitres/Chapitre9/couverture.jpg"
-          alt="1re de couverture de l’édition de poche des Mémoires de l’Enclave, Actes Sud, 2003"
-        />
-        <p>
-          1<sup>re</sup> de couverture de l’édition de poche des Mémoires de l’Enclave,
-          Actes Sud, 2003
-        </p>
-      </div>
-      <div class="paragraphe">
-        <p>
-          Dix-sept ans plus tard, en 2003, l’ouvrage est réédité au format de
-          poche chez Actes Sud dans la collection « Babel ». Entre-temps,
-          l’écrivain s’est imposé comme une des voix majeures du roman
-          contemporain. Sa réflexion sur le temps, sur les voix individuelles et
-          sur la mémoire collective, poursuivie dans ses romans ultérieurs,
-          souligne rétrospectivement la cohérence et l’actualité de l’entreprise
-          menée dans les Mémoires de l’Enclave. Elle trouve des échos dans la
-          création contemporaine, notamment chez un écrivain comme François Bon,
-          auteur de Daewoo en 2004.
-        </p>
-      </div>
-    </section>
-    <section class="credits">
-      <div class="gauche">
-        <h3>Ex Machina</h3>
-        <p>
-          Écrits par <strong>Pascal Lécroart</strong> et <strong
-            >Andrée Chauvin</strong
-          >
-        </p>
-        <p>
-          Droits photographiques : Copyright Petit Film & France 3 cinema / Le
-          Pacte.
-        </p>
-      </div>
-    </section>
-    <div class="suggestions-tag"><h4>Suggestions</h4></div>
-    <section class="suggestions">
-      <SuggestionsCard
-        titre="La fabrique du texte"
-        numero_chapitre="7"
-        lien_image="C7_GOU_P17-05_04-P.jpg"
+    <h2 class="titres">
+      Le choix de l’éditeur : de Flammarion aux éditions Mazarine
+    </h2>
+    <div class="image">
+      <ImageFullscreen
+        src="/images/Chapitres/Chapitre8/GOU_04_B_0123.jpg"
+        legend="Lettre de Jean-Paul Goux à Oliver Cohen, le 25 novembre 1985 (extrait) © GOU 04 B 0123"
       />
-      <SuggestionsCard
-        titre="Le fonds photographique"
-        numero_chapitre="9"
-        lien_image="C9_GOU_A_08_04_083.jpg"
+      <p>
+        Lettre de Jean-Paul Goux à Oliver Cohen, le 25 novembre 1985 (extrait)
+        © GOU 04 B 0123
+      </p>
+    </div>
+
+    <div class="paragraphe">
+      <p>
+        « Les commanditaires ne sont pas éditeurs ». C’est en ces termes que
+        Jean-Paul Goux désigne le travail qui reste à accomplir, fin 1985, pour
+        publier son manuscrit. Les échanges avec son premier éditeur,
+        Flammarion, sont tendus. Celui-ci ne comprend pas les enjeux du moment
+        qui sont doubles. D’une part, assumer l’originalité d’un travail situé
+        entre histoire et littérature, tout comme l’effort entrepris pour
+        transformer documents et témoignages en une matière littéraire. D’autre
+        part, s’adresser à un lectorat plus large que celui, demeuré
+        confidentiel, de ses quatre premiers romans. Or, en lui demandant de
+        réduire sensiblement le volume de son manuscrit, Flammarion manifeste
+        une incompréhension qui détermine la rupture. Goux exprime ainsi son
+        refus de transiger et de s’accommoder de contingences extérieures à ce
+        qui fait la littérature. Il se tourne alors vers l’éditeur Olivier
+        Cohen, qui l’accueille aux éditions Mazarine.
+      </p>
+    </div>
+    <h2 class="titres">Éloges de la complexité</h2>
+    <div class="paragraphe">
+      <p>
+        Une quinzaine d’articles parus dans la presse écrite entre avril et
+        juillet 1986 témoignent de l’intérêt suscité par le livre.
+      </p>
+    </div>
+    <div class="image">
+      <ImageFullscreen
+        src="/images/Chapitres/Chapitre8/GOU_04_D_0022.jpg"
+        legend="Compte-rendu de Laurent Lemire dans La Croix (2 juin 1986) © Fonds Goux, GOU 4 D 0022 "
       />
-      <SuggestionsCard
-        titre="Une commande de la cité"
-        numero_chapitre="1"
-        lien_image="C1_GOU_P17-04_01-P.jpg"
+      <p>
+        Compte-rendu de Laurent Lemire dans La Croix (2 juin 1986) © Fonds
+        Goux, GOU 4 D 0022
+      </p>
+    </div>
+
+    <div class="paragraphe">
+      <p>
+        Les critiques parues dans la presse nationale, la presse régionale et
+        dans les magazines littéraires, soulignent toutes l’originalité d’un
+        texte « inclassable » (Laurent Lemire dans La Croix du 2 juin 1986).
+        Monique Houssin, dans <i>L’Humanité-Dimanche</i> du 22 juin 1986, parle «
+        d’une ethnologie littéraire contemporaine ». De manière significative, le
+        livre suscite une lecture qui déplace les frontières traditionnelles entre
+        les disciplines. C’est un historien du mouvement social, Patrick Fridenson,
+        qui consacre un article, élogieux, à l’ouvrage dans <i>Libération</i>,
+        tandis que le critique littéraire Arnaud Malgorn, dans La Quinzaine
+        littéraire, insiste plutôt sur la dimension documentaire du livre.
+      </p>
+      <p>
+        La critique met également en relief un aspect essentiel : la mise en
+        valeur du caractère « consenti » de la domination subie par le monde
+        ouvrier dans l’Enclave. François Moulin, dans une série d’articles pour <i
+          >L’Est républicain</i
+        >, qualifie Goux de « montreur d’ombres », en référence à son premier
+        roman, paru en 1977, et insiste sur la dimension dérangeante d’un livre
+        qui brouille les schémas réducteurs.
+      </p>
+    </div>
+
+    <h2 class="titres">Une voix dérangeante</h2>
+    <div class="image">
+      <ImageFullscreen
+        src="/images/Chapitres/Chapitre8/GOU_04_D_0012.jpg"
+        legend="Compte-rendu d’Henri Lefebvre dans M mensuel, marxisme mouvement (extrait) © Fonds Goux, GOU 04 D 0012 "
       />
-    </section>
-    <div class="footer"></div>
-  </main>
+      <p>
+        Compte-rendu d’Henri Lefebvre dans M mensuel, marxisme mouvement
+        (extrait) © Fonds Goux, GOU 04 D 0012
+      </p>
+    </div>
+
+    <div class="paragraphe">
+      <p>
+        Trois articles parus dans la presse militante, L’Unité, Force ouvrière
+        hebdo et M mensuel, marxisme mouvement, témoignent du trouble suscité
+        par l’ouvrage chez les militants d’extrême gauche.
+      </p>
+      <p>
+        Le plus sévère est alors l’intellectuel communiste Henri Lefebvre. Il
+        reproche à Goux d’avoir oublié son commanditaire, la Cité, et derrière
+        elle le combat des militants communistes – Paul Cèbe en tête – pour
+        rendre visible la condition ouvrière en Franche-Comté, à la Rhodiaceta
+        de Besançon (Chris Marker) ou aux usines Peugeot de Sochaux (les groupes
+        Medvedkine). Selon lui, Goux est trop extérieur au monde qu’il décrit et
+        le témoin « ne se fait pas assez égorger ». Ces crispations montrent
+        combien ce qui touche au mouvement ouvrier et à ses luttes reste très
+        sensible au milieu des années 1980 et expliquent cette réception
+        réservée dans la presse militante.
+      </p>
+    </div>
+    <div class="image">
+      <ImageFullscreen
+        src="/images/Chapitres/Chapitre9/couverture.jpg"
+        legend="1re de couverture de l’édition de poche des Mémoires de l’Enclave, Actes Sud, 2003"
+      />
+      <p>
+        1<sup>re</sup> de couverture de l’édition de poche des Mémoires de l’Enclave,
+        Actes Sud, 2003
+      </p>
+    </div>
+    <div class="paragraphe">
+      <p>
+        Dix-sept ans plus tard, en 2003, l’ouvrage est réédité au format de
+        poche chez Actes Sud dans la collection « Babel ». Entre-temps,
+        l’écrivain s’est imposé comme une des voix majeures du roman
+        contemporain. Sa réflexion sur le temps, sur les voix individuelles et
+        sur la mémoire collective, poursuivie dans ses romans ultérieurs,
+        souligne rétrospectivement la cohérence et l’actualité de l’entreprise
+        menée dans les Mémoires de l’Enclave. Elle trouve des échos dans la
+        création contemporaine, notamment chez un écrivain comme François Bon,
+        auteur de Daewoo en 2004.
+      </p>
+    </div>
+  </section>
+  <section class="credits">
+    <div class="gauche">
+      <p>
+        Écrits par <strong>Pascal Lécroart</strong> et <strong
+          >Andrée Chauvin</strong
+        >
+      </p>
+      <p>
+        Droits photographiques : Copyright Petit Film & France 3 cinema / Le
+        Pacte.
+      </p>
+    </div>
+  </section>
+  <div class="suggestions-tag"><h4>Suggestions</h4></div>
+  <section class="suggestions">
+    <SuggestionsCard
+      titre="La fabrique du texte"
+      numero_chapitre="7"
+      lien_image="C7_GOU_P17-05_04-P.jpg"
+    />
+    <SuggestionsCard
+      titre="Le fonds photographique"
+      numero_chapitre="9"
+      lien_image="C9_GOU_A_08_04_083.jpg"
+    />
+    <SuggestionsCard
+      titre="Une commande de la cité"
+      numero_chapitre="1"
+      lien_image="C1_GOU_P17-04_01-P.jpg"
+    />
+  </section>
+  <div class="footer"></div>
 </html>
 
 <style scoped>

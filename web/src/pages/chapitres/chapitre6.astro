@@ -1,4 +1,5 @@
 ---
+import ImageFullscreen from "../../components/ImageFullscreen.astro";
 import SuggestionsCard from "../../components/SuggestionsCard.astro";
 import "../../styles/global.css";
 import { Image } from "astro:assets";
@@ -25,9 +26,7 @@ import { Image } from "astro:assets";
             et inventive, parfaitement élaborée et réfléchie.
           </p>
           <div class="separation">
-            <div class="background">
-              <h3 class="date">Le 18 Jan 2024 à 07:30</h3>
-            </div>
+            <div class="background"></div>
           </div>
         </div>
       </div>
@@ -41,9 +40,9 @@ import { Image } from "astro:assets";
     <section class="contenu-article">
       <h2 class="titres">Des ambitions contradictoires?</h2>
       <div class="image">
-        <img
+        <ImageFullscreen
           src="/images/Chapitres/Chapitre6/GOU_05_07_0003.jpg"
-          alt="Notes manuscrites © Fonds Goux, GOU 03 E 0019"
+          legend="Notes manuscrites © Fonds Goux, GOU 03 E 0019"
         />
         <p>Jean-Paul Goux © Fonds Goux, GOU 05 07 0003</p>
       </div>
@@ -75,9 +74,9 @@ import { Image } from "astro:assets";
         </p>
       </div>
       <div class="image">
-        <img
+        <ImageFullscreen
           src="/images/Chapitres/Captures/GOU_03_B_0010.PNG"
-          alt="Notes manuscrites © Fonds Goux, GOU 03 B 0010"
+          legend="Notes manuscrites © Fonds Goux, GOU 03 B 0010"
         />
         <p>Notes préparatoires © Fonds Goux, GOU 03 B 0010</p>
       </div>
@@ -89,9 +88,9 @@ import { Image } from "astro:assets";
         </p>
       </div>
       <div class="image">
-        <img
+        <ImageFullscreen
           src="/images/Chapitres/Captures/GOU_03_E_0019.PNG"
-          alt="Notes manuscrites © Fonds Goux, GOU 03 B 0010"
+          legend="Notes manuscrites © Fonds Goux, GOU 03 B 0010"
         />
         <p>Notes préparatoires © Fonds Goux, GOU 03 B 0010</p>
       </div>
@@ -103,9 +102,9 @@ import { Image } from "astro:assets";
         </p>
       </div>
       <div class="image">
-        <img
+        <ImageFullscreen
           src="/images/Chapitres/Chapitre6/GOU_03_E_0008.jpg"
-          alt="Notes manuscrites © Fonds Goux, GOU 03 B 0010"
+          legend="Notes manuscrites © Fonds Goux, GOU 03 B 008"
         />
         <p>Notes préparatoires © Fonds Goux, GOU 03 E 0008</p>
       </div>
@@ -154,7 +153,6 @@ import { Image } from "astro:assets";
 
       <section class="credits">
         <div class="gauche">
-          <h3>Ex Machina</h3>
           <p>
             Écrits par <strong>Pascal Lécroart</strong> et <strong
               >Andrée Chauvin</strong

@@ -1,4 +1,5 @@
 ---
+import ImageFullscreen from "../../components/ImageFullscreen.astro";
 import SuggestionsCard from "../../components/SuggestionsCard.astro";
 import "../../styles/global.css";
 import { Image } from "astro:assets";
@@ -27,9 +28,7 @@ import { Image } from "astro:assets";
             systématiquement disparaître sa voix.
           </p>
           <div class="separation">
-            <div class="background">
-              <h3 class="date">Le 18 Jan 2024 à 07:30</h3>
-            </div>
+            <div class="background"></div>
           </div>
         </div>
       </div>
@@ -56,9 +55,9 @@ import { Image } from "astro:assets";
         </p>
       </div>
       <div class="image">
-        <img
+        <ImageFullscreen
           src="/images/Chapitres/Chapitre7/GOU_03_13_0010.jpg"
-          alt="Manuscrit (avec découpages) des Mémoires de l’Enclave © Fonds Goux, GOU 03 13 00010 "
+          legend="Manuscrit (avec découpages) des Mémoires de l’Enclave © Fonds Goux, GOU 03 13 00010 "
         />
         <p>
           Manuscrit (avec découpages) des <i>Mémoires de l’Enclave</i> © Fonds Goux,
@@ -151,9 +150,9 @@ import { Image } from "astro:assets";
         </p>
       </div>
       <div class="image">
-        <img
+        <ImageFullscreen
           src="/images/Chapitres/Chapitre7/GOU_01_02_29_30_0005.jpg"
-          alt="Manuscrit (avec découpages) des Mémoires de l’Enclave © Fonds Goux, GOU 03 13 00010 "
+          legend=" Transcription entretien cassette 29-30, Mme B., p. 1-2, (extraits) © Fonds Goux"
         />
         <p>
           Transcription entretien cassette 29-30, Mme B., p. 1-2, (extraits) ©
@@ -161,9 +160,9 @@ import { Image } from "astro:assets";
         </p>
       </div>
       <div class="image">
-        <img
+        <ImageFullscreen
           src="/images/Chapitres/Chapitre7/GOU_01_02_29_30_0007.jpg"
-          alt="Manuscrit (avec découpages) des Mémoires de l’Enclave © Fonds Goux, GOU 03 13 00010 "
+          legend=" Transcription entretien cassette 29-30, Mme B., p. 1-2, (extraits) © Fonds Goux"
         />
         <p>
           Transcription entretien cassette 29-30, Mme B., p. 1-2, (extraits) ©
@@ -184,9 +183,9 @@ import { Image } from "astro:assets";
         </p>
       </div>
       <div class="image">
-        <img
+        <ImageFullscreen
           src="/images/Chapitres/Chapitre7/GOU_01_02_29_30_0005.jpg"
-          alt="Manuscrit (avec découpages) des Mémoires de l’Enclave © Fonds Goux, GOU 03 13 00010 "
+          legend=" Transcription entretien cassette 29-30, Mme B., p. 7, (extraits) © Fonds Goux"
         />
         <p>
           Transcription entretien cassette 29-30, Mme B., p. 7, (extraits) ©
@@ -202,9 +201,9 @@ import { Image } from "astro:assets";
         </p>
       </div>
       <div class="image">
-        <img
+        <ImageFullscreen
           src="/images/Chapitres/Chapitre7/GOU_03_10_bis0006.jpg"
-          alt="Manuscrit (avec découpages) des Mémoires de l’Enclave © Fonds Goux, GOU 03 13 00010 "
+          legend="Manuscrit correspondant au chapitre X © Fonds Goux, GOU 03 10 bis 0006"
         />
         <p>
           Manuscrit correspondant au chapitre X © Fonds Goux, GOU 03 10 bis
@@ -230,9 +229,9 @@ import { Image } from "astro:assets";
           difficulté des conditions de travail.
         </p>
       </div><div class="image">
-        <img
+        <ImageFullscreen
           src="/images/Chapitres/Chapitre7/GOU_05_01_0005.jpg"
-          alt="Manuscrit (avec découpages) des Mémoires de l’Enclave © Fonds Goux, GOU 03 13 00010 "
+          legend="  Photographie Tissage du Paquis, Héricourt © Fonds Goux, GOU 05 01 0005"
         />
         <p>
           Photographie Tissage du Paquis, Héricourt © Fonds Goux, GOU 05 01
@@ -242,7 +241,6 @@ import { Image } from "astro:assets";
     </section>
     <section class="credits">
       <div class="gauche">
-        <h3>Ex Machina</h3>
         <p>
           Écrits par <strong>Pascal Lécroart</strong> et <strong
             >Andrée Chauvin</strong

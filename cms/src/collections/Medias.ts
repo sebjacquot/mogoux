@@ -4,7 +4,7 @@ import { CollectionConfig } from "payload/types";
 export const Medias: CollectionConfig = {
   slug: "medias",
   admin: {
-    useAsTitle: "slug",
+    useAsTitle: "alt",
   },
   access: {
     read: () => true,

@@ -1,4 +1,5 @@
 ---
+import ImageFullscreen from "../../components/ImageFullscreen.astro";
 import SuggestionsCard from "../../components/SuggestionsCard.astro";
 import "../../styles/global.css";
 import { Image } from "astro:assets";
@@ -25,9 +26,7 @@ import { Image } from "astro:assets";
             luttes, sans parvenir à les empêcher.
           </p>
           <div class="separation">
-            <div class="background">
-              <h3 class="date">Le 18 Jan 2024 à 07:30</h3>
-            </div>
+            <div class="background"></div>
           </div>
         </div>
       </div>
@@ -46,9 +45,9 @@ import { Image } from "astro:assets";
         class="fougere"
       /> -->
       <div class="image">
-        <img
+        <ImageFullscreen
           src="/images/Chapitres/Chapitre3/GOU_05_050055.jpg"
-          alt="Tombe de Louis-Frédéric Japy, Beaucourt (1984) © Fonds Goux, GOU 05 050055"
+          legend="Tombe de Louis-Frédéric Japy, Beaucourt (1984) © Fonds Goux, GOU 05 050055"
         />
         <p>
           Tombe de Louis-Frédéric Japy, Beaucourt (1984) © Fonds Goux, GOU 05
@@ -92,9 +91,9 @@ import { Image } from "astro:assets";
         </p>
       </div>
       <div class="image">
-        <img
+        <ImageFullscreen
           src="/images/Chapitres/Chapitre3/GOU_04_D_0030.jpg"
-          alt="Article de François Moulin, L’Est Républicain (1986) © Fonds Goux, GOU 04 D 0030"
+          legend="Article de François Moulin, L’Est Républicain (1986) © Fonds Goux, GOU 04 D 0030"
         />
         <p>
           Article de François Moulin, <i>L’Est Républicain</i> (1986) © Fonds Goux,
@@ -118,9 +117,9 @@ import { Image } from "astro:assets";
         </p>
       </div>
       <div class="image">
-        <img
+        <ImageFullscreen
           src="/images/Chapitres/Chapitre3/GOU_04_B_0017.jpg"
-          alt="Lettre de Marcel Castioni sur la liquidation de la Cité après les élections professionnelles de 1985 (janvier 1986) © Fonds Goux,  GOU 04 B 0017"
+          legend="Lettre de Marcel Castioni sur la liquidation de la Cité après les élections professionnelles de 1985 (janvier 1986) © Fonds Goux,  GOU 04 B 0017"
         />
         <p>
           Lettre de Marcel Castioni sur la liquidation de la Cité après les
@@ -166,7 +165,6 @@ import { Image } from "astro:assets";
     </section>
     <section class="credits">
       <div class="gauche">
-        <h3>Ex Machina</h3>
         <p>
           Écrits par <strong>Odile Roynette</strong>
           <p>
