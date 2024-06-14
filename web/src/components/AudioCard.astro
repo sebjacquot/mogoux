@@ -11,10 +11,8 @@ const { src } = Astro.props;
 <div class="audio">
   <Audio src={src} />
 </div>
-<div
-  class="audio-card"
-  onclick="play()"
->
+<div class="audio-card" onclick="play()">
+  <img src="/play-icon.png" alt="icone controle son" id="playicon" />
 </div>
 
 <style scoped>
@@ -23,14 +21,39 @@ const { src } = Astro.props;
     bottom: 0;
     left: 0;
     width: 100%;
-    background: red;
+    background: #242424;
+    padding: 10px 0;
     opacity: 0;
     transition: opacity 1.5s;
   }
   .audio-card {
     width: 100% !important;
     height: 100% !important;
-    background: blue;
+
+    background-image: url("/Goux_1000kB_3.jpg");
+    background-position: center;
+    background-size: cover;
+
+    position: relative;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+  }
+  .audio-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  img {
+    width: 50%;
+    height: 50%;
+    object-fit: contain;
+    z-index: 50;
   }
 </style>
 

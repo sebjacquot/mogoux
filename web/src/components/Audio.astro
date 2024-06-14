@@ -13,11 +13,15 @@ const { src } = Astro.props;
   </audio>
   <div class="custom-controls">
     <button id="playpausebtn"
-      ><img src="/pause.png" alt="oicone controle son" id="playicon" /></button
+      ><img
+        src="/pause-white.png"
+        alt="oicone controle son"
+        id="playicon"
+      /></button
     >
     <input id="seekslider" type="range" step="any" value="0" />
     <span id="curtimetext">0:00</span> / <span id="durtimetext">0:00</span>
-    <button id="mutebtn">Mute</button>
+    <button id="mutebtn">MUTE</button>
     <input
       id="volumeslider"
       type="range"
@@ -26,7 +30,9 @@ const { src } = Astro.props;
       value="0.5"
       step="0.1"
     />
-    <button id="closeBtn"> STOP </button>
+    <button id="closeBtn"
+      ><img src="/white-x.png" alt="oicone stop son" id="playicon" /></button
+    >
   </div>
 </div>
 
@@ -61,7 +67,7 @@ const { src } = Astro.props;
 
   startBtn.addEventListener("audiostart", () => {
     if (!audio.paused) {
-      playIcon.src = "/play-button.png";
+      playIcon.src = "/play-icon.png";
       return audio.pause();
     }
     if (audio.currentTime <= 0) {
@@ -69,7 +75,7 @@ const { src } = Astro.props;
       audio.currentTime = 0;
       volumeslider.value = "1";
     }
-    playIcon.src = "/pause.png";
+    playIcon.src = "/pause-white.png";
     audio.play();
   });
 
@@ -91,10 +97,10 @@ const { src } = Astro.props;
 
   playBtn.addEventListener("click", () => {
     if (!audio.paused) {
-      playIcon.src = "/play-button.png";
+      playIcon.src = "/play-icon.png";
       return audio.pause();
     }
-    playIcon.src = "/pause.png";
+    playIcon.src = "/pause-white.png";
     audio.play();
   });
 
@@ -125,9 +131,49 @@ const { src } = Astro.props;
 </script>
 
 <style scoped>
+  #mutebtn {
+    font-weight: 800;
+    font-size: 15px;
+  }
   #playicon {
     width: 40px;
     height: 40px;
     cursor: pointer;
+  }
+  button {
+    background: none;
+    border: none;
+    color: white;
+  }
+  .custom-audio-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .custom-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px; /* Optional: padding for better spacing */
+  }
+
+  .custom-controls > * {
+    margin: 0 10px; /* Optional: margin between elements */
+  }
+
+  input[type="range"] {
+    flex-grow: 1; /* Allows the range inputs to grow and fill available space */
+    margin: 0 10px; /* Margin for better spacing */
+  }
+
+  span {
+    white-space: nowrap; /* Prevents the text from wrapping */
+  }
+
+  button {
+    flex-shrink: 0; /* Prevents the buttons from shrinking */
   }
 </style>

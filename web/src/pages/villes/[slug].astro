@@ -6,6 +6,7 @@ import { Image } from "astro:assets";
 // @ts-ignore
 import type { Media, City } from "../../../../cms/src/generated-types.ts";
 import Galerie from "../../components/Galerie.astro";
+import Header from "../../components/Header.astro";
 
 
 const { slug } = Astro.params;
@@ -34,6 +35,7 @@ const medias: any[] = carousel?.medias?.map((media: any) => ({
     type: media.type,
     src: `${import.meta.env.CMS_URL}${media.url}`,
     slug: media.slug,
+    titre: media.identification.title,
 })) ?? []
 ---
 
@@ -43,7 +45,7 @@ const medias: any[] = carousel?.medias?.map((media: any) => ({
 
 <html>
   <main>
-    <div class="rectangle"></div>
+    <Header/>
     <section class="content">
       <Carrousel items={items!} />
 
@@ -130,7 +132,7 @@ const medias: any[] = carousel?.medias?.map((media: any) => ({
 
       width: 97.5vw;
       /* margin-top: 96px; */
-      margin: 100px auto 0 auto;
+      margin: 15px auto 0 auto;
     }
 
     .buttons {

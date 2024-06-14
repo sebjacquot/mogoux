@@ -2,7 +2,12 @@
 import BlocMedia from "./BlocMedia.astro";
 
 type Props = {
-  medias: { type: "image" | "audio"; src: string; slug: string }[];
+  medias: {
+    type: "image" | "audio";
+    src: string;
+    slug: string;
+    titre: string;
+  }[];
 };
 
 const { medias } = Astro.props;

@@ -3,6 +3,7 @@ import { ViewTransitions } from "astro:transitions";
 import "../styles/global.css";
 import { Image } from "astro:assets";
 import ImageFullscreen from "../components/ImageFullscreen.astro";
+import HeaderNoBg from "../components/Header_NoBg.astro";
 ---
 
 <html>
@@ -12,6 +13,7 @@ import ImageFullscreen from "../components/ImageFullscreen.astro";
   </head>
   <body>
     <main>
+      <HeaderNoBg />
       <section class="carousel">
         <div class="chapitrage">
           <div class="img-div">

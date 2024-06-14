@@ -1,0 +1,51 @@
+---
+import "../styles/global.css";
+---
+
+<body>
+  <div class="go-back" id="go-back">Retourner en arrière</div>
+</body>
+
+<script lang="js">
+  document.getElementById("go-back").addEventListener("click", function () {
+    window.history.back();
+  });
+</script>
+
+<style scoped>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--primary-font);
+  }
+
+  .go-back {
+    position: fixed;
+    top: 20px;
+    left: 15px;
+    color: var(--secondary-color);
+    padding: 10px 20px;
+    border-radius: 5px;
+    /* border: 1px solid var(--secondary-color); */
+    cursor: pointer;
+
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 600;
+    opacity: 0.9;
+
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.3s;
+  }
+
+  .go-back:hover {
+    opacity: 0.5;
+  }
+
+  .go-back::before {
+    content: "\2190"; /* Unicode for left arrow */
+    margin-right: 10px;
+  }
+</style>
