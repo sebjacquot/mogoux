@@ -1,9 +1,13 @@
 ---
-
+import Header_NoBg from "../components/Header_NoBg.astro";
 ---
 
 <html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
   <main>
+    <Header_NoBg />
     <img src="/Carte_test.jpg" alt="test" class="carte" id="img-original" />
     <div id="img-zoom" class="img-zoom-result"></div>
     <!-- <div id="img-zoom-lens" class="img-zoom-lens"></div> -->
@@ -20,7 +24,7 @@
     <a href="/villes/herimoncourt"
       ><img src="/pin.png" alt="pin" class="pin4 pin" /></a
     >
-    <a href="/villes/beaulieu"
+    <a href="/villes/beaulieu-valentigney"
       ><img src="/pin.png" alt="pin" class="pin5 pin" /></a
     >
     <a href="/villes/audincourt"
@@ -133,18 +137,18 @@
       background-position: 50% 50%;
       background-repeat: no-repeat;
       position: absolute;
-      border: 5px solid #804c4c;
+      border: 5px solid #242424;
       width: 300px;
       height: 300px;
-      background-size: 900%;
+      background-size: 1200%;
       top: 20px;
       right: 20px;
       z-index: 10;
     }
     .img-zoom-lens {
       position: absolute;
-      background: rgb(255, 0, 0, 0.5);
-      border: 1px solid #d4d4d4;
+      background: rgba(29, 25, 25, 0.5);
+      border: 1px solid #383838;
       width: 40px;
       height: 40px;
       z-index: 10;

@@ -1,0 +1,215 @@
+---
+import "../styles/global.css";
+---
+
+<script lang="js">
+  document.addEventListener("DOMContentLoaded", function () {
+    var burgerIcon = document.getElementById("burger-icon");
+    var menuBurger = document.getElementById("menu-burger");
+    var menuTitles = document.querySelectorAll(".menu-title");
+
+    burgerIcon.addEventListener("click", function () {
+      if (menuBurger.style.maxHeight === "0px") {
+        menuBurger.style.display = "block";
+        menuBurger.style.maxHeight = "100vh";
+      } else {
+        menuBurger.style.maxHeight = "0";
+        setTimeout(function () {
+          menuBurger.style.display = "none";
+        }, 300);
+      }
+    });
+
+    menuTitles.forEach(function (title) {
+      title.addEventListener("click", function () {
+        var menuLinks = this.nextElementSibling;
+        if (
+          menuLinks.style.maxHeight === "0px" ||
+          menuLinks.style.maxHeight === ""
+        ) {
+          menuLinks.style.maxHeight = menuLinks.scrollHeight + "px";
+          menuLinks.style.paddingTop = "10px";
+          menuLinks.style.paddingBottom = "10px";
+        } else {
+          menuLinks.style.maxHeight = "0";
+          menuLinks.style.paddingTop = "0px";
+          menuLinks.style.paddingBottom = "0px";
+        }
+      });
+    });
+  });
+</script>
+<body>
+  <div class="header">
+    <div class="burger-icon" id="burger-icon">
+      <div class="col">
+        <hr /><hr />
+      </div>
+    </div>
+  </div>
+  <div class="menu-burger" id="menu-burger">
+    <div class="menu-item">
+      <button class="menu-title">Accueil</button>
+      <div class="menu-links">
+        <a href="/">Accueil</a>
+        <a href="/navigation">Page de Navigation</a>
+        <a href="#">Lien 1-3</a>
+      </div>
+    </div>
+    <div class="menu-item">
+      <button class="menu-title">Mémoires Ouvrières</button>
+      <div class="menu-links">
+        <a href="/carte">Parcourir la carte</a>
+        <a href="/thematique">Thématiques</a>
+        <a href="#">Lien 2-3</a>
+      </div>
+    </div>
+    <div class="menu-item">
+      <button class="menu-title">Mémoires de l'Enclave</button>
+      <div class="menu-links">
+        <a href="/chapitre">Chapitrages</a>
+        <a href="/biographie">Biographie</a>
+      </div>
+    </div>
+    <div class="menu-item">
+      <button class="menu-title">Annexe</button>
+      <div class="menu-links">
+        <a href="#">Présentation du projet</a>
+        <a href="#">Mentions légales</a>
+        <a href="https://mshe.univ-fcomte.fr/" target="_blank">MSHE</a>
+        <a href="https://elliadd.univ-fcomte.fr/" target="_blank">ELLIADD</a>
+        <a href="https://fanum.univ-fcomte.fr/fanum/" target="_blank">Fanum</a>
+      </div>
+    </div>
+  </div>
+</body>
+
+<style scoped>
+  body {
+    margin: 0;
+    padding: 0;
+    padding-top: 80px; /* Prevent content from being hidden behind the header */
+    font-family: var(--primary-font);
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    padding-top: 80px; /* Prevent content from being hidden behind the header */
+    font-family: "Roboto", sans-serif; /* Remplacez par 'Graphik' si disponible */
+  }
+
+  .header {
+    background: #242424;
+    width: 3.7vw;
+    height: 80px;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+  }
+
+  .col {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .burger-icon {
+    font-size: 30px;
+    cursor: pointer;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    hr {
+      color: var(--secondary-color);
+      width: 30px;
+      height: 3px;
+      border-radius: 3px;
+      border: none;
+      margin: 0;
+      background: var(--secondary-color);
+      opacity: 0.9;
+    }
+
+    span {
+      font-size: 18px;
+      margin-left: 10px;
+      text-transform: uppercase;
+      font-weight: 800;
+      color: var(--secondary-color);
+      opacity: 0.9;
+    }
+  }
+
+  .menu-burger {
+    display: none;
+    width: 300px;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    background: #242424;
+    z-index: 999;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+  }
+
+  .menu-item {
+    margin-bottom: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+    font-size: 16px;
+    font-weight: bold;
+    min-height: 50px;
+    transition: all 0.4s ease-in-out;
+  }
+
+  .menu-item:first-of-type {
+    padding-top: 10px;
+  }
+
+  .menu-title {
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+    padding: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    color: var(--secondary-color);
+    opacity: 0.6;
+    font-weight: 600;
+    padding-left: 30px;
+  }
+
+  .menu-links {
+    padding: 0;
+    max-height: 0;
+    padding-left: 40px;
+    overflow: hidden;
+    background: #1a1a1a;
+
+    transition:
+      max-height 0.3s ease-in-out,
+      padding 0.3s ease-in-out;
+  }
+
+  .menu-links a {
+    display: block;
+    padding: 5px 10px;
+    color: var(--secondary-color);
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .menu-links a:hover {
+    text-decoration: underline;
+    opacity: 0.5;
+  }
+</style>

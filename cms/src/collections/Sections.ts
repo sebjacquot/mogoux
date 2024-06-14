@@ -8,6 +8,7 @@ export const Sections: CollectionConfig = {
   access: {
     read: () => true,
   },
+  defaultSort: "createdAt",
   fields: [
     {
       name: "name",
