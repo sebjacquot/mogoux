@@ -1,4 +1,5 @@
 ---
+import ImageFullscreen from "../../components/ImageFullscreen.astro";
 import SuggestionsCard from "../../components/SuggestionsCard.astro";
 import "../../styles/global.css";
 import { Image } from "astro:assets";
@@ -24,9 +25,7 @@ import { Image } from "astro:assets";
             confère une dimension quasi mythique et légendaire.
           </p>
           <div class="separation">
-            <div class="background">
-              <h3 class="date">Le 18 Jan 2024 à 07:30</h3>
-            </div>
+            <div class="background"></div>
           </div>
         </div>
       </div>
@@ -45,9 +44,9 @@ import { Image } from "astro:assets";
         class="fougere"
       /> -->
       <div class="image">
-        <img
+        <ImageFullscreen
           src="/images/Chapitres/Chapitre2/GOU_04_D_0004.jpg"
-          alt="images test"
+          legend="Reconstitution Serroz-Mülhenheim d’après des documents d’archives © Fonds Goux, GOU 04 D 0004"
         />
         <p>
           Reconstitution Serroz-Mülhenheim d’après des documents d’archives ©
@@ -72,9 +71,9 @@ import { Image } from "astro:assets";
 
       <h2 class="titres">Enclave et nébuleuse</h2>
       <div class="image">
-        <img
+        <ImageFullscreen
           src="/images/Chapitres/Captures/GOU_03_05_0020.PNG"
-          alt="images test"
+          legend=" Manuscrit des Mémoires, Chap. IV « La Bastille » © Fonds Goux, GOU 03 05 0020"
         />
         <p>
           Manuscrit des <span>Mémoires</span>, Chap. IV « La Bastille » © Fonds
@@ -114,16 +113,16 @@ import { Image } from "astro:assets";
 
       <h2 class="titres">Cimetière ou conservatoire</h2>
       <div class="image">
-        <img
+        <ImageFullscreen
           src="/images/Chapitres/Chapitre2/GOU_05_01_0031.jpg"
-          alt="images test"
+          legend="Usine d’Héricourt (1984) © Fonds Goux, GOU 05 01 0031"
         />
         <p>Usine d’Héricourt (1984) © Fonds Goux, GOU 05 01 0031</p>
       </div>
       <div class="image">
-        <img
+        <ImageFullscreen
           src="/images/Chapitres/Chapitre2/GOU_05_03_0027.jpg"
-          alt="images test"
+          legend="Usine de Fesches-le-Châtel (1984) © Fonds Goux, GOU 05 03 0027"
         />
         <p>Usine de Fesches-le-Châtel (1984) © Fonds Goux, GOU 05 03 0027</p>
       </div>
@@ -144,9 +143,9 @@ import { Image } from "astro:assets";
         </p>
       </div>
       <div class="image">
-        <img
+        <ImageFullscreen
           src="/images/Chapitres/Chapitre2/GOU_04_B_01_0003.jpg"
-          alt="images test"
+          legend=" Carte postale « Le Grand Charmont - Les Fougères - Montbéliard » envoyée par Hubert Truxler (1985) © Fonds Goux, GOU 04 B 01 0003"
         />
         <p>
           Carte postale « Le Grand Charmont - Les Fougères - Montbéliard »
@@ -154,9 +153,9 @@ import { Image } from "astro:assets";
         </p>
       </div>
       <div class="image">
-        <img
+        <ImageFullscreen
           src="/images/Chapitres/Chapitre2/GOU_05_01_0011.jpg"
-          alt="images test"
+          legend="Habitations d’Héricourt (1984) © Fonds Goux, GOU 05 01 0011"
         />
         <p>Habitations d’Héricourt (1984) © Fonds Goux, GOU 05 01 0011</p>
       </div>
@@ -185,7 +184,6 @@ import { Image } from "astro:assets";
     </section>
     <section class="credits">
       <div class="gauche">
-        <h3>Ex Machina</h3>
         <p>
           Écrits par <strong>Odile Roynette</strong>
         </p>

@@ -1,4 +1,5 @@
 ---
+import ImageFullscreen from "../../components/ImageFullscreen.astro";
 import SuggestionsCard from "../../components/SuggestionsCard.astro";
 import "../../styles/global.css";
 import { Image } from "astro:assets";
@@ -25,16 +26,14 @@ import { Image } from "astro:assets";
             temps
           </p>
           <div class="separation">
-            <div class="background">
-              <h3 class="date">Le 18 Jan 2024 à 07:30</h3>
-            </div>
+            <div class="background"></div>
           </div>
         </div>
       </div>
       <img
         class="img-cover"
         src="/images/Header_Chapitre/B_0406.jpg"
-        alt="Ken Loach"
+        alt="Monsieur Goux, écrivain du Temps"
       />
       <div class="overlay"></div>
     </section>
@@ -53,21 +52,29 @@ import { Image } from "astro:assets";
         </p>
       </div>
       <div class="img-short">
-        <img src="/images/Goux2011.PNG" alt="images test" />
+        <ImageFullscreen
+          src="/images/Goux2011.PNG"
+          legend="Jean-Paul Goux en 2011"
+        />
         <p>Jean-Paul Goux en 2011</p>
       </div>
       <div class="paragraphe">
         <p>
-          Son premier livre, Le Montreur d’ombres, est paru en 1977. En 2019, il
-          a publié Sourdes contrées. En 2016, il a obtenu le prix Marcel Aymé
-          pour son précédent roman, L’Ombre s’allonge. Son œuvre est avant tout
-          romanesque avec, en amont des <i>Mémoires de l’Enclave</i>, quatre
-          romans, et après cet ouvrage, deux trilogies : Les Champs de fouilles
-          (1989, 1995, 1999) et Les Quartiers d’hiver (2005, 2009, 2012).
+          Son premier livre, <i>Le Montreur d’ombres</i>, est paru en 1977. En
+          2019, il a publié <i>Sourdes contrées</i>. En 2016, il a obtenu le
+          prix Marcel Aymé pour son précédent roman, <i>L’Ombre s’allonge</i>.
+          Son œuvre est avant tout romanesque avec, en amont des <i
+            >Mémoires de l’Enclave</i
+          >, quatre romans, et après cet ouvrage, deux trilogies : <i>
+            Les Champs de fouilles
+          </i> (1989, 1995, 1999) et <i>Les Quartiers d’hiver</i> (2005, 2009, 2012).
         </p>
       </div>
       <div class="img-short">
-        <img src="/images/Goux2008.PNG" alt="images test" />
+        <ImageFullscreen
+          src="/images/Goux2008.PNG"
+          legend="Jean-Paul Goux en 2008"
+        />
         <p>Jean-Paul Goux en 2008</p>
       </div>
       <div class="paragraphe">
@@ -99,20 +106,24 @@ import { Image } from "astro:assets";
         </p>
       </div>
       <div class="image">
-        <img src="/images/GOU_04_B_08_0010.jpg" alt="images test" />
+        <ImageFullscreen
+          src="/images/Chapitres/Biographie/GOU_04_B_08_0010.jpg"
+          legend=" Plaquette accompagnant la 1re édition des Mémoires, GOU_04_B_08_0010"
+        />
         <p>
-          Plaquette accompagnant la 1<sup>re</sup> édition des <span>Mémoires</span>,
-          GOU_04_B_08_0010
+          Plaquette accompagnant la 1<sup>re</sup> édition des <span
+            >Mémoires</span
+          >, GOU_04_B_08_0010
         </p>
       </div>
       <div class="paragraphe">
         <p>
           Si le sous‑titre de <i>Mémoires de l’Enclave</i> n’est pas « roman » mais
           « récits d’industrie », le livre, « une sorte de récit d’enquête aux points
-          de vue très divers » (Plaquette accompagnant la 1<sup>re</sup> édition, 1986) est,
-          selon son auteur, « largement porté […], autant que par l’intérêt pour
-          la classe ouvrière au moment où tout paraît la chasser de l’Histoire, par
-          une fascination pour la voix » (<i>La Voix sans repos</i>, 2003).
+          de vue très divers » (Plaquette accompagnant la 1<sup>re</sup> édition,
+          1986) est, selon son auteur, « largement porté […], autant que par l’intérêt
+          pour la classe ouvrière au moment où tout paraît la chasser de l’Histoire,
+          par une fascination pour la voix » (<i>La Voix sans repos</i>, 2003).
           Ainsi le temps et la voix définissent une unité littéraire qui
           traverse l’ensemble de son œuvre et qu’explicite sa conception du
           roman. Le roman ne se définit pas, selon Goux, par l’intrigue mais par
@@ -129,7 +140,10 @@ import { Image } from "astro:assets";
         </p>
       </div>
       <div class="image">
-        <img src="/images/GOU_04_D_02_0007.jpg" alt="images test" />
+        <ImageFullscreen
+          src="/images/Chapitres/Biographie/GOU_04_D_02_007.jpg"
+          legend="Article Les Nouvelles Littéraires, 1986, Gou-04_D_02_008"
+        />
         <p>Article <i>Les Nouvelles Littéraires</i>, 1986, Gou-04_D_02_008</p>
       </div>
       <div class="paragraphe">
@@ -486,7 +500,7 @@ import { Image } from "astro:assets";
 
     p {
       font-family: var(--article-intro-font);
-      font-style: italic;
+      /* font-style: italic; */
       font-size: var(--texte-article-font-size);
       text-align: center;
       align-self: center;

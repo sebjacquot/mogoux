@@ -4,10 +4,9 @@ import "../styles/global.css";
 
 type Props = {
   src: string;
-  caption: string;
   legend: string;
 };
-const { src, caption, legend } = Astro.props;
+const { src, legend } = Astro.props;
 ---
 
 <script>
@@ -84,7 +83,7 @@ const { src, caption, legend } = Astro.props;
   });
 </script>
 
-<img data-enlargable src={src} alt={caption} draggable="false" title={legend} />
+<img data-enlargable src={src} alt={legend} draggable="false" title={legend} />
 
 <style scoped>
   img {

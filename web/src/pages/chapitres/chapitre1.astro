@@ -5,6 +5,7 @@ import { ViewTransitions } from "astro:transitions";
 
 import ImageFullScreen from "../../components/ImageFullscreen.astro";
 import SuggestionsCard from "../../components/SuggestionsCard.astro";
+import ImageFullscreen from "../../components/ImageFullscreen.astro";
 ---
 
 <html>
@@ -27,9 +28,7 @@ import SuggestionsCard from "../../components/SuggestionsCard.astro";
               coïncidences remarquables.
             </p>
             <div class="separation">
-              <div class="background">
-                <h3 class="date">Le 18 Jan 2024 à 07:30</h3>
-              </div>
+              <div class="background"></div>
             </div>
           </div>
         </div>
@@ -68,15 +67,8 @@ import SuggestionsCard from "../../components/SuggestionsCard.astro";
         </div>
         <div class="image">
           <ImageFullScreen
-            src="/images/Header_Chapitre/C1_GOU_P17-04_01-P.jpg"
-            caption="Ken Loach"
-            legend="Ken Loach"
-          />
-        </div>
-        <div class="image">
-          <img
             src="/images/Chapitres/Chapitre1/GOU_04_B_07_0001.jpg"
-            alt="images test"
+            legend="Première page du contrat signé entre la Cité et Jean-Paul Goux (21 avril 1984) © Fonds Goux"
           />
           <p>
             Première page du contrat signé entre la Cité et Jean-Paul Goux (21
@@ -99,17 +91,17 @@ import SuggestionsCard from "../../components/SuggestionsCard.astro";
           </p>
         </div>
         <div class="image">
-          <img
+          <ImageFullscreen
             src="/images/Chapitres/Captures/GOU_04_B_0015.PNG"
-            alt="images test"
+            legend="Note manuscrite de Jean-Paul Goux © Fonds Goux, GOU 04 B 0015"
           />
           <p>Note manuscrite de Jean-Paul Goux © Fonds Goux, GOU 04 B 0015</p>
         </div>
         <h2 class="titres">Les contextes d’une enquête</h2>
         <div class="image">
-          <img
+          <ImageFullScreen
             src="/images/Chapitres/Chapitre1/GOU_04_C_01_0006.jpg"
-            alt="images test"
+            legend="L’Est républicain (7 avril 1984) © Fonds Goux, GOU 04 C 01 0006"
           />
           <p>
             <span>L’Est républicain</span> (7 avril 1984) © Fonds Goux, GOU 04 C
@@ -144,9 +136,9 @@ import SuggestionsCard from "../../components/SuggestionsCard.astro";
           </p>
         </div>
         <div class="image">
-          <img
+          <ImageFullScreen
             src="/images/Chapitres/Chapitre1/GOU_04_C_01_0009.jpg"
-            alt="images test"
+            legend=" Une de L’Est républicain (7 avril 1984) © Fonds Goux, GOU 04 C 01 0009"
           />
           <p>
             Une de <span>L’Est républicain</span> (7 avril 1984) © Fonds Goux, GOU
@@ -177,7 +169,6 @@ import SuggestionsCard from "../../components/SuggestionsCard.astro";
       </div>
       <section class="credits">
         <div class="gauche">
-          <h3>Ex Machina</h3>
           <p>
             Écrits par <strong>Odile Roynette</strong>
           </p>
