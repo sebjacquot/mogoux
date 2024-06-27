@@ -7,5 +7,5 @@ export default defineConfig({
   adapter: node({ mode: "standalone" }),
   // tests for reverse proxy on fanum
    site: "https://fanum.univ-fcomte.fr"
-  ,  base: "/memoires-ouvrieres-goux"
+  //, base: "/memoires-ouvrieres-goux"
 });
