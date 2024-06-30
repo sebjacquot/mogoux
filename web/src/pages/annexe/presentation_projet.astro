@@ -1,0 +1,472 @@
+---
+import "../../styles/global.css";
+import { Image } from "astro:assets";
+import { ViewTransitions } from "astro:transitions";
+
+import ImageFullScreen from "../../components/ImageFullscreen.astro";
+import SuggestionsCard from "../../components/SuggestionsCard.astro";
+import Header from "../../components/Header.astro";
+---
+
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head><body>
+    <section>
+      <Header />
+      <section class="entete">
+        <div class="hero">
+          <h1 class="titre">Présentation du projet</h1>
+            <div class="separation">
+              <div class="background"></div>
+            </div>
+          </div>
+        </div>
+
+        <img
+          class="img-cover"
+          src="/images/Header_Chapitre/C1_GOU_P17-04_01-P.jpg"
+          alt="Ken Loach"
+          transition:name="test"
+        />
+        <div class="overlay"></div>
+      </section>
+      <div class="contenu-article">
+        <div class="paragraphe">
+          <p>Ce Webdocumentaire « Des mémoires ouvrières aux Mémoires de l’Enclave de Jean-Paul Goux » est une des pièces d’un vaste projet mené à l’Université de Franche-Comté autour de l’œuvre de Jean-Paul Goux par des Enseignants-chercheurs du laboratoire ELLIADD (UR 4661) dans le cadre de la MSHE Claude Nicolas Ledoux (UAR 3124).</p>
+          <p>Il s’appuie sur le travail originel du Professeur Andrée Chauvin-Vileno qui, travaillant avec des étudiants de sciences du langage sur les récits de vie d’ouvriers en 2015, a développé des liens privilégiés avec l’écrivain Jean-Paul Goux. Ce dernier a mis à disposition l’ensemble inédit des archives sonores et des dossiers préparatoires de son ouvrage Mémoires de l’Enclave (1986 republié en 2003), œuvre fondée sur une enquête de terrain et des entretiens menés auprès de la population ouvrière du Pays de Montbéliard dans les années 1984-1985.</p>
+          <p>Un projet scientifique plus large et interdisciplinaire s’est alors développé autour de cet ouvrage, faisant l’objet d’un financement des MSH/MSHE de Dijon et Besançon dans le cadre de l’AAP “Transmission, Travail, Pouvoir” par le biais du projet AME (Archives des Mémoires de l’Enclave). Ce projet comprenait notamment une première phase de numérisation et d’exploitation scientifique des archives confiées par l’écrivain. Une exposition et une journée d’étude ont été organisées à Besançon en novembre 2019, et l’exposition, intitulée « De l’enquête à l’œuvre : autour des Mémoires de l’Enclave de Jean-Paul Goux » a ensuite été présentée du 25 octobre au 26 novembre 2021 à la Bibliothèque de campus de Montbéliard. Avec le soutien du Pôle Thématique Lettres, Langue, Communication d’UBFC, un financement a permis la réalisation d’un documentaire, Mémoires d’ouvrières, présenté pour la première fois dans le cadre d’une nouvelle version de l’exposition sur les Mémoires de l’Enclave présentée à la MSH de Dijon entre novembre 2022 et janvier 2023.</p>
+          <p>Un nouveau projet, accepté et financé par la région Bourgogne – Franche-Comté, le projet PAG (Projet Archives Goux), porté par Pascal Lécroart, a permis de développer les actions de valorisation autour de ces archives. C’est dans ce cadre que Thomas Paquier, étudiant en Licence multimédia et de l’internet à l’IUT Nord Franche-Comté, a conçu la maquette de ce Webdocumentaire. Les ressources déjà exploitées lors des expositions ont été complétées par de nouveaux apports, en particulier l’ensemble des photographies réalisées par Gilles Choffé à l’occasion de la résidence de Jean-Paul Goux à Montbéliard en 1984-1985. Originellement prévu pour constituer un cahier photographique inclus dans Mémoires de l’Enclave puis en vue d’une exposition qui n’aura finalement pas lieu, cet ensemble de photographies offre des ressources exceptionnelles, à la fois comme témoignage du monde industriel du pays de Montbéliard dans les années 1984-1985, mais aussi comme pure réussite artistique. Photographe amateur, intéressé par la nature avant tout, ce jeune ouvrier de Peugeot avait pu, grâce à l’association la Cité – elle-même commanditrice de l’ouvrage de Jean-Paul Goux – développer sa passion pour la photographie avec un indéniable talent.</p>
+          <p>Le projet a été l’occasion de réadapter la matière déjà présente dans le cadre de l’exposition pour la partie Mémoires de l’Enclave. La partie Mémoires ouvrières a été conçue à partir des entretiens oraux réalisés en 1984-1985 par Jean-Paul Goux lors de sa résidence : la plupart ont été en effet enregistrés sur des cassettes audio qui ont ensuite été numérisées et remasterisées. Outre les photographies de Gilles Choffé, un travail de recherche complémentaire a permis de rassembler tout un ensemble de cartes postales et de photographies venant servir de contre-point aux témoignages oraux donnés partiellement à entendre. Quarante ans après la résidence de Jean-Paul Goux, c’est ainsi un moyen de replonger, via la mémoire des témoins, dans toute une histoire industrielle de la Franche-Comté particulièrement marquante et émouvante.</p>
+          <div class="team-list">
+              <h2>L’équipe :</h2>
+              <ul>
+                  <li>Quentin Arnoud, doctorant, UFC - ELLIADD</li>
+                  <li>Andrée Chauvin-Vileno, PU émérite, UFC - ELLIADD</li>
+                  <li>Thomas Dandin, Archiviste, UFC - ELLIADD</li>
+                  <li>Corinne Grenouillet, PU, Université de Strasbourg - CERIEL</li>
+                  <li>Yvon Houssais, PU, UFC - ELLIADD</li>
+                  <li>Sébastien Jacquot, Ingénieur d’études, UFC - ELLIADD</li>
+                  <li>Pascal Lécroart, PU, UFC - ELLIADD</li>
+                  <li>Sophie Mariani-Rousset , MCF, UFC - ELLIADD</li>
+                  <li>David Michon, Docteur - Partenaire</li>
+                  <li>Odile Roynette, PU, uB - LIR3S</li>
+              </ul>
+              <p>Conception de la maquette du Webdocumentaire : Thomas Paquier</p>
+        </div>
+      </div>
+      <section class="credits">
+        <div class="gauche">
+          <p>
+            Écrit par <strong>Odile Roynette</strong>
+          </p>
+          <p>
+            Droits photographiques : Fonds Archives Goux
+          </p>
+        </div>
+      </section>
+      <div class="footer"></div>
+    </section>
+  </body>
+
+  <style scoped>
+    .fougere {
+      width: 600px;
+      height: 600px;
+    }
+    @import url("https://fonts.cdnfonts.com/css/helvetica-neue-5");
+    * {
+      box-sizing: border-box;
+    }
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--bg-article-color);
+      position: relative;
+
+      overflow-x: hidden;
+    }
+    strong {
+      font-weight: bold;
+    }
+    i {
+      font-style: italic;
+    }
+
+    span {
+      font-style: normal !important;
+    }
+    .credits {
+      margin-bottom: 150px;
+    }
+    .gauche {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      font-family: var(--article-font);
+      font-weight: 300;
+
+      max-width: 1100px;
+      margin: 0 auto;
+
+      font-size: 13px;
+
+      h3 {
+        font-size: 20px;
+        line-height: 30px;
+        font-weight: 300;
+        font-family: var(--article-intro-font);
+        font-style: italic;
+
+        margin-bottom: 10px;
+      }
+    }
+
+    .suggestions-tag {
+      font-family: var(--article-intro-font);
+      font-size: 27px;
+      font-weight: 300;
+      font-style: italic;
+
+      display: flex;
+      justify-content: center;
+      color: #8d8d8d;
+
+      h4::after {
+        content: "";
+        display: block;
+        border: 1px solid #e4e4e4;
+        background: #e4e4e4;
+
+        height: 50px;
+        width: 1px;
+        margin: 10px auto 0px auto;
+      }
+    }
+
+    .suggestions {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      height: 220px;
+
+      gap: 20px;
+
+      background: #e4e4e4;
+
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+    .card {
+      width: 300px;
+      height: 180px;
+      overflow: hidden;
+      border-radius: 2px;
+      position: relative;
+
+      h3 {
+        font-size: 16px;
+        line-height: 18px;
+        font-family: var(--article-font); /* Helvetica */
+        font-weight: 600;
+
+        padding: 0 20px;
+
+        text-align: center;
+
+        color: white;
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        z-index: 20;
+      }
+      img {
+        max-width: 100%;
+        max-height: 100%;
+        transition: transform 0.3s ease;
+        position: relative;
+        scale: 1.2;
+        z-index: 1;
+      }
+      .overlay2 {
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.3);
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 5;
+      }
+    }
+
+    .tag-card {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      z-index: 5;
+      padding: 5px 10px;
+
+      border-radius: 2px;
+      background: #e72465 !important;
+      h4 {
+        width: auto !important;
+        text-transform: uppercase;
+        text-align: center;
+        color: #fff;
+        font-family: var(--article-font);
+        font-weight: bold;
+        font-size: 0.75rem;
+        line-height: 1rem;
+      }
+    }
+
+    /* .tag::before {
+    width: 100%;
+    height: 4px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    content: "";
+    border-radius: 2px;
+    -webkit-transition: all 0.2s ease-in;
+    -moz-transition: all 0.2s ease-in;
+    -o-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
+  } */
+    .footer {
+      background: var(--bg-color);
+      width: 100%;
+      height: 439px;
+
+      box-sizing: border-box;
+
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      z-index: 100;
+    }
+
+    .contenu-article {
+      padding-top: 50px;
+      padding-bottom: 50px;
+
+      font-family: var(--article-font);
+    }
+    .titres {
+      font-size: var(--titre-paragraphe-font-size);
+
+      font-weight: bold;
+      padding-bottom: 5px;
+
+      margin: 0 auto;
+      max-width: 700px;
+
+      color: rgb(22, 22, 22);
+    }
+    .paragraphe {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      max-width: 700px;
+      margin: 0 auto;
+
+      /* text-indent: 5%; */
+
+      color: #222222;
+
+      p {
+        margin-bottom: 20px;
+      }
+      p:last-of-type {
+        padding-bottom: 20px;
+      }
+
+      font-size: var(--texte-article-font-size);
+      line-height: 1.6;
+    }
+    .image {
+      display: flex;
+      flex-direction: column;
+      gap: 0px;
+      max-width: 500px;
+      /* max-width: 850px; */
+      /* max-width: 1000px; */
+      margin: 0 auto;
+
+      padding-bottom: 25px;
+
+      p {
+        font-size: var(--legende-font-size);
+        align-self: flex-end;
+        font-style: italic;
+        color: #666666;
+      }
+    }
+
+    .img-short {
+      display: flex;
+      flex-direction: column;
+      gap: 0px;
+      max-width: 400px;
+      /* max-width: 850px; */
+      /* max-width: 1000px; */
+      margin: 0 auto;
+
+      padding-bottom: 25px;
+
+      p {
+        color: #666666;
+      }
+    }
+    .separation {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-top: 20px;
+
+      h3 {
+        font-size: var(--date-article-font-size);
+      }
+
+      .background {
+        padding: 0 10px;
+        background: var(--bg-article-color);
+        z-index: 3;
+      }
+    }
+
+    .separation::after {
+      content: " ";
+      border-bottom: 1px solid #d9d9d9;
+      display: block;
+      width: 100%;
+      position: absolute;
+      top: 10px;
+      z-index: 0;
+    }
+    .intro {
+      background: var(--bg-article-color);
+      width: 100%;
+      max-width: 75em;
+      height: 156px;
+      margin-bottom: 0;
+      margin-top: 80px;
+      padding: 20px 40px 0px 40px;
+      /* padding: 100px; */
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-content: center;
+
+      p {
+        font-family: var(--article-intro-font);
+        /* font-style: italic; */
+        font-size: var(--texte-article-font-size);
+        text-align: center;
+        align-self: center;
+      }
+    }
+    .entete {
+      position: relative;
+      width: 100%;
+      height: 75vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      margin-top: 80px;
+    }
+    .rectangle {
+      background: #242424;
+      width: 100vw;
+      height: 80px;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+    }
+    .img-cover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 75vh;
+      object-fit: cover;
+      object-position: 0 50%;
+      z-index: 1;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 75vh;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 2;
+    }
+    main {
+      position: relative;
+      width: 100%;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .hero {
+      background-image: url("img/Header_Chapitre/C1_GOU_P17-04_01-P.jpg");
+      font-family: "Graphik", sans-serif;
+      height: 75vh;
+      /* margin-top: 150px; */
+      z-index: 100;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+
+      .tag {
+        font-weight: bold;
+        color: var(--secondary-color);
+        font-size: 12px !important;
+        line-height: 19.2px;
+        text-transform: uppercase;
+        padding: 1px 10px 1px 10px;
+        border-radius: 4px;
+        margin-bottom: 30px;
+
+        background-color: #e72465;
+      }
+
+      .titre {
+        font-weight: bold;
+        color: var(--secondary-color);
+        font-size: 60px !important;
+        line-height: 60px !important;
+        /* margin-bottom: 5px; */
+      }
+      .soustitre {
+        font-weight: bold;
+        color: var(--secondary-color);
+        font-size: 30px !important;
+        font-weight: 300;
+      }
+      .soustitre::before {
+        content: "";
+        display: block;
+        border-left: 1px solid #d9d9d9;
+        height: 50px;
+        width: 1px;
+        margin: 20px auto 5px auto;
+      }
+    }
+  </style>
+</html>
