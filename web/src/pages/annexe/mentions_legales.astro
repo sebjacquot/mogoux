@@ -30,7 +30,6 @@ import Header from "../../components/Header.astro";
         <img
           class="img-cover"
           src="/images/Header_Chapitre/A1_0015.jpg"
-          alt="Ken Loach"
           transition:name="test"
         />
         <div class="overlay"></div>
@@ -40,10 +39,10 @@ import Header from "../../components/Header.astro";
           <p>Ce Webdocumentaire a été conçu à partir des archives confiées par Jean-Paul Goux.
           Il a été complété par différentes ressources photographiques provenant :
             <ul>
-                  <li>- de Gilles Choffé qui, avec une extrême générosité, a bien voulu nous confier l'ensemble de ses
+                  <li>de Gilles Choffé qui, avec une extrême générosité, a bien voulu nous confier l'ensemble de ses
 archives constituées autour de la résidence de Jean-Paul Goux à Montbéliard en 1984-1986, avec les droits afférents</li>
-                  <li>- de l'Association du Patrimoine Bethoncourtois</li>
-                  <li>- du Fonds de dotation Peugeot pour la mémoire de l'histoire industrielle</li>
+                  <li>de l'Association du Patrimoine Bethoncourtois</li>
+                  <li>du Fonds de dotation Peugeot pour la mémoire de l'histoire industrielle</li>
                  
               </ul>
         </div>
@@ -60,6 +59,16 @@ archives constituées autour de la résidence de Jean-Paul Goux à Montbéliard 
   </body>
 
   <style scoped>
+  ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    padding-left: 30px;
+/*    li {
+      text-transform: lowercase;
+    }*/
+  }
+
+
     .fougere {
       width: 600px;
       height: 600px;
