@@ -3,7 +3,7 @@
 ## Deploy
 
 ```sh
-git clone git@github.com/PaquierThomas/Gou.git
+git clone https://github.com/sebjacquot/mogoux
 
 cp web/.env.example web/.env
 cp cms/.env.example cms/.env
