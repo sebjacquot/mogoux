@@ -1,5 +1,6 @@
 import payload from "payload";
 import { CollectionConfig } from "payload/types";
+import checkSlugExists from "../hooks/check-slug-exists";
 
 export const Medias: CollectionConfig = {
   slug: "medias",
@@ -165,6 +166,7 @@ export const Medias: CollectionConfig = {
       type: "text",
       required: true,
       unique: true,
+      hooks: { beforeChange: [checkSlugExists] }
     },
 
     {

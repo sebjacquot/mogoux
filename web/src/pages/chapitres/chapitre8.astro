@@ -1,610 +1,200 @@
 ---
-import HeaderNoBg from "../../components/Header_NoBg.astro";
 import ImageFullscreen from "../../components/ImageFullscreen.astro";
 import SuggestionsCard from "../../components/SuggestionsCard.astro";
-import "../../styles/global.css";
-import { Image } from "astro:assets";
+import ImageTooltip from "../../components/ImageTooltip.astro";
+import Layout from "../../layouts/Layout.astro";
 ---
 
-<head>
-  <meta charset="UTF-8" />
-</head>
-
-<html>
-  <main>
-    <HeaderNoBg />
-    <section class="entete" title="Photographie prise lors d'une séance de dédicaces au musée Japy à Beaucourt en avril 1986 au moment de la parution des Mémoires de l'Enclave. Photographie de Gilles Choffé">
-      <div class="hero">
-        <h2 class="tag">Chapitre 8</h2>
-        <h1 class="titre">Du manuscrit au(x) livre(s)</h1>
-        <h2 class="soustitre">Editions et réceptions</h2>
-        <div class="intro">
-          <p>
-            <i>Mémoires de l’Enclave</i> est un ouvrage qui, au sens propre, initialement,
-            dérange : Flammarion, qui avait édité les deux précédents romans de Goux,
-            n’en veut pas et une certaine presse communiste le réprouve. Edité chez
-            Mazarine en 1986, l’ouvrage est réédité par Actes sud en 2003 et a fait,
-            depuis, école.
-          </p>
-          <div class="separation">
-            <div class="background"></div>
-          </div>
+<Layout title="Chapitre 8">
+    <section class="entete">
+        <div class="hero">
+            <h2 class="tag">Chapitre 8</h2>
+            <h1 class="titre">Du manuscrit au(x) livre(s)</h1>
+            <h2 class="soustitre">Editions et réceptions</h2>
+            <div class="intro">
+                <p>
+                    <i>Mémoires de l’Enclave</i> est un ouvrage qui, au sens propre, initialement,
+                    dérange : Flammarion, qui avait édité les deux précédents romans de Goux,
+                    n’en veut pas et une certaine presse communiste le réprouve. Edité chez
+                    Mazarine en 1986, l’ouvrage est réédité par Actes sud en 2003 et a fait,
+                    depuis, école.
+                </p>
+                <div class="separation">
+                    <div class="background"></div>
+                </div>
+            </div>
         </div>
-      </div>
-      <img
-        class="img-cover"
-        src="/images/Header_Chapitre/C8_GOU_P23-04_05-P.jpg"
-        alt="Ken Loach"
-      />
+
+        <ImageTooltip
+                legend="Photographie prise lors d'une séance de dédicaces au musée Japy à Beaucourt en avril 1986 au moment de la parution des Mémoires de l'Enclave. Photographie de Gilles Choffé"
+                src="/images/Header_Chapitre/C8_GOU_P23-04_05-P.jpg"
+        />
+
     </section>
     <div class="overlay"></div>
-  </main>
-  <section class="contenu-article">
-    <!-- <Image
-        src={"/images/cover_chapitre/0096.jpg"}
-        alt={"Jean-Paul Goux"}
-        class="fougere"
-      /> -->
-    <h2 class="titres">
-      Le choix de l’éditeur : de Flammarion aux éditions Mazarine
-    </h2>
-   
+    </main>
+    <section class="contenu-article">
+        <h2 class="titres">
+            Le choix de l’éditeur : de Flammarion aux éditions Mazarine
+        </h2>
 
-    <div class="paragraphe">
-      <p>
-        « Les commanditaires ne sont pas éditeurs ». C’est en ces termes que
-        Jean-Paul Goux désigne le travail qui reste à accomplir, fin 1985, pour
-        publier son manuscrit. Les échanges avec son premier éditeur,
-        Flammarion, sont tendus. Celui-ci ne comprend pas les enjeux du moment
-        qui sont doubles. D’une part, assumer l’originalité d’un travail situé
-        entre histoire et littérature, tout comme l’effort entrepris pour
-        transformer documents et témoignages en une matière littéraire. D’autre
-        part, s’adresser à un lectorat plus large que celui, demeuré
-        confidentiel, de ses quatre premiers romans. Or, en lui demandant de
-        réduire sensiblement le volume de son manuscrit, Flammarion manifeste
-        une incompréhension qui détermine la rupture. Goux exprime ainsi son
-        refus de transiger et de s’accommoder de contingences extérieures à ce
-        qui fait la littérature. Il se tourne alors vers l’éditeur Olivier
-        Cohen, qui l’accueille aux éditions Mazarine.
-      </p>
-    </div>
- <div class="image">
-      <ImageFullscreen
-        src="/images/Chapitres/Chapitre8/GOU_04_B_0123.jpg"
-        legend="Lettre de Jean-Paul Goux à Oliver Cohen, le 25 novembre 1985 (extrait)"
-      />
-      <p>
-        Lettre de Jean-Paul Goux à Oliver Cohen, le 25 novembre 1985 (extrait)
-        © GOU 04 B 0123
-      </p>
-    </div>
-    <h2 class="titres">Éloges de la complexité</h2>
-    <div class="paragraphe">
-      <p>
-        Une quinzaine d’articles parus dans la presse écrite entre avril et
-        juillet 1986 témoignent de l’intérêt suscité par le livre.
-      </p>
-    </div>
-    <div class="image">
-      <ImageFullscreen
-        src="/images/Chapitres/Chapitre8/GOU_04_D_0022.jpg"
-        legend="Compte-rendu de Laurent Lemire dans La Croix (2 juin 1986)"
-      />
-      <p>
-        Compte-rendu de Laurent Lemire dans <span>La Croix</span> (2 juin 1986) © Fonds
-        Goux, GOU 4 D 0022
-      </p>
-    </div>
+        <div class="paragraphe">
+            <p>
+                « Les commanditaires ne sont pas éditeurs ». C’est en ces termes que
+                Jean-Paul Goux désigne le travail qui reste à accomplir, fin 1985, pour
+                publier son manuscrit. Les échanges avec son premier éditeur,
+                Flammarion, sont tendus. Celui-ci ne comprend pas les enjeux du moment
+                qui sont doubles. D’une part, assumer l’originalité d’un travail situé
+                entre histoire et littérature, tout comme l’effort entrepris pour
+                transformer documents et témoignages en une matière littéraire. D’autre
+                part, s’adresser à un lectorat plus large que celui, demeuré
+                confidentiel, de ses quatre premiers romans. Or, en lui demandant de
+                réduire sensiblement le volume de son manuscrit, Flammarion manifeste
+                une incompréhension qui détermine la rupture. Goux exprime ainsi son
+                refus de transiger et de s’accommoder de contingences extérieures à ce
+                qui fait la littérature. Il se tourne alors vers l’éditeur Olivier
+                Cohen, qui l’accueille aux éditions Mazarine.
+            </p>
+        </div>
+        <div class="image">
+            <ImageFullscreen
+                    src="/images/Chapitres/Chapitre8/GOU_04_B_0123.jpg"
+                    legend="Lettre de Jean-Paul Goux à Oliver Cohen, le 25 novembre 1985 (extrait)"
+            />
+            <p>
+                Lettre de Jean-Paul Goux à Oliver Cohen, le 25 novembre 1985 (extrait)
+                © GOU 04 B 0123
+            </p>
+        </div>
+        <h2 class="titres">Éloges de la complexité</h2>
+        <div class="paragraphe">
+            <p>
+                Une quinzaine d’articles parus dans la presse écrite entre avril et
+                juillet 1986 témoignent de l’intérêt suscité par le livre.
+            </p>
+        </div>
+        <div class="image">
+            <ImageFullscreen
+                    src="/images/Chapitres/Chapitre8/GOU_04_D_0022.jpg"
+                    legend="Compte-rendu de Laurent Lemire dans La Croix (2 juin 1986)"
+            />
+            <p>
+                Compte-rendu de Laurent Lemire dans <span>La Croix</span> (2 juin 1986) © Fonds
+                Goux, GOU 4 D 0022
+            </p>
+        </div>
 
-    <div class="paragraphe">
-      <p>
-        Les critiques parues dans la presse nationale, la presse régionale et
-        dans les magazines littéraires, soulignent toutes l’originalité d’un
-        texte « inclassable » (Laurent Lemire dans <i>La Croix</i> du 2 juin 1986).
-        De son côté, Monique Houssin, dans <i>L’Humanité-Dimanche</i> du 22 juin 1986, parle 
-        « d’une ethnologie littéraire contemporaine ». De manière significative, le
-        livre suscite une lecture qui déplace les frontières traditionnelles entre
-        les disciplines. C’est un historien du mouvement social, Patrick Fridenson,
-        qui consacre un article, élogieux, à l’ouvrage dans <i>Libération</i>,
-        tandis que le critique littéraire Arnaud Malgorn, dans <i>La Quinzaine
-        littéraire</i>, insiste plutôt sur la dimension documentaire du livre.
-      </p>
-      <p>
-        La critique met également en relief un aspect essentiel : la mise en
-        valeur du caractère clairement « consenti » de la domination subie par le monde
-        ouvrier dans l’Enclave. François Moulin, dans une série d’articles pour <i
-          >L’Est républicain</i
-        >, qualifie Goux de « montreur d’ombres », en référence à son premier
-        roman, paru en 1977, et insiste sur la dimension dérangeante d’un livre
-        qui brouille les schémas réducteurs.
-      </p>
-    </div>
+        <div class="paragraphe">
+            <p>
+                Les critiques parues dans la presse nationale, la presse régionale et
+                dans les magazines littéraires, soulignent toutes l’originalité d’un
+                texte « inclassable » (Laurent Lemire dans <i>La Croix</i> du 2 juin 1986).
+                De son côté, Monique Houssin, dans <i>L’Humanité-Dimanche</i> du 22 juin 1986, parle
+                « d’une ethnologie littéraire contemporaine ». De manière significative, le
+                livre suscite une lecture qui déplace les frontières traditionnelles entre
+                les disciplines. C’est un historien du mouvement social, Patrick Fridenson,
+                qui consacre un article, élogieux, à l’ouvrage dans <i>Libération</i>,
+                tandis que le critique littéraire Arnaud Malgorn, dans <i>La Quinzaine
+                littéraire</i>, insiste plutôt sur la dimension documentaire du livre.
+            </p>
+            <p>
+                La critique met également en relief un aspect essentiel : la mise en
+                valeur du caractère clairement « consenti » de la domination subie par le monde
+                ouvrier dans l’Enclave. François Moulin, dans une série d’articles pour <i
+            >L’Est républicain</i
+            >, qualifie Goux de « montreur d’ombres », en référence à son premier
+                roman, paru en 1977, et insiste sur la dimension dérangeante d’un livre
+                qui brouille les schémas réducteurs.
+            </p>
+        </div>
 
-    <h2 class="titres">Une voix dérangeante</h2>
-  
-    <div class="paragraphe">
-      <p>
-        Trois articles parus dans la presse militante, <i>L’Unité</i>, <i>Force ouvrière
-        hebdo</i> et <i>M mensuel</i>, marxisme mouvement, témoignent du trouble suscité
-        par l’ouvrage chez les militants d’extrême gauche.
-      </p>
-    </div>
-  <div class="image">
-      <ImageFullscreen
-        src="/images/Chapitres/Chapitre8/GOU_04_D_0012.jpg"
-        legend="Compte-rendu d’Henri Lefebvre dans M mensuel, marxisme mouvement (extrait)"
-      />
-      <p>
-        Compte-rendu d’Henri Lefebvre dans <span>M mensuel, marxisme mouvement</span>
-        (extrait) © Fonds Goux, GOU 04 D 0012
-      </p>
-    </div>
-    <div class="paragraphe">
-      <p>
-        Le plus sévère est alors l’intellectuel communiste Henri Lefebvre. Il
-        reproche à Goux d’avoir oublié son commanditaire, la Cité, et derrière
-        elle le combat des militants communistes – Paul Cèbe en tête – pour
-        rendre visible la condition ouvrière en Franche-Comté, à la Rhodiaceta
-        de Besançon (Chris Marker) ou aux usines Peugeot de Sochaux (les groupes
-        Medvedkine). Selon lui, Goux est trop extérieur au monde qu’il décrit et
-        le témoin « ne se fait pas assez égorger ». Ces crispations montrent
-        combien ce qui touche au mouvement ouvrier et à ses luttes reste très
-        sensible au milieu des années 1980 et expliquent cette réception
-        réservée dans la presse militante.
-      </p>
-    </div>
-    <div class="image">
-      <ImageFullscreen
-        src="/images/Chapitres/Chapitre9/couverture.jpg"
-        legend="1re de couverture de l’édition de poche des Mémoires de l’Enclave, Actes Sud, 2003"
-      />
-      <p>
-        1<sup>re</sup> de couverture de l’édition de poche des <span>Mémoires de l’Enclave</span>,
-        Actes Sud, 2003
-      </p>
-    </div>
-    <div class="paragraphe">
-      <p>
-        Dix-sept ans plus tard, en 2003, l’ouvrage est réédité au format de
-        poche chez Actes Sud dans la collection « Babel ». Entre-temps,
-        l’écrivain s’est imposé comme une des voix majeures du roman
-        contemporain. Sa réflexion sur le temps, sur les voix individuelles et
-        sur la mémoire collective, poursuivie dans ses romans ultérieurs,
-        souligne rétrospectivement la cohérence et l’actualité de l’entreprise
-        menée dans les <i>Mémoires de l’Enclave</i>. Elle trouve des échos dans la
-        création contemporaine, notamment chez un écrivain comme François Bon,
-        auteur de <i>Daewoo</i> en 2004.
-      </p>
-    </div>
-  </section>
-  <section class="credits">
-    <div class="gauche">
-      <p>
-        Écrit par <strong>Odile Roynette</strong>
-      </p>
-      <p>
-        Droits photographiques : Fonds Archives Goux
-      </p>
-    </div>
-  </section>
-  <div class="suggestions-tag"><h4>Suggestions</h4></div>
-  <section class="suggestions">
-    <SuggestionsCard
-      titre="La fabrique du texte"
-      numero_chapitre="7"
-      lien_image="C7_GOU_P17-05_04-P.jpg"
-    />
-    <SuggestionsCard
-      titre="Le fonds photographique"
-      numero_chapitre="9"
-      lien_image="C9_GOU_A_08_04_083.jpg"
-    />
-    <SuggestionsCard
-      titre="Une commande de la cité"
-      numero_chapitre="1"
-      lien_image="C1_GOU_P17-04_01-P.jpg"
-    />
-  </section>
-  <div class="footer"></div>
-</html>
+        <h2 class="titres">Une voix dérangeante</h2>
 
-<style scoped>
-  .fougere {
-    width: 600px;
-    height: 600px;
-  }
-  @import url("https://fonts.cdnfonts.com/css/helvetica-neue-5");
-  * {
-    box-sizing: border-box;
-  }
-  html,
-  body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--bg-article-color);
-    position: relative;
+        <div class="paragraphe">
+            <p>
+                Trois articles parus dans la presse militante, <i>L’Unité</i>, <i>Force ouvrière
+                hebdo</i> et <i>M mensuel</i>, marxisme mouvement, témoignent du trouble suscité
+                par l’ouvrage chez les militants d’extrême gauche.
+            </p>
+        </div>
+        <div class="image">
+            <ImageFullscreen
+                    src="/images/Chapitres/Chapitre8/GOU_04_D_0012.jpg"
+                    legend="Compte-rendu d’Henri Lefebvre dans M mensuel, marxisme mouvement (extrait)"
+            />
+            <p>
+                Compte-rendu d’Henri Lefebvre dans <span>M mensuel, marxisme mouvement</span>
+                (extrait) © Fonds Goux, GOU 04 D 0012
+            </p>
+        </div>
+        <div class="paragraphe">
+            <p>
+                Le plus sévère est alors l’intellectuel communiste Henri Lefebvre. Il
+                reproche à Goux d’avoir oublié son commanditaire, la Cité, et derrière
+                elle le combat des militants communistes – Paul Cèbe en tête – pour
+                rendre visible la condition ouvrière en Franche-Comté, à la Rhodiaceta
+                de Besançon (Chris Marker) ou aux usines Peugeot de Sochaux (les groupes
+                Medvedkine). Selon lui, Goux est trop extérieur au monde qu’il décrit et
+                le témoin « ne se fait pas assez égorger ». Ces crispations montrent
+                combien ce qui touche au mouvement ouvrier et à ses luttes reste très
+                sensible au milieu des années 1980 et expliquent cette réception
+                réservée dans la presse militante.
+            </p>
+        </div>
+        <div class="image">
+            <ImageFullscreen
+                    src="/images/Chapitres/Chapitre9/couverture.jpg"
+                    legend="1re de couverture de l’édition de poche des Mémoires de l’Enclave, Actes Sud, 2003"
+            />
+            <p>
+                1<sup>re</sup> de couverture de l’édition de poche des <span>Mémoires de l’Enclave</span>,
+                Actes Sud, 2003
+            </p>
+        </div>
+        <div class="paragraphe">
+            <p>
+                Dix-sept ans plus tard, en 2003, l’ouvrage est réédité au format de
+                poche chez Actes Sud dans la collection « Babel ». Entre-temps,
+                l’écrivain s’est imposé comme une des voix majeures du roman
+                contemporain. Sa réflexion sur le temps, sur les voix individuelles et
+                sur la mémoire collective, poursuivie dans ses romans ultérieurs,
+                souligne rétrospectivement la cohérence et l’actualité de l’entreprise
+                menée dans les <i>Mémoires de l’Enclave</i>. Elle trouve des échos dans la
+                création contemporaine, notamment chez un écrivain comme François Bon,
+                auteur de <i>Daewoo</i> en 2004.
+            </p>
+        </div>
+    </section>
+    <section class="credits">
+        <div class="gauche">
+            <p>
+                Écrit par <strong>Odile Roynette</strong>
+            </p>
+            <p>
+                Droits photographiques : Fonds Archives Goux
+            </p>
+        </div>
+    </section>
+    <div class="suggestions-tag"><h4>Suggestions</h4></div>
+    <section class="suggestions">
+        <SuggestionsCard
+                titre="La fabrique du texte"
+                numero_chapitre="7"
+                lien_image="C7_GOU_P17-05_04-P.jpg"
+        />
+        <SuggestionsCard
+                titre="Le fonds photographique"
+                numero_chapitre="9"
+                lien_image="C9_GOU_A_08_04_083.jpg"
+        />
+        <SuggestionsCard
+                titre="Une commande de la cité"
+                numero_chapitre="1"
+                lien_image="C1_GOU_P17-04_01-P.jpg"
+        />
+    </section>
 
-    overflow-x: hidden;
-  }
-  strong {
-    font-weight: bold;
-  }
-  i {
-    font-style: italic;
-  }
-
-  span {
-      font-style: normal !important;
-    }
-
-  .credits {
-    margin-bottom: 150px;
-  }
-  .gauche {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    font-family: var(--article-font);
-    font-weight: 300;
-
-    max-width: 1100px;
-    margin: 0 auto;
-
-    font-size: 13px;
-
-    h3 {
-      font-size: 20px;
-      line-height: 30px;
-      font-weight: 300;
-      font-family: var(--article-intro-font);
-      font-style: italic;
-
-      margin-bottom: 10px;
-    }
-  }
-
-  .suggestions-tag {
-    font-family: var(--article-intro-font);
-    font-size: 27px;
-    font-weight: 300;
-    font-style: italic;
-
-    display: flex;
-    justify-content: center;
-    color: #8d8d8d;
-
-    h4::after {
-      content: "";
-      display: block;
-      border: 1px solid #e4e4e4;
-      background: #e4e4e4;
-
-      height: 50px;
-      width: 1px;
-      margin: 10px auto 0px auto;
-    }
-  }
-
-  .suggestions {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    height: 220px;
-
-    gap: 20px;
-
-    background: #e4e4e4;
-
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
-
-  .card {
-    width: 300px;
-    height: 180px;
-    overflow: hidden;
-    border-radius: 2px;
-    position: relative;
-
-    h3 {
-      font-size: 16px;
-      line-height: 18px;
-      font-family: var(--article-font); /* Helvetica */
-      font-weight: 600;
-
-      padding: 0 20px;
-
-      text-align: center;
-
-      color: white;
-      position: absolute;
-      bottom: 10px;
-      left: 0;
-      z-index: 20;
-    }
-    img {
-      max-width: 100%;
-      max-height: 100%;
-      transition: transform 0.3s ease;
-      position: relative;
-      scale: 1.2;
-      z-index: 1;
-    }
-    .overlay2 {
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.3);
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 5;
-    }
-  }
-
-  .tag-card {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    z-index: 5;
-    padding: 5px 10px;
-
-    border-radius: 2px;
-    background: #e72465 !important;
-    h4 {
-      width: auto !important;
-      text-transform: uppercase;
-      text-align: center;
-      color: #fff;
-      font-family: var(--article-font);
-      font-weight: bold;
-      font-size: 0.75rem;
-      line-height: 1rem;
-    }
-  }
-
-  /* .tag::before {
-    width: 100%;
-    height: 4px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    content: "";
-    border-radius: 2px;
-    -webkit-transition: all 0.2s ease-in;
-    -moz-transition: all 0.2s ease-in;
-    -o-transition: all 0.2s ease-in;
-    transition: all 0.2s ease-in;
-  } */
-  .footer {
-    background: var(--bg-color);
-    width: 100%;
-    height: 439px;
-
-    box-sizing: border-box;
-
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-    z-index: 100;
-  }
-
-  .contenu-article {
-    padding-top: 50px;
-    padding-bottom: 50px;
-
-    font-family: var(--article-font);
-  }
-  .titres {
-    font-size: var(--titre-paragraphe-font-size);
-
-    font-weight: bold;
-    padding-bottom: 5px;
-
-    margin: 0 auto;
-    max-width: 700px;
-
-    color: rgb(22, 22, 22);
-  }
-  .paragraphe {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: start;
-    max-width: 700px;
-    margin: 0 auto;
-
-    /* text-indent: 5%; */
-
-    color: #222222;
-
-    p {
-      margin-bottom: 20px;
-    }
-    p:last-of-type {
-      padding-bottom: 20px;
-    }
-
-    font-size: var(--texte-article-font-size);
-    line-height: 1.6;
-  }
-  .image {
-    display: flex;
-    flex-direction: column;
-    gap: 0px;
-    max-width: 500px;
-    /* max-width: 850px; */
-    /* max-width: 1000px; */
-    margin: 0 auto;
-
-    padding-bottom: 25px;
-
-    p {
-      font-size: var(--legende-font-size);
-      align-self: flex-end;
-      font-style: italic;
-      color: #666666;
-    }
-  }
-
-  .img-short {
-    display: flex;
-    flex-direction: column;
-    gap: 0px;
-    max-width: 400px;
-    /* max-width: 850px; */
-    /* max-width: 1000px; */
-    margin: 0 auto;
-
-    padding-bottom: 25px;
-
-    p {
-      color: #666666;
-    }
-  }
-  .separation {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    margin-top: 20px;
-
-    h3 {
-      font-size: var(--date-article-font-size);
-    }
-
-    .background {
-      padding: 0 10px;
-      background: var(--bg-article-color);
-      z-index: 3;
-    }
-  }
-
-  .separation::after {
-    content: " ";
-    border-bottom: 1px solid #d9d9d9;
-    display: block;
-    width: 100%;
-    position: absolute;
-    top: 10px;
-    z-index: 0;
-  }
-  .intro {
-    background: var(--bg-article-color);
-    width: 100%;
-    max-width: 75em;
-    height: 156px;
-    margin-bottom: 0;
-    margin-top: 80px;
-    padding: 20px 40px 0px 40px;
-    /* padding: 100px; */
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-
-    p {
-      font-family: var(--article-intro-font);
-      /* font-style: italic; */
-      font-size: var(--texte-article-font-size);
-      text-align: center;
-      align-self: center;
-    }
-  }
-  .entete {
-    position: relative;
-    width: 100%;
-    height: 75vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-  }
-  .rectangle {
-    background: #242424;
-    width: 100vw;
-    height: 80px;
-    position: fixed;
-    z-index: 1000;
-    top: 0;
-    left: 0;
-  }
-  .img-cover {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 75vh;
-    object-fit: cover;
-    object-position: 0 33%;
-    z-index: 1;
-  }
-
-  .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 75vh;
-    background: rgba(0, 0, 0, 0.4);
-    z-index: 2;
-  }
-  main {
-    position: relative;
-    width: 100%;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .hero {
-    background-image: url("img/kenloach.jpg");
-    font-family: "Graphik", sans-serif;
-    height: 75vh;
-    /* margin-top: 150px; */
-    z-index: 100;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-
-    .tag {
-      font-weight: bold;
-      color: var(--secondary-color);
-      font-size: 12px !important;
-      line-height: 19.2px;
-      text-transform: uppercase;
-      padding: 1px 10px 1px 10px;
-      border-radius: 4px;
-      margin-bottom: 30px;
-
-      background-color: #e72465;
-    }
-
-    .titre {
-      font-weight: bold;
-      color: var(--secondary-color);
-      font-size: 60px !important;
-      line-height: 60px !important;
-      /* margin-bottom: 5px; */
-    }
-    .soustitre {
-      font-weight: bold;
-      color: var(--secondary-color);
-      font-size: 30px !important;
-      font-weight: 300;
-    }
-    .soustitre::before {
-      content: "";
-      display: block;
-      border-left: 1px solid #d9d9d9;
-      height: 50px;
-      width: 1px;
-      margin: 20px auto 5px auto;
-    }
-  }
-</style>
+    <style scoped>
+        @import "../../styles/chapitres.css";
+    </style>
+</Layout>

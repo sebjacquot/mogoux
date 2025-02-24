@@ -1,597 +1,184 @@
 ---
-import HeaderNoBg from "../../components/Header_NoBg.astro";
 import ImageFullscreen from "../../components/ImageFullscreen.astro";
 import SuggestionsCard from "../../components/SuggestionsCard.astro";
-import "../../styles/global.css";
-import { Image } from "astro:assets";
+import ImageTooltip from "../../components/ImageTooltip.astro";
+import Layout from "../../layouts/Layout.astro";
 ---
 
-<head>
-  <meta charset="UTF-8" />
-</head>
-
-<html>
-  <main>
-    <HeaderNoBg />
-    <section class="entete" title="Ouvriers devant la filature Schwob dite La Lizaine de Bethoncourt vers 1910. Photographie transmise par l'Association du patrimoine bethoncourtois">
-      <div class="hero">
-        <h2 class="tag">Chapitre 3</h2>
-        <h1 class="titre">Discours du Maître, traces des luttes</h1>
-        <h2 class="soustitre">Paternalisme contre lutte des classes</h2>
-        <div class="intro">
-          <p>
-            Singulier par son capitalisme animé par un patronat d’origine
-            protestante, le monde industriel du pays de Montbéliard est
-            inséparable d’un paternalisme qui, promouvant un mieux vivre
-            collectif, contrôle tout et s’efforce de contenir toute forme de
-            luttes, sans parvenir à les empêcher.
-          </p>
-          <div class="separation">
-            <div class="background"></div>
-          </div>
+<Layout title="Chapitre 3">
+    <section class="entete">
+        <div class="hero">
+            <h2 class="tag">Chapitre 3</h2>
+            <h1 class="titre">Discours du Maître, traces des luttes</h1>
+            <h2 class="soustitre">Paternalisme contre lutte des classes</h2>
+            <div class="intro">
+                <p>
+                    Singulier par son capitalisme animé par un patronat d’origine
+                    protestante, le monde industriel du pays de Montbéliard est
+                    inséparable d’un paternalisme qui, promouvant un mieux vivre
+                    collectif, contrôle tout et s’efforce de contenir toute forme de
+                    luttes, sans parvenir à les empêcher.
+                </p>
+                <div class="separation">
+                    <div class="background"></div>
+                </div>
+            </div>
         </div>
-      </div>
-      <img
-        class="img-cover"
-        src="/images/Header_Chapitre/C3_Ouvriers filature_2_APB.jpg"
-        alt="Ken Loach"
-      />
-      <div class="overlay"></div>
+        <ImageTooltip
+                src="/images/Header_Chapitre/C3_Ouvriers filature_2_APB.jpg"
+                legend="Ouvriers devant la filature Schwob dite La Lizaine de Bethoncourt vers 1910. Photographie transmise par l'Association du patrimoine bethoncourtois"
+        />
+        <div class="overlay"></div>
     </section>
     <section class="contenu-article">
-      <h2 class="titres">Frédéric, alias Panoptès</h2>
-      <!-- <Image
-        src={"/images/cover_chapitre/0096.jpg"}
-        alt={"Jean-Paul Goux"}
-        class="fougere"
-      /> -->
-      <div class="image">
-        <ImageFullscreen
-          src="/images/Chapitres/Chapitre3/GOU_05_050055.jpg"
-          legend="Tombe de Louis-Frédéric Japy, Beaucourt (1984)"
-        />
-        <p>
-          Tombe de Louis-Frédéric Japy, Beaucourt (1984) © Fonds Goux, GOU 05
-          050055
-        </p>
-      </div>
-      <div class="paragraphe">
-        <p>
-          L’enquête de terrain immersive se double d’une investigation
-          documentaire très fouillée qui nourrit l’ouvrage et sa réflexion
-          critique (archives, presses patronale et syndicale, documents privés).
-          Sur la base de ses recherches historiques qui permettent de faire le
-          lien onomastique entre la famille princière du Wurtemberg et les
-          fondateurs des dynasties d’entrepreneurs à l’orée du XIX<sup>e</sup> siècle,
-          Jean-Paul Goux utilise « Frédéric » comme un prénom générique pour
-          montrer la continuité de la domination qui s’exerce sur « une classe
-          ouvrière soumise à l’éternel retour du même » (F. Moulin,<i>
-            L’Est Républicain
-          </i>, 1986).
-        </p>
-        <p>
-          Cette continuité est illustrée dans le chapitre XIV des Mémoires, «
-          Petit abrégé des discours du Maître », par une anthologie de citations
-          (de 1853 à 1982), allant des discours officiels des notables aux notes
-          internes en passant par la presse Peugeot. Le paternalisme perdure
-          bien au-delà de Frédéric Japy qui déclarait : « Je veux que mes
-          ouvriers ne fassent avec moi et les miens qu’une seule et même
-          famille. Mes ouvriers doivent être mes enfants en même temps que mes
-          coopérateurs » (<i>Mémoires</i>, p. 51).
-        </p>
-        <p>
-          À l’instar du personnage mythologique aux cent yeux, Panoptès, le
-          paternalisme voit tout et prétend contrôler, éventuellement sous
-          couleur de philanthropie, tous les aspects de la vie : logement,
-          protection sociale, ravitaillement, temps libre (concours de
-          jardinage, sociétés sportives ou musicales, etc.). Il a pénétré
-          insidieusement la culture ouvrière elle-même, à travers la
-          valorisation du progrès industriel (« l’industrialisme ouvrier » selon
-          <i>Libération</i>, 1986) et de la solidarité : « dominant et dominé sont
-          inextricablement liés » (<i>Mémoires</i>, chap. XIII).
-        </p>
-      </div>
-      <div class="image">
-        <ImageFullscreen
-          src="/images/Chapitres/Chapitre3/GOU_04_D_0030.jpg" 
-          legend="Article de François Moulin, L’Est Républicain (1986)"
-        />
-        <p>
-          Article de François Moulin, <span>L’Est Républicain</span> (1986) © Fonds Goux,
-          GOU 04 D 0030
-        </p>
-      </div>
-      <h2 class="titres">Se souvenir des luttes</h2>
-      <div class="paragraphe">
-        <p>
-          François Moulin (<i>L’Est Républicain</i>, 1986) propose une série d’extraits
-          du livre. Il met en relief la comparaison entre la suite des luttes et
-          des parties d’échecs qui seraient toujours perdues par le monde
-          ouvrier de l’Enclave, parce que les leçons des parties précédentes ne
-          se transmettraient pas. Au point que Goux se demande si ce n’est pas
-          d’un oubli collectif qu’il rend compte : « les vieux récitent plus
-          facilement la généalogie des Japy que leur propre histoire » (<i>La
-          Quinzaine littéraire</i>, 1986) et constate « combien la mémoire ouvrière
-          colle […] à la mémoire de l’histoire patronale » (<i
+        <h2 class="titres">Frédéric, alias Panoptès</h2>
+        <div class="image">
+            <ImageFullscreen
+                    src="/images/Chapitres/Chapitre3/GOU_05_050055.jpg"
+                    legend="Tombe de Louis-Frédéric Japy, Beaucourt (1984)"
+            />
+            <p>
+                Tombe de Louis-Frédéric Japy, Beaucourt (1984) © Fonds Goux, GOU 05
+                050055
+            </p>
+        </div>
+        <div class="paragraphe">
+            <p>
+                L’enquête de terrain immersive se double d’une investigation
+                documentaire très fouillée qui nourrit l’ouvrage et sa réflexion
+                critique (archives, presses patronale et syndicale, documents privés).
+                Sur la base de ses recherches historiques qui permettent de faire le
+                lien onomastique entre la famille princière du Wurtemberg et les
+                fondateurs des dynasties d’entrepreneurs à l’orée du XIX<sup>e</sup> siècle,
+                Jean-Paul Goux utilise « Frédéric » comme un prénom générique pour
+                montrer la continuité de la domination qui s’exerce sur « une classe
+                ouvrière soumise à l’éternel retour du même » (F. Moulin,<i>
+                L’Est Républicain
+            </i>, 1986).
+            </p>
+            <p>
+                Cette continuité est illustrée dans le chapitre XIV des Mémoires, «
+                Petit abrégé des discours du Maître », par une anthologie de citations
+                (de 1853 à 1982), allant des discours officiels des notables aux notes
+                internes en passant par la presse Peugeot. Le paternalisme perdure
+                bien au-delà de Frédéric Japy qui déclarait : « Je veux que mes
+                ouvriers ne fassent avec moi et les miens qu’une seule et même
+                famille. Mes ouvriers doivent être mes enfants en même temps que mes
+                coopérateurs » (<i>Mémoires</i>, p. 51).
+            </p>
+            <p>
+                À l’instar du personnage mythologique aux cent yeux, Panoptès, le
+                paternalisme voit tout et prétend contrôler, éventuellement sous
+                couleur de philanthropie, tous les aspects de la vie : logement,
+                protection sociale, ravitaillement, temps libre (concours de
+                jardinage, sociétés sportives ou musicales, etc.). Il a pénétré
+                insidieusement la culture ouvrière elle-même, à travers la
+                valorisation du progrès industriel (« l’industrialisme ouvrier » selon
+                <i>Libération</i>, 1986) et de la solidarité : « dominant et dominé sont
+                inextricablement liés » (<i>Mémoires</i>, chap. XIII).
+            </p>
+        </div>
+        <div class="image">
+            <ImageFullscreen
+                    src="/images/Chapitres/Chapitre3/GOU_04_D_0030.jpg"
+                    legend="Article de François Moulin, L’Est Républicain (1986)"
+            />
+            <p>
+                Article de François Moulin, <span>L’Est Républicain</span> (1986) © Fonds Goux,
+                GOU 04 D 0030
+            </p>
+        </div>
+        <h2 class="titres">Se souvenir des luttes</h2>
+        <div class="paragraphe">
+            <p>
+                François Moulin (<i>L’Est Républicain</i>, 1986) propose une série d’extraits
+                du livre. Il met en relief la comparaison entre la suite des luttes et
+                des parties d’échecs qui seraient toujours perdues par le monde
+                ouvrier de l’Enclave, parce que les leçons des parties précédentes ne
+                se transmettraient pas. Au point que Goux se demande si ce n’est pas
+                d’un oubli collectif qu’il rend compte : « les vieux récitent plus
+                facilement la généalogie des Japy que leur propre histoire » (<i>La
+                Quinzaine littéraire</i>, 1986) et constate « combien la mémoire ouvrière
+                colle […] à la mémoire de l’histoire patronale » (<i
             >L’Est Républicain</i
-          >, 1986).
-        </p>
-      </div>
-      <div class="image">
-        <ImageFullscreen
-          src="/images/Chapitres/Chapitre3/GOU_04_B_0017.jpg"
-          legend="Lettre de Marcel Castioni sur la liquidation de la Cité après les élections professionnelles de 1985 (janvier 1986)"
-        />
-        <p>
-          Lettre de Marcel Castioni sur la liquidation de la Cité après les
-          élections professionnelles de 1985 (janvier 1986) © Fonds Goux, GOU
-          04 B 0017
-        </p>
-      </div>
-      <div class="paragraphe">
-        <p>
-          Claude Glayman évoque, dans son compte-rendu du livre, l’hypothèse
-          qu’« il ne subsiste de profonds et durables souvenirs que lorsque
-          l’Histoire générale se manifeste » (<i>L’Unité</i>, 1986), comme en juin 1968
-          où la grève et la révolte sont « particulièrement dures » et où deux
-          ouvriers sont tués par la police au cours des affrontements.
-        </p>
-      </div>
-      <div class="paragraphe">
-        <p>
-          La répression brutale liée aux mouvements collectifs n’est pas la
-          seule violence subie. Celle-ci s’exerce dans le quotidien des
-          conditions de travail et des sanctions qui visent certains militants.
-        </p>
+            >, 1986).
+            </p>
+        </div>
+        <div class="image">
+            <ImageFullscreen
+                    src="/images/Chapitres/Chapitre3/GOU_04_B_0017.jpg"
+                    legend="Lettre de Marcel Castioni sur la liquidation de la Cité après les élections professionnelles de 1985 (janvier 1986)"
+            />
+            <p>
+                Lettre de Marcel Castioni sur la liquidation de la Cité après les
+                élections professionnelles de 1985 (janvier 1986) © Fonds Goux, GOU
+                04 B 0017
+            </p>
+        </div>
+        <div class="paragraphe">
+            <p>
+                Claude Glayman évoque, dans son compte-rendu du livre, l’hypothèse
+                qu’« il ne subsiste de profonds et durables souvenirs que lorsque
+                l’Histoire générale se manifeste » (<i>L’Unité</i>, 1986), comme en juin 1968
+                où la grève et la révolte sont « particulièrement dures » et où deux
+                ouvriers sont tués par la police au cours des affrontements.
+            </p>
+        </div>
+        <div class="paragraphe">
+            <p>
+                La répression brutale liée aux mouvements collectifs n’est pas la
+                seule violence subie. Celle-ci s’exerce dans le quotidien des
+                conditions de travail et des sanctions qui visent certains militants.
+            </p>
 
-        <p>
-          L’élaboration des <i>Mémoires</i> s’accompagne d’une remontée dans le temps,
-          en quête des récits consignés de mobilisations, de conflits ou de
-          drames du passé mis en regard du présent, de textes engagés (journal
-          <i>Germinal</i>, publications au quotidien telles que tracts ou courriers).
-          Goux a aussi rencontré beaucoup de militants et de syndicalistes pour
-          les entretiens. Ainsi le livre fait-il entendre des contre-discours de
-          combat. Parmi ceux-ci la subversion ironique du « Clan des planches de
-          bord » (chap. VI) qui met des « grains de sable sous le capot » (pour
-          reprendre le titre du livre de Marcel Durand, paru en 2006) ou les
-          analyses vigoureuses de Christian Corouge (chap. VIII et XVI) qui
-          réfléchit à l’expérience de la chaîne et aux moyens d’y résister.
-          Corouge publiera en 2011 avec le sociologue Michel Pialoux un ouvrage
-          à ce sujet : <i>Résister à la chaîne. Dialogue entre un ouvrier de Peugeot et un
-            sociologue</i>, Agone, 2011, 416 p.
-        </p>
-      </div>
+            <p>
+                L’élaboration des <i>Mémoires</i> s’accompagne d’une remontée dans le temps,
+                en quête des récits consignés de mobilisations, de conflits ou de
+                drames du passé mis en regard du présent, de textes engagés (journal
+                <i>Germinal</i>, publications au quotidien telles que tracts ou courriers).
+                Goux a aussi rencontré beaucoup de militants et de syndicalistes pour
+                les entretiens. Ainsi le livre fait-il entendre des contre-discours de
+                combat. Parmi ceux-ci la subversion ironique du « Clan des planches de
+                bord » (chap. VI) qui met des « grains de sable sous le capot » (pour
+                reprendre le titre du livre de Marcel Durand, paru en 2006) ou les
+                analyses vigoureuses de Christian Corouge (chap. VIII et XVI) qui
+                réfléchit à l’expérience de la chaîne et aux moyens d’y résister.
+                Corouge publiera en 2011 avec le sociologue Michel Pialoux un ouvrage
+                à ce sujet : <i>Résister à la chaîne. Dialogue entre un ouvrier de Peugeot et un
+                sociologue</i>, Agone, 2011, 416 p.
+            </p>
+        </div>
     </section>
     <section class="credits">
-      <div class="gauche">
-        <p>
-          Écrit par <strong>Odile Roynette</strong>
-          <p>
-            Droits photographiques : Fonds Archives Goux
-          </p>
-        </p>
-      </div>
-      <div class="suggestions-tag"><h4>Suggestions</h4></div>
-      <section class="suggestions">
-        <SuggestionsCard
-          titre="Du côté de l'Enclave"
-          numero_chapitre="2"
-          lien_image="C2_0363.jpg"
-        />
-        <SuggestionsCard
-          titre="Enquête sur la mémoire collective"
-          numero_chapitre="4"
-          lien_image="C4_GOU_P8-02_02-P.jpg"
-        />
-        <SuggestionsCard
-          titre="Une œuvre littéraire"
-          numero_chapitre="5"
-          lien_image="C5_0407.jpg"
-        />
-      </section>
-      <div class="footer"></div>
+        <div class="gauche">
+            <p>
+                Écrit par <strong>Odile Roynette</strong>
+            </p>
+            <p>
+                Droits photographiques : Fonds Archives Goux
+            </p>
+        </div>
     </section>
-  </main>
+    <div class="suggestions-tag"><h4>Suggestions</h4></div>
+    <section class="suggestions">
+        <SuggestionsCard
+                titre="Du côté de l'Enclave"
+                numero_chapitre="2"
+                lien_image="C2_0363.jpg"
+        />
+        <SuggestionsCard
+                titre="Enquête sur la mémoire collective"
+                numero_chapitre="4"
+                lien_image="C4_GOU_P8-02_02-P.jpg"
+        />
+        <SuggestionsCard
+                titre="Une œuvre littéraire"
+                numero_chapitre="5"
+                lien_image="C5_0407.jpg"
+        />
+    </section>
 
-  <style scoped>
-    .fougere {
-      width: 600px;
-      height: 600px;
-    }
-    @import url("https://fonts.cdnfonts.com/css/helvetica-neue-5");
-    * {
-      box-sizing: border-box;
-    }
-    html,
-    body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
-      background: var(--bg-article-color);
-      position: relative;
-
-      overflow-x: hidden;
-    }
-    strong {
-      font-weight: bold;
-    }
-    i {
-      font-style: italic;
-    }
-
-    span {
-      font-style: normal !important;
-    }
-
-    .credits {
-      margin-bottom: 150px;
-    }
-    .gauche {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-
-      font-family: var(--article-font);
-      font-weight: 300;
-
-      max-width: 1100px;
-      margin: 0 auto;
-
-      font-size: 13px;
-
-      h3 {
-        font-size: 20px;
-        line-height: 30px;
-        font-weight: 300;
-        font-family: var(--article-intro-font);
-        font-style: italic;
-
-        margin-bottom: 10px;
-      }
-    }
-
-    .suggestions-tag {
-      font-family: var(--article-intro-font);
-      font-size: 27px;
-      font-weight: 300;
-      font-style: italic;
-
-      display: flex;
-      justify-content: center;
-      color: #8d8d8d;
-
-      h4::after {
-        content: "";
-        display: block;
-        border: 1px solid #e4e4e4;
-        background: #e4e4e4;
-
-        height: 50px;
-        width: 1px;
-        margin: 10px auto 0px auto;
-      }
-    }
-
-    .suggestions {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      height: 220px;
-
-      gap: 20px;
-
-      background: #e4e4e4;
-
-      padding-top: 10px;
-      padding-bottom: 10px;
-    }
-
-    .card {
-      width: 300px;
-      height: 180px;
-      overflow: hidden;
-      border-radius: 2px;
-      position: relative;
-
-      h3 {
-        font-size: 16px;
-        line-height: 18px;
-        font-family: var(--article-font); /* Helvetica */
-        font-weight: 600;
-
-        padding: 0 20px;
-
-        text-align: center;
-
-        color: white;
-        position: absolute;
-        bottom: 10px;
-        left: 0;
-        z-index: 20;
-      }
-      img {
-        max-width: 100%;
-        max-height: 100%;
-        transition: transform 0.3s ease;
-        position: relative;
-        scale: 1.2;
-        z-index: 1;
-      }
-      .overlay2 {
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.3);
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 5;
-      }
-    }
-
-    .tag-card {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      z-index: 5;
-      padding: 5px 10px;
-
-      border-radius: 2px;
-      background: #e72465 !important;
-      h4 {
-        width: auto !important;
-        text-transform: uppercase;
-        text-align: center;
-        color: #fff;
-        font-family: var(--article-font);
-        font-weight: bold;
-        font-size: 0.75rem;
-        line-height: 1rem;
-      }
-    }
-
-    /* .tag::before {
-    width: 100%;
-    height: 4px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    content: "";
-    border-radius: 2px;
-    -webkit-transition: all 0.2s ease-in;
-    -moz-transition: all 0.2s ease-in;
-    -o-transition: all 0.2s ease-in;
-    transition: all 0.2s ease-in;
-  } */
-    .footer {
-      background: var(--bg-color);
-      width: 100%;
-      height: 439px;
-
-      box-sizing: border-box;
-
-      border-top: 1px solid rgba(255, 255, 255, 0.2);
-      z-index: 100;
-    }
-
-    .contenu-article {
-      padding-top: 50px;
-      padding-bottom: 50px;
-
-      font-family: var(--article-font);
-    }
-    .titres {
-      font-size: var(--titre-paragraphe-font-size);
-
-      font-weight: bold;
-      padding-bottom: 5px;
-
-      margin: 0 auto;
-      max-width: 700px;
-
-      color: rgb(22, 22, 22);
-    }
-    .paragraphe {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: start;
-      max-width: 700px;
-      margin: 0 auto;
-
-      /* text-indent: 5%; */
-
-      color: #222222;
-
-      p {
-        margin-bottom: 20px;
-      }
-      p:last-of-type {
-        padding-bottom: 20px;
-      }
-
-      font-size: var(--texte-article-font-size);
-      line-height: 1.6;
-    }
-    .image {
-      display: flex;
-      flex-direction: column;
-      gap: 0px;
-      max-width: 500px;
-      /* max-width: 850px; */
-      /* max-width: 1000px; */
-      margin: 0 auto;
-
-      padding-bottom: 25px;
-
-      p {
-        font-size: var(--legende-font-size);
-        align-self: flex-end;
-        font-style: italic;
-        color: #666666;
-      }
-    }
-
-    .img-short {
-      display: flex;
-      flex-direction: column;
-      gap: 0px;
-      max-width: 400px;
-      /* max-width: 850px; */
-      /* max-width: 1000px; */
-      margin: 0 auto;
-
-      padding-bottom: 25px;
-
-      p {
-        color: #666666;
-      }
-    }
-    .separation {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      margin-top: 20px;
-
-      h3 {
-        font-size: var(--date-article-font-size);
-      }
-
-      .background {
-        padding: 0 10px;
-        background: var(--bg-article-color);
-        z-index: 3;
-      }
-    }
-
-    .separation::after {
-      content: " ";
-      border-bottom: 1px solid #d9d9d9;
-      display: block;
-      width: 100%;
-      position: absolute;
-      top: 10px;
-      z-index: 0;
-    }
-    .intro {
-      background: var(--bg-article-color);
-      width: 100%;
-      max-width: 75em;
-      height: 156px;
-      margin-bottom: 0;
-      margin-top: 80px;
-      padding: 20px 40px 0px 40px;
-      /* padding: 100px; */
-
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-content: center;
-
-      p {
-        font-family: var(--article-intro-font);
-        /* font-style: italic; */
-        font-size: var(--texte-article-font-size);
-        text-align: center;
-        align-self: center;
-      }
-    }
-    .entete {
-      position: relative;
-      width: 100%;
-      height: 75vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-    }
-    .rectangle {
-      background: #242424;
-      width: 100vw;
-      height: 80px;
-      position: fixed;
-      z-index: 1000;
-      top: 0;
-      left: 0;
-    }
-    .img-cover {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 75vh;
-      object-fit: cover;
-      object-position: 0 41%;
-      z-index: 1;
-    }
-
-    .overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 75vh;
-      background: rgba(0, 0, 0, 0.4);
-      z-index: 2;
-    }
-    main {
-      position: relative;
-      width: 100%;
-
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .hero {
-      background-image: url("img/kenloach.jpg");
-      font-family: "Graphik", sans-serif;
-      height: 75vh;
-      /* margin-top: 150px; */
-      z-index: 100;
-
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      align-items: center;
-
-      .tag {
-        font-weight: bold;
-        color: var(--secondary-color);
-        font-size: 12px !important;
-        line-height: 19.2px;
-        text-transform: uppercase;
-        padding: 1px 10px 1px 10px;
-        border-radius: 4px;
-        margin-bottom: 30px;
-
-        background-color: #e72465;
-      }
-
-      .titre {
-        font-weight: bold;
-        color: var(--secondary-color);
-        font-size: 60px !important;
-        line-height: 60px !important;
-        text-align: center;
-        /* margin-bottom: 5px; */
-      }
-      .soustitre {
-        font-weight: bold;
-        color: var(--secondary-color);
-        font-size: 30px !important;
-        font-weight: 300;
-      }
-      .soustitre::before {
-        content: "";
-        display: block;
-        border-left: 1px solid #d9d9d9;
-        height: 50px;
-        width: 1px;
-        margin: 20px auto 5px auto;
-      }
-    }
-  </style>
-</html>
+    <style scoped>
+        @import "../../styles/chapitres.css";
+    </style>
+</Layout>

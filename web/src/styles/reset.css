@@ -103,6 +103,7 @@ body {
 ol,
 ul {
   list-style: none;
+  margin-bottom: 10px;
 }
 blockquote,
 q {

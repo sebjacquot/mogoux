@@ -1,8 +1,0 @@
-/* :root {
-  --baseFontSize: 16px;
-} */
-
-/* Custom function to convert pixels to rems */
-/* @function rem($valueInPx) {
-  @return calc(#{$valueInPx} / var(--baseFontSize));
-} */

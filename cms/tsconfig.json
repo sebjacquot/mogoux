@@ -10,11 +10,16 @@
     "rootDir": "./src",
     "jsx": "react",
     "paths": {
-      "payload/generated-types": ["./src/payload-types.ts"]
+      "payload/generated-types": ["./src/generated-types.d.ts"]
     }
   },
   "include": ["src"],
-  "exclude": ["node_modules", "dist", "build"],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "build",
+    "src/generated-types.d.ts" // Pour résoudre un probleme d'incompatibilité entre Payload CMS v3 et TypeScript 5.5
+  ],
   "ts-node": {
     "transpileOnly": true,
     "swc": true

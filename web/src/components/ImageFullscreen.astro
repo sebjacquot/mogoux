@@ -1,101 +1,206 @@
 ---
-import Image from "astro:assets";
-import "../styles/global.css";
-
 type Props = {
-  src: string;
-  legend: string;
+    src: string;
+    legend: string;
+    className?: string;
 };
-const { src, legend } = Astro.props;
+const { src, legend, className } = Astro.props;
 ---
 
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const images = document.querySelectorAll(
-      "img[data-enlargable]"
-    ) as NodeListOf<HTMLImageElement>;
-    images.forEach(function (img) {
-      img.classList.add("img-enlargable");
-      let isInFullScreen = false;
-      let scrollPosition = { top: 0, left: 0 };
+<div class={`image-container ${className || ""}`}>
+    <img
+            src={src}
+            alt={legend}
+            draggable="false"
+            class="responsive-image-full-screen"
+            data-enlargable
+            loading="lazy"
+    />
+    <div class="tooltip">{legend}</div>
+</div>
 
-      const handleMouseEnter = function () {
-        if (!isInFullScreen) {
-          img.style.outline = "2px solid var(--text-color)";
-          img.style.transition = "transform 0.3s ease";
-          img.style.cursor = "zoom-in";
-          img.style.transform = "scale(1.03)";
-        }
-      };
+<script is:inline>
+    function cleanUpPreviousInstances() {
 
-      const handleMouseLeave = function () {
-        if (!isInFullScreen) {
-          img.style.outline = "none";
-          img.style.transform = "scale(1)";
-        }
-      };
-
-      const handleClick = function () {
-        scrollPosition = {
-          top: window.scrollY,
-          left: window.scrollX
-        };
-        
-        img.removeEventListener("mouseenter", handleMouseEnter);
-        img.removeEventListener("mouseleave", handleMouseLeave);
-
-        var src = img.getAttribute("src");
-        var alt = img.getAttribute("alt");
-
-        var enlargedImage = document.createElement("div");
-        enlargedImage.style.cssText = `
-          background: RGBA(0,0,0,.5) url(${src}) no-repeat center;
-          background-size: contain;
-          width: 100vw;
-          height: 100vh;
-          position: fixed;
-          z-index: 10000;
-          top: 0;
-          left: 0;
-          cursor: zoom-out;
-          opacity: 0;
-          transition: opacity 0.5s ease; /* Transition pour l'entrée et la sortie */
-        `;
-
-        enlargedImage.addEventListener("click", function () {
-          document.body.removeChild(enlargedImage);
-          document.body.style.overflow = "visible"; // Re-enable overflow
-          window.scrollTo(scrollPosition.left, scrollPosition.top);
-          isInFullScreen = false;
-          img.addEventListener("mouseenter", handleMouseEnter);
-          img.addEventListener("mouseleave", handleMouseLeave);
+        document.querySelectorAll("img[data-enlargable]").forEach((img) => {
+            const newImg = img.cloneNode(true);
+            img.replaceWith(newImg);
         });
 
-        document.body.appendChild(enlargedImage);
-        document.body.style.overflow = "hidden"; // Disable overflow
+        document.querySelectorAll(".image-container").forEach((container) => {
+            const newContainer = container.cloneNode(true);
+            container.replaceWith(newContainer);
+        });
+    }
 
-        if (!isInFullScreen) {
-          setTimeout(() => {
-            enlargedImage.style.opacity = "1";
-          }, 10);
+    function initTooltipsAndZoom() {
 
-          isInFullScreen = true;
-        }
-      };
+        cleanUpPreviousInstances();
 
-      img.addEventListener("click", handleClick);
-      img.addEventListener("mouseenter", handleMouseEnter);
-      img.addEventListener("mouseleave", handleMouseLeave);
+        const images = Array.from(document.querySelectorAll("img[data-enlargable]"));
+        const imagesContainers = Array.from(document.querySelectorAll(".image-container"));
+
+        imagesContainers.forEach((container) => {
+            const img = container.querySelector("img");
+            const tooltip = container.querySelector(".tooltip");
+
+            if (!img || !tooltip) return;
+
+            let tooltipTimeout;
+
+            function showTooltip() {
+                tooltipTimeout = setTimeout(() => {
+                    tooltip.classList.add("visible");
+                }, 500);
+            }
+
+            function moveTooltip(e) {
+                clearTimeout(tooltipTimeout);
+                tooltip.classList.remove("visible");
+                tooltip.style.left = `${e.clientX + 10}px`;
+                tooltip.style.top = `${e.clientY + 10}px`;
+
+                tooltipTimeout = setTimeout(() => {
+                    tooltip.classList.add("visible");
+                }, 500);
+            }
+
+            function hideTooltip() {
+                clearTimeout(tooltipTimeout);
+                tooltip.classList.remove("visible");
+            }
+
+            img.addEventListener("mouseenter", showTooltip);
+            img.addEventListener("mousemove", moveTooltip);
+            img.addEventListener("mouseleave", hideTooltip);
+        });
+
+        images.forEach((img) => {
+            img.style.cursor = "zoom-in";
+
+            function enlargeImage() {
+                const scrollPosition = { top: window.scrollY, left: window.scrollX };
+
+                const enlargedContainer = document.createElement("div");
+                enlargedContainer.style.cssText = `
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100vw;
+                    height: 100vh;
+                    background: rgba(0, 0, 0, 0.8);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 10000;
+                    cursor: zoom-out;
+                    opacity: 0;
+                    transition: opacity 0.3s ease;
+                `;
+
+                const enlargedImage = document.createElement("img");
+                enlargedImage.src = img.src;
+                enlargedImage.alt = img.alt;
+                enlargedImage.style.cssText = `
+                    max-width: 90%;
+                    max-height: 90%;
+                    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+                    border-radius: 5px;
+                `;
+
+                enlargedContainer.appendChild(enlargedImage);
+                document.body.appendChild(enlargedContainer);
+                document.body.style.overflow = "hidden";
+                document.body.style.cursor = "zoom-out";
+
+                setTimeout(() => {
+                    enlargedContainer.style.opacity = "1";
+                }, 10);
+
+                function closeImage() {
+                    enlargedContainer.style.opacity = "0";
+                    setTimeout(() => {
+                        enlargedContainer.remove();
+                        document.body.style.overflow = "";
+                        document.body.style.cursor = "";
+                        window.scrollTo(scrollPosition.left, scrollPosition.top);
+                        document.removeEventListener("keydown", handleKeyDown);
+                    }, 100);
+                }
+
+                function handleKeyDown(event) {
+                    if (event.key === "Escape") {
+                        closeImage();
+                    }
+                }
+
+                enlargedContainer.addEventListener("click", closeImage);
+                document.addEventListener("keydown", handleKeyDown);
+            }
+
+            img.addEventListener("click", enlargeImage);
+        });
+    }
+
+    document.addEventListener("astro:page-load", () => {
+        initTooltipsAndZoom();
     });
-  });
+
+    document.addEventListener("astro:after-swap", () => {
+        initTooltipsAndZoom();
+    });
+
+    document.addEventListener("visibilitychange", () => {
+        if (document.visibilityState === "visible") {
+            initTooltipsAndZoom();
+        }
+    });
 </script>
 
-<img data-enlargable src={src} alt={legend} draggable="false" title={legend} />
-
 <style scoped>
-  img {
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-  }
+    .image-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    .tooltip {
+        position: fixed;
+        background: rgba(0, 0, 0, 0.75);
+        color: #fff;
+        padding: 6px 10px;
+        border-radius: 4px;
+        white-space: normal;
+        font-size: 14px;
+        z-index: 100;
+        opacity: 0;
+        transition: opacity 0.2s ease-in-out;
+        pointer-events: none;
+        max-width: 300px;
+        word-wrap: break-word;
+        text-align: center;
+    }
+
+    .tooltip.visible {
+        opacity: 1;
+    }
+
+    .responsive-image-full-screen {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease, transform-origin 0.3s ease;
+        transform-origin: center center;
+        cursor: zoom-in;
+    }
+
+    .responsive-image-full-screen:hover {
+        transform: scale(1.03);
+        position: relative;
+        z-index: 1;
+    }
+
+    body.zoom-out-active {
+        cursor: zoom-out !important;
+    }
 </style>

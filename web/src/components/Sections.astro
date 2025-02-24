@@ -1,126 +1,192 @@
 ---
 import ThematiqueCard from "../components/ThematiqueCard.astro";
-import "../styles/global.css";
 
-// @ts-ignore
-import type { Thematic, Media } from "../../../cms/src/generated-types.ts";
-
-type Props = {
-  title: string;
-  files: string;
-  thematics: Thematic[];
+type Thematic = {
+    backgroundImage: { filename: string; alt: string };
+    title: string;
+    slug: string;
+    color: string;
 };
 
-const { title, files, thematics } = Astro.props;
+type Props = {
+    title: string;
+    thematics: Thematic[];
+    sectionId: string;
+};
+
+const { title, thematics, sectionId } = Astro.props;
 ---
 
 <section class="thematique-section">
-  <div class="thematique">
     <div class="row">
-      <h2 class="titre">{title}</h2>
-      <a
-        class="button"
-        href={`${import.meta.env.CMS_URL}/documents/${files}`}
-        download>Guide des bonnes pratiques</a
-      >
+        <h2 class="titre">{title}</h2>
     </div>
     <hr />
-    <div class="thematique-inner">
-      {
-        thematics.map((thematic) => (
-          <ThematiqueCard
-            src={(thematic.backgroundImage as Media).filename!}
-            titre={thematic.title}
-            slug={thematic.slug}
-            alt={(thematic.backgroundImage as Media).alt!}
-            color={thematic.color}
-          />
-        ))
-      }
+
+    <div class="carousel-container" data-carousel-id="{title}">
+        <button class="nav-btn left-btn" aria-label="Précédent">
+            ❮
+        </button>
+        <div class="carousel-wrapper">
+            <div class="carousel">
+                {thematics.map((thematic) => (
+                    <div class="carousel-item">
+                        <ThematiqueCard
+                            src={(thematic.backgroundImage).filename!}
+                            titre={thematic.title}
+                            slug={thematic.slug}
+                            alt={(thematic.backgroundImage).alt!}
+                            color={thematic.color}
+                            sectionId={sectionId}
+                        />
+                    </div>
+                ))}
+            </div>
+        </div>
+        <button class="nav-btn right-btn" aria-label="Suivant">
+            ❯
+        </button>
     </div>
-  </div>
 </section>
-<style scoped>
-  hr {
-    width: 100%;
-    border: 0;
-    height: 2px;
-    background-color: rgba(255, 255, 255, 0.1);
-    margin-bottom: 13px;
-  }
-  .button {
-    text-decoration: none;
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 15px;
-    font-weight: 700;
 
-    border: 2px solid rgba(255, 255, 255, 0.8);
-    border-radius: 5px;
-    padding: 5px 10px;
-    transition: all 0.3s ease;
-  }
-
-  .button:hover {
-    background-color: var(--secondary-color);
-    color: var(--bg-color);
-  }
-
-  .row {
-    display: flex;
-    align-self: flex-start;
-    width: 100%;
-    justify-content: space-between;
-  }
-  .titre {
-    align-self: flex-start;
-    color: var(--secondary-color);
-    font-family: var(--titres-font);
-    font-size: 25px;
-    font-weight: 700;
-    margin-bottom: 0px;
-  }
-
-  .thematique {
-    display: flex;
-    flex-direction: column;
-    /* margin: 50px auto 0 auto; */
-  }
-  .thematique-inner {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
-    gap: 70px;
-    column-gap: 40px;
-  }
-  .card {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-  }
-
-  .card:hover {
-    h3 {
-      color: #ff7979;
+<script is:inline>
+    function cleanUpCarousel() {
+        document.querySelectorAll(".carousel-container").forEach((carouselContainer) => {
+            const newContainer = carouselContainer.cloneNode(true);
+            carouselContainer.replaceWith(newContainer);
+        });
     }
-  }
 
-  .rectangle {
-    width: 300px;
-    height: 200px;
-    background-image: url("https://source.unsplash.com/random");
-    background-size: cover;
-    background-position: center;
-  }
+    function initCarousel() {
+        cleanUpCarousel();
 
-  .card:hover .rectangle::after {
-    content: "";
-    display: block;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 121, 121, 0.502);
-  }
+        document.querySelectorAll(".carousel-container").forEach((carouselContainer) => {
+            const carousel = carouselContainer.querySelector(".carousel");
+            const prevBtn = carouselContainer.querySelector(".left-btn");
+            const nextBtn = carouselContainer.querySelector(".right-btn");
+            const items = carousel ? carousel.querySelectorAll(".carousel-item") : [];
 
-  h3 {
-    font-size: 20px;
-    font-weight: 700;
-  }
+            if (!carousel || !prevBtn || !nextBtn || items.length === 0) return;
+
+            let scrollPosition = 0;
+            const itemWidth = items[0].offsetWidth + 20;
+            const visibleItems = 3;
+            const totalItems = items.length;
+            const totalWidth = itemWidth * totalItems;
+            const maxScroll = totalWidth - (itemWidth * visibleItems);
+
+            function updateButtons() {
+                const shouldHideArrows = totalItems <= visibleItems;
+                prevBtn.style.display = shouldHideArrows ? "none" : "block";
+                nextBtn.style.display = shouldHideArrows ? "none" : "block";
+                prevBtn.classList.toggle("hidden", scrollPosition <= 0);
+                nextBtn.classList.toggle("hidden", scrollPosition >= maxScroll);
+            }
+
+            function moveCarousel(direction) {
+                scrollPosition += direction * itemWidth;
+                scrollPosition = Math.max(0, Math.min(scrollPosition, maxScroll));
+                carousel.style.transform = `translateX(-${scrollPosition}px)`;
+                updateButtons();
+            }
+
+            prevBtn.addEventListener("click", () => moveCarousel(-1));
+            nextBtn.addEventListener("click", () => moveCarousel(1));
+
+            updateButtons();
+        });
+    }
+
+    document.addEventListener("astro:after-swap", initCarousel);
+    document.addEventListener("astro:page-load", initCarousel);
+</script>
+
+<style scoped>
+    hr {
+        width: 100%;
+        border: 0;
+        height: 2px;
+        background-color: rgba(255, 255, 255, 0.1);
+        margin-bottom: 13px;
+    }
+
+    .row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .titre {
+        color: var(--secondary-color);
+        font-family: var(--titres-font);
+        font-size: 25px;
+        font-weight: 700;
+    }
+
+    /* -------- CAROUSEL -------- */
+    .carousel-container {
+        position: relative;
+        display: flex;
+        align-items: center ;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .carousel {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+        will-change: transform;
+        padding-left: 20px;
+    }
+
+    .carousel-item {
+        flex: 0 0 calc(100% / 3 - 20px);
+        max-width: calc(100% / 3 - 20px);
+        margin-right: 20px;
+    }
+
+    .carousel-wrapper {
+        overflow: hidden;
+        width: calc(100% - 20px);
+    }
+
+    .carousel::-webkit-scrollbar {
+        display: none;
+    }
+
+    .nav-btn {
+        position: absolute;
+        top: 40%;
+        background: rgba(0, 0, 0, 0);
+        color: white;
+        border: none;
+        cursor: pointer;
+        padding: 10px 15px;
+        border-radius: 50%;
+        z-index: 10;
+        scale: 1.5;
+        display: none;
+        text-decoration: none;
+        font-size: 1.5rem;
+        transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+    }
+
+    .nav-btn:hover {
+        color: #c5c5c5;
+        transform: scale(1.2);
+    }
+
+    .left-btn {
+        left: -25px;
+    }
+
+    .right-btn {
+        right: -25px;
+    }
+
+    .nav-btn:disabled {
+        opacity: 0;
+        cursor: default;
+    }
 </style>

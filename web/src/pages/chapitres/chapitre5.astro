@@ -1,627 +1,215 @@
 ---
-import HeaderNoBg from "../../components/Header_NoBg.astro";
 import ImageFullscreen from "../../components/ImageFullscreen.astro";
 import SuggestionsCard from "../../components/SuggestionsCard.astro";
-import "../../styles/global.css";
-import { Image } from "astro:assets";
+import ImageTooltip from "../../components/ImageTooltip.astro";
+import Layout from "../../layouts/Layout.astro";
 ---
 
-<head>
-  <meta charset="UTF-8" />
-</head>
-
-<html>
-  <main>
-    <HeaderNoBg />
-    <section class="entete" title="Jean-Paul Goux photographié le 3 mars 1985 à son domicile, 6 avenue Joffre, à Montbéliard, lors de sa résidence. Photographie de Gilles Choffé">
-      <div class="hero">
-        <h2 class="tag">Chapitre 5</h2>
-        <h1 class="titre">Une œuvre littéraire</h1>
-        <h2 class="soustitre">Naissance d’un “récit d’industrie”</h2>
-        <div class="intro">
-          <p>
-            Si les auteurs de la commande s’attendaient plutôt à un roman, Goux
-            leur a finalement proposé un ouvrage littéraire très singulier et
-            divers, empruntant partiellement à la forme du journal intime tout
-            en jouant sur la fiction, et revendiquant parallèlement une vraie
-            valeur historique.
-          </p>
-          <div class="separation">
-            <div class="background"></div>
-          </div>
+<Layout title="Chapitre 5">
+    <section class="entete">
+        <div class="hero">
+            <h2 class="tag">Chapitre 5</h2>
+            <h1 class="titre">Une œuvre littéraire</h1>
+            <h2 class="soustitre">Naissance d’un “récit d’industrie”</h2>
+            <div class="intro">
+                <p>
+                    Si les auteurs de la commande s’attendaient plutôt à un roman, Goux
+                    leur a finalement proposé un ouvrage littéraire très singulier et
+                    divers, empruntant partiellement à la forme du journal intime tout
+                    en jouant sur la fiction, et revendiquant parallèlement une vraie
+                    valeur historique.
+                </p>
+                <div class="separation">
+                    <div class="background"></div>
+                </div>
+            </div>
         </div>
-      </div>
-      <img
-        class="img-cover"
-        src="/images/Header_Chapitre/C5_0407.jpg"
-        alt="Ken Loach"
-      />
-      <div class="overlay"></div>
+
+        <ImageTooltip
+                src="/images/Header_Chapitre/C5_0407.jpg"
+                legend="Jean-Paul Goux photographié le 3 mars 1985 à son domicile, 6 avenue Joffre, à Montbéliard, lors de sa résidence. Photographie de Gilles Choffé"
+        />
+
+        <div class="overlay"></div>
     </section>
     <section class="contenu-article">
-      <h2 class="titres">Les modèles littéraires</h2>
-      <!-- <Image
-        src={"/images/cover_chapitre/0096.jpg"}
-        alt={"Jean-Paul Goux"}
-        class="fougere"
-      /> -->
-      <div class="paragraphe">
-        <p>
-          Dans la logique de la commande qui lui avait été passée par la Cité,
-          Jean‑Paul Goux a d’abord « accumulé les matériaux d’un livre qu’[il]
-          pensai[t] devoir être un roman ».
-        </p>
-        <p>
-          Si le résultat final est bien différent, la dimension proprement
-          littéraire reste primordiale. Dans ses documents préparatoires, Goux
-          note, avant même sa venue à Montbéliard, tout un ensemble de
-          références romanesques, à partir de sa lecture de <i
+        <h2 class="titres">Les modèles littéraires</h2>
+        <!-- <Image
+          src={"/images/cover_chapitre/0096.jpg"}
+          alt={"Jean-Paul Goux"}
+          class="fougere"
+        /> -->
+        <div class="paragraphe">
+            <p>
+                Dans la logique de la commande qui lui avait été passée par la Cité,
+                Jean‑Paul Goux a d’abord « accumulé les matériaux d’un livre qu’[il]
+                pensai[t] devoir être un roman ».
+            </p>
+            <p>
+                Si le résultat final est bien différent, la dimension proprement
+                littéraire reste primordiale. Dans ses documents préparatoires, Goux
+                note, avant même sa venue à Montbéliard, tout un ensemble de
+                références romanesques, à partir de sa lecture de <i
             >L’Art du roman
-          </i>de Milan Kundera :
-        </p>
-      </div>
-      <div class="image">
-        <ImageFullscreen
-          src="/images/Chapitres/Chapitre5/GOU_03_E_0034_avec_texte.jpg"
-          legend="Notes manuscrites"
-        />
-        <p>Notes manuscrites © Fonds Goux, GOU 03 E 0034</p>
-      </div>
-      <div class="paragraphe">
-        <p>
-          L’ouvrage lui-même s’interroge régulièrement de l’intérieur sur sa
-          propre forme. La première partie mentionne, en exemples, les
-          entreprises passées de « Von Arnim, Brentano, Grimm, Herder », de
-          Michelet, ou de Chateaubriand avec les <i>Mémoires d’outre‑tombe</i>.
-          Elle convoque également les œuvres de fiction de Novalis, de Zola ou
-          de Gabriel García Márquez.
-        </p>
-        <p>
-          La présence de ces modèles est aussi implicite dans le corps du texte
-          :
-        </p>
-        <ul>
-          <li>
-            <p>- les titres des chapitres « Du côté de Beaulieu », « Du côté de
-              Beaucourt », « Du côté de Béthoncourt », etc., font inévitablement
-              penser à Marcel Proust et à la <i> Recherche du temps perdu</i>. Or, l’ouvrage de Goux est, à sa façon, une
-              recherche du temps perdu ;</p>
-          </li>
-          <li>
-            <p>- la formulation de sections avec de courts résumés introduits par
-              la formule « Où l’on voit que… » rappelle certains romans anciens
-              ou populaires, à l’instar de <i>Don Quichotte</i> de Cervantès ;</p>
-          </li>
-          <li>
-            <p>- quant au dernier chapitre, « Je me souviens », il s’inspire
-              indubitablement de Georges Perec, auteur de <i>Je me souviens</i>. « À la
-              manière de… » note Goux au début de la page du manuscrit.</p>
-          </li>
-        </ul>
-      </div>
+            </i>de Milan Kundera :
+            </p>
+        </div>
+        <div class="image">
+            <ImageFullscreen
+                    src="/images/Chapitres/Chapitre5/GOU_03_E_0034_avec_texte.jpg"
+                    legend="Notes manuscrites"
+            />
+            <p>Notes manuscrites © Fonds Goux, GOU 03 E 0034</p>
+        </div>
+        <div class="paragraphe">
+            <p>
+                L’ouvrage lui-même s’interroge régulièrement de l’intérieur sur sa
+                propre forme. La première partie mentionne, en exemples, les
+                entreprises passées de « Von Arnim, Brentano, Grimm, Herder », de
+                Michelet, ou de Chateaubriand avec les <i>Mémoires d’outre‑tombe</i>.
+                Elle convoque également les œuvres de fiction de Novalis, de Zola ou
+                de Gabriel García Márquez.
+            </p>
+            <p>
+                La présence de ces modèles est aussi implicite dans le corps du texte
+                :
+            </p>
+            <ul>
+                <li>
+                    les titres des chapitres « Du côté de Beaulieu », « Du côté de
+                    Beaucourt », « Du côté de Béthoncourt », etc., font inévitablement
+                    penser à Marcel Proust et à la <i> Recherche du temps perdu</i>. Or, l’ouvrage de Goux est, à sa
+                    façon, une
+                    recherche du temps perdu ;
+                </li>
+                <li>
+                    la formulation de sections avec de courts résumés introduits par
+                    la formule « Où l’on voit que… » rappelle certains romans anciens
+                    ou populaires, à l’instar de <i>Don Quichotte</i> de Cervantès ;
+                </li>
+                <li>
+                    quant au dernier chapitre, « Je me souviens », il s’inspire
+                    indubitablement de Georges Perec, auteur de <i>Je me souviens</i>. « À la
+                    manière de… » note Goux au début de la page du manuscrit.
+                </li>
+            </ul>
+        </div>
 
-      <h2 class="titres">La forme du journal intime</h2>
-      <div class="paragraphe">
-        <p>
-          Le « Journal » constitue la – brève – première partie de l’ouvrage.
-          C’est la partie littérairement la plus élaborée. Goux projette sa
-          propre situation dans un univers fictionnel : le narrateur n’est pas
-          un romancier, professeur de lettres, mais un étrange « Docteur en
-          archéologie générale » embauché par un mystérieux « Conseil des Doctes
-          », transposition fantasmatique de la Cité. Quand on lit, dans le
-          document original, la référence autotélique à l’achat d’un cahier
-          relié « aux pages quadrillées » sur lequel le narrateur tient régulièrement son «
-          Journal », le support est bien un cahier, mais sans quadrillage.
-        </p>
-      </div>
-      <div class="image">
-        <ImageFullscreen
-          src="/images/Chapitres/Chapitre5/GOU_03_C_0006_avec_texte.jpg"
-          legend="Notes manuscrites"
-        />
-        <p>Notes manuscrites © Fonds Goux, GOU 03 E 0006</p>
-      </div>
+        <h2 class="titres">La forme du journal intime</h2>
+        <div class="paragraphe">
+            <p>
+                Le « Journal » constitue la – brève – première partie de l’ouvrage.
+                C’est la partie littérairement la plus élaborée. Goux projette sa
+                propre situation dans un univers fictionnel : le narrateur n’est pas
+                un romancier, professeur de lettres, mais un étrange « Docteur en
+                archéologie générale » embauché par un mystérieux « Conseil des Doctes
+                », transposition fantasmatique de la Cité. Quand on lit, dans le
+                document original, la référence autotélique à l’achat d’un cahier
+                relié « aux pages quadrillées » sur lequel le narrateur tient régulièrement son «
+                Journal », le support est bien un cahier, mais sans quadrillage.
+            </p>
+        </div>
+        <div class="image">
+            <ImageFullscreen
+                    src="/images/Chapitres/Chapitre5/GOU_03_C_0006_avec_texte.jpg"
+                    legend="Notes manuscrites"
+            />
+            <p>Notes manuscrites © Fonds Goux, GOU 03 E 0006</p>
+        </div>
 
-      <div class="paragraphe">
-        <p>
-          Dans ses notes préparatoires, Goux mentionne le modèle qui l’a inspiré
-          : le roman <i>L’Emploi du temps</i> (1956) de Michel Butor, construit sur
-          le principe d’un journal intime organisé chronologiquement, mais dont la
-          matière est décalée : les événements rapportés sont antérieurs de plusieurs
-          mois à la date d’écriture mentionnée.
-        </p>
-      </div>
+        <div class="paragraphe">
+            <p>
+                Dans ses notes préparatoires, Goux mentionne le modèle qui l’a inspiré
+                : le roman <i>L’Emploi du temps</i> (1956) de Michel Butor, construit sur
+                le principe d’un journal intime organisé chronologiquement, mais dont la
+                matière est décalée : les événements rapportés sont antérieurs de plusieurs
+                mois à la date d’écriture mentionnée.
+            </p>
+        </div>
 
-      <div class="image">
-        <ImageFullscreen
-          src="/images/Chapitres/Chapitre5/GOU_03_E_0019_2_avec_texte.jpg"
-          legend="Notes manuscrites"
-        />
-        <p>Notes manuscrites © Fonds Goux, GOU 03 E 0019</p>
-      </div>
+        <div class="image">
+            <ImageFullscreen
+                    src="/images/Chapitres/Chapitre5/GOU_03_E_0019_2_avec_texte.jpg"
+                    legend="Notes manuscrites"
+            />
+            <p>Notes manuscrites © Fonds Goux, GOU 03 E 0019</p>
+        </div>
 
-      <div class="paragraphe">
-        <p>
-          Daté du 16 juillet 1984, le début du « Journal » renvoie à l’arrivée
-          du narrateur au mois d’avril. Ce décalage donne un poids particulier
-          au temps et introduit toute la problématique de ces « mémoires ».
-          Initialement, il était prévu que « ce journal constitu[e] les<i>
-            Mémoires de l’Enclave
-          </i> ». Il a ensuite été ramené à la première partie. Jusqu’au tapuscrit,
-          ce « Journal » introduisait une part de vie intime du narrateur ; Goux
-          l’a finalement supprimée en la barrant.
-        </p>
-      </div>
-      <div class="image">
-       <ImageFullscreen
-          src="/images/Chapitres/Chapitre5/GOU_02_01_0048.jpg"
-          legend="Page 42 de la dactylographie des Mémoires de l’Enclave"
-        />
-        <p>
-          Page 42 de la dactylographie des <span>Mémoires de l’Enclave</span> © Fonds Goux,
-          GOU 02 01 0048
-        </p>
-      </div>
-      <h2 class="titres">Fiction et vérité</h2>
-      <div class="paragraphe">
-        <p>
-          Cette présence d’une mise en scène fictionnelle peut surprendre dans
-          le cadre d’un ouvrage qui cherche à transmettre une vision authentique
-          du passé. Cependant, cette transmission n’est possible que par le
-          biais d’une élaboration littéraire : « La littérature supplée à ce
-          défaut qui fait une impossibilité à l’homme de se faire entendre
-          partout et éternellement. » (chap. XXIII). Goux considère ainsi
-          certains tracts syndicaux anciens non comme des documents d’archives
-          appartenant à l’Histoire, mais comme des textes authentiquement
-          littéraires parce qu’ils ont gardé la force d’être aujourd’hui
-          entendus et partagés, là où un texte sur les usines Peugeot, pourtant
-          signé du romancier Pierre Mac Orlan, a perdu toute valeur. « La
-          littérature n’est pas toujours où l’on croit la trouver. » Les jeux
-          retors de décalages et ces trucages participent d’une mise en forme
-          qui est la garante paradoxale de la vérité du récit. Tout vrai
-          discours historique est le produit d’une élaboration littéraire
-          consciente.
-        </p>
-      </div>
+        <div class="paragraphe">
+            <p>
+                Daté du 16 juillet 1984, le début du « Journal » renvoie à l’arrivée
+                du narrateur au mois d’avril. Ce décalage donne un poids particulier
+                au temps et introduit toute la problématique de ces « mémoires ».
+                Initialement, il était prévu que « ce journal constitu[e] les<i>
+                Mémoires de l’Enclave
+            </i> ». Il a ensuite été ramené à la première partie. Jusqu’au tapuscrit,
+                ce « Journal » introduisait une part de vie intime du narrateur ; Goux
+                l’a finalement supprimée en la barrant.
+            </p>
+        </div>
+        <div class="image">
+            <ImageFullscreen
+                    src="/images/Chapitres/Chapitre5/GOU_02_01_0048.jpg"
+                    legend="Page 42 de la dactylographie des Mémoires de l’Enclave"
+            />
+            <p>
+                Page 42 de la dactylographie des <span>Mémoires de l’Enclave</span> © Fonds Goux,
+                GOU 02 01 0048
+            </p>
+        </div>
+        <h2 class="titres">Fiction et vérité</h2>
+        <div class="paragraphe">
+            <p>
+                Cette présence d’une mise en scène fictionnelle peut surprendre dans
+                le cadre d’un ouvrage qui cherche à transmettre une vision authentique
+                du passé. Cependant, cette transmission n’est possible que par le
+                biais d’une élaboration littéraire : « La littérature supplée à ce
+                défaut qui fait une impossibilité à l’homme de se faire entendre
+                partout et éternellement. » (chap. XXIII). Goux considère ainsi
+                certains tracts syndicaux anciens non comme des documents d’archives
+                appartenant à l’Histoire, mais comme des textes authentiquement
+                littéraires parce qu’ils ont gardé la force d’être aujourd’hui
+                entendus et partagés, là où un texte sur les usines Peugeot, pourtant
+                signé du romancier Pierre Mac Orlan, a perdu toute valeur. « La
+                littérature n’est pas toujours où l’on croit la trouver. » Les jeux
+                retors de décalages et ces trucages participent d’une mise en forme
+                qui est la garante paradoxale de la vérité du récit. Tout vrai
+                discours historique est le produit d’une élaboration littéraire
+                consciente.
+            </p>
+        </div>
     </section>
     <section class="credits">
-      <div class="gauche">
-        <p>
-          Écrit par <strong>Pascal Lécroart</strong>
-        </p>
-        <p>
-          Droits photographiques : Fonds Archives Goux
-        </p>
-      </div>
+        <div class="gauche">
+            <p>
+                Écrit par <strong>Pascal Lécroart</strong>
+            </p>
+            <p>
+                Droits photographiques : Fonds Archives Goux
+            </p>
+        </div>
     </section>
     <div class="suggestions-tag"><h4>Suggestions</h4></div>
     <section class="suggestions">
-      <SuggestionsCard
-        titre="Enquête sur la mémoire collective"
-        numero_chapitre="4"
-        lien_image="C4_GOU_P8-02_02-P.jpg"
-      />
-      <SuggestionsCard
-        titre="La structuration des Mémoires"
-        numero_chapitre="6"
-        lien_image="C6_0100.jpg"
-      />
-      <SuggestionsCard
-        titre="La fabrique du texte"
-        numero_chapitre="7"
-        lien_image="C7_GOU_P17-05_04-P.jpg"
-      />
+        <SuggestionsCard
+                titre="Enquête sur la mémoire collective"
+                numero_chapitre="4"
+                lien_image="C4_GOU_P8-02_02-P.jpg"
+        />
+        <SuggestionsCard
+                titre="La structuration des Mémoires"
+                numero_chapitre="6"
+                lien_image="C6_0100.jpg"
+        />
+        <SuggestionsCard
+                titre="La fabrique du texte"
+                numero_chapitre="7"
+                lien_image="C7_GOU_P17-05_04-P.jpg"
+        />
     </section>
-    <div class="footer"></div>
-  </main>
-</html>
 
-<style scoped>
-  ul {
-    list-style-type: disc;
-    margin-left: 20px;
-    padding-left: 30px;
-/*    li {
-      text-transform: lowercase;
-    }*/
-  }
+    <style scoped>
+        @import "../../styles/chapitres.css";
+    </style>
 
-  .fougere {
-    width: 600px;
-    height: 600px;
-  }
-  @import url("https://fonts.cdnfonts.com/css/helvetica-neue-5");
-  * {
-    box-sizing: border-box;
-  }
-  html,
-  body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--bg-article-color);
-    position: relative;
-
-    overflow-x: hidden;
-  }
-  strong {
-    font-weight: bold;
-  }
-  i {
-    font-style: italic;
-  }
-
-  span {
-      font-style: normal !important;
-    }
-
-  .credits {
-    margin-bottom: 150px;
-  }
-  .gauche {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    font-family: var(--article-font);
-    font-weight: 300;
-
-    max-width: 1100px;
-    margin: 0 auto;
-
-    font-size: 13px;
-
-    h3 {
-      font-size: 20px;
-      line-height: 30px;
-      font-weight: 300;
-      font-family: var(--article-intro-font);
-      font-style: italic;
-
-      margin-bottom: 10px;
-    }
-  }
-
-  .suggestions-tag {
-    font-family: var(--article-intro-font);
-    font-size: 27px;
-    font-weight: 300;
-    font-style: italic;
-
-    display: flex;
-    justify-content: center;
-    color: #8d8d8d;
-
-    h4::after {
-      content: "";
-      display: block;
-      border: 1px solid #e4e4e4;
-      background: #e4e4e4;
-
-      height: 50px;
-      width: 1px;
-      margin: 10px auto 0px auto;
-    }
-  }
-
-  .suggestions {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    height: 220px;
-
-    gap: 20px;
-
-    background: #e4e4e4;
-
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
-
-  .card {
-    width: 300px;
-    height: 180px;
-    overflow: hidden;
-    border-radius: 2px;
-    position: relative;
-
-    h3 {
-      font-size: 16px;
-      line-height: 18px;
-      font-family: var(--article-font); /* Helvetica */
-      font-weight: 600;
-
-      padding: 0 20px;
-
-      text-align: center;
-
-      color: white;
-      position: absolute;
-      bottom: 10px;
-      left: 0;
-      z-index: 20;
-    }
-    img {
-      max-width: 100%;
-      max-height: 100%;
-      transition: transform 0.3s ease;
-      position: relative;
-      scale: 1.2;
-      z-index: 1;
-    }
-    .overlay2 {
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.3);
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 5;
-    }
-  }
-
-  .tag-card {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    z-index: 5;
-    padding: 5px 10px;
-
-    border-radius: 2px;
-    background: #e72465 !important;
-    h4 {
-      width: auto !important;
-      text-transform: uppercase;
-      text-align: center;
-      color: #fff;
-      font-family: var(--article-font);
-      font-weight: bold;
-      font-size: 0.75rem;
-      line-height: 1rem;
-    }
-  }
-
-  /* .tag::before {
-    width: 100%;
-    height: 4px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    content: "";
-    border-radius: 2px;
-    -webkit-transition: all 0.2s ease-in;
-    -moz-transition: all 0.2s ease-in;
-    -o-transition: all 0.2s ease-in;
-    transition: all 0.2s ease-in;
-  } */
-  .footer {
-    background: var(--bg-color);
-    width: 100%;
-    height: 439px;
-
-    box-sizing: border-box;
-
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-    z-index: 100;
-  }
-
-  .contenu-article {
-    padding-top: 50px;
-    padding-bottom: 50px;
-
-    font-family: var(--article-font);
-  }
-  .titres {
-    font-size: var(--titre-paragraphe-font-size);
-
-    font-weight: bold;
-    padding-bottom: 5px;
-
-    margin: 0 auto;
-    max-width: 700px;
-
-    color: rgb(22, 22, 22);
-  }
-  .paragraphe {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: start;
-    max-width: 700px;
-    margin: 0 auto;
-
-    /* text-indent: 5%; */
-
-    color: #222222;
-
-    p {
-      margin-bottom: 20px;
-    }
-    p:last-of-type {
-      padding-bottom: 20px;
-    }
-
-    font-size: var(--texte-article-font-size);
-    line-height: 1.6;
-  }
-  .image {
-    display: flex;
-    flex-direction: column;
-    gap: 0px;
-    max-width: 500px;
-    /* max-width: 850px; */
-    /* max-width: 1000px; */
-    margin: 0 auto;
-
-    padding-bottom: 25px;
-
-    p {
-      font-size: var(--legende-font-size);
-      align-self: flex-end;
-      font-style: italic;
-      color: #666666;
-    }
-  }
-
-  .img-short {
-    display: flex;
-    flex-direction: column;
-    gap: 0px;
-    max-width: 400px;
-    /* max-width: 850px; */
-    /* max-width: 1000px; */
-    margin: 0 auto;
-
-    padding-bottom: 25px;
-
-    p {
-      color: #666666;
-    }
-  }
-  .separation {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    margin-top: 20px;
-
-    h3 {
-      font-size: var(--date-article-font-size);
-    }
-
-    .background {
-      padding: 0 10px;
-      background: var(--bg-article-color);
-      z-index: 3;
-    }
-  }
-
-  .separation::after {
-    content: " ";
-    border-bottom: 1px solid #d9d9d9;
-    display: block;
-    width: 100%;
-    position: absolute;
-    top: 10px;
-    z-index: 0;
-  }
-  .intro {
-    background: var(--bg-article-color);
-    width: 100%;
-    max-width: 75em;
-    height: 156px;
-    margin-bottom: 0;
-    margin-top: 80px;
-    padding: 20px 40px 0px 40px;
-    /* padding: 100px; */
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-
-    p {
-      font-family: var(--article-intro-font);
-      /* font-style: italic; */
-      font-size: var(--texte-article-font-size);
-      text-align: center;
-      align-self: center;
-    }
-  }
-  .entete {
-    position: relative;
-    width: 100%;
-    height: 75vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-  }
-  .rectangle {
-    background: #242424;
-    width: 100vw;
-    height: 80px;
-    position: fixed;
-    z-index: 1000;
-    top: 0;
-    left: 0;
-  }
-  .img-cover {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 75vh;
-    object-fit: cover;
-    object-position: 0 50%; /* 50% pref et 20% */
-    z-index: 1;
-  }
-
-  .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 75vh;
-    background: rgba(0, 0, 0, 0.4);
-    z-index: 2;
-  }
-  main {
-    position: relative;
-    width: 100%;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .hero {
-    background-image: url("img/kenloach.jpg");
-    font-family: "Graphik", sans-serif;
-    height: 75vh;
-    /* margin-top: 150px; */
-    z-index: 100;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-
-    .tag {
-      font-weight: bold;
-      color: var(--secondary-color);
-      font-size: 12px !important;
-      line-height: 19.2px;
-      text-transform: uppercase;
-      padding: 1px 10px 1px 10px;
-      border-radius: 4px;
-      margin-bottom: 30px;
-
-      background-color: #e72465;
-    }
-
-    .titre {
-      font-weight: bold;
-      color: var(--secondary-color);
-      font-size: 60px !important;
-      line-height: 60px !important;
-      /* margin-bottom: 5px; */
-    }
-    .soustitre {
-      font-weight: bold;
-      color: var(--secondary-color);
-      font-size: 30px !important;
-      font-weight: 300;
-    }
-    .soustitre::before {
-      content: "";
-      display: block;
-      border-left: 1px solid #d9d9d9;
-      height: 50px;
-      width: 1px;
-      margin: 20px auto 5px auto;
-    }
-  }
-</style>
+</Layout>
