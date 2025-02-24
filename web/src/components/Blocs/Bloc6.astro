@@ -2,36 +2,43 @@
 import BlocMedia from "./BlocMedia.astro";
 
 type Props = {
-  medias: { type: "image" | "audio"; src: string; slug: string; titre:string }[];
+  medias: {
+    type: "image" | "audio";
+    src: string;
+    slug: string;
+    titre: string;
+  }[];
+
+  mediasList: []
 };
 
-const { medias } = Astro.props;
+const { medias, mediasList } = Astro.props;
 ---
 
 <div class="bloc6">
   <div class="row-1-5-col-right">
     <div class="rectangle bleu">
-      {medias[0] && <BlocMedia {...medias[0]} />}
+      {medias[0] && <BlocMedia media={medias[0]} mediasList={mediasList} />}
     </div>
     <div class="col-2-4">
       <div class="rectangle rose">
-        {medias[1] && <BlocMedia {...medias[1]} />}
+        {medias[1] && <BlocMedia media={medias[1]} mediasList={mediasList} />}
       </div>
       <div class="rectangle violet">
-        {medias[2] && <BlocMedia {...medias[2]} />}
+        {medias[2] && <BlocMedia media={medias[2]} mediasList={mediasList} />}
       </div>
     </div>
   </div>
   <div class="row-3-4-col-right">
     <div class="rectangle orange">
-      {medias[3] && <BlocMedia {...medias[3]} />}
+      {medias[3] && <BlocMedia media={medias[3]} mediasList={mediasList} />}
     </div>
     <div class="col-2-5">
       <div class="rectangle rouge">
-        {medias[4] && <BlocMedia {...medias[4]} />}
+        {medias[4] && <BlocMedia media={medias[4]} mediasList={mediasList} />}
       </div>
       <div class="rectangle vert">
-        {medias[5] && <BlocMedia {...medias[5]} />}
+        {medias[5] && <BlocMedia media={medias[5]} mediasList={mediasList} />}
       </div>
     </div>
   </div>
@@ -68,12 +75,13 @@ const { medias } = Astro.props;
     display: flex;
     flex-direction: column;
     gap: 4px;
+    min-width: 100px;
 
     .rectangle:nth-child(1) {
-      height: 50%;
+      height: 49%;
     }
     .rectangle:nth-child(2) {
-      height: 50%;
+      height: 49%;
     }
   }
   .row-3-4-col-right {
@@ -92,11 +100,11 @@ const { medias } = Astro.props;
 
     .rectangle:nth-child(1) {
       width: 100%;
-      height: 100px;
+      height: 40%;
     }
     .rectangle:nth-child(2) {
       width: 100%;
-      height: 150px;
+      height: 59%;
     }
   }
 </style>

@@ -1,51 +1,43 @@
 ---
-import "../styles/global.css";
+const { fromURL } = Astro.props;
 ---
 
-<body>
-  <div class="go-back" id="go-back">Retourner en arrière</div>
-</body>
+{fromURL && (
+<a href={fromURL} class="go-back">
+    <p>Retourner en arrière</p>
+</a>
+    )}
 
-<script lang="js">
-  document.getElementById("go-back").addEventListener("click", function () {
-    window.history.back();
-  });
-</script>
+<style>
 
-<style scoped>
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: var(--primary-font);
-  }
+    .go-back {
+        position: fixed;
+        top: 0;
+        left: 80px;
+        color: var(--secondary-color);
+        padding: 30px 15.5px;
+        background: var(--bg-nav);
+        cursor: pointer;
+        z-index: 99;
+        text-transform: uppercase;
+        font-size: 13px;
+        font-weight: 600;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
 
-  .go-back {
-    position: fixed;
-    top: 20px;
-    left: 15px;
-    color: var(--secondary-color);
-    padding: 10px 20px;
-    border-radius: 5px;
-    /* border: 1px solid var(--secondary-color); */
-    cursor: pointer;
+        p{
+            margin: 0;
+            transition: transform 0.3s ease-in-out;
+        }
+    }
 
-    text-transform: uppercase;
-    font-size: 13px;
-    font-weight: 600;
-    opacity: 0.9;
+    p:hover {
+        transform: scale(1.03);
+    }
 
-    display: flex;
-    align-items: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: opacity 0.3s;
-  }
-
-  .go-back:hover {
-    opacity: 0.5;
-  }
-
-  .go-back::before {
-    content: "\2190"; /* Unicode for left arrow */
-    margin-right: 10px;
-  }
+    .go-back::before {
+        content: "\2190"; /* Unicode for left arrow */
+        margin-right: 10px;
+    }
 </style>

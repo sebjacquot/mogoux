@@ -1,232 +1,176 @@
 ---
-import HeaderNoBg from "../components/Header_NoBg.astro";
-import "../styles/global.css";
+import ImageTooltip from "../components/ImageTooltip.astro";
+import Layout from "../layouts/Layout.astro";
 ---
 
-<head>
-  <meta charset="UTF-8" />
-</head>
-
-<HeaderNoBg />
-<html>
-  <main>
-    <section
-      class="gauche"
-      title="Ouvrières de la SCOP Cristel (ancienne usine Japy du Rondelot, à
-Fesches-le-Châtel) photographiées au travail le 21 mai 1985 par Gilles
-Choffé."
-    >
+<Layout title="Navigation" >
+  <div class="container">
+    <section class="gauche">
       <div class="texte">
-        <h2>Mémoires ouvrières<br/><span style="font-size: 40px;"><i>(à venir - en construction)</i></span></h2>
+        <h2>Mémoires ouvrières</h2>
         <p>
-          Circulez parmi les témoignages sonores recueillis en 1984-1985 par
-          Jean-Paul Goux, accompagnés de documents iconographiques.
+          Circulez parmi les témoignages sonores recueillis en 1984-1985 par Jean-Paul Goux, accompagnés de documents iconographiques.
         </p>
-        <a href="/thematique" class="lien"
-          ><img src="/icones/fleche-goux.svg" alt="flèche" /><h3>
-            Découvrez les thématiques
-          </h3>
-        </a>
-        <a href="/carte" class="button">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="lucide lucide-arrow-right"
-            ><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg
-          ><h3>Découvrir la carte</h3>
-        </a>
+        <div class="div-button">
+          <a href="/thematiques" class="lien">
+            <img src="/icones/fleche-goux.svg" alt="flèche" />
+            <h3>Découvrez les thématiques</h3>
+          </a>
+          <a href="/carte" class="button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14"></path>
+              <path d="m12 5 7 7-7 7"></path>
+            </svg>
+            <h3>Découvrir la carte</h3>
+          </a>
+        </div>
       </div>
-      <div class="cover"></div>
+      <div class="cover">
+        <ImageTooltip
+            src="/images/0466.jpg"
+            legend="Ouvrières de la SCOP Cristel (ancienne usine Japy du Rondelot, à Fesches-le-Châtel) photographiées au travail le 21 mai 1985 par Gilles Choffé."
+            className="image-navigation"
+        />
+      </div>
     </section>
-    <section
-      class="droite"
-      title="Jean-Paul Goux dédicaçant son livre à Montbéliard, le 25 avril 1986, à
-l'occasion de sa présentation. Photographie de Gilles Choffé"
-    >
+
+    <section class="droite">
       <div class="texte">
-        <h2 class="italique">Mémoires de l'Enclave</h2>
+        <h2><i>Mémoires de l'Enclave</i></h2>
         <p>
-          Découvrez comment <i>Mémoires de l’Enclave</i> a été conçu et réalisé par
-          son auteur, puis reçu par le public.
+          Découvrez comment <i>Mémoires de l’Enclave</i> a été conçu et réalisé par son auteur, puis reçu par le public.
         </p>
-        <a href="/chapitres/biographie" class="lien"
-          ><img src="/icones/fleche-goux.svg" alt="flèche" /><h3>Biographie</h3>
-        </a>
-        <a href="/chapitres" class="lien">
-          <img src="/icones/fleche-goux.svg" alt="flèche" /><h3>
-            La fabrique des <i>Mémoires de l'Enclave</i>
-          </h3>
-        </a>
+        <div class="div-button">
+          <a href="/chapitres/biographie" class="lien">
+            <img src="/icones/fleche-goux.svg" alt="flèche" />
+            <h3>Biographie</h3>
+          </a>
+          <a href="/chapitres" class="lien">
+            <img src="/icones/fleche-goux.svg" alt="flèche" />
+            <h3>La fabrique des <i>Mémoires de l'Enclave</i></h3>
+          </a>
+        </div>
       </div>
-      <div class="cover2"></div>
+      <div class="cover">
+        <ImageTooltip
+            src="/images/GOU_P23-03_02-P.jpg"
+            legend="Jean-Paul Goux dédicaçant son livre à Montbéliard, le 25 avril 1986, à l'occasion de sa présentation. Photographie de Gilles Choffé"
+            className="image2-navigation"
+        />
+      </div>
     </section>
-  </main>
-</html>
+  </div>
 
-<style scoped>
-  main {
-    display: flex;
-  }
-  .texte {
-    font-family: var(--titres-font);
-    margin-left: 80px;
-    margin-bottom: 175px;
-    height: 40%;
+  <style scoped>
+    .container{
+      display: flex;
+      justify-content: center;
+    }
 
-    z-index: 100;
+    .texte {
+      font-family: var(--titres-font), serif;
+      position: absolute;
+      margin-left: 80px;
+      margin-bottom: 150px;
+      height: 40%;
+      z-index: 100;
+      color: white;
+      pointer-events: auto;
+    }
 
-    color: white;
+    .texte a {
+      color: white;
+      pointer-events: auto;
+    }
 
-    a {
+    .gauche, .droite {
+      width: 50%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      position: relative;
+    }
+
+    .cover {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(22, 22, 22, 0.2) 0%, rgba(22, 22, 22, 0.7) 100%);
+      opacity: 0.6;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    h2 {
+      font-weight: 700;
+      font-size: 70px;
+      line-height: 80px;
+      width: 70%;
+      max-width: 50vw;
+    }
+
+    .coming-soon {
+      font-size: 40px;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 30px;
+      width: 55%;
+      margin: 15px 0 25px;
+    }
+
+    .div-button{
+      display: flex;
+      align-items: start;
+      flex-direction: column;
+    }
+
+    .lien, .button {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      gap: 15px;
+      font-weight: 700;
+      font-size: 18px;
+      margin-top: 10px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .lien h3:hover {
+      color: #e35263;
+      transition: 0.2s;
+    }
+
+    .lien img {
+      fill: white;
       color: white;
     }
-  }
 
-  .italique,
-  i {
-    font-style: italic;
-  }
-  .italique {
-    font-size: 68px;
-    font-weight: 800;
-  }
+    .button {
+      background: var(--navigation);
+      color: white;
+      padding: 15px 25px;
+      width: fit-content;
+    }
 
-  .gauche {
-    background-color: #f0f0f0;
-    width: 50%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    position: relative;
-    overflow-x: hidden;
-  }
-  .cover {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-image: url("/images/0466.jpg");
-    background-size: cover;
-    background-position: 70%;
-  }
-  .cover2 {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    font-size: var(--legende-font-size);
-    top: 0;
-    left: 0;
-    background-image: url("/images/GOU_P23-03_02-P.jpg");
-    background-size: cover;
-    background-position: 10%;
-  }
-  .cover2::after,
-  .cover::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      180deg,
-      rgba(22, 22, 22, 0.4) 0%,
-      rgba(22, 22, 22, 1) 100%
-    );
-    opacity: 0.85;
-    z-index: 10;
-  }
-
-  .droite {
-    background-color: #ffffff;
-    width: 50%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    position: relative;
-    overflow-x: hidden;
-  }
-  a > img {
-    color: black;
-    fill: red;
-  }
-
-  h2 {
-    font-weight: 700;
-    font-size: 72px;
-    line-height: 80px;
-    width: 70%;
-  }
-  p {
-    font-size: 18px;
-    line-height: 30px;
-    width: 55%;
-    margin-top: 15px;
-    margin-bottom: 25px;
-  }
-  .lien {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    gap: 15px;
-
-    font-weight: 700;
-    font-size: 18px;
-
-    margin-top: 10px;
-
-    transition: all 0.3s ease-in-out;
-  }
-  .lien:hover {
-    color: #e35263;
-  }
-
-  .lien img {
-    fill: white;
-    color: white;
-  }
-
-  .button {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    gap: 15px;
-
-    font-weight: 700;
-    font-size: 18px;
-
-    background: #e22b40;
-    color: white;
-    margin-top: 10px;
-
-    width: fit-content;
-    padding: 15px 25px;
-
-    transition: all 0.3s ease-in-out;
-
-    svg {
+    .button svg {
       color: white;
       width: 25px;
       height: 25px;
-
       transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     }
-  }
-  .button:hover {
-    color: #e22b40;
-    background: var(--secondary-color);
-    svg {
-      color: #e22b40;
+
+    .button:hover {
+      background: var(--secondary-color);
     }
-  }
-</style>
+
+    .button h3:hover{
+      color: var(--navigation);
+    }
+
+    .button:hover svg {
+      color: var(--navigation);
+    }
+  </style>
+</Layout>

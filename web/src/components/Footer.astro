@@ -1,0 +1,144 @@
+---
+
+---
+
+<footer class='container'>
+    <div class="haut-footer">
+        <div class="haut-footer-info-gauche">
+            <div class="colonne">
+                <h3 class="titre-colonne-footer">Lien internes</h3>
+                <a href="#" class="lien-text-footer">Fonds d'archives</a>
+                <a href="#" class="lien-text-footer">Accès membre</a>
+                <a href="#" class="lien-text-footer">Recherche</a>
+            </div>
+            <div class="colonne">
+                <h3 class="titre-colonne-footer">Institutions</h3>
+                <a href="https://elliadd.univ-fcomte.fr" class="lien-text-footer">ELLIADD</a>
+                <a href="https://fanum.univ-fcomte.fr/fanum/" class="lien-text-footer">FANUM</a>
+                <a href="https://mshe.univ-fcomte.fr" class="lien-text-footer">MSHE</a>
+                <a href="https://www.univ-fcomte.fr/" class="lien-text-footer">UMLP</a>
+            </div>
+            <div class="colonne">
+                <h3 class="titre-colonne-footer">Juridique</h3>
+                <a href="#" class="lien-text-footer">Manifeste éditorial</a>
+                <a href="/annexe/mentions_legales" class="lien-text-footer">Mentions légales</a>
+            </div>
+            <div class="colonne">
+                <h3 class="titre-colonne-footer">TITRE Indéterminé</h3>
+                <a href="#" class="lien-text-footer">Partenaires</a>
+                <a href="#" class="lien-text-footer">Crédits</a>
+            </div>
+        </div>
+        <div class="haut-footer-resaux-droite">
+            <div class="image-resaux-haut">
+                <a href="#"><img src="/icones/icon-twitter.svg" alt="Twitter"></a>
+                <a href="#"><img src="/icones/icon-facebook.svg" alt="Facebook"></a>
+            </div>
+            <div class="image-resaux-bas">
+                <a href="mailto:adresse@email.com"><img src="/icones/icon-mail.svg" alt="Email"></a>
+                <a href="#"><img src="/icones/icon-linkedin.svg" alt="LinkedIn"></a>
+            </div>
+        </div>
+    </div>
+    <div class="trait-separation"></div>
+    <div class="bas-footer">
+        <div class="bas-footer-gauche">
+            <p></p>
+        </div>
+        <div class="bas-footer-logos-droite">
+            <a href="https://www.bourgognefranchecomte.fr"><img src="/icones/logo-rbfc-blanc.png" alt="Région Bourgogne Franche-Comté"></a>
+            <a href="https://elliadd.univ-fcomte.fr"><img src="/icones/LogoElliadd_blanc.png" alt="ELLIADD"></a>
+            <a href="https://mshe.univ-fcomte.fr"><img src="/icones/mshe-logo-blanc.png" alt="MSHE"></a>
+            <a href="https://www.univ-fcomte.fr/"><img src="/icones/LOGO_UMLP_blanc.png" alt="Université Marie et Louis Pasteur"></a>
+        </div>
+    </div>
+</footer>
+
+<style>
+    .container {
+        background: var(--bg-color);
+        color: white;
+        width: 100%;
+        padding: 40px 40px 20px 40px;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    .haut-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .haut-footer-info-gauche {
+        display: flex;
+        gap: 40px;
+        flex-wrap: wrap;
+    }
+
+    .colonne {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .titre-colonne-footer {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .lien-text-footer {
+        color: #aaa;
+        text-decoration: none;
+        margin-bottom: 5px;
+    }
+
+    .lien-text-footer:hover {
+        color: white;
+    }
+
+    .trait-separation {
+        width: 100%;
+        height: 1px;
+        background: #444;
+        margin: 20px 0;
+    }
+
+    .haut-footer-resaux-droite {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .image-resaux-haut img,
+    .image-resaux-bas img,
+    .bas-footer-logos-droite img {
+        width: 50px;
+        margin: 5px;
+    }
+
+    .bas-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .bas-footer-gauche p {
+        color: #ccc;
+    }
+
+    .bas-footer-logos-droite {
+        display: flex;
+        justify-content: center;
+        justify-items: center;
+        align-items: center;
+    }
+
+    .bas-footer-logos-droite img {
+        width: 100px;
+        margin-left: 20px;
+        align-items: center;
+    }
+</style>

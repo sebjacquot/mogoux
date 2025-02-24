@@ -7,93 +7,86 @@ import Bloc5 from "../components/Blocs/Bloc5.astro";
 import Bloc6 from "../components/Blocs/Bloc6.astro";
 
 type Props = {
-  medias: {
-    type: "image" | "audio" | "video";
-    src: string;
-    slug: string;
-    titre: string;
-  }[];
+    medias: {
+        type: "image" | "audio" | "video";
+        src: string;
+        slug: string;
+        titre: string;
+    }[];
 };
 
-const { medias } = Astro.props;
+const {medias} = Astro.props;
 
 const blocs = [
-  {
-    component: Bloc1,
-    tile: 5,
-  },
-  {
-    component: Bloc2,
-    tile: 3,
-  },
-  { component: Bloc3, tile: 5 },
-  { component: Bloc4, tile: 6 },
-  { component: Bloc5, tile: 3 },
-  { component: Bloc6, tile: 6 },
+    {component: Bloc1, tile: 5},
+    {component: Bloc2, tile: 3},
+    {component: Bloc3, tile: 5},
+    {component: Bloc4, tile: 6},
+    {component: Bloc5, tile: 3},
+    {component: Bloc6, tile: 6},
 ];
 
 const shuffle = (items: any[]) => {
-  return items.sort(() => Math.random() - 0.5);
+    return items.sort(() => Math.random() - 0.5);
 };
-
-// const res = await fetch(
-//   "https://api.slingacademy.com/v1/sample-data/photos?limit=126"
-// );
-// const data = await res.json();
 
 shuffle(medias);
 
 let results: any[] = [];
 let blocIndex = 0;
 
-for (let i = 1; i <= medias.length; i++) {
-  const { component, tile } = blocs[blocIndex];
+for (let i = 0; i < medias.length;) {
+    const {component, tile} = blocs[blocIndex];
 
-  results.push({
-    id: blocIndex,
-    component,
-    medias: medias.slice(i - 1, i - 1 + tile),
-  });
+    const blocMedias = medias.slice(i, i + tile);
 
-  if (blocIndex >= blocs.length - 1) {
-    blocIndex = 0;
-  } else {
-    blocIndex++;
-  }
+    results.push({
+        id: blocIndex,
+        component,
+        medias: blocMedias,
+        isFull: blocMedias.length === tile, // Vérifie si le bloc est rempli au max
+    });
 
-  i += tile - 1;
+    blocIndex = blocIndex >= blocs.length - 1 ? 0 : blocIndex + 1;
+    i += blocMedias.length; // Avance du nombre réel d'éléments ajoutés
 }
 
-shuffle(results);
+// Séparer les blocs remplis et non remplis
+const fullResults = results.filter(({isFull}) => isFull);
+const partialResults = results.filter(({isFull}) => !isFull);
+
+
+shuffle(fullResults);
+shuffle(partialResults);
+results = [...fullResults, ...partialResults];
+
+
+const mediasList: { slug: string }[] = [];
+
+results.forEach(item => {
+    item.medias.forEach((media: { slug: string }) => {
+        mediasList.push({
+            slug: media.slug
+        });
+    });
+});
 ---
 
-<html>
-  <main>
-    {results.map(({ component: Bloc, medias }) => <Bloc medias={medias} />)}
-  </main>
+<section class="galerie">
+    {results.map(({component: Bloc, medias}) =>
+            <Bloc medias={medias} mediasList={mediasList}/>)}
+</section>
 
-  <style scoped>
-    /* main {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 4px;
-  }
-  main > * {
-    flex: 1 1 calc(20% - 4px); 
-    box-sizing: border-box; 
-  } */
 
-    main {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(min(330px, 100%), 1fr));
-      /* gap: 4px; */
-      column-gap: 4px;
+<style scoped>
+    .galerie {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(min(330px, 100%), 1fr));
+        column-gap: 4px;
+        grid-auto-rows: auto;
+        height: auto;
     }
-    body {
-      background: #1f1f1f;
-    }
-  </style>
+</style>
 
 
-</html>
+

@@ -8,23 +8,25 @@ type Props = {
     slug: string;
     titre: string;
   }[];
+
+  mediasList: []
 };
 
-const { medias } = Astro.props;
+const { medias, mediasList } = Astro.props;
 ---
 
 <div class="bloc5">
   <div class="row-big">
     <div class="rectangle bleu">
-      {medias[0] && <BlocMedia {...medias[0]} />}
+      {medias[0] && <BlocMedia media={medias[0]} mediasList={mediasList} />}
     </div>
   </div>
   <div class="row-2-5-reversed">
     <div class="rectangle orange">
-      {medias[1] && <BlocMedia {...medias[1]} />}
+      {medias[1] && <BlocMedia media={medias[1]} mediasList={mediasList} />}
     </div>
     <div class="rectangle rose">
-      {medias[2] && <BlocMedia {...medias[2]} />}
+      {medias[2] && <BlocMedia media={medias[2]} mediasList={mediasList} />}
     </div>
   </div>
 </div>

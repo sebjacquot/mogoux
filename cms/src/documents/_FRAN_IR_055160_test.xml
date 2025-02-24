@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ead xmlns:xlink="http://www.w3.org/1999/xlink">
-	<eadheader countryencoding="iso3166-1" dateencoding="iso8601" langencoding="iso639-2b" relatedencoding="DC" repositoryencoding="iso15511" scriptencoding="iso15924">
-		<eadid xlink:type="simple" xlink:href="http://www.siv.archives-nationales.culture.gouv.fr/siv/IR/FRAN_IR_055160">FRAN_IR_055160</eadid>
- <filedesc>
-  <titlestmt>
-   <titleproper>Dossiers de clients de l'étude LXXVI (1781-1965)</titleproper>
+ <eadheader countryencoding="iso3166-1" dateencoding="iso8601" langencoding="iso639-2b" relatedencoding="DC" repositoryencoding="iso15511" scriptencoding="iso15924">
+  <eadid xlink:type="simple" xlink:href="http://www.siv.archives-nationales.culture.gouv.fr/siv/IR/FRAN_IR_055160">FRAN_IR_055160</eadid>
+  <filedesc>
+   <titlestmt>
+    <titleproper>Dossiers de clients de l'étude LXXVI (1781-1965)</titleproper>
     <subtitle>Répertoire méthodique des cotes MC/DC/LXXVI/1 - MC/DC/LXXVI/23</subtitle>
     <author>Etabli par Thomas Dandin, étudiant en master 2 à l'université de Bordeaux-Montaigne, sous la direction de Jean Pouëssel, chargé d'études documentaires, et Marie-Françoise Limon-Bonnet, conservateur général, chargée du Minutier central des notaires de Paris.</author>
    </titlestmt>
    <editionstmt>
-				<edition>Première édition électronique</edition>
-			</editionstmt>
+    <edition>Première édition électronique</edition>
+   </editionstmt>
    <publicationstmt>
-   <publisher>Archives nationales</publisher>
+    <publisher>Archives nationales</publisher>
     <address>
-					<addressline>Paris</addressline>
-				</address>
+     <addressline>Paris</addressline>
+    </address>
     <date calendar="gregorian" era="ce" normal="2016-01-01/2016-12-31">2016</date>
    </publicationstmt>
   </filedesc>
   <profiledesc>
-  <creation>Cet instrument de recherche a été rédigé dans le système d'information archivistique des Archives nationales.</creation>
+   <creation>Cet instrument de recherche a été rédigé dans le système d'information archivistique des Archives nationales.</creation>
    <langusage>
     <language langcode="fre">Français</language>
    </langusage>
    <descrules>Conforme à la norme ISAD(G) et aux règles d'application de la DTD EAD (version 2002) aux Archives nationales.</descrules>
   </profiledesc>
  </eadheader>
-	<frontmatter>
-		<div>
+ <frontmatter>
+  <div>
    <p>L'étude LXXVI est installée rive gauche depuis le XVIIe siècle. Elle connaît le glissement caractéristique vers l'Ouest. Installée depuis 1656 rue de la Harpe, elle passe rue de Seine (1789), gagne la rue de Lille (1855), s'arrête rue de Bellechasse en 1875 et aboutit rue de Mailly en 1884. Elle est aujourd'hui installée 34bis, rue de l'Université.</p>
    <p>L'ensemble de dossiers de clients qu'elle a confié au Minutier central des notaires de Paris n'est pas très volumineux, mais les pièces les plus anciennes remontent à 1781, les plus récentes à 1965. </p>
    <p>Sous la cote MC/DC/LXXVI/1, on a regroupé plusieurs dossiers intéressant les notaires ayant exercé dans l'étude. </p>
@@ -37,17 +37,17 @@
    <p>Marie-Françoise Limon-Bonnet</p>
    <p>décembre 2016</p>
   </div>
-	</frontmatter>
-	<archdesc level="subfonds">
- <did>
-  <unitid type="identifiant">MC/DC/LXXVI/1 - MC/DC/LXXVI/23</unitid>
+ </frontmatter>
+ <archdesc level="subfonds">
+  <did>
+   <unitid type="identifiant">MC/DC/LXXVI/1 - MC/DC/LXXVI/23</unitid>
    <unittitle>Dossiers de clients de l'étude LXXVI (1781-1965)</unittitle>
    <unitdate calendar="gregorian" era="ce" normal="1761-01-01 / 1965-12-31">1761-1965</unitdate>
    <origination>
     <corpname authfilenumber="FRAN_NP_010203">Etude LXXVI</corpname>
    </origination>
    <physdesc>
-   <extent>n cartons, soit m ml</extent>
+    <extent>n cartons, soit m ml</extent>
    </physdesc>
    <langmaterial>
     <language langcode="fre">Français</language>
@@ -77,7 +77,7 @@
    <p>MC/DC/LXXVI/5 - MC/DC/LXXVI/15. Particuliers.</p>
    <p>MC/DC/LXXVI/16 - MC/DC/LXXVI/21. Sociétés.</p>
    <p>MC/DC/LXXVI/22 - MC/DC/LXXVI/23. Divers.</p>
-  <p altrender="links">
+   <p altrender="links">
     <ref role="IR">Archives de l'étude LXXVI<archref href="FRAN_IR_042677">Archives de l'étude LXXVI</archref>
     </ref>
    </p>
@@ -86,9 +86,9 @@
    <p>Minutes et répertoires des notaires titulaires de l'étude LXXVI.</p>
   </separatedmaterial>
   <dsc>
-  <c id="c-2jhbvyn84--1cvr2fq3ql6gg" xlink:type="simple" xlink:href="http://www.siv.archives-nationales.culture.gouv.fr/siv/UD/FRAN_IR_055160/c-2jhbvyn84--1cvr2fq3ql6gg" level="recordgrp">
-   <did>
-    <unitid type="cote-de-consultation">MC/DC/LXXVI/1</unitid>
+   <c id="c-2jhbvyn84--1cvr2fq3ql6gg" xlink:type="simple" xlink:href="http://www.siv.archives-nationales.culture.gouv.fr/siv/UD/FRAN_IR_055160/c-2jhbvyn84--1cvr2fq3ql6gg" level="recordgrp">
+    <did>
+     <unitid type="cote-de-consultation">MC/DC/LXXVI/1</unitid>
      <unittitle>Notaires.</unittitle>
      <unitdate calendar="gregorian" era="ce" normal="1809-01-01 / 1885-12-31">1809-1885</unitdate>
     </did>
@@ -110,16 +110,16 @@
     </controlaccess>
    </c>
    <c id="c-2kpy65e9o-b2d071xh54f4" xlink:type="simple" xlink:href="http://www.siv.archives-nationales.culture.gouv.fr/siv/UD/FRAN_IR_055160/c-2kpy65e9o-b2d071xh54f4" level="subseries">
-   <did>
-    <unitid type="identifiant">MC/DC/LXXVI/2 - MC/DC/LXXVI/4</unitid>
+    <did>
+     <unitid type="identifiant">MC/DC/LXXVI/2 - MC/DC/LXXVI/4</unitid>
      <unittitle>Successions.</unittitle>
      <unitdate calendar="gregorian" era="ce" normal="1822-01-01 / 1950-12-31">1822-1950</unitdate>
     </did>
-    
-    
+
+
     <c id="c-1wvu4hou3-eyqy2n19x1zz" xlink:type="simple" xlink:href="http://www.siv.archives-nationales.culture.gouv.fr/siv/UD/FRAN_IR_055160/c-1wvu4hou3-eyqy2n19x1zz" level="recordgrp">
-    <did>
-     <unitid type="cote-de-consultation">MC/DC/LXXVI/4</unitid>
+     <did>
+      <unitid type="cote-de-consultation">MC/DC/LXXVI/4</unitid>
       <unittitle>Successions Poulet, Tardieu, Tretaigne (de).</unittitle>
       <unitdate calendar="gregorian" era="ce" normal="1879-01-01 / 1933-12-31">1879-1933</unitdate>
      </did>
@@ -142,14 +142,14 @@
     </c>
    </c>
    <c id="c-2l30a4hjd-12yg97ukj2yql" xlink:type="simple" xlink:href="http://www.siv.archives-nationales.culture.gouv.fr/siv/UD/FRAN_IR_055160/c-2l30a4hjd-12yg97ukj2yql" level="subseries">
-   <did>
-    <unitid type="identifiant">MC/DC/LXXVI/5 - MC/DC/LXXVI/15</unitid>
+    <did>
+     <unitid type="identifiant">MC/DC/LXXVI/5 - MC/DC/LXXVI/15</unitid>
      <unittitle>Particuliers.</unittitle>
      <unitdate calendar="gregorian" era="ce" normal="1781-01-01 / 1942-12-31">1781-1942</unitdate>
     </did>
     <c id="c-23crduno0-tdn62mj0u60s" xlink:type="simple" xlink:href="http://www.siv.archives-nationales.culture.gouv.fr/siv/UD/FRAN_IR_055160/c-23crduno0-tdn62mj0u60s" level="recordgrp">
-    <did>
-     <unitid type="cote-de-consultation">MC/DC/LXXVI/5</unitid>
+     <did>
+      <unitid type="cote-de-consultation">MC/DC/LXXVI/5</unitid>
       <unittitle>Auchois, Barella, Bertheau, Bodin, Chaulnes (de), Cottin.</unittitle>
       <unitdate calendar="gregorian" era="ce" normal="1781-01-01 / 1909-12-31">1781-1909</unitdate>
      </did>
@@ -174,8 +174,8 @@
      </controlaccess>
     </c>
     <c id="c-25nne3ulg--5cj7cuv5lm02" xlink:type="simple" xlink:href="http://www.siv.archives-nationales.culture.gouv.fr/siv/UD/FRAN_IR_055160/c-25nne3ulg--5cj7cuv5lm02" level="recordgrp">
-    <did>
-     <unitid type="cote-de-consultation">MC/DC/LXXVI/6</unitid>
+     <did>
+      <unitid type="cote-de-consultation">MC/DC/LXXVI/6</unitid>
       <unittitle>Denier, Ducrocq, Dumont.</unittitle>
       <unitdate calendar="gregorian" era="ce" normal="1799-01-01 / 1913-12-31">1799-1913</unitdate>
      </did>
@@ -193,8 +193,8 @@
      </controlaccess>
     </c>
     <c id="c-26mr1dt98--eo2kk7wxed8f" xlink:type="simple" xlink:href="http://www.siv.archives-nationales.culture.gouv.fr/siv/UD/FRAN_IR_055160/c-26mr1dt98--eo2kk7wxed8f" level="recordgrp">
-    <did>
-     <unitid type="cote-de-consultation">MC/DC/LXXVI/7</unitid>
+     <did>
+      <unitid type="cote-de-consultation">MC/DC/LXXVI/7</unitid>
       <unittitle>Fouquet, Fournier-Barthe, Girardot, Gotty.</unittitle>
       <unitdate calendar="gregorian" era="ce" normal="1840-01-01 / 1926-12-31">1840-1926</unitdate>
      </did>
@@ -215,8 +215,8 @@
      </controlaccess>
     </c>
     <c id="c-27r4josxd-10cjcuhikmix0" xlink:type="simple" xlink:href="http://www.siv.archives-nationales.culture.gouv.fr/siv/UD/FRAN_IR_055160/c-27r4josxd-10cjcuhikmix0" level="subseries">
-    <did>
-     <unitid type="identifiant">MC/DC/LXXVI/8 - MC/DC/LXXVI/9</unitid>
+     <did>
+      <unitid type="identifiant">MC/DC/LXXVI/8 - MC/DC/LXXVI/9</unitid>
       <unittitle>Grave (de).</unittitle>
       <unitdate calendar="gregorian" era="ce" normal="1851-01-01 / 1887-12-31">1851-1887</unitdate>
      </did>
@@ -244,8 +244,8 @@
      </c>
     </c>
     <c id="c-28gyx0hdh-kf4akb865tz3" xlink:type="simple" xlink:href="http://www.siv.archives-nationales.culture.gouv.fr/siv/UD/FRAN_IR_055160/c-28gyx0hdh-kf4akb865tz3" level="recordgrp">
-    <did>
-     <unitid type="cote-de-consultation">MC/DC/LXXVI/10</unitid>
+     <did>
+      <unitid type="cote-de-consultation">MC/DC/LXXVI/10</unitid>
       <unittitle>Hersent, Jozon, Kirchner, La Batie (de), Landesberg, Legrand.</unittitle>
       <unitdate calendar="gregorian" era="ce" normal="1814-01-01 / 1924-12-31">1814-1924</unitdate>
      </did>
@@ -268,8 +268,8 @@
      </controlaccess>
     </c>
     <c id="c-2a759et59--1ozg343wjoqvj" xlink:type="simple" xlink:href="http://www.siv.archives-nationales.culture.gouv.fr/siv/UD/FRAN_IR_055160/c-2a759et59--1ozg343wjoqvj" level="subseries">
-    <did>
-     <unitid type="identifiant">MC/DC/LXXVI/11 - MC/DC/LXXVI/12</unitid>
+     <did>
+      <unitid type="identifiant">MC/DC/LXXVI/11 - MC/DC/LXXVI/12</unitid>
       <unittitle>Lignerolles (de).</unittitle>
       <unitdate calendar="gregorian" era="ce" normal="1831-01-01 / 1901-12-31">1831-1901</unitdate>
      </did>
@@ -297,8 +297,8 @@
      </c>
     </c>
     <c id="c-2aropqp2v-1jfmet7ymipls" xlink:type="simple" xlink:href="http://www.siv.archives-nationales.culture.gouv.fr/siv/UD/FRAN_IR_055160/c-2aropqp2v-1jfmet7ymipls" level="recordgrp">
-    <did>
-     <unitid type="cote-de-consultation">MC/DC/LXXVI/13</unitid>
+     <did>
+      <unitid type="cote-de-consultation">MC/DC/LXXVI/13</unitid>
       <unittitle>Magne, Millot.</unittitle>
       <unitdate calendar="gregorian" era="ce" normal="1853-01-01 / 1896-12-31">1853-1896</unitdate>
      </did>
@@ -315,8 +315,8 @@
      </controlaccess>
     </c>
     <c id="c-2bk3vwjp0-12w17dpuliug7" xlink:type="simple" xlink:href="http://www.siv.archives-nationales.culture.gouv.fr/siv/UD/FRAN_IR_055160/c-2bk3vwjp0-12w17dpuliug7" level="recordgrp">
-    <did>
-     <unitid type="cote-de-consultation">MC/DC/LXXVI/14</unitid>
+     <did>
+      <unitid type="cote-de-consultation">MC/DC/LXXVI/14</unitid>
       <unittitle>Outrebon.</unittitle>
       <unitdate calendar="gregorian" era="ce" normal="1875-01-01 / 1896-12-31">1875-1896</unitdate>
      </did>
@@ -331,8 +331,8 @@
      </controlaccess>
     </c>
     <c id="c-2c1gg48kh--umvrpx4qiwf1" xlink:type="simple" xlink:href="http://www.siv.archives-nationales.culture.gouv.fr/siv/UD/FRAN_IR_055160/c-2c1gg48kh--umvrpx4qiwf1" level="recordgrp">
-    <did>
-     <unitid type="cote-de-consultation">MC/DC/LXXVI/15</unitid>
+     <did>
+      <unitid type="cote-de-consultation">MC/DC/LXXVI/15</unitid>
       <unittitle>Pinel de Grandchamps, Schindler, Siraud, Tremblez, Tripot, Vallet, Van de Werde de Schilde, Villeneuve-Esclapon (de).</unittitle>
       <unitdate calendar="gregorian" era="ce" normal="1761-01-01 / 1942-12-31">1761-1942</unitdate>
      </did>
@@ -359,14 +359,14 @@
     </c>
    </c>
    <c id="c-2lj4o29ep-1rcahse3fdvv2" xlink:type="simple" xlink:href="http://www.siv.archives-nationales.culture.gouv.fr/siv/UD/FRAN_IR_055160/c-2lj4o29ep-1rcahse3fdvv2" level="subseries">
-   <did>
-    <unitid type="identifiant">MC/DC/LXXVI/16 - MC/DC/LXXVI/21</unitid>
+    <did>
+     <unitid type="identifiant">MC/DC/LXXVI/16 - MC/DC/LXXVI/21</unitid>
      <unittitle>Sociétés.</unittitle>
      <unitdate calendar="gregorian" era="ce" normal="1808-01-01 / 1960-12-31">1808-1960</unitdate>
     </did>
     <c id="c-2e2tf4rqx-19sinlpbm2apz" xlink:type="simple" xlink:href="http://www.siv.archives-nationales.culture.gouv.fr/siv/UD/FRAN_IR_055160/c-2e2tf4rqx-19sinlpbm2apz" level="recordgrp">
-    <did>
-     <unitid type="cote-de-consultation">MC/DC/LXXVI/16</unitid>
+     <did>
+      <unitid type="cote-de-consultation">MC/DC/LXXVI/16</unitid>
       <unittitle>Abattoirs d'entreprises frigorifiques (société d') ; Agricole africaine (société) ; Allamand, Hersent et Gravier (société) ; Ardoisière de l'Anjou (société) ; Assurances mutuelles contre l'incendie (société d') ; Assurances mutuelles immobilière contre l'incendie pour la ville de Paris (société d') ; Ateliers et Fonderies de Suresnes-Puteaux (société fermière) ; Banque de La Réunion ; Banque nationale de la République d'Haïti ; Chemins de Fer dans la Province de Buenos-Aires (société des).</unittitle>
       <unitdate calendar="gregorian" era="ce" normal="1852-01-01 / 1960-12-31">1852-1960</unitdate>
      </did>
@@ -386,8 +386,8 @@
      </scopecontent>
     </c>
     <c id="c-2gwuzh64i-1fhiwu5o6eh1l" xlink:type="simple" xlink:href="http://www.siv.archives-nationales.culture.gouv.fr/siv/UD/FRAN_IR_055160/c-2gwuzh64i-1fhiwu5o6eh1l" level="recordgrp">
-    <did>
-     <unitid type="cote-de-consultation">MC/DC/LXXVI/17</unitid>
+     <did>
+      <unitid type="cote-de-consultation">MC/DC/LXXVI/17</unitid>
       <unittitle>Compagnies : d'alimentation et d'installation frigorifiques ; d'assurance de Paris ; d'assurances la Nation ; d'assurances maritimes La Réunion ; d'éclairage électrique du secteur des Champs Elysées ; d'exploration pour l'Asie occidentale ; des charbonnages lorrains ; des palmeraies du Cameroun ; des Tabacs et Plantations du Cameroun ; parisienne d'éclairage et de chauffage par le gaz.</unittitle>
       <unitdate calendar="gregorian" era="ce" normal="1868-01-01 / 1930-12-31">1868-1930</unitdate>
      </did>
@@ -407,8 +407,8 @@
      </scopecontent>
     </c>
     <c id="c-2mxczucmb--mxowynxiai71" xlink:type="simple" xlink:href="http://www.siv.archives-nationales.culture.gouv.fr/siv/UD/FRAN_IR_055160/c-2mxczucmb--mxowynxiai71" level="recordgrp">
-    <did>
-     <unitid type="cote-de-consultation">MC/DC/LXXVI/18</unitid>
+     <did>
+      <unitid type="cote-de-consultation">MC/DC/LXXVI/18</unitid>
       <unittitle>Comptoir d'Indo-Chine &amp;amp; de Madagascar (société) ; Coopérative automobile de France ; Coopérative des employés de Banque et de Bourse de Paris (société) ; Crèches laïques du IIIe arrondissement de Paris (société des) ; Dejoux et Compagnie (société) ; Etudes générales urbaines et rurales ; Exploitation des pétroles (société pour l') ; Financière et commerciale franco-américaine (société) ; Financière et commerciale franco-brésilienne (société).</unittitle>
       <unitdate calendar="gregorian" era="ce" normal="1886-01-01 / 1926-12-31">1886-1926</unitdate>
      </did>
@@ -427,8 +427,8 @@
      </scopecontent>
     </c>
     <c id="c-34j1pxepl-15b8itkmq72mh" xlink:type="simple" xlink:href="http://www.siv.archives-nationales.culture.gouv.fr/siv/UD/FRAN_IR_055160/c-34j1pxepl-15b8itkmq72mh" level="recordgrp">
-    <did>
-     <unitid type="cote-de-consultation">MC/DC/LXXVI/19</unitid>
+     <did>
+      <unitid type="cote-de-consultation">MC/DC/LXXVI/19</unitid>
       <unittitle>Foncière Chéréméteff (société) ; Française d'entreprises industrielles et commerciales en Chine (société) ; Hydroxydase (société) ; Journal du Puy-de-Dôme (société).</unittitle>
       <unitdate calendar="gregorian" era="ce" normal="1821-01-01 / 1936-12-31">1821-1936</unitdate>
      </did>
@@ -442,8 +442,8 @@
      </scopecontent>
     </c>
     <c id="c-366qr6wdf--36z4ah9ioy25" xlink:type="simple" xlink:href="http://www.siv.archives-nationales.culture.gouv.fr/siv/UD/FRAN_IR_055160/c-366qr6wdf--36z4ah9ioy25" level="recordgrp">
-    <did>
-     <unitid type="cote-de-consultation">MC/DC/LXXVI/20</unitid>
+     <did>
+      <unitid type="cote-de-consultation">MC/DC/LXXVI/20</unitid>
       <unittitle>Le Lait (société) ; Librairie et Imprimerie Horticoles du "Jardin" (société) ; Minoteries (société générale de) ; Mutualité financière (société).</unittitle>
       <unitdate calendar="gregorian" era="ce" normal="1897-01-01 / 1924-12-31">1897-1924</unitdate>
      </did>
@@ -457,8 +457,8 @@
      </scopecontent>
     </c>
     <c id="c-365vfylnh-1ix9d957wqifq" xlink:type="simple" xlink:href="http://www.siv.archives-nationales.culture.gouv.fr/siv/UD/FRAN_IR_055160/c-365vfylnh-1ix9d957wqifq" level="recordgrp">
-    <did>
-     <unitid type="cote-de-consultation">MC/DC/LXXVI/21</unitid>
+     <did>
+      <unitid type="cote-de-consultation">MC/DC/LXXVI/21</unitid>
       <unittitle>Nationale des expositions flottantes des produits français (société) ; Philanthropique du Prêt-Gratuit (société) ; Publications périodiques (société de) ; Publicité universelle (société de) ; Travaux publics au Chili (société de).</unittitle>
       <unitdate calendar="gregorian" era="ce" normal="1808-01-01 / 1924-12-31">1808-1924</unitdate>
      </did>
@@ -474,14 +474,14 @@
     </c>
    </c>
    <c id="c-3113oi8w6-1nuxctavrl5r0" xlink:type="simple" xlink:href="http://www.siv.archives-nationales.culture.gouv.fr/siv/UD/FRAN_IR_055160/c-3113oi8w6-1nuxctavrl5r0" level="subseries">
-   <did>
-    <unitid type="identifiant">MC/DC/LXXVI/22 - MC/DC/LXXVI/23</unitid>
+    <did>
+     <unitid type="identifiant">MC/DC/LXXVI/22 - MC/DC/LXXVI/23</unitid>
      <unittitle>Divers.</unittitle>
      <unitdate calendar="gregorian" era="ce" normal="1787-01-01 / 1965-12-31">1787-1965</unitdate>
     </did>
     <c id="c-38kh6bnat-923w3g0tx0x4" xlink:type="simple" xlink:href="http://www.siv.archives-nationales.culture.gouv.fr/siv/UD/FRAN_IR_055160/c-38kh6bnat-923w3g0tx0x4" level="recordgrp">
-    <did>
-     <unitid type="cote-de-consultation">MC/DC/LXXVI/22</unitid>
+     <did>
+      <unitid type="cote-de-consultation">MC/DC/LXXVI/22</unitid>
       <unittitle>Divers.</unittitle>
       <unitdate calendar="gregorian" era="ce" normal="1787-01-01 / 1939-12-31">1787-1939</unitdate>
      </did>
@@ -498,8 +498,8 @@
      </controlaccess>
     </c>
     <c id="c-39dg0a9zk-x4vm8f2g3wi4" xlink:type="simple" xlink:href="http://www.siv.archives-nationales.culture.gouv.fr/siv/UD/FRAN_IR_055160/c-39dg0a9zk-x4vm8f2g3wi4" level="recordgrp">
-    <did>
-     <unitid type="cote-de-consultation">MC/DC/LXXVI/23</unitid>
+     <did>
+      <unitid type="cote-de-consultation">MC/DC/LXXVI/23</unitid>
       <unittitle>Divers.</unittitle>
       <unitdate calendar="gregorian" era="ce" normal="1793-01-01 / 1965-12-31">1793-1965</unitdate>
      </did>

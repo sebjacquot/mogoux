@@ -1,601 +1,205 @@
 ---
-import HeaderNoBg from "../../components/Header_NoBg.astro";
 import ImageFullscreen from "../../components/ImageFullscreen.astro";
 import SuggestionsCard from "../../components/SuggestionsCard.astro";
-import "../../styles/global.css";
-import { Image } from "astro:assets";
+import ImageTooltip from "../../components/ImageTooltip.astro";
+import Layout from "../../layouts/Layout.astro";
 ---
 
-<head>
-  <meta charset="UTF-8" />
-</head>
-
-<html>
-  <main>
-    <HeaderNoBg />
-    <section class="entete" title="Jean-Paul Goux photographié lors d'un entretien le 30 novembre 1984. Photographie de Gilles Choffé">
-      <div class="hero">
-        <h2 class="tag">Chapitre 4</h2>
-        <h1 class="titre">Enquête sur la mémoire collective</h1>
-        <h2 class="soustitre">
-          Le travail de documentation mené par l’écrivain
-        </h2>
-        <div class="intro">
-          <p>
-            Pendant sa résidence, Jean-Paul Goux a longuement travaillé sur des
-            ouvrages et des archives, tout en menant de très nombreux
-            entretiens, multipliant les rencontres avec des ouvrières et des
-            ouvriers, qu’ils soient à la retraite ou toujours actifs et engagés
-            dans leur activité professionnelle.
-          </p>
-          <div class="separation">
-            <div class="background"></div>
-          </div>
+<Layout title="Chapitre 4">
+    <section class="entete">
+        <div class="hero">
+            <h2 class="tag">Chapitre 4</h2>
+            <h1 class="titre">Enquête sur la mémoire collective</h1>
+            <h2 class="soustitre">
+                Le travail de documentation mené par l’écrivain
+            </h2>
+            <div class="intro">
+                <p>
+                    Pendant sa résidence, Jean-Paul Goux a longuement travaillé sur des
+                    ouvrages et des archives, tout en menant de très nombreux
+                    entretiens, multipliant les rencontres avec des ouvrières et des
+                    ouvriers, qu’ils soient à la retraite ou toujours actifs et engagés
+                    dans leur activité professionnelle.
+                </p>
+                <div class="separation">
+                    <div class="background"></div>
+                </div>
+            </div>
         </div>
-      </div>
-      <img
-        class="img-cover"
-        src="/images/Header_Chapitre/C4_GOU_P8-03_03-P.jpg"
-        alt="Ken Loach"
-      />
-      <div class="overlay"></div>
+
+        <ImageTooltip
+                src="/images/Header_Chapitre/C4_GOU_P8-03_03-P.jpg"
+                legend="Jean-Paul Goux photographié lors d'un entretien le 30 novembre 1984. Photographie de Gilles Choffé"
+        />
+
+        <div class="overlay"></div>
     </section>
     <section class="contenu-article">
-      <h2 class="titres">Garder la trace de ce qui disparaît</h2>
-      <!-- <Image
-        src={"/images/cover_chapitre/0096.jpg"}
-        alt={"Jean-Paul Goux"}
-        class="fougere"
-      /> -->
-      <div class="paragraphe">
-        <p>
-          Le projet de Jean-Paul Goux a pour objet la mémoire collective du pays
-          de Montbéliard, définie comme « ce qui reste du passé dans l’histoire
-          vécue des gens ». Celle des habitants de l’Enclave a été marquée par
-          l’expérience du travail dans des industries progressivement disparues
-          au profit des usines Peugeot qui concentrent désormais l’essentiel de
-          l’activité. L’enquête porte sur ce que « fut ce passé dans l’histoire
-          vécue des gens qui travaillèrent aux usines Peugeot », mais aussi sur
-          l’histoire présente, soulignant le jeu entre plusieurs temporalités
-          qu’il s’agira de traduire dans une forme littéraire.
-        </p>
-      </div>
- <div class="image">
-        <ImageFullscreen
-          src="/images/Chapitres/Chapitre4/GOU_04_B_08_0015b.jpg"
-          legend="Texte dactylographié « La mémoire collective »"
-        />
-        <p>
-          Texte dactylographié « La mémoire collective » © Fonds Goux, GOU 04 B
-          08 0015
-        </p>
-      </div>
- <div class="paragraphe">
-        <p>
-      Dans une conférence donnée en 2017 à propos de <i>Mémoires de l'Enclave</i>, il développe une belle comparaison qui explicite sa vision romantique de la mission à réaliser : « je me représentais le travail que j’avais à faire à la manière de ces musiciens du début du XIXe siècle qui, dans l’Europe entière, allaient recueillir les mélodies populaires en train de disparaître, ou à la manière de ces écrivains de l’Allemagne romantique, Grimm, Herder, Brentano, von Arnim, allant recueillir les traces de cette culture populaire où ils voyaient la source d’une culture nationale »
- </p>
-      </div>
-<h2 class="titres">Les sources d’une enquête</h2>
-          <div class="paragraphe">
-        <p>
-          Extérieur au monde qu’il découvre, Goux collecte des documents
-          susceptibles de lui donner accès au passé de l’Enclave et de mieux
-          comprendre les déterminismes qui pèsent sur les ouvrières et les
-          ouvriers. Il se rend aux archives de Montbéliard, de Belfort et dans
-          les archives Peugeot où il recueille l’avis de spécialistes de
-          l’histoire régionale. François Lassus l’aide par exemple à préciser la
-          date exacte de rattachement de l’Enclave à la France, en 1793.
-        </p>
-      </div>  
-      <div class="image">
-        <ImageFullscreen
-          src="/images/Chapitres/Chapitre4/GOU_04_B_0072_avec_texte.jpg"
-          legend="Lettre de François Lassus à Jean-Paul Goux (1er octobre 1985)"
-        />
-        <p>
-          Lettre de François Lassus à Jean-Paul Goux (1er octobre 1985) © Fonds
-          Goux, GOU 04 B 0072
-        </p>
-      </div>   
-      <div class="paragraphe">
-        <p>
-          Il accumule une précieuse documentation écrite sur le paternalisme
-          comme système d’encadrement des individus et sur les luttes
-          syndicales, de 1936 à 1981. Ces documents donnent accès à une réalité
-          dont l’écrivain découvre la complexité. Ils « révèlent autant la
-          volonté patronale de tout contrôler, que les violences, les craintes,
-          la complaisance, la fascination ouvrière à son égard » écrit Goux.
-          L’approche de l’écrivain se caractérise par le rejet de tout
-          manichéisme, de toute vision réductrice d’un rapport de domination
-          dont il dévoile ainsi, avec d’autant plus de force, la puissance et la
-          violence inhérente.
-        </p>
-      </div>
-      <h2 class="titres">Redonner la parole aux sans-voix</h2>
-      <div class="image">
-        <ImageFullscreen
-          src="/images/Chapitres/Chapitre4/GOU_03_E_0029.jpg"
-          legend="Note dactylographiée (extrait)"
-        />
-        <p>Note dactylographiée (extrait) © Fonds Goux, GOU 03 E 0029</p>
-      </div>
-      <div class="paragraphe">
-        <p>
-          Le milieu des années 1980 est marqué par la vogue des récits de vie en
-          milieu populaire, qu’il s’agisse des paysans dans un monde rural en
-          voie de disparition, ou des ouvriers dont plusieurs autobiographies
-          sont éditées ou rééditées entre le milieu des années 1970 et le milieu
-          des années 1980 par l’éditeur François Maspero ou par Jean Malaurie
-          dans la collection "Terre humaine" (Plon). Il s’agit alors de donner une
-          place à ceux dont la parole avait été confisquée, comme dans <i>Lucas,
-          serrurier</i> (1976), un des jalons évoqués par Goux dans la généalogie
-          des <i>Mémoires de l’Enclave</i>.
-        </p>
+        <h2 class="titres">Garder la trace de ce qui disparaît</h2>
+        <!-- <Image
+          src={"/images/cover_chapitre/0096.jpg"}
+          alt={"Jean-Paul Goux"}
+          class="fougere"
+        /> -->
+        <div class="paragraphe">
+            <p>
+                Le projet de Jean-Paul Goux a pour objet la mémoire collective du pays
+                de Montbéliard, définie comme « ce qui reste du passé dans l’histoire
+                vécue des gens ». Celle des habitants de l’Enclave a été marquée par
+                l’expérience du travail dans des industries progressivement disparues
+                au profit des usines Peugeot qui concentrent désormais l’essentiel de
+                l’activité. L’enquête porte sur ce que « fut ce passé dans l’histoire
+                vécue des gens qui travaillèrent aux usines Peugeot », mais aussi sur
+                l’histoire présente, soulignant le jeu entre plusieurs temporalités
+                qu’il s’agira de traduire dans une forme littéraire.
+            </p>
+        </div>
+        <div class="image">
+            <ImageFullscreen
+                    src="/images/Chapitres/Chapitre4/GOU_04_B_08_0015b.jpg"
+                    legend="Texte dactylographié « La mémoire collective »"
+            />
+            <p>
+                Texte dactylographié « La mémoire collective » © Fonds Goux, GOU 04 B
+                08 0015
+            </p>
+        </div>
+        <div class="paragraphe">
+            <p>
+                Dans une conférence donnée en 2017 à propos de <i>Mémoires de l'Enclave</i>, il développe une belle
+                comparaison qui explicite sa vision romantique de la mission à réaliser : « je me représentais le
+                travail que j’avais à faire à la manière de ces musiciens du début du XIXe siècle qui, dans l’Europe
+                entière, allaient recueillir les mélodies populaires en train de disparaître, ou à la manière de ces
+                écrivains de l’Allemagne romantique, Grimm, Herder, Brentano, von Arnim, allant recueillir les traces de
+                cette culture populaire où ils voyaient la source d’une culture nationale »
+            </p>
+        </div>
+        <h2 class="titres">Les sources d’une enquête</h2>
+        <div class="paragraphe">
+            <p>
+                Extérieur au monde qu’il découvre, Goux collecte des documents
+                susceptibles de lui donner accès au passé de l’Enclave et de mieux
+                comprendre les déterminismes qui pèsent sur les ouvrières et les
+                ouvriers. Il se rend aux archives de Montbéliard, de Belfort et dans
+                les archives Peugeot où il recueille l’avis de spécialistes de
+                l’histoire régionale. François Lassus l’aide par exemple à préciser la
+                date exacte de rattachement de l’Enclave à la France, en 1793.
+            </p>
+        </div>
+        <div class="image">
+            <ImageFullscreen
+                    src="/images/Chapitres/Chapitre4/GOU_04_B_0072_avec_texte.jpg"
+                    legend="Lettre de François Lassus à Jean-Paul Goux (1er octobre 1985)"
+            />
+            <p>
+                Lettre de François Lassus à Jean-Paul Goux (1er octobre 1985) © Fonds
+                Goux, GOU 04 B 0072
+            </p>
+        </div>
+        <div class="paragraphe">
+            <p>
+                Il accumule une précieuse documentation écrite sur le paternalisme
+                comme système d’encadrement des individus et sur les luttes
+                syndicales, de 1936 à 1981. Ces documents donnent accès à une réalité
+                dont l’écrivain découvre la complexité. Ils « révèlent autant la
+                volonté patronale de tout contrôler, que les violences, les craintes,
+                la complaisance, la fascination ouvrière à son égard » écrit Goux.
+                L’approche de l’écrivain se caractérise par le rejet de tout
+                manichéisme, de toute vision réductrice d’un rapport de domination
+                dont il dévoile ainsi, avec d’autant plus de force, la puissance et la
+                violence inhérente.
+            </p>
+        </div>
+        <h2 class="titres">Redonner la parole aux sans-voix</h2>
+        <div class="image">
+            <ImageFullscreen
+                    src="/images/Chapitres/Chapitre4/GOU_03_E_0029.jpg"
+                    legend="Note dactylographiée (extrait)"
+            />
+            <p>Note dactylographiée (extrait) © Fonds Goux, GOU 03 E 0029</p>
+        </div>
+        <div class="paragraphe">
+            <p>
+                Le milieu des années 1980 est marqué par la vogue des récits de vie en
+                milieu populaire, qu’il s’agisse des paysans dans un monde rural en
+                voie de disparition, ou des ouvriers dont plusieurs autobiographies
+                sont éditées ou rééditées entre le milieu des années 1970 et le milieu
+                des années 1980 par l’éditeur François Maspero ou par Jean Malaurie
+                dans la collection "Terre humaine" (Plon). Il s’agit alors de donner une
+                place à ceux dont la parole avait été confisquée, comme dans <i>Lucas,
+                serrurier</i> (1976), un des jalons évoqués par Goux dans la généalogie
+                des <i>Mémoires de l’Enclave</i>.
+            </p>
 
-        <p>
-          L’histoire orale est par ailleurs en plein essor au cours des années
-          1980, grâce aux travaux pionniers d’historiens comme Alain Corbin et
-          Philippe Joutard. Les sciences sociales précisent alors les méthodes
-          de l’enquête orale à laquelle Goux, a recours afin d’élargir le champ
-          de ses sources.
-        </p>
-      </div>
-      <div class="image">
-        <ImageFullscreen
-          src="/images/Chapitres/Chapitre4/GOU_03_05_0026.jpg"
-          legend="Lettre (extrait) de Jean-Marc Debard à Jean-Paul Goux (16 septembre 1984)"
-        />
-        <p>
-          Lettre (extrait) de Jean-Marc Debard à Jean-Paul Goux (16 septembre
-          1984) © Fonds Goux, GOU 03 05 0026
-        </p>
-      </div>
-      <div class="paragraphe">
-        <p>
-          Tous les aspects de la vie quotidienne, du travail et des loisirs
-          sont abordés au cours de 110 heures d’enregistrement, qui font bien
-          plus qu’enrichir le corpus documentaire. Ils en constituent le cœur,
-          de par « la force, la valeur intrinsèque des entretiens – les voix, le
-          ton, le récit oral », comme le précisera Goux.
-        </p>
-      </div>
+            <p>
+                L’histoire orale est par ailleurs en plein essor au cours des années
+                1980, grâce aux travaux pionniers d’historiens comme Alain Corbin et
+                Philippe Joutard. Les sciences sociales précisent alors les méthodes
+                de l’enquête orale à laquelle Goux, a recours afin d’élargir le champ
+                de ses sources.
+            </p>
+        </div>
+        <div class="image">
+            <ImageFullscreen
+                    src="/images/Chapitres/Chapitre4/GOU_03_05_0026.jpg"
+                    legend="Lettre (extrait) de Jean-Marc Debard à Jean-Paul Goux (16 septembre 1984)"
+            />
+            <p>
+                Lettre (extrait) de Jean-Marc Debard à Jean-Paul Goux (16 septembre
+                1984) © Fonds Goux, GOU 03 05 0026
+            </p>
+        </div>
+        <div class="paragraphe">
+            <p>
+                Tous les aspects de la vie quotidienne, du travail et des loisirs
+                sont abordés au cours de 110 heures d’enregistrement, qui font bien
+                plus qu’enrichir le corpus documentaire. Ils en constituent le cœur,
+                de par « la force, la valeur intrinsèque des entretiens – les voix, le
+                ton, le récit oral », comme le précisera Goux.
+            </p>
+        </div>
 
-      <div class="paragraphe">
-        <p>
-          La place prise par le témoignage oral dans le projet laisse néanmoins
-          sceptiques quelques-uns. Ainsi, l’historien Jean-Marc Debard met en garde contre les « calembredaines pseudo-scientifiques »,
-          manifestant un dédain positiviste, non seulement vis-à-vis des sources
-          orales, mais aussi d’un travail mené par un écrivain qui ne saurait,
-          selon lui, rivaliser avec le travail « scientifique » de l’historien.
-        </p>
-      </div>
+        <div class="paragraphe">
+            <p>
+                La place prise par le témoignage oral dans le projet laisse néanmoins
+                sceptiques quelques-uns. Ainsi, l’historien Jean-Marc Debard met en garde contre les « calembredaines
+                pseudo-scientifiques »,
+                manifestant un dédain positiviste, non seulement vis-à-vis des sources
+                orales, mais aussi d’un travail mené par un écrivain qui ne saurait,
+                selon lui, rivaliser avec le travail « scientifique » de l’historien.
+            </p>
+        </div>
     </section>
     <section class="credits">
-      <div class="gauche">
-        <p>
-          Écrit par <strong>Odile Roynette</strong>
-        </p>
-        <p>
-          Droits photographiques : Fonds Archives Goux
-        </p>
-      </div>
+        <div class="gauche">
+            <p>
+                Écrit par <strong>Odile Roynette</strong>
+            </p>
+            <p>
+                Droits photographiques : Fonds Archives Goux
+            </p>
+        </div>
     </section>
     <div class="suggestions-tag"><h4>Suggestions</h4></div>
     <section class="suggestions">
-      <SuggestionsCard
-        titre="Discours du Maître, traces des luttes"
-        numero_chapitre="3"
-        lien_image="C3_Ouvriers filature_2_APB.jpg"
-      />
-      <SuggestionsCard
-        titre="Une œuvre littéraire"
-        numero_chapitre="5"
-        lien_image="C5_0407.jpg"
-      />
-      <SuggestionsCard
-        titre="La structuration des Mémoires"
-        numero_chapitre="6"
-        lien_image="C6_0100.jpg"
-      />
+        <SuggestionsCard
+                titre="Discours du Maître, traces des luttes"
+                numero_chapitre="3"
+                lien_image="C3_Ouvriers filature_2_APB.jpg"
+        />
+        <SuggestionsCard
+                titre="Une œuvre littéraire"
+                numero_chapitre="5"
+                lien_image="C5_0407.jpg"
+        />
+        <SuggestionsCard
+                titre="La structuration des Mémoires"
+                numero_chapitre="6"
+                lien_image="C6_0100.jpg"
+        />
     </section>
-    <div class="footer"></div>
-  </main>
-</html>
 
-<style scoped>
-  .fougere {
-    width: 600px;
-    height: 600px;
-  }
-  @import url("https://fonts.cdnfonts.com/css/helvetica-neue-5");
-  * {
-    box-sizing: border-box;
-  }
-  html,
-  body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--bg-article-color);
-    position: relative;
-
-    overflow-x: hidden;
-  }
-  strong {
-    font-weight: bold;
-  }
-  i {
-    font-style: italic;
-  }
-
-  .credits {
-    margin-bottom: 150px;
-  }
-  .gauche {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    font-family: var(--article-font);
-    font-weight: 300;
-
-    max-width: 1100px;
-    margin: 0 auto;
-
-    font-size: 13px;
-
-    h3 {
-      font-size: 20px;
-      line-height: 30px;
-      font-weight: 300;
-      font-family: var(--article-intro-font);
-      font-style: italic;
-
-      margin-bottom: 10px;
-    }
-  }
-
-  .suggestions-tag {
-    font-family: var(--article-intro-font);
-    font-size: 27px;
-    font-weight: 300;
-    font-style: italic;
-
-    display: flex;
-    justify-content: center;
-    color: #8d8d8d;
-
-    h4::after {
-      content: "";
-      display: block;
-      border: 1px solid #e4e4e4;
-      background: #e4e4e4;
-
-      height: 50px;
-      width: 1px;
-      margin: 10px auto 0px auto;
-    }
-  }
-
-  .suggestions {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    height: 220px;
-
-    gap: 20px;
-
-    background: #e4e4e4;
-
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
-
-  .card {
-    width: 300px;
-    height: 180px;
-    overflow: hidden;
-    border-radius: 2px;
-    position: relative;
-
-    h3 {
-      font-size: 16px;
-      line-height: 18px;
-      font-family: var(--article-font); /* Helvetica */
-      font-weight: 600;
-
-      padding: 0 20px;
-
-      text-align: center;
-
-      color: white;
-      position: absolute;
-      bottom: 10px;
-      left: 0;
-      z-index: 20;
-    }
-    img {
-      max-width: 100%;
-      max-height: 100%;
-      transition: transform 0.3s ease;
-      position: relative;
-      scale: 1.2;
-      z-index: 1;
-    }
-    .overlay2 {
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.3);
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 5;
-    }
-  }
-
-  .tag-card {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    z-index: 5;
-    padding: 5px 10px;
-
-    border-radius: 2px;
-    background: #e72465 !important;
-    h4 {
-      width: auto !important;
-      text-transform: uppercase;
-      text-align: center;
-      color: #fff;
-      font-family: var(--article-font);
-      font-weight: bold;
-      font-size: 0.75rem;
-      line-height: 1rem;
-    }
-  }
-
-  /* .tag::before {
-    width: 100%;
-    height: 4px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    content: "";
-    border-radius: 2px;
-    -webkit-transition: all 0.2s ease-in;
-    -moz-transition: all 0.2s ease-in;
-    -o-transition: all 0.2s ease-in;
-    transition: all 0.2s ease-in;
-  } */
-  .footer {
-    background: var(--bg-color);
-    width: 100%;
-    height: 439px;
-
-    box-sizing: border-box;
-
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-    z-index: 100;
-  }
-
-  .contenu-article {
-    padding-top: 50px;
-    padding-bottom: 50px;
-
-    font-family: var(--article-font);
-  }
-  .titres {
-    font-size: var(--titre-paragraphe-font-size);
-
-    font-weight: bold;
-    padding-bottom: 5px;
-
-    margin: 0 auto;
-    max-width: 700px;
-
-    color: rgb(22, 22, 22);
-  }
-  .paragraphe {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: start;
-    max-width: 700px;
-    margin: 0 auto;
-
-    /* text-indent: 5%; */
-
-    color: #222222;
-
-    p {
-      margin-bottom: 20px;
-    }
-    p:last-of-type {
-      padding-bottom: 20px;
-    }
-
-    font-size: var(--texte-article-font-size);
-    line-height: 1.6;
-  }
-  .image {
-    display: flex;
-    flex-direction: column;
-    gap: 0px;
-    max-width: 500px;
-    /* max-width: 850px; */
-    /* max-width: 1000px; */
-    margin: 0 auto;
-
-    padding-bottom: 25px;
-
-    p {
-      font-size: var(--legende-font-size);
-      align-self: flex-end;
-      font-style: italic;
-      color: #666666;
-    }
-  }
-
-  .img-short {
-    display: flex;
-    flex-direction: column;
-    gap: 0px;
-    max-width: 400px;
-    /* max-width: 850px; */
-    /* max-width: 1000px; */
-    margin: 0 auto;
-
-    padding-bottom: 25px;
-
-    p {
-      color: #666666;
-    }
-  }
-  .separation {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    margin-top: 20px;
-
-    h3 {
-      font-size: var(--date-article-font-size);
-    }
-
-    .background {
-      padding: 0 10px;
-      background: var(--bg-article-color);
-      z-index: 3;
-    }
-  }
-
-  .separation::after {
-    content: " ";
-    border-bottom: 1px solid #d9d9d9;
-    display: block;
-    width: 100%;
-    position: absolute;
-    top: 10px;
-    z-index: 0;
-  }
-  .intro {
-    background: var(--bg-article-color);
-    width: 100%;
-    max-width: 75em;
-    height: 156px;
-    margin-bottom: 0;
-    margin-top: 80px;
-    padding: 20px 40px 0px 40px;
-    /* padding: 100px; */
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-
-    p {
-      font-family: var(--article-intro-font);
-      /* font-style: italic; */
-      font-size: var(--texte-article-font-size);
-      text-align: center;
-      align-self: center;
-    }
-  }
-  .entete {
-    position: relative;
-    width: 100%;
-    height: 75vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-  }
-  .rectangle {
-    background: #242424;
-    width: 100vw;
-    height: 80px;
-    position: fixed;
-    z-index: 1000;
-    top: 0;
-    left: 0;
-  }
-  .img-cover {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 75vh;
-    object-fit: cover;
-    object-position: 0 12%;
-    z-index: 1;
-  }
-
-  .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 75vh;
-    background: rgba(0, 0, 0, 0.4);
-    z-index: 2;
-  }
-  main {
-    position: relative;
-    width: 100%;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .hero {
-    background-image: url("img/kenloach.jpg");
-    font-family: "Graphik", sans-serif;
-    height: 75vh;
-    /* margin-top: 150px; */
-    z-index: 100;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-
-    .tag {
-      font-weight: bold;
-      color: var(--secondary-color);
-      font-size: 12px !important;
-      line-height: 19.2px;
-      text-transform: uppercase;
-      padding: 1px 10px 1px 10px;
-      border-radius: 4px;
-      margin-bottom: 30px;
-
-      background-color: #e72465;
-    }
-
-    .titre {
-      font-weight: bold;
-      color: var(--secondary-color);
-      font-size: 60px !important;
-      line-height: 60px !important;
-      text-align: center;
-      /* margin-bottom: 5px; */
-    }
-    .soustitre {
-      font-weight: bold;
-      color: var(--secondary-color);
-      font-size: 30px !important;
-      font-weight: 300;
-    }
-    .soustitre::before {
-      content: "";
-      display: block;
-      border-left: 1px solid #d9d9d9;
-      height: 50px;
-      width: 1px;
-      margin: 20px auto 5px auto;
-    }
-  }
-</style>
+    <style scoped>
+        @import "../../styles/chapitres.css";
+    </style>
+</Layout>

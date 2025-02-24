@@ -1,8 +1,8 @@
 build
 dist
 /media
+#/src/medias
 node_modules
 .DS_Store
 .env
 .env.production
-/cms/src/medias

@@ -1,239 +1,298 @@
 ---
-import Carrousel from "../../components/Carrousel.astro";
-import "../../styles/global.css";
-import { Image } from "astro:assets";
-
-// @ts-ignore
-import type { Media, City } from "../../../../cms/src/generated-types.ts";
 import Galerie from "../../components/Galerie.astro";
-import Header from "../../components/Header.astro";
+import Layout from "../../layouts/Layout.astro";
+import ImageTooltip from "../../components/ImageTooltip.astro";
 
+const {slug} = Astro.params;
 
-const { slug } = Astro.params;
-
-
-let carousel: City | null = null;
+let city = null;
 try {
-  const res = await fetch(`${import.meta.env.CMS_URL}/api/cities/slug/${slug}`);
-  const data = await res.json();
-  carousel = data;
-  console.log("Carousel Data:", carousel); // Ajout d'une console pour vérifier les données récupérées
+    const res = await fetch(`${import.meta.env.CMS_URL}/api/cities/slug/${slug}`);
+    city = await res.json();
 } catch (error) {
-  console.error("Failed to fetch cities", error);
+    console.error("Failed to fetch cities", error);
 }
 
-const items = carousel?.thematics?.map((thematic: any) => ({
-  src: thematic.backgroundImage.filename,
-  title: thematic.title,
-  slug: thematic.slug,
-  alt: thematic.alt,
-  couleur: thematic.color
-}))
 
-
-const medias: any[] = carousel?.medias?.map((media: any) => ({
+const medias = city?.medias?.map((media: any) => ({
     type: media.type,
     src: `${import.meta.env.CMS_URL}${media.url}`,
     slug: media.slug,
     titre: media.identification.title,
 })) ?? []
+
+const descriptionText = city.description
+    .flatMap((d: { children: { text: string }[] }) => d.children.map((child: { text: string }) => child.text))
+    .join("");
 ---
 
-<head>
-  <meta charset="UTF-8" />
-</head>
+<Layout title=`${city.name}`>
+    <section class="entete">
+        <div class="hero">
+            <h2 class="tag">Lieu</h2>
+            <h1 class="titre">{city.name}</h1>
+            <div class="intro">
+                <div class="text-container">
+                    <div class="text-wrapper">
+                        <p class="text-slide">{descriptionText}</p>
+                        <p class="text-slide">On passa bientôt sous un portique qui donnait à lire l’inscription en lettres bleues de Peugeot-Japy, et la route s’insinua entre les bâtiments de l’usine de Sous-Roches. Un peu plus loin, à notre droite, nous apercevions la Cité de Sous-Roches construite par un Peugeot dans les années 1870. Robert C*** se souvenait que l’institutrice de la petite école de la cité ainsi que son aide qui s’occupait, elle, de la “salle d’asile” où étaient accueillis les tout petits enfants, que toutes les deux étaient encore à la charge de Peugeot vers 1955. Mais ce qui l’intéressait surtout dans cette cité où la monotonie des “rangées” avait été évitée par l’introduction de petits toits à pignons – selon un principe qui avait manifestement été imité dans les deux bâtiments qu’on avait vus à l’usine du Gros-Pré –, des petits toits à pignons où s’ouvrait ici et là une fenêtre cintrée, ce qui intéressait surtout Robert C*** c’était l’organisation hiérarchisée des bâtiments. Les quelques maisons individuelles avaient été conçues pour et réservées aux contremaîtres et employés, les ouvriers occupant, eux, les bâtiments à deux ou quatre logements, chacun de ceux-ci ayant cependant une entrée séparée et un jardin clôturé.
+                            2e partie, Chapitre IV « La Bastille », 1986, p. 142
+                        </p>
+                    </div>
+                </div>
+                <div class="div-toggle-button">
+                    <button id="toggle-button">Citation des <i>Mémoires de l'Enclave</i></button>
+                </div>
+                <div class="separation">
+                    <div class="background"></div>
+                </div>
+            </div>
+        </div>
 
-<html>
-  <main>
-    <Header/>
+        {city?.medias?.length > 0 && city.medias[0] !== null && (
+                <ImageTooltip
+                        src={`${import.meta.env.CMS_URL}${city.medias[0].url}`}
+                        legend={city.medias[0].legend}
+                />
+        )}
+
+        <div class="overlay"></div>
+    </section>
+
     <section class="content">
-      <Carrousel items={items!} />
-
-      <div class="frise grid-wrapper ">
-       <Galerie medias={medias} />
-      
-      </div>
+        <div class="frise grid-wrapper">
+            <Galerie medias={medias}/>
+        </div>
 
     </section>
-  </main>
- 
-  <style scoped>
-    body{
-      background: none
-    }
-    *{ margin: 0;
-    padding: 0;
-  box-sizing: border-box;}
 
-  img{
-    max-width: 100%;
-    height: auto;
-    vertical-align: middle;
-    display: inline-block;
-  }
-  .grid-wrapper > div{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .grid-wrapper > div > img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 5px;
-  }
-  .grid-wrapper {
-    display: grid;
-    grid-gap: 10px;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    grid-auto-rows: 200px;
-    grid-auto-flow: dense;
+    <script is:inline>
+        document.addEventListener("astro:after-swap", initializePage);
+        document.addEventListener("astro:page-load", initializePage);
 
-    padding: 10px;
+        function initializePage() {
+            extractCitation();
+            setupTextToggle();
+        }
 
+        function setupTextToggle() {
+            const textContainer = document.querySelector(".text-container");
+            const textWrapper = document.querySelector(".text-wrapper");
+            const paragraphs = document.querySelectorAll(".text-slide");
+            const button = document.getElementById("toggle-button");
 
-  }
-  .grid-wrapper .wide{
-    grid-column: span 2;
-  }
-  .grid-wrapper .tall{
-    grid-row: span 2;
-  }
-  .grid-wrapper .big{
-    grid-column: span 2;
-    grid-row: span 2;
-  }
-    html {
-      background: #000;
-    }
-    main {
-      display: flex;
-      flex-direction: column;
+            if (!textContainer || !textWrapper || paragraphs.length < 2 || !button) return;
 
-      width: 100%;
-      height: 100%;
-    }
+            let showingFirstText = true;
 
-    .rectangle {
-      /* background: #242424; */
-      width: 100vw;
-      height: 80px;
-      position: fixed;
-      z-index: 1000;
-      top: 0;
-      left: 0;
-    }
+            function updateSize(adjustBefore) {
+                const activeText = paragraphs[showingFirstText ? 0 : 1];
 
-    .content {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 50px;
+                if (adjustBefore) {
+                    textContainer.style.height = `${activeText.scrollHeight}px`;
+                }
 
-      width: 97.5vw;
-      /* margin-top: 96px; */
-      margin: 15px auto 0 auto;
-    }
+                setTimeout(() => {
+                    textWrapper.style.transform = showingFirstText ? "translateX(0%)" : `translateX(-${paragraphs[0].offsetWidth}px)`;
 
-    .buttons {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+                    if (!adjustBefore) {
+                        setTimeout(() => {
+                            textContainer.style.height = `${activeText.scrollHeight}px`;
+                        }, 500);
+                    }
+                }, adjustBefore ? 300 : 0);
+            }
 
-      height: 100%;
+            button.addEventListener("click", () => {
+                const activeText = paragraphs[showingFirstText ? 0 : 1];
+                const currentHeight = textContainer.offsetHeight;
+                const nextHeight = activeText.scrollHeight;
 
-      margin-top: -20px;
+                const adjustBefore = nextHeight > currentHeight;
 
-      z-index: 11;
+                showingFirstText = !showingFirstText;
+                updateSize(adjustBefore);
 
-      button {
-        border: none;
-        outline: none;
-        width: 30px;
-        height: 110px;
-        background: var(--primary-color);
+                button.innerHTML = showingFirstText
+                    ? "Citation des <i>Mémoires de l'Enclave</i>"
+                    : "Retour à la description";
+            });
 
-        transition: all 0.2s ease-in;
-      }
-      button:nth-child(2) {
-        border-top-left-radius: 4px;
-        border-bottom-left-radius: 4px;
-      }
-      button:nth-child(1) {
-        border-top-right-radius: 4px;
-        border-bottom-right-radius: 4px;
-      }
+            textContainer.style.height = `${paragraphs[0].scrollHeight}px`;
+        }
 
-      button:hover {
-        background: var(--secondary-color);
-        width: 35px;
-      }
-    }
-    .entete {
-      width: 100%;
-      height: 80vh;
-      max-height: 700px;
-      z-index: 1;
-      border-radius: 4px;
+        function extractCitation() {
+            const secondParagraph = document.querySelector(".text-slide:last-of-type");
 
-      position: relative;
-    }
+            if (!secondParagraph || !secondParagraph.textContent) return;
 
-    .index {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: absolute;
+            let text = secondParagraph.textContent.trim();
+            let regex = /(Entretien|1re partie|2e partie|Chapitre [IVXLCDM]+|Journal)(.*?)(\d{4}, p\.?\s?\d+[-\d]*)?$/gi;
+            let match = text.match(regex);
 
-      gap: 20px;
+            if (match) {
+                let splitIndex = text.lastIndexOf(match[0]);
+                if (splitIndex !== -1) {
+                    let mainText = text.substring(0, splitIndex).trim();
+                    let sourceText = text.substring(splitIndex).trim();
 
-      top: 20px;
-      left: 30px;
-      height: 20px;
+                    secondParagraph.innerHTML = `&laquo; ${mainText} &raquo; <br/><span class="citation-source">${sourceText}</span>`;
+                }
+            }
+        }
+    </script>
 
-      z-index: 2;
-    }
+    <style scoped>
 
-    .pos {
-      width: 110px;
-      height: 5px;
-      border-radius: 5px;
-      background-color: white;
-    }
-    .checked {
-    }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 75vh;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2;
+            pointer-events: none;
+        }
 
-    .texte {
-      display: flex;
-      flex-direction: column;
-      padding: 0 0 100px 100px;
+        .entete {
+            position: relative;
+            width: 100%;
+            height: 75vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
 
-      position: absolute;
-      bottom: 0;
-      left: 0;
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            padding: 0 100px 40px 100px;
+            position: absolute;
+            width: calc(100% - 200px);
+            bottom: 0;
+            left: 0;
+            gap: 20px;
+            color: white;
+            z-index: 5;
+            pointer-events: none;
+            overflow: hidden;
 
-      gap: 20px;
+            h1 {
+                color: white;
+                font-size: 3em;
+                text-align: center;
+                pointer-events: auto;
+            }
 
-      color: white;
-      z-index: 5;
+            .tag {
+                font-size: 50px;
+                font-family: "Merryweather", sans-serif;
+                font-style: italic;
+                font-weight: 300;
+                border-bottom: 1px solid white;
+                line-height: 65px;
+                width: fit-content;
+                pointer-events: auto;
+            }
 
-      h3 {
-        font-size: 50px;
-        font-family: "Merryweather", sans-serif;c
-        font-style: italic;
-        font-weight: 300;
-        border-bottom: 1px solid white;
-        line-height: 65px;
-        width: 23%;
-      }
+            .titre {
+                font-size: 60px;
+                font-family: var(--article-font);
+                font-weight: bold;
+                line-height: 65px;
+            }
 
-      h2 {
-        font-size: 60px;
-        font-family: var(--article-font);
-        font-weight: bold;
-        line-height: 65px;
-        width: 60%;
-      }
-    }
-  </style>
-</html>
+            .intro {
+                color: var(--secondary-color);
+                width: 100%;
+                margin-top: 5vh;
+                text-align: justify;
+                pointer-events: none;
+                overflow: scroll;
+            }
+        }
+
+        .div-toggle-button{
+            display: flex;
+            justify-content: end;
+            margin-top: 20px;
+            pointer-events: none;
+        }
+
+        #toggle-button{
+            pointer-events: auto;
+            cursor: pointer;
+            display: inline-block;
+            background-color: #cccccc1a;
+            border: none;
+            color: var(--secondary-color);
+            font-family: var(--titres-font);
+            font-weight: 800;
+            font-size: 13px;
+            line-height: 2.9;
+            padding: 0 1.25em;
+            border-radius: 0.25em;
+            transition: opacity 0.3s, background-color 0.3s;
+        }
+
+        #toggle-button:hover{
+            background-color: #cccccc33;
+        }
+
+        .text-container {
+            width: 100%;
+            overflow: hidden;
+            transition: height 0.5s ease-in-out;
+            pointer-events: none;
+        }
+
+        .text-wrapper {
+            display: flex;
+            width: auto;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .text-slide {
+            width: 100%;
+            height: min-content;
+            flex: 0 0 auto;
+            margin: 0;
+            padding: 0;
+            white-space: normal;
+            pointer-events: auto;
+            text-align: justify;
+            display: flex;
+            flex-direction: column;
+
+            .citation-source {
+                text-align: end;
+                font-size: 0.9rem;
+            }
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 50px;
+            width: 97.5vw;
+            margin: 15px auto 0 auto;
+        }
+
+        .index {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            gap: 20px;
+            top: 20px;
+            left: 30px;
+            height: 20px;
+            z-index: 2;
+        }
+
+    </style>
+</Layout>

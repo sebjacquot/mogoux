@@ -12,128 +12,170 @@ const { src } = Astro.props;
     Your browser does not support the audio element.
   </audio>
   <div class="custom-controls">
-    <button id="playpausebtn"
-      ><img
-        src="/pause-white.png"
-        alt="oicone controle son"
-        id="playicon"
-      /></button
-    >
-    <input id="seekslider" type="range" step="any" value="0" />
-    <span id="curtimetext">0:00</span> / <span id="durtimetext">0:00</span>
-    <button id="mutebtn">MUTE</button>
-    <input
-      id="volumeslider"
-      type="range"
-      min="0"
-      max="1"
-      value="0.5"
-      step="0.1"
-    />
-    <button id="closeBtn"
-      ><img src="/white-x.png" alt="oicone stop son" id="playicon" /></button
-    >
+    <div class="controls-audio">
+      <button id="playpausebtn">
+        <img
+            src="/icones/pause-white.png"
+            alt="icone controle audio"
+            id="playicon"
+        />
+      </button>
+      <input id="seekslider" type="range" step="any" value="0" />
+      <span id="curtimetext">0:00</span> / <span id="durtimetext">0:00</span>
+    </div>
+    <div class="controls-volume">
+      <button id="mutebtn">
+        <img
+            src="/icones/haut-parleur.png"
+            alt="icone controle sonore"
+            id="muteicon"
+        />
+      </button>
+      <input
+          id="volumeslider"
+          type="range"
+          min="0"
+          max="1"
+          value="0.5"
+          step="0.1"
+      />
+    </div>
+    <button id="closeBtn">
+      <img src="/icones/white-x.png" alt="oicone stop son" id="playicon" />
+    </button>
   </div>
 </div>
 
-<script>
-  const audio = document.querySelector("#audio") as HTMLAudioElement;
-  const playBtn = document.querySelector("#playpausebtn") as HTMLButtonElement;
-  const mutebtn = document.querySelector("#mutebtn") as HTMLButtonElement;
-  const closeBtn = document.querySelector("#closeBtn") as HTMLButtonElement;
-  const seekslider = document.querySelector("#seekslider") as HTMLInputElement;
-  const volumeslider = document.querySelector(
-    "#volumeslider"
-  ) as HTMLInputElement;
-  const playIcon = document.querySelector("#playicon") as HTMLImageElement;
-  const curtimetext = document.querySelector("#curtimetext") as HTMLSpanElement;
-  const durtimetext = document.querySelector("#durtimetext") as HTMLSpanElement;
-  const startBtn = document.querySelector(".audio-card") as HTMLDivElement;
+<script is:inline>
+  function cleanUpPreviousInstances() {
 
-  const closeEvent = new CustomEvent("audioclose", {
-    bubbles: true,
-  });
-
-  const formatTime = (seconds: number) => {
-    const min = Math.floor(seconds / 60);
-    const sec = Math.floor(seconds % 60);
-
-    let second = sec.toString();
-    if (sec < 10) {
-      second = "0" + sec;
+    // Cloner et remplacer les éléments pour éviter la duplication des événements
+    const audio = document.querySelector("#audio");
+    if (audio) {
+      const newAudio = audio.cloneNode(true);
+      audio.replaceWith(newAudio);
     }
-    return min + ":" + second;
-  };
 
-  startBtn.addEventListener("audiostart", () => {
-    if (!audio.paused) {
-      playIcon.src = "/play-icon.png";
-      return audio.pause();
+    const audioCard = document.querySelector("#audioCard");
+    if (audioCard) {
+      const newAudioCard = audioCard.cloneNode(true);
+      audioCard.replaceWith(newAudioCard);
     }
-    if (audio.currentTime <= 0) {
-      audio.volume = 1;
+  }
+
+  function initAudio() {
+
+    cleanUpPreviousInstances(); // Nettoie les instances précédentes avant d'attacher les nouveaux événements
+
+    const audio = document.querySelector("#audio");
+    const playBtn = document.querySelector("#playpausebtn");
+    const mutebtn = document.querySelector("#mutebtn");
+    const closeBtn = document.querySelector("#closeBtn");
+    const seekslider = document.querySelector("#seekslider");
+    const volumeslider = document.querySelector("#volumeslider");
+    const playIcon = document.querySelector("#playicon");
+    const muteIcon = document.querySelector("#muteicon");
+    const curtimetext = document.querySelector("#curtimetext");
+    const durtimetext = document.querySelector("#durtimetext");
+    const audioCard = document.querySelector("#audioCard");
+    const audioContainer = document.querySelector(".audio");
+
+    if (!audio || !playBtn || !mutebtn || !closeBtn || !seekslider || !volumeslider || !playIcon || !muteIcon || !curtimetext || !durtimetext || !audioCard || !audioContainer) {
+      console.warn("❌ Un ou plusieurs éléments audio sont manquants !");
+      return;
+    }
+
+    function formatTime(seconds) {
+      const min = Math.floor(seconds / 60);
+      const sec = Math.floor(seconds % 60);
+      return `${min}:${sec < 10 ? "0" : ""}${sec}`;
+    }
+
+    function togglePlay() {
+      if (!audio.paused) {
+        playIcon.src = "/icones/play-icon.png";
+        return audio.pause();
+      }
+      playIcon.src = "/icones/pause-white.png";
+      audio.play();
+    }
+
+    function closeAudio() {
+      audio.pause();
       audio.currentTime = 0;
+      audioContainer.style.opacity = "0";
+      audioContainer.style.zIndex = "-1";
+    }
+
+    function toggleMute() {
+      if (audio.volume > 0) {
+        audio.volume = 0;
+        volumeslider.value = "0";
+        muteIcon.src = "/icones/muet.png";
+      } else {
+        audio.volume = 1;
+        volumeslider.value = "1";
+        muteIcon.src = "/icones/haut-parleur.png";
+      }
+    }
+
+    function updateVolume() {
+      audio.volume = parseFloat(volumeslider.value);
+    }
+
+    function updateSeek() {
+      audio.currentTime = parseFloat(seekslider.value);
+    }
+
+    function updateTime() {
+      seekslider.value = audio.currentTime.toString();
+      curtimetext.innerText = formatTime(audio.currentTime);
+    }
+
+    function setupMetadata() {
+      seekslider.max = audio.duration.toString();
+      durtimetext.innerText = formatTime(audio.duration);
       volumeslider.value = "1";
-    }
-    playIcon.src = "/pause-white.png";
-    audio.play();
-  });
-
-  audio.addEventListener("loadedmetadata", () => {
-    const duration = audio.duration.toString();
-
-    volumeslider.value = "1";
-    seekslider.value = "0";
-    seekslider.max = duration;
-    durtimetext.innerHTML = formatTime(+duration);
-  });
-
-  audio.addEventListener("timeupdate", () => {
-    const currentTime = audio.currentTime.toString();
-
-    seekslider.value = currentTime;
-    curtimetext.innerHTML = formatTime(+currentTime);
-  });
-
-  playBtn.addEventListener("click", () => {
-    if (!audio.paused) {
-      playIcon.src = "/play-icon.png";
-      return audio.pause();
-    }
-    playIcon.src = "/pause-white.png";
-    audio.play();
-  });
-
-  closeBtn.addEventListener("click", () => {
-    audio.currentTime = 0;
-    audio.pause();
-    closeBtn.dispatchEvent(closeEvent);
-  });
-
-  mutebtn.addEventListener("click", () => {
-    if (audio.volume > 0) {
-      audio.volume = 0;
-      volumeslider.value = "0";
-    } else {
       audio.volume = 1;
-      volumeslider.value = "1";
     }
-  });
 
-  volumeslider.addEventListener("change", () => {
-    audio.volume = +volumeslider.value;
-  });
+    function showAudioControls() {
+      audioContainer.style.opacity = "1";
+      audioContainer.style.zIndex = "100";
+      togglePlay();
+    }
 
-  seekslider.addEventListener("change", () => {
-    if (audio.paused) audio.play();
-    audio.currentTime = +seekslider.value;
-  });
+    // Initialisation du volume
+    audio.volume = 1;
+    volumeslider.value = "1";
+
+    // Suppression et réattachement des événements pour éviter les doublons
+    audioCard.addEventListener("click", showAudioControls);
+    playBtn.addEventListener("click", togglePlay);
+    closeBtn.addEventListener("click", closeAudio);
+    mutebtn.addEventListener("click", toggleMute);
+    volumeslider.addEventListener("input", updateVolume);
+    seekslider.addEventListener("input", updateSeek);
+    audio.addEventListener("timeupdate", updateTime);
+    audio.addEventListener("loadedmetadata", setupMetadata);
+  }
+
+  // Événements Astro pour recharger correctement le script après navigation interne
+  document.addEventListener("astro:page-load", initAudio);
+  document.addEventListener("astro:after-swap", initAudio);
 </script>
 
 <style scoped>
   #mutebtn {
     font-weight: 800;
     font-size: 15px;
+    cursor: pointer;
+
+    padding: 0;
+  }
+  #muteicon{
+    width: 35px;
+    height: 35px;
   }
   #playicon {
     width: 40px;
@@ -157,23 +199,42 @@ const { src } = Astro.props;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 10px; /* Optional: padding for better spacing */
   }
 
   .custom-controls > * {
-    margin: 0 10px; /* Optional: margin between elements */
+    margin: 0 10px;
+  }
+
+  .controls-audio{
+    width: 75%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .controls-volume{
+    width: 25%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+
+  #closeBtn{
+    padding-right: 23px;
   }
 
   input[type="range"] {
-    flex-grow: 1; /* Allows the range inputs to grow and fill available space */
-    margin: 0 10px; /* Margin for better spacing */
+    flex-grow: 1;
+    margin: 0 10px;
   }
 
   span {
-    white-space: nowrap; /* Prevents the text from wrapping */
+    white-space: nowrap;
   }
 
   button {
-    flex-shrink: 0; /* Prevents the buttons from shrinking */
+    flex-shrink: 0;
   }
 </style>

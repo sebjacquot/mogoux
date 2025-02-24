@@ -1,8 +1,7 @@
 ---
-import "../styles/global.css";
 import AudioCard from "./AudioCard.astro";
 import ImageFullscreen from "./ImageFullscreen.astro";
-import Return from "./Return.astro";
+
 type Props = {
   titre: string;
   date: string;
@@ -18,356 +17,296 @@ type Props = {
   alt: string;
 };
 
-const {
-  titre,
-  date,
-  description,
-  tags,
-  credits_link,
-  credits_name,
-  lieu_link,
-  lieu_name,
-  type,
-  src,
-  alt,
-  link_notice,
-} = Astro.props;
+const props = Astro.props;
 ---
 
-<html>
-  <head>
-    <meta charset="UTF-8" />
-  </head>
-  <Return />
-  <main>
-    <div class="row">
-      <div class="texte">
-        <h1 class="titre">{titre}</h1>
-        <h3 class="date">{date}</h3>
-        <p class="description">
-          {description}
-        </p>
-        <div class="row-icon" id="cle">
-          <svg
-            fill="white"
-            height="800px"
-            width="800px"
-            version="1.1"
-            id="Layer_1"
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            viewBox="0 0 512.001 512.001"
-            xml:space="preserve"
-          >
-            <g>
-              <g>
-                <path
-                  d="M506.513,311.066L253.87,58.423c-2.024-2.026-4.486-3.559-7.195-4.483L140.15,17.593
-			c-6.758-2.305-14.242-0.568-19.294,4.483L84.709,58.222L31.977,5.491c-7.314-7.315-19.176-7.315-26.49,0
-			c-7.315,7.315-7.315,19.175,0,26.49l52.732,52.731l-36.14,36.141c-5.051,5.05-6.79,12.534-4.483,19.294L53.943,246.67
-			c0.924,2.71,2.458,5.172,4.483,7.197L311.071,506.51c7.314,7.315,19.175,7.315,26.49,0l168.954-168.954
-			C513.83,330.241,513.83,318.382,506.513,311.066z M227.241,227.238c-21.817,21.819-57.132,21.82-78.952,0
-			c-21.768-21.768-21.768-57.185,0.001-78.953c21.817-21.819,57.132-21.82,78.953,0C249.009,170.053,249.009,205.47,227.241,227.238
-			z"
-                ></path>
-              </g>
-            </g>
+<div class="row">
+  <div class="texte">
+    <h1 class="titre">{props.titre}</h1>
+    <h3 class="date">{props.date}</h3>
+    <p class="description">{props.description}</p>
+    <ul class="liste">
+      {props.tags.map((tag) => <li class="mot-cle">{tag}</li>)}
+    </ul>
+    <div class="datas">
+      <div class="gauche">
+        <div class="row-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
           </svg>
-          <h3>Mots-clés</h3>
+          <h3>Lieu</h3>
         </div>
-        <ul class="liste">
-          {tags.map((t) => <li>{t}</li>)}
-        </ul>
-        <div class="datas">
-          <div class="gauche">
-            <div class="row-icon">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-map-pin"
-                ><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"
-                ></path><circle cx="12" cy="10" r="3"></circle></svg
-              >
-              <h3>Lieu</h3>
-            </div>
-            <div class="row-icon">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-paperclip"
-                ><path
-                  d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"
-                ></path></svg
-              >
-              <h3>Type</h3>
-            </div>
-            <div class="row-icon">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-user-round"
-                ><circle cx="12" cy="8" r="5"></circle><path
-                  d="M20 21a8 8 0 0 0-16 0"></path></svg
-              >
-              <h3>Crédits</h3>
-            </div>
-          </div>
-          <div class="droite">
-            <div class="row-link">
-              <a href={lieu_link} target="_blank" rel="noopener noreferrer"
-                >{lieu_name}</a
-              >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-square-arrow-out-up-right"
-                ><path
-                  d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6"
-                ></path><path d="m21 3-9 9"></path><path d="M15 3h6v6"
-                ></path></svg
-              >
-            </div>
-            <h3>{type}</h3>
-            <div class="row-link">
-              <a href={credits_link} target="_blank" rel="noopener noreferrer"
-                >{credits_name}</a
-              >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-square-arrow-out-up-right"
-                ><path
-                  d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6"
-                ></path><path d="m21 3-9 9"></path><path d="M15 3h6v6"
-                ></path></svg
-              >
-            </div>
-          </div>
+        <div class="row-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"></path>
+          </svg>
+          <h3>Type</h3>
         </div>
-        <!-- <h3 class="lieu">Lieu : <a href="/google.com">Colmars</a></h3>
-        <h3>Type : Image</h3>
-        <h3 class="credits">Crédits : Lorem Ipsum</h3> -->
+        <div class="row-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="8" r="5"></circle>
+            <path d="M20 21a8 8 0 0 0-16 0"></path>
+          </svg>
+          <h3>Crédits</h3>
+        </div>
       </div>
-
-      <div class="rectangle-image">
-        <!-- <img
-          src={`${import.meta.env.CMS_URL}/medias/${src}`}
-          alt={alt}
-          class="image"
-        /> -->
-        <div class="image">
-          {
-            type === "audio" ? (
-              <AudioCard src={`${import.meta.env.CMS_URL}/medias/${src}`} />
-            ) : (
-              <ImageFullscreen
-                src={`${import.meta.env.CMS_URL}/medias/${src}`}
-                legend={alt}
-              />
-            )
-          }
+      <div class="droite">
+        <div class="row-link">
+          <a href={props.lieu_link} target="_blank" rel="noopener noreferrer">{props.lieu_name}</a>
         </div>
-        <a href={link_notice} target="_blank" rel="noopener noreferrer"
-          ><svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="lucide lucide-square-arrow-out-up-right"
-            ><path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6"
-            ></path><path d="m21 3-9 9"></path><path d="M15 3h6v6"></path></svg
-          ></a
-        >
+        <h3>{props.type}</h3>
+        <div class="row-link">
+          <a href={props.credits_link} target="_blank" rel="noopener noreferrer">{props.credits_name}</a>
+        </div>
       </div>
     </div>
-  </main>
+  </div>
 
-  <style scoped>
-    html {
-      background: rgba(22, 22, 22, 1);
-      color: white;
-    }
-
-    main {
-      width: 100%;
-      height: 100vh;
-      background: rgba(22, 22, 22, 0.8);
-    }
-
-    #cle {
-      font-size: 19px;
-    }
-    .row-link {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      svg {
-        width: 18px;
-        height: 18px;
+  <div class="rectangle-image">
+    <div class="image">
+      {
+        props.type === "audio" ? (
+            <AudioCard src={`${import.meta.env.CMS_URL}/medias/${props.src}`} />
+        ) : (
+            <ImageFullscreen
+                src={`${import.meta.env.CMS_URL}/medias/${props.src}`}
+                legend={props.alt}
+            />
+        )
       }
-    }
-    .row-icon {
-      display: flex;
-      align-items: center;
-      gap: 10px;
+    </div>
 
-      svg {
-        width: 20px;
-        height: 20px;
-      }
+    <a href={props.link_notice} target="_blank" rel="noopener noreferrer" class="icon-link">
+      <!--<svg
+          xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-square-arrow-out-up-right">
+        <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6"></path>
+        <path d="m21 3-9 9"></path>
+        <path d="M15 3h6v6"></path>
+      </svg>-->
+    </a>
+  </div>
+</div>
+
+<style scoped>
+  .row {
+    display: flex;
+    align-items: start;
+    padding: 6% 8%;
+    gap: 5em;
+    color: white;
+  }
+
+  .texte {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    font-size: 20px;
+  }
+
+  .titre {
+    font-size: 2em;
+    font-weight: 700;
+    margin: 50px 0 30px;
+  }
+
+  .date {
+    font-size: 17px;
+    margin-bottom: 20px;
+    font-family: var(--merriweather);
+  }
+
+  .description {
+    margin-bottom: 1.5em;
+    width: 90%;
+    line-height: 1.2;
+    text-align: justify;
+  }
+
+  .liste {
+    margin-bottom: 1em;
+    display: flex;
+    gap: 5px;
+  }
+
+  .mot-cle {
+    border: 1px solid var(--navigation);
+    color: var(--navigation);
+    padding: 2px 7px;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-bottom: 4em;
+  }
+
+  .datas {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: auto;
+    font-size: 0.9em;
+    width: 100%;
+
+    h3{
+      text-align: start;
     }
+  }
+
+  .droite{
+    width: 100%;
+    margin: 0 5%;
+  }
+
+  .row-icon {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .row-link {
+    display: flex;
+    align-items: center;
+  }
+
+  a {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  a:hover {
+    text-decoration: underline;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .rectangle-image {
+    width: 1200px;
+    height: 650px;
+    position: relative;
+  }
+
+  .image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .icon-link {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+  }
+
+  .icon-link svg {
+    width: 40px;
+    height: 40px;
+    stroke: white;
+    stroke-width: 2;
+    transition: stroke 0.2s ease-in-out;
+  }
+
+  .icon-link:hover svg {
+    stroke: rgba(255, 255, 255, 0.7);
+  }
+
+  @media (max-width: 1024px) {
     .row {
-      display: flex;
-      align-items: center;
-      padding: 6% 8%;
-      gap: 5em;
-
-      height: 80%;
-    }
-    .texte {
-      display: flex;
       flex-direction: column;
-      justify-content: center;
-
-      width: 45%;
-      height: 100%;
-
-      font-size: 20px;
-      font-family: var(--merryweather);
-
-      .titre {
-        font-size: 50px;
-        line-height: 56px;
-        margin-bottom: 6px;
-        font-family: var(--merryweather);
-        font-weight: 700;
-
-        margin-top: 50px;
-      }
-      .description {
-        margin-bottom: 1.5em;
-        width: 90%;
-        line-height: 1.2;
-      }
-      .liste {
-        margin-bottom: 1em;
-        list-style: none;
-
-        li {
-          margin: -0px 0;
-        }
-      }
-      .date {
-        background: #3c4e77;
-
-        width: fit-content;
-        padding: 5px 10px;
-        border-radius: 10px;
-        margin: 0 0 10px 0;
-        font-family: var(--merryweather);
-        font-size: 17px;
-      }
-      .datas {
-        display: flex;
-        justify-content: flex-start;
-        margin-top: auto;
-        margin-bottom: 10px;
-        .gauche {
-          margin-right: 30px;
-          font-weight: bold;
-          font-size: 21px;
-          display: flex;
-          flex-direction: column;
-          justify-content: flex-end;
-        }
-        .droite {
-          display: flex;
-          flex-direction: column;
-          justify-content: flex-end;
-        }
-      }
+      align-items: center;
+      padding: 5%;
+      gap: 2em;
+      text-align: center;
     }
-    .rectangle-image {
-      width: 1200px;
-      height: 650px;
-      background-color: rgba(0, 0, 255, 0.4);
 
-      position: relative;
-
-      svg {
-        width: 50px;
-        height: 50px;
-
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        z-index: 10;
-      }
-      svg:hover {
-        cursor: pointer;
-        color: rgba(255, 255, 255, 0.7);
-      }
-    }
-    .image {
-      position: absolute;
-      top: 0;
-      left: 0;
+    .texte {
+      margin-top: 10%;
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 5;
+      text-align: center;
     }
 
-    a {
-      color: white;
-      text-decoration: none;
+    .titre {
+      font-size: 36px;
+      margin: 20px 0;
     }
-    a:hover {
-      text-decoration: underline;
-      cursor: pointer;
-      color: rgba(255, 255, 255, 0.7);
+
+    .date {
+      font-size: 16px;
+      margin-bottom: 10px;
     }
-  </style>
 
+    .description {
+      width: 100%;
+      font-size: 18px;
+      line-height: 1.3;
+    }
 
-</html>
+    .liste {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .mot-cle {
+      font-size: 0.85rem;
+      padding: 5px 10px;
+      white-space: nowrap;
+    }
+
+    .rectangle-image {
+      width: 95%;
+      height: auto;
+    }
+
+    .image {
+      width: 100%;
+      height: auto;
+    }
+
+    .icon-link {
+      width: 35px;
+      height: 35px;
+      top: 10px;
+      right: 10px;
+    }
+
+    .icon-link svg {
+      width: 28px;
+      height: 28px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .titre {
+      font-size: 28px;
+    }
+
+    .texte {
+      font-size: 16px;
+    }
+
+    .mot-cle {
+      font-size: 0.75rem;
+      padding: 3px 8px;
+    }
+
+    .rectangle-image {
+      width: 100%;
+    }
+
+    .icon-link {
+      width: 30px;
+      height: 30px;
+    }
+
+    .icon-link svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+</style>

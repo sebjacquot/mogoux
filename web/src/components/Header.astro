@@ -2,16 +2,21 @@
 import "../styles/global.css";
 ---
 
-<script lang="js">
+<script is:inline>
   document.addEventListener("DOMContentLoaded", function () {
     var burgerIcon = document.getElementById("burger-icon");
     var menuBurger = document.getElementById("menu-burger");
     var menuTitles = document.querySelectorAll(".menu-title");
 
+    menuBurger.style.maxHeight = "0";
+    menuBurger.style.display = "none";
+
     burgerIcon.addEventListener("click", function () {
-      if (menuBurger.style.maxHeight === "0px") {
+      if (menuBurger.style.maxHeight === "0px" || menuBurger.style.maxHeight === "") {
         menuBurger.style.display = "block";
-        menuBurger.style.maxHeight = "100vh";
+        setTimeout(function () {
+          menuBurger.style.maxHeight = "100vh";
+        }, 10);
       } else {
         menuBurger.style.maxHeight = "0";
         setTimeout(function () {
@@ -60,7 +65,7 @@ import "../styles/global.css";
       <button class="menu-title">Mémoires Ouvrières</button>
       <div class="menu-links">
         <a href="/carte">Parcourir la carte</a>
-        <a href="/thematique">Thématiques</a>
+        <a href="/thematiques">Thématiques</a>
       </div>
     </div>
     <div class="menu-item">

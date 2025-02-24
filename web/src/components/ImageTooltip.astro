@@ -1,0 +1,123 @@
+---
+type Props = {
+    src: string;
+    legend: string;
+    className?: string;
+};
+const { src, legend, className } = Astro.props;
+---
+
+<img
+    src={src}
+    alt={legend}
+    class={`${className || "responsive-image"} image`}
+    loading="lazy"
+/>
+<div class="tooltipImage">{legend}</div>
+
+<script is:inline>
+    function initTooltips() {
+        const images = Array.from(document.querySelectorAll(".image"));
+
+        images.forEach((img) => {
+            if (!img.alt.trim()) return;
+
+            const tooltipImage = img.nextElementSibling;
+            if (!tooltipImage) return;
+            let tooltipTimeout;
+
+            tooltipImage.classList.add("invisible");
+
+            img.addEventListener("mouseenter", () => {
+                tooltipTimeout = setTimeout(() => {
+                    tooltipImage.classList.add("visible");
+                    tooltipImage.classList.remove("invisible");
+                }, 1000);
+            });
+
+            img.addEventListener("mousemove", (e) => {
+                clearTimeout(tooltipTimeout);
+                tooltipImage.classList.remove("visible");
+                tooltipImage.classList.add("invisible");
+                tooltipImage.style.left = `${e.clientX + 10}px`;
+                tooltipImage.style.top = `${e.clientY + 10}px`;
+
+                tooltipTimeout = setTimeout(() => {
+                    tooltipImage.classList.add("visible");
+                }, 1000);
+            });
+
+            img.addEventListener("mouseleave", () => {
+                clearTimeout(tooltipTimeout);
+                tooltipImage.classList.remove("visible");
+            });
+        });
+    }
+
+    document.addEventListener("astro:page-load", initTooltips);
+    document.addEventListener("astro:after-swap", initTooltips);
+</script>
+
+<style scoped>
+    .tooltipImage {
+        position: absolute;
+        background: rgba(0, 0, 0, 0.75);
+        color: #fff;
+        padding: 6px 10px;
+        border-radius: 4px;
+        white-space: normal;
+        font-size: 14px;
+        z-index: 199;
+        opacity: 0;
+        transition: opacity 0.2s ease-in-out;
+        pointer-events: none;
+        max-width: 200px;
+        word-wrap: break-word;
+        text-align: center;
+    }
+
+    .tooltipImage.visible {
+        opacity: 1;
+    }
+
+    .tooltipImage.invisible {
+        position: fixed;
+        top: -200px;
+        left: -200px;
+    }
+
+    .responsive-image {
+        width: 100%;
+        height: 75vh;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        pointer-events: auto;
+    }
+
+    .image-navigation, .image2-navigation, .image-index{
+        height: 100vh;
+        width: 50vw;
+        top: 0;
+        object-fit: cover;
+        z-index: 1;
+        pointer-events: auto;
+    }
+
+    .image-navigation {
+        left: 0;
+        object-position: 70% 50%;
+    }
+
+    .image2-navigation {
+        left: 50vw;
+        object-position: 10% 50%;
+    }
+
+    .image-index {
+        object-position: 80% 50%;
+    }
+
+</style>

@@ -1,149 +1,91 @@
 ---
-import "../../styles/global.css";
-import { Image } from "astro:assets";
 import Details from "../../components/Details.astro";
+import Layout from "../../layouts/Layout.astro";
+import Return from "../../components/Return.astro";
 
 const { slug } = Astro.params;
 
-let detail = [];
+let detail: any = [];
 try {
-  const res = await fetch(`${import.meta.env.CMS_URL}/api/medias/slug/${slug}`);
-  const data = await res.json();
-  detail = data;
-  console.log(data);
+    const res = await fetch(`${import.meta.env.CMS_URL}/api/medias/slug/${slug}`);
+    const data = await res.json();
+    detail = data;
 } catch (error) {
-  console.error("Failed to fetch medias details", error);
+    console.error("Failed to fetch medias details", error);
 }
 const tags = detail.identification.tag.map((tag: any) => tag.tag_name);
+
+const queryParams = new URLSearchParams(Astro.url.search);
+const slugsString = queryParams.get("slugs") || "";
+const fromURL = queryParams.get("from") || "";
+
+const mediasList = slugsString ? slugsString.split("%2C") : [];
+const currentIndex = mediasList.indexOf(slug || "");
+const previousSlug = currentIndex > 0 ? mediasList[currentIndex - 1] : "";
+const nextSlug = currentIndex < mediasList.length - 1 ? mediasList[currentIndex + 1] : "";
+
 ---
 
-<head>
-  <meta charset="UTF-8" />
-</head>
+<Layout title="Medias">
+    <Return fromURL={fromURL} />
+    <div class='container'>
+        <nav>
+            {previousSlug && (
+                    <a href={`/medias/${previousSlug}?slugs=${encodeURIComponent(slugsString)}&from=${encodeURIComponent(fromURL)}`} class="prev">
+                        &#10094;
+                    </a>
+            )}
 
-<html>
-  <main>
-    <Details
-      titre={detail.identification.title}
-      date={detail.identification.date}
-      description={detail.description}
-      lieu_name={detail.location.location_name}
-      lieu_link={detail.location.location_link}
-      credits_name={detail.contexte.credits_name}
-      credits_link={detail.contexte.credits_link}
-      tags={tags}
-      type={detail.type}
-      link_notice={detail.notice}
-      src={detail.filename}
-      alt={detail.alt}
-    />
-  </main>
-</html>
-<style scoped>
-  html {
-    background: rgba(22, 22, 22, 1);
-    color: white;
-  }
+            {nextSlug && (
+                    <a href={`/medias/${nextSlug}?slugs=${encodeURIComponent(slugsString)}&from=${encodeURIComponent(fromURL)}`} class="next">
+                        &#10095;
+                    </a>
+            )}
+        </nav>
+        <Details
+                titre={detail.identification.title}
+                date={detail.identification.date}
+                description={detail.description}
+                lieu_name={detail.location.location_name}
+                lieu_link={detail.location.location_link}
+                credits_name={detail.contexte.credits_name}
+                credits_link={detail.contexte.credits_link}
+                tags={tags}
+                type={detail.type}
+                link_notice={detail.notice}
+                src={detail.filename}
+                alt={detail.alt}
+        />
+    </div>
 
-  main {
-    width: 100%;
-    height: 100vh;
-    background: rgba(22, 22, 22, 0.8);
-    overflow: hidden;
-  }
-  .row {
-    display: flex;
-    align-items: center;
-    padding: 6% 8%;
-    gap: 5em;
+    <style>
+        .container {
+            position: relative;
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        a {
+            position: absolute;
+            top: 50%;
+            color: white;
+            text-decoration: none;
+            font-size: 2rem;
+            transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+        a:hover {
+            text-decoration: none;
+            color: #c5c5c5;
+            transform: scale(1.2);
+        }
 
-    height: 80%;
-  }
-  .texte {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+        .prev{
+            left: 30px;
+        }
 
-    width: 40%;
-    height: 100%;
-
-    font-size: 20px;
-    font-family: var(--merryweather);
-
-    .titre {
-      font-size: 50px;
-      line-height: 56px;
-      margin-bottom: 6px;
-      font-family: var(--merryweather);
-      font-weight: 700;
-
-      margin-top: 50px;
-    }
-    .description {
-      margin-bottom: 1.5em;
-      width: 90%;
-    }
-    .liste {
-      margin-bottom: 1em;
-      list-style: none;
-
-      li {
-        margin: -0px 0;
-      }
-    }
-    .date {
-      background: #3c4e77;
-
-      width: fit-content;
-      padding: 5px 10px;
-      border-radius: 10px;
-      margin: 0 0 10px 0;
-      font-family: var(--merryweather);
-      font-size: 17px;
-    }
-    .datas {
-      display: flex;
-      justify-content: flex-start;
-      margin-top: auto;
-      margin-bottom: 10px;
-      .gauche {
-        margin-right: 50px;
-        font-weight: bold;
-        font-size: 21px;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-      }
-      .droite {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-      }
-    }
-  }
-  .rectangle-image {
-    width: 1200px;
-    height: 650px;
-    background-color: rgba(0, 0, 255, 0.4);
-
-    position: relative;
-
-    .carre {
-      width: 50px;
-      height: 50px;
-      background-color: red;
-
-      position: absolute;
-      top: 20px;
-      right: 20px;
-    }
-  }
-
-  a {
-    color: white;
-    text-decoration: none;
-  }
-  a:hover {
-    text-decoration: underline;
-  }
-</style>
+        .next{
+            right: 30px;
+        }
+    </style>
+</Layout>

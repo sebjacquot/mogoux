@@ -13,13 +13,26 @@ import Cities from "./collections/Cities";
 import Documents from "./collections/Documents";
 import Sections from "./collections/Sections";
 
+const BASE_PATH = "/memoires-ouvrieres/cms";
+
 export default buildConfig({
+  localization: {
+    locales: ['fr', 'en'],
+    defaultLocale: 'fr',
+  },
   admin: {
     user: Users.slug,
     bundler: webpackBundler(),
   },
   editor: slateEditor({}),
-  collections: [Users, Medias, Thematics, Cities, Documents, Sections],
+  collections: [
+    Users,
+    Medias,
+    Thematics,
+    Cities,
+    Documents,
+    Sections
+  ],
   csrf: [
     // whitelist of domains to allow cookie auth from
     "http://localhost:4321",
@@ -33,7 +46,7 @@ export default buildConfig({
     "http://mogoux-fanum.inframshe.univ-fcomte.fr:8080",
   ],
   typescript: {
-    outputFile: path.resolve(__dirname, "generated-types.ts"),
+    outputFile: path.resolve(__dirname, "generated-types.d.ts"),
   },
   graphQL: {
     schemaOutputFile: path.resolve(__dirname, "generated-schema.graphql"),

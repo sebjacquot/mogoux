@@ -1,5 +1,3 @@
-/* @import url('function.css'); */
-
 :root {
   --primary-color: #161616;
   --secondary-color: #f3f3f3;
@@ -8,6 +6,8 @@
   --bg-color: #161616;
   --legende-color: #616161;
   --text-color: #e8e6e3;
+  --bg-nav: #242424;
+  --navigation: #e22b40;
 
   --legende-font-size: 14px;
   --texte-article-font-size: 17px;
