@@ -1,5 +1,9 @@
 @import url("https://fonts.cdnfonts.com/css/helvetica-neue-5");
 
+.container{
+    background-color: var(--bg-article-color);
+}
+
 strong {
     font-weight: bold;
 }
@@ -20,7 +24,7 @@ span {
     font-style: normal !important;
 }
 .credits {
-    margin-bottom: 150px;
+    padding-bottom: 150px;
 }
 .gauche {
     display: flex;
@@ -148,7 +152,6 @@ span {
 .contenu-article {
     padding-top: 50px;
     padding-bottom: 50px;
-    background: var(--bg-article-color);
     font-family: var(--article-font);
 }
 .titres {
