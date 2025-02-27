@@ -1,5 +1,6 @@
 ---
 import AudioCard from "../AudioCard.astro";
+import {asset} from "../../utils/url";
 
 type Props = {
   media: {
@@ -19,7 +20,7 @@ const slugsParam = mediasList.length > 0 ? encodeURIComponent(mediasList.map(m =
 const currentURL = Astro.url.toString();
 ---
 
-<a href={`/medias/${media.slug}?slugs=${encodeURIComponent(slugsParam)}&from=${encodeURIComponent(currentURL)}`}>
+<a href={asset(`/medias/${media.slug}?slugs=${encodeURIComponent(slugsParam)}&from=${encodeURIComponent(currentURL)}`)}>
   {
     media.type === "audio" ? (
       <AudioCard src={media.src} />

@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import {asset} from "../utils/url";
 type Props = {
   titre: string;
   numero_chapitre: string;
@@ -9,11 +10,11 @@ type Props = {
 const { titre, numero_chapitre, lien_image } = Astro.props;
 ---
 
-<a href=`/chapitres/chapitre${numero_chapitre}`>
+<a href={asset(`/chapitres/chapitre${numero_chapitre}`)}>
   <div class="card">
     <div class="overlay2"></div>
     <img
-      src=`/images/Header_Chapitre/${lien_image}`
+      src={asset(`/images/Header_Chapitre/${lien_image}`)}
       alt=`image du chapitre ${numero_chapitre}`
     />
     <div class="tag-card">

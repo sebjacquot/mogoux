@@ -1,5 +1,7 @@
 ---
+import { asset } from "../utils/url";
 import Audio from "./Audio.astro";
+
 type Props = {
   src: string;
 };
@@ -11,7 +13,7 @@ const { src } = Astro.props;
   <Audio src={src} />
 </div>
 <div class="audio-card" id="audioCard">
-  <img src="/icones/play-icon.png" alt="icone controle son" id="playicon" />
+  <img src={asset("/icones/play-icon.png")} alt="icone controle son" id="playicon" />
 </div>
 
 <style scoped>
@@ -31,7 +33,7 @@ const { src } = Astro.props;
     width: 100% !important;
     height: 100% !important;
 
-    background-image: url("/Goux_1000kB_3.jpg");
+    background-image: url("/memoires-ouvrieres/Goux_1000kB_3.jpg");
     background-position: center;
     background-size: cover;
     border-radius: 3px;

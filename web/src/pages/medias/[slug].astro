@@ -2,6 +2,7 @@
 import Details from "../../components/Details.astro";
 import Layout from "../../layouts/Layout.astro";
 import Return from "../../components/Return.astro";
+import {asset} from "../../utils/url";
 
 const { slug } = Astro.params;
 
@@ -31,13 +32,13 @@ const nextSlug = currentIndex < mediasList.length - 1 ? mediasList[currentIndex 
     <div class='container'>
         <nav>
             {previousSlug && (
-                    <a href={`/medias/${previousSlug}?slugs=${encodeURIComponent(slugsString)}&from=${encodeURIComponent(fromURL)}`} class="prev">
+                    <a href={asset(`/medias/${previousSlug}?slugs=${encodeURIComponent(slugsString)}&from=${encodeURIComponent(fromURL)}`)} class="prev">
                         &#10094;
                     </a>
             )}
 
             {nextSlug && (
-                    <a href={`/medias/${nextSlug}?slugs=${encodeURIComponent(slugsString)}&from=${encodeURIComponent(fromURL)}`} class="next">
+                    <a href={asset(`/medias/${nextSlug}?slugs=${encodeURIComponent(slugsString)}&from=${encodeURIComponent(fromURL)}`)} class="next">
                         &#10095;
                     </a>
             )}

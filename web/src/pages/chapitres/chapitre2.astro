@@ -3,203 +3,206 @@ import ImageFullscreen from "../../components/ImageFullscreen.astro";
 import SuggestionsCard from "../../components/SuggestionsCard.astro";
 import ImageTooltip from "../../components/ImageTooltip.astro";
 import Layout from "../../layouts/Layout.astro";
+import {asset} from "../../utils/url";
 ---
 
 <Layout title="Chapitre 2">
-    <section class="entete">
-        <div class="hero">
-            <h2 class="tag">Chapitre 2</h2>
-            <h1 class="titre">Du côté de l'Enclave</h1>
-            <h2 class="soustitre">Géographie d’un territoire industriel</h2>
-            <div class="intro">
-                <p>
-                    Façonné par l’activité industrielle, le Pays de Montbéliard,
-                    ancienne enclave germanique et protestante sur le territoire
-                    français, prend, chez Goux, le seul nom d’ ”Enclave”, ce qui lui
-                    confère une dimension quasi mythique et légendaire.
-                </p>
-                <div class="separation">
-                    <div class="background"></div>
+    <div class="container">
+        <section class="entete">
+            <div class="hero">
+                <h2 class="tag">Chapitre 2</h2>
+                <h1 class="titre">Du côté de l'Enclave</h1>
+                <h2 class="soustitre">Géographie d’un territoire industriel</h2>
+                <div class="intro">
+                    <p>
+                        Façonné par l’activité industrielle, le Pays de Montbéliard,
+                        ancienne enclave germanique et protestante sur le territoire
+                        français, prend, chez Goux, le seul nom d’ ”Enclave”, ce qui lui
+                        confère une dimension quasi mythique et légendaire.
+                    </p>
+                    <div class="separation">
+                        <div class="background"></div>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <ImageTooltip
-                src="/images/Header_Chapitre/C2_0363.jpg"
-                legend="Vue sur les automobiles Peugeot depuis le Fort Lachaux le 27 janvier 1985. Photographie de Gilles Choffé"
-        />
+            <ImageTooltip
+                    src={asset("/images/Header_Chapitre/C2_0363.jpg")}
+                    legend="Vue sur les automobiles Peugeot depuis le Fort Lachaux le 27 janvier 1985. Photographie de Gilles Choffé"
+            />
 
-        <div class="overlay"></div>
-    </section>
-    <section class="contenu-article">
-        <h2 class="titres">Géographie de l’Enclave</h2>
-        <div class="image">
-            <ImageFullscreen
-                    src="/images/Chapitres/Chapitre2/GOU_04_D_0004.jpg"
-                    legend="Reconstitution Serroz-Mülhenheim d’après des documents d’archives"
-            />
-            <p>
-                Reconstitution Serroz-Mülhenheim d’après des documents d’archives ©
-                Fonds Goux, GOU 04 D 0004
-            </p>
-        </div>
-        <div class="paragraphe">
-            <p>
-                Les chapitres d’entretiens, qui constituent environ la moitié du
-                volume des <i>Mémoires de l’Enclave</i>, portent souvent le titre du
-                lieu de travail et de vie des enquêtés : « Du côté de Beaucourt », «
-                Du côté d’Héricourt ».
-            </p>
-            <p>
-                Jean-Paul Goux est très attentif aux configurations spatiales et aux
-                noms de lieux, à ce qu’ils révèlent des relations et des pratiques
-                sociales. Le livre s’ouvre sur le dessin en forme d’oiseau d’un
-                territoire, qui reprend une carte ancienne.
-            </p>
-            <p>Il l'appelle l'Enclave</p>
-        </div>
+            <div class="overlay"></div>
+        </section>
+        <section class="contenu-article">
+            <h2 class="titres">Géographie de l’Enclave</h2>
+            <div class="image">
+                <ImageFullscreen
+                        src={asset("/images/Chapitres/Chapitre2/GOU_04_D_0004.jpg")}
+                        legend="Reconstitution Serroz-Mülhenheim d’après des documents d’archives"
+                />
+                <p>
+                    Reconstitution Serroz-Mülhenheim d’après des documents d’archives ©
+                    Fonds Goux, GOU 04 D 0004
+                </p>
+            </div>
+            <div class="paragraphe">
+                <p>
+                    Les chapitres d’entretiens, qui constituent environ la moitié du
+                    volume des <i>Mémoires de l’Enclave</i>, portent souvent le titre du
+                    lieu de travail et de vie des enquêtés : « Du côté de Beaucourt », «
+                    Du côté d’Héricourt ».
+                </p>
+                <p>
+                    Jean-Paul Goux est très attentif aux configurations spatiales et aux
+                    noms de lieux, à ce qu’ils révèlent des relations et des pratiques
+                    sociales. Le livre s’ouvre sur le dessin en forme d’oiseau d’un
+                    territoire, qui reprend une carte ancienne.
+                </p>
+                <p>Il l'appelle l'Enclave</p>
+            </div>
 
-        <h2 class="titres">Enclave et nébuleuse</h2>
-        <div class="image">
-            <ImageFullscreen
-                    src="/images/Chapitres/Captures/GOU_03_05_0020.PNG"
-                    legend=" Manuscrit des Mémoires, Chap. IV « La Bastille »"
-            />
-            <p>
-                Manuscrit des <span>Mémoires</span>, Chap. IV « La Bastille » © Fonds
-                Goux, GOU 03 05 0020
-            </p>
-        </div>
-        <div class="paragraphe">
-            <p>
-                Le pays de Montbéliard, « que la géographie voue au passage et que
-                l’histoire constitue en monde clos » (<i>Mémoires</i>, p. 21), a été
-                une principauté wurtembourgeoise dont le rattachement définitif à la
-                France date de 1793 seulement, et une enclave religieuse luthérienne
-                en terre catholique.
-            </p>
-            <p>
-                C’est surtout une enclave économique où l’activité des forges est
-                présente dès le XVII<sup>e</sup> siècle, et que de grandes familles tiennent sous
-                leur emprise tout au long des XIX<sup>e</sup> et XX<sup>e</sup> siècles, en employant la
-                population dans les industries mécaniques et textiles, avant l’ère de
-                l’automobile.
-            </p>
-            <p>
-                « Au niveau du pays, j’avais imaginé une espèce d’enclave, de monde
-                clos, et en fait je l’ai trouvé ! Mais contradictoirement, j’ai aussi
-                découvert un univers très éclaté, une nébuleuse, des mondes juxtaposés
-                mais isolés […], espaces urbains aux constructions anarchiques, mode
-                de vie des gens très autonomisé » (<i>L’Est Républicain</i>, 7 octobre
-                1984). Dans cette interview, comme dans son livre, Jean-Paul Goux utilise
-                l’image de la nébuleuse pour désigner l’« agrégat confus », le «
-                paysage indéchiffrable » (<i>Mémoires</i>, p. 73) qui traduit les
-                intentions des « bâtisseurs d’industrie » : « dissoudre la ville ».
-                Dès lors le « Pays de Montbéliard prend des allures de faubourg
-                pavillonnaire », écrit François Moulin de <i>L’Est Républicain</i> qui
-                consacre une série d’articles au livre à sa sortie en 1986.
-            </p>
-        </div>
+            <h2 class="titres">Enclave et nébuleuse</h2>
+            <div class="image">
+                <ImageFullscreen
+                        src={asset("/images/Chapitres/Captures/GOU_03_05_0020.PNG")}
+                        legend=" Manuscrit des Mémoires, Chap. IV « La Bastille »"
+                />
+                <p>
+                    Manuscrit des <span>Mémoires</span>, Chap. IV « La Bastille » © Fonds
+                    Goux, GOU 03 05 0020
+                </p>
+            </div>
+            <div class="paragraphe">
+                <p>
+                    Le pays de Montbéliard, « que la géographie voue au passage et que
+                    l’histoire constitue en monde clos » (<i>Mémoires</i>, p. 21), a été
+                    une principauté wurtembourgeoise dont le rattachement définitif à la
+                    France date de 1793 seulement, et une enclave religieuse luthérienne
+                    en terre catholique.
+                </p>
+                <p>
+                    C’est surtout une enclave économique où l’activité des forges est
+                    présente dès le XVII<sup>e</sup> siècle, et que de grandes familles tiennent sous
+                    leur emprise tout au long des XIX<sup>e</sup> et XX<sup>e</sup> siècles, en employant la
+                    population dans les industries mécaniques et textiles, avant l’ère de
+                    l’automobile.
+                </p>
+                <p>
+                    « Au niveau du pays, j’avais imaginé une espèce d’enclave, de monde
+                    clos, et en fait je l’ai trouvé ! Mais contradictoirement, j’ai aussi
+                    découvert un univers très éclaté, une nébuleuse, des mondes juxtaposés
+                    mais isolés […], espaces urbains aux constructions anarchiques, mode
+                    de vie des gens très autonomisé » (<i>L’Est Républicain</i>, 7 octobre
+                    1984). Dans cette interview, comme dans son livre, Jean-Paul Goux utilise
+                    l’image de la nébuleuse pour désigner l’« agrégat confus », le «
+                    paysage indéchiffrable » (<i>Mémoires</i>, p. 73) qui traduit les
+                    intentions des « bâtisseurs d’industrie » : « dissoudre la ville ».
+                    Dès lors le « Pays de Montbéliard prend des allures de faubourg
+                    pavillonnaire », écrit François Moulin de <i>L’Est Républicain</i> qui
+                    consacre une série d’articles au livre à sa sortie en 1986.
+                </p>
+            </div>
 
-        <h2 class="titres">Cimetière ou conservatoire</h2>
-        <div class="image">
-            <ImageFullscreen
-                    src="/images/Chapitres/Chapitre2/GOU_05_01_0031.jpg"
-                    legend="Usine d’Héricourt (1984)"
-            />
-            <p>Usine d’Héricourt (1984) © Fonds Goux, GOU 05 01 0031</p>
-        </div>
-        <div class="image">
-            <ImageFullscreen
-                    src="/images/Chapitres/Chapitre2/GOU_05_03_0027.jpg"
-                    legend="Usine de Fesches-le-Châtel (1984)"
-            />
-            <p>Usine de Fesches-le-Châtel (1984) © Fonds Goux, GOU 05 03 0027</p>
-        </div>
+            <h2 class="titres">Cimetière ou conservatoire</h2>
+            <div class="image">
+                <ImageFullscreen
+                        src={asset("/images/Chapitres/Chapitre2/GOU_05_01_0031.jpg")}
+                        legend="Usine d’Héricourt (1984)"
+                />
+                <p>Usine d’Héricourt (1984) © Fonds Goux, GOU 05 01 0031</p>
+            </div>
+            <div class="image">
+                <ImageFullscreen
+                        src={asset("/images/Chapitres/Chapitre2/GOU_05_03_0027.jpg")}
+                        legend="Usine de Fesches-le-Châtel (1984)"
+                />
+                <p>Usine de Fesches-le-Châtel (1984) © Fonds Goux, GOU 05 03 0027</p>
+            </div>
 
-        <div class="paragraphe">
-            <p>
-                « L’Enclave est aujourd’hui tout entière dominée par l’activité des
-                usines Peugeot : histoire présente qui pousse dans l’oubli l’histoire
-                passée » (Plaquette accompagnant la 1<sup>re</sup> édition, 1986).
-            </p>
-            <p>
-                En 1984-85, les traces de cette histoire passée, de cette « diversité
-                économique » révolue, ce sont d’une part les « cimetières d’usines »,
-                « de foyers » ; d’autre part les cités ouvrières anciennes plus ou
-                moins bien entretenues qui donnent l’impression que rien n’a changé
-                depuis plusieurs générations. Les vieux bâtiments, industriels ou
-                d’habitation, semblent voués à la destruction ou à la muséification.
-            </p>
-        </div>
-        <div class="image">
-            <ImageFullscreen
-                    src="/images/Chapitres/Chapitre2/GOU_04_B_01_0003.jpg"
-                    legend=" Carte postale « Le Grand Charmont - Les Fougères - Montbéliard » envoyée par Hubert Truxler (1985)"
-            />
-            <p>
-                Carte postale « Le Grand Charmont - Les Fougères - Montbéliard »
-                envoyée par Hubert Truxler (1985) © Fonds Goux, GOU 04 B 01 0003
-            </p>
-        </div>
-        <div class="image">
-            <ImageFullscreen
-                    src="/images/Chapitres/Chapitre2/GOU_05_01_0011.jpg"
-                    legend="Habitations d’Héricourt (1984)"
-            />
-            <p>Habitations d’Héricourt (1984) © Fonds Goux, GOU 05 01 0011</p>
-        </div>
+            <div class="paragraphe">
+                <p>
+                    « L’Enclave est aujourd’hui tout entière dominée par l’activité des
+                    usines Peugeot : histoire présente qui pousse dans l’oubli l’histoire
+                    passée » (Plaquette accompagnant la 1<sup>re</sup> édition, 1986).
+                </p>
+                <p>
+                    En 1984-85, les traces de cette histoire passée, de cette « diversité
+                    économique » révolue, ce sont d’une part les « cimetières d’usines »,
+                    « de foyers » ; d’autre part les cités ouvrières anciennes plus ou
+                    moins bien entretenues qui donnent l’impression que rien n’a changé
+                    depuis plusieurs générations. Les vieux bâtiments, industriels ou
+                    d’habitation, semblent voués à la destruction ou à la muséification.
+                </p>
+            </div>
+            <div class="image">
+                <ImageFullscreen
+                        src={asset("/images/Chapitres/Chapitre2/GOU_04_B_01_0003.jpg")}
+                        legend=" Carte postale « Le Grand Charmont - Les Fougères - Montbéliard » envoyée par Hubert Truxler (1985)"
+                />
+                <p>
+                    Carte postale « Le Grand Charmont - Les Fougères - Montbéliard »
+                    envoyée par Hubert Truxler (1985) © Fonds Goux, GOU 04 B 01 0003
+                </p>
+            </div>
+            <div class="image">
+                <ImageFullscreen
+                        src={asset("/images/Chapitres/Chapitre2/GOU_05_01_0011.jpg")}
+                        legend="Habitations d’Héricourt (1984)"
+                />
+                <p>Habitations d’Héricourt (1984) © Fonds Goux, GOU 05 01 0011</p>
+            </div>
 
-        <div class="paragraphe">
-            <p>
-                « J’accumule […] les photos d’usines abandonnées, de maisons, de
-                cités, de pierres tombales, de plaques émaillées, de potagers et de
-                rues » (<i>Mémoires</i>, p. 37). Les photographies, prises par
-                l’écrivain et évoquées dans son « Journal » en première partie des
-                <i>Mémoires de l’Enclave</i>, témoignent de l’abandon de pans entiers
-                d’activités, mais aussi des vestiges du modèle qui structure l’espace
-                des vies ouvrières, à travers son habitat en cités, et l’organisation
-                de sa consommation comme de ses loisirs. En ce sens, le paysage est un
-                conservatoire qui porte « les marques successives du pouvoir qui l’a
-                […] modelé » (<i>Mémoires</i>, p. 186).
-            </p>
-            <p>
-                « L’Enclave pour Jean-Paul Goux désigne aussi le territoire du
-                patronat […]. Tout au long du XIX<sup>e</sup> siècle celui-ci a déployé un
-                paternalisme [...] qui n’a pas disparu avec la fin de la 2<sup>e</sup>
-                guerre mondiale mais a pris des formes nouvelles » (<i>Libération</i>,
-                juillet 1986). Il produit une violence latente.
-            </p>
-        </div>
-    </section>
-    <section class="credits">
-        <div class="gauche">
-            <p>
-                Écrit par <strong>Odile Roynette</strong>
-            </p>
-            <p>
-                Droits photographiques : Fonds Archives Goux
-            </p>
-        </div>
-    </section>
-    <div class="suggestions-tag"><h4>Suggestions</h4></div>
-    <section class="suggestions">
-        <SuggestionsCard
-                titre="Une commande de la cité"
-                lien_image="C1_GOU_P17-04_01-P.jpg"
-                numero_chapitre="1"
-        />
-        <SuggestionsCard
-                titre="Discours du maître, traces des luttes"
-                lien_image="C3_Ouvriers filature_2_APB.jpg"
-                numero_chapitre="3"
-        />
-        <SuggestionsCard
-                titre="Enquête sur la mémoire collective"
-                lien_image="C4_GOU_P8-03_03-P.jpg"
-                numero_chapitre="4"
-        />
-    </section>
+            <div class="paragraphe">
+                <p>
+                    « J’accumule […] les photos d’usines abandonnées, de maisons, de
+                    cités, de pierres tombales, de plaques émaillées, de potagers et de
+                    rues » (<i>Mémoires</i>, p. 37). Les photographies, prises par
+                    l’écrivain et évoquées dans son « Journal » en première partie des
+                    <i>Mémoires de l’Enclave</i>, témoignent de l’abandon de pans entiers
+                    d’activités, mais aussi des vestiges du modèle qui structure l’espace
+                    des vies ouvrières, à travers son habitat en cités, et l’organisation
+                    de sa consommation comme de ses loisirs. En ce sens, le paysage est un
+                    conservatoire qui porte « les marques successives du pouvoir qui l’a
+                    […] modelé » (<i>Mémoires</i>, p. 186).
+                </p>
+                <p>
+                    « L’Enclave pour Jean-Paul Goux désigne aussi le territoire du
+                    patronat […]. Tout au long du XIX<sup>e</sup> siècle celui-ci a déployé un
+                    paternalisme [...] qui n’a pas disparu avec la fin de la 2<sup>e</sup>
+                    guerre mondiale mais a pris des formes nouvelles » (<i>Libération</i>,
+                    juillet 1986). Il produit une violence latente.
+                </p>
+            </div>
+        </section>
+        <section class="credits">
+            <div class="gauche">
+                <p>
+                    Écrit par <strong>Odile Roynette</strong>
+                </p>
+                <p>
+                    Droits photographiques : Fonds Archives Goux
+                </p>
+            </div>
+        </section>
+        <div class="suggestions-tag"><h4>Suggestions</h4></div>
+        <section class="suggestions">
+            <SuggestionsCard
+                    titre="Une commande de la cité"
+                    lien_image="C1_GOU_P17-04_01-P.jpg"
+                    numero_chapitre="1"
+            />
+            <SuggestionsCard
+                    titre="Discours du maître, traces des luttes"
+                    lien_image="C3_Ouvriers filature_2_APB.jpg"
+                    numero_chapitre="3"
+            />
+            <SuggestionsCard
+                    titre="Enquête sur la mémoire collective"
+                    lien_image="C4_GOU_P8-03_03-P.jpg"
+                    numero_chapitre="4"
+            />
+        </section>
+    </div>
 
     <style scoped>
         @import "../../styles/chapitres.css";
