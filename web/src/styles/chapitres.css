@@ -1,6 +1,6 @@
 @import url("https://fonts.cdnfonts.com/css/helvetica-neue-5");
 
-.container{
+.container {
     background-color: var(--bg-article-color);
 }
 
@@ -23,9 +23,11 @@ ul {
 span {
     font-style: normal !important;
 }
+
 .credits {
     padding-bottom: 150px;
 }
+
 .gauche {
     display: flex;
     flex-direction: column;
@@ -109,6 +111,7 @@ span {
         left: 0;
         z-index: 20;
     }
+
     img {
         max-width: 100%;
         max-height: 100%;
@@ -117,6 +120,7 @@ span {
         scale: 1.2;
         z-index: 1;
     }
+
     .overlay2 {
         width: 100%;
         height: 100%;
@@ -137,6 +141,7 @@ span {
 
     border-radius: 2px;
     background: #e72465 !important;
+
     h4 {
         width: auto !important;
         text-transform: uppercase;
@@ -154,17 +159,16 @@ span {
     padding-bottom: 50px;
     font-family: var(--article-font);
 }
+
 .titres {
     font-size: var(--titre-paragraphe-font-size);
-
     font-weight: bold;
     padding-bottom: 5px;
-
     margin: 0 auto;
     max-width: 700px;
-
     color: rgb(22, 22, 22);
 }
+
 .paragraphe {
     display: flex;
     flex-direction: column;
@@ -180,6 +184,7 @@ span {
     p {
         margin-bottom: 20px;
     }
+
     p:last-of-type {
         padding-bottom: 20px;
     }
@@ -187,6 +192,7 @@ span {
     font-size: var(--texte-article-font-size);
     line-height: 1.6;
 }
+
 .image {
     display: flex;
     flex-direction: column;
@@ -221,6 +227,7 @@ span {
         color: #666666;
     }
 }
+
 .separation {
     display: flex;
     justify-content: center;
@@ -248,6 +255,7 @@ span {
     top: 10px;
     z-index: 0;
 }
+
 .intro {
     background: var(--bg-article-color);
     width: 100%;
@@ -271,6 +279,7 @@ span {
         align-self: center;
     }
 }
+
 .entete {
     position: relative;
     width: 100%;
@@ -281,6 +290,7 @@ span {
     overflow: hidden;
     /* margin-top: 80px;*/
 }
+
 .rectangle {
     background: #242424;
     width: 100vw;
@@ -301,6 +311,7 @@ span {
     z-index: 2;
     pointer-events: none;
 }
+
 main {
     position: relative;
     width: 100%;
@@ -309,6 +320,7 @@ main {
     flex-direction: column;
     justify-content: center;
 }
+
 .hero {
     font-family: "Graphik", sans-serif;
     height: 75vh;
@@ -339,13 +351,15 @@ main {
         color: var(--secondary-color);
         font-size: 60px !important;
         line-height: 60px !important;
-        /* margin-bottom: 5px; */
+        pointer-events: auto;
     }
+
     .soustitre {
         color: var(--secondary-color);
         font-size: 30px !important;
         font-weight: 300;
     }
+
     .soustitre::before {
         content: "";
         display: block;

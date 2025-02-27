@@ -1,4 +1,5 @@
 ---
+import {asset} from "../utils/url";
 type Props = {
   src: string;
 };
@@ -15,7 +16,7 @@ const { src } = Astro.props;
     <div class="controls-audio">
       <button id="playpausebtn">
         <img
-            src="/icones/pause-white.png"
+            src={asset("/icones/pause-white.png")}
             alt="icone controle audio"
             id="playicon"
         />
@@ -26,7 +27,7 @@ const { src } = Astro.props;
     <div class="controls-volume">
       <button id="mutebtn">
         <img
-            src="/icones/haut-parleur.png"
+            src={asset("/icones/haut-parleur.png")}
             alt="icone controle sonore"
             id="muteicon"
         />
@@ -41,7 +42,7 @@ const { src } = Astro.props;
       />
     </div>
     <button id="closeBtn">
-      <img src="/icones/white-x.png" alt="oicone stop son" id="playicon" />
+      <img src={asset("/icones/white-x.png")} alt="oicone stop son" id="playicon" />
     </button>
   </div>
 </div>
@@ -63,106 +64,103 @@ const { src } = Astro.props;
     }
   }
 
-  function initAudio() {
+      function initAudio() {
 
-    cleanUpPreviousInstances(); // Nettoie les instances précédentes avant d'attacher les nouveaux événements
+          cleanUpPreviousInstances(); // Nettoie les instances précédentes avant d'attacher les nouveaux événements
 
-    const audio = document.querySelector("#audio");
-    const playBtn = document.querySelector("#playpausebtn");
-    const mutebtn = document.querySelector("#mutebtn");
-    const closeBtn = document.querySelector("#closeBtn");
-    const seekslider = document.querySelector("#seekslider");
-    const volumeslider = document.querySelector("#volumeslider");
-    const playIcon = document.querySelector("#playicon");
-    const muteIcon = document.querySelector("#muteicon");
-    const curtimetext = document.querySelector("#curtimetext");
-    const durtimetext = document.querySelector("#durtimetext");
-    const audioCard = document.querySelector("#audioCard");
-    const audioContainer = document.querySelector(".audio");
+          const audio = document.querySelector("#audio");
+          const playBtn = document.querySelector("#playpausebtn");
+          const mutebtn = document.querySelector("#mutebtn");
+          const closeBtn = document.querySelector("#closeBtn");
+          const seekslider = document.querySelector("#seekslider");
+          const volumeslider = document.querySelector("#volumeslider");
+          const playIcon = document.querySelector("#playicon");
+          const muteIcon = document.querySelector("#muteicon");
+          const curtimetext = document.querySelector("#curtimetext");
+          const durtimetext = document.querySelector("#durtimetext");
+          const audioCard = document.querySelector("#audioCard");
+          const audioContainer = document.querySelector(".audio");
 
-    if (!audio || !playBtn || !mutebtn || !closeBtn || !seekslider || !volumeslider || !playIcon || !muteIcon || !curtimetext || !durtimetext || !audioCard || !audioContainer) {
-      console.warn("❌ Un ou plusieurs éléments audio sont manquants !");
-      return;
-    }
+          if (!audio || !playBtn || !mutebtn || !closeBtn || !seekslider || !volumeslider || !playIcon || !muteIcon || !curtimetext || !durtimetext || !audioCard || !audioContainer) {
+              return;
+          }
 
-    function formatTime(seconds) {
-      const min = Math.floor(seconds / 60);
-      const sec = Math.floor(seconds % 60);
-      return `${min}:${sec < 10 ? "0" : ""}${sec}`;
-    }
+          function formatTime(seconds) {
+              const min = Math.floor(seconds / 60);
+              const sec = Math.floor(seconds % 60);
+              return `${min}:${sec < 10 ? "0" : ""}${sec}`;
+              }
 
-    function togglePlay() {
-      if (!audio.paused) {
-        playIcon.src = "/icones/play-icon.png";
-        return audio.pause();
-      }
-      playIcon.src = "/icones/pause-white.png";
-      audio.play();
-    }
+          function togglePlay() {
+              if (!audio.paused) {
+                  playIcon.src = "/memoires-ouvrieres/icones/play-icon.png";
+                  return audio.pause();
+                  }
+              playIcon.src = "/memoires-ouvrieres/icones/pause-white.png";
+              audio.play();
+              }
 
-    function closeAudio() {
-      audio.pause();
-      audio.currentTime = 0;
-      audioContainer.style.opacity = "0";
-      audioContainer.style.zIndex = "-1";
-    }
+          function closeAudio() {
+              audio.pause();
+              audio.currentTime = 0;
+              audioContainer.style.opacity = "0";
+              audioContainer.style.zIndex = "-1";
+              }
 
-    function toggleMute() {
-      if (audio.volume > 0) {
-        audio.volume = 0;
-        volumeslider.value = "0";
-        muteIcon.src = "/icones/muet.png";
-      } else {
-        audio.volume = 1;
-        volumeslider.value = "1";
-        muteIcon.src = "/icones/haut-parleur.png";
-      }
-    }
+          function toggleMute() {
+              if (audio.volume > 0) {
+                  audio.volume = 0;
+                  volumeslider.value = "0";
+                  muteIcon.src = "/memoires-ouvrieres/icones/muet.png";
+                  } else {
+                  audio.volume = 1;
+                  volumeslider.value = "1";
+                  muteIcon.src = "/memoires-ouvrieres/icones/haut-parleur.png";
+                  }
+              }
 
-    function updateVolume() {
-      audio.volume = parseFloat(volumeslider.value);
-    }
+          function updateVolume() {
+              audio.volume = parseFloat(volumeslider.value);
+              }
 
-    function updateSeek() {
-      audio.currentTime = parseFloat(seekslider.value);
-    }
+          function updateSeek() {
+              audio.currentTime = parseFloat(seekslider.value);
+              }
 
-    function updateTime() {
-      seekslider.value = audio.currentTime.toString();
-      curtimetext.innerText = formatTime(audio.currentTime);
-    }
+          function updateTime() {
+              seekslider.value = audio.currentTime.toString();
+              curtimetext.innerText = formatTime(audio.currentTime);
+              }
 
-    function setupMetadata() {
-      seekslider.max = audio.duration.toString();
-      durtimetext.innerText = formatTime(audio.duration);
-      volumeslider.value = "1";
-      audio.volume = 1;
-    }
+          function setupMetadata() {
+              seekslider.max = audio.duration.toString();
+              durtimetext.innerText = formatTime(audio.duration);
+              volumeslider.value = "1";
+              audio.volume = 1;
+              }
 
-    function showAudioControls() {
-      audioContainer.style.opacity = "1";
-      audioContainer.style.zIndex = "100";
-      togglePlay();
-    }
+          function showAudioControls() {
+              audioContainer.style.opacity = "1";
+              audioContainer.style.zIndex = "100";
+              togglePlay();
+              }
 
-    // Initialisation du volume
-    audio.volume = 1;
-    volumeslider.value = "1";
+          // Initialisation du volume
+          audio.volume = 1;
+          volumeslider.value = "1";
 
-    // Suppression et réattachement des événements pour éviter les doublons
-    audioCard.addEventListener("click", showAudioControls);
-    playBtn.addEventListener("click", togglePlay);
-    closeBtn.addEventListener("click", closeAudio);
-    mutebtn.addEventListener("click", toggleMute);
-    volumeslider.addEventListener("input", updateVolume);
-    seekslider.addEventListener("input", updateSeek);
-    audio.addEventListener("timeupdate", updateTime);
-    audio.addEventListener("loadedmetadata", setupMetadata);
-  }
+          // Suppression et réattachement des événements pour éviter les doublons
+          audioCard.addEventListener("click", showAudioControls);
+          playBtn.addEventListener("click", togglePlay);
+          closeBtn.addEventListener("click", closeAudio);
+          mutebtn.addEventListener("click", toggleMute);
+          volumeslider.addEventListener("input", updateVolume);
+          seekslider.addEventListener("input", updateSeek);
+          audio.addEventListener("timeupdate", updateTime);
+          audio.addEventListener("loadedmetadata", setupMetadata);
+          }
 
-  // Événements Astro pour recharger correctement le script après navigation interne
-  document.addEventListener("astro:page-load", initAudio);
-  document.addEventListener("astro:after-swap", initAudio);
+      document.addEventListener("astro:page-load", initAudio);
 </script>
 
 <style scoped>

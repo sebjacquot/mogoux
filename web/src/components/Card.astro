@@ -1,4 +1,5 @@
 ---
+import {asset} from "../utils/url";
 interface Props {
   title: string;
   body: string;
@@ -9,7 +10,7 @@ const { href, title, body } = Astro.props;
 ---
 
 <li class="link-card">
-  <a href={href}>
+  <a href={asset(href)}>
     <h2>
       {title}
       <span>&rarr;</span>

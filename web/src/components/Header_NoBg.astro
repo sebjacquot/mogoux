@@ -1,5 +1,5 @@
 ---
-import "../styles/global.css";
+import { asset } from "../utils/url";
 ---
 
   <div class="header">
@@ -10,34 +10,39 @@ import "../styles/global.css";
     </div>
   </div>
   <div class="menu-burger" id="menu-burger">
+
     <div class="menu-item">
       <button class="menu-title">Accueil</button>
       <div class="menu-links">
-        <a href="/">Accueil</a>
-        <a href="/navigation">Page de Navigation</a>
+        <a href={asset("/")}>Accueil</a>
+        <a href={asset("/navigation")}>Page de Navigation</a>
       </div>
     </div>
+
     <div class="menu-item">
       <button class="menu-title">Mémoires Ouvrières</button>
       <div class="menu-links">
-        <a href="/carte">Parcourir la carte</a>
-        <a href="/thematiques">Thématiques</a>
+        <a href={asset("/carte")}>Parcourir la carte</a>
+        <a href={asset("/thematiques")}>Thématiques</a>
       </div>
     </div>
+
     <div class="menu-item">
       <button class="menu-title">Mémoires de l'Enclave</button>
       <div class="menu-links">
-        <a href="/chapitres/biographie">Biographie</a>
-      <a href="/chapitres">Chapitrages</a>
+        <a href={asset("/chapitres/biographie")}>Biographie</a>
+        <a href={asset("/chapitres")}>Chapitrages</a>
       </div>
     </div>
+
     <div class="menu-item">
       <button class="menu-title">Annexes</button>
       <div class="menu-links">
-        <a href="/annexe/presentation_projet">Présentation du projet</a>
-        <a href="/annexe/mentions_legales">Mentions légales</a>
+        <a href={asset("/annexe/presentation_projet")}>Présentation du projet</a>
+        <a href={asset("/annexe/mentions_legales")}>Mentions légales</a>
       </div>
     </div>
+
     <div class="menu-item">
       <button class="menu-title">Institutions</button>
       <div class="menu-links">

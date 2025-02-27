@@ -3,178 +3,179 @@ import ImageFullscreen from "../../components/ImageFullscreen.astro";
 import SuggestionsCard from "../../components/SuggestionsCard.astro";
 import ImageTooltip from "../../components/ImageTooltip.astro";
 import Layout from "../../layouts/Layout.astro";
+import {asset} from "../../utils/url";
 ---
 
 <Layout title="Chapitre 7">
-    <section class="entete">
-        <div class="hero">
-            <h2 class="tag">Chapitre 6</h2>
-            <h1 class="titre">La structuration des <i>Mémoires</i></h1>
-            <h2 class="soustitre">Un ouvrage à multiples facettes</h2>
-            <div class="intro">
-                <p>
-                    Dans la première partie de l’ouvrage, Goux met en scène les
-                    problèmes d’organisation qui se sont posés à lui : désireux de
-                    favoriser une pluralité de discours et de types d’écriture, il
-                    allait néanmoins progressivement élaborer une structuration souple
-                    et inventive, parfaitement élaborée et réfléchie.
-                </p>
-                <div class="separation">
-                    <div class="background"></div>
+    <div class="container">
+        <section class="entete">
+            <div class="hero">
+                <h2 class="tag">Chapitre 6</h2>
+                <h1 class="titre">La structuration des <i>Mémoires</i></h1>
+                <h2 class="soustitre">Un ouvrage à multiples facettes</h2>
+                <div class="intro">
+                    <p>
+                        Dans la première partie de l’ouvrage, Goux met en scène les
+                        problèmes d’organisation qui se sont posés à lui : désireux de
+                        favoriser une pluralité de discours et de types d’écriture, il
+                        allait néanmoins progressivement élaborer une structuration souple
+                        et inventive, parfaitement élaborée et réfléchie.
+                    </p>
+                    <div class="separation">
+                        <div class="background"></div>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <ImageTooltip
-                src="/images/Header_Chapitre/C6_0100.jpg"
-                legend="Atelier de fabrication de pompes Japy à Fesches-le-Châtel, le 21 mai 1985. Photographie de Gilles Choffé"
-        />
-
-        <div class="overlay"></div>
-    </section>
-    <section class="contenu-article">
-        <h2 class="titres">Des ambitions contradictoires ?</h2>
-        <div class="image">
-            <ImageFullscreen
-                    src="/images/Chapitres/Chapitre6/GOU_05_07_0003.jpg"
-                    legend="Jean-Paul Goux dans les Forges d'Audincourt à l'abandon"
+            <ImageTooltip
+                    src={asset("/images/Header_Chapitre/C6_0100.jpg")}
+                    legend="Atelier de fabrication de pompes Japy à Fesches-le-Châtel, le 21 mai 1985. Photographie de Gilles Choffé"
             />
-            <p>Jean-Paul Goux dans les Forges d'Audincourt à l'abandon © Fonds Goux, GOU 05 07 0003</p>
-        </div>
-        <div class="paragraphe">
-            <p>
-                Un des enjeux de la commande était d’accueillir une grande diversité
-                de discours. Dans ses notes préparatoires, Goux précise qu’il convient
-                de « mêler les types d’écriture », sans craindre une « hétérogénéité »
-                due à la « contiguïté de codes littéraires historiquement distincts. »
-                Mais, parallèlement, il s’interroge : « Comment éviter le collage qui
-                évite d’inventer une forme ? »
-            </p>
-            <p>
-                Dans la première partie des <i>Mémoires de l’Enclave</i>, le narrateur
-                développe, en abyme, une interrogation sur la forme à donner à son
-                ouvrage. Il évoque, à la fin, la possibilité de « deux livres »
-                distincts, « l’un plutôt journalistique » – c’est- à-dire sous la
-                forme d’un journal, au jour le jour –, « l’autre, vraiment littéraire
-                » (<i>Mémoires</i>, p. 94).
-            </p>
-        </div>
-        <h2 class="titres">Varier et sérier</h2>
 
-        <div class="paragraphe">
-            <p>
-                Sur l’exemple des <i>Mémoires d’outre-tombe</i> de Chateaubriand et de
-                <i>Jacques le fataliste</i> de Diderot, Goux cherche des principes généraux
-                de composition.
-            </p>
-        </div>
-        <div class="image">
-            <ImageFullscreen
-                    src="/images/Chapitres/Captures/GOU_03_B_0010.PNG"
-                    legend="Notes manuscrites"
+            <div class="overlay"></div>
+        </section>
+        <section class="contenu-article">
+            <h2 class="titres">Des ambitions contradictoires ?</h2>
+            <div class="image">
+                <ImageFullscreen
+                        src={asset("/images/Chapitres/Chapitre6/GOU_05_07_0003.jpg")}
+                        legend="Jean-Paul Goux dans les Forges d'Audincourt à l'abandon"
+                />
+                <p>Jean-Paul Goux dans les Forges d'Audincourt à l'abandon © Fonds Goux, GOU 05 07 0003</p>
+            </div>
+            <div class="paragraphe">
+                <p>
+                    Un des enjeux de la commande était d’accueillir une grande diversité
+                    de discours. Dans ses notes préparatoires, Goux précise qu’il convient
+                    de « mêler les types d’écriture », sans craindre une « hétérogénéité »
+                    due à la « contiguïté de codes littéraires historiquement distincts. »
+                    Mais, parallèlement, il s’interroge : « Comment éviter le collage qui
+                    évite d’inventer une forme ? »
+                </p>
+                <p>
+                    Dans la première partie des <i>Mémoires de l’Enclave</i>, le narrateur
+                    développe, en abyme, une interrogation sur la forme à donner à son
+                    ouvrage. Il évoque, à la fin, la possibilité de « deux livres »
+                    distincts, « l’un plutôt journalistique » – c’est- à-dire sous la
+                    forme d’un journal, au jour le jour –, « l’autre, vraiment littéraire
+                    » (<i>Mémoires</i>, p. 94).
+                </p>
+            </div>
+            <h2 class="titres">Varier et sérier</h2>
+
+            <div class="paragraphe">
+                <p>
+                    Sur l’exemple des <i>Mémoires d’outre-tombe</i> de Chateaubriand et de
+                    <i>Jacques le fataliste</i> de Diderot, Goux cherche des principes généraux
+                    de composition.
+                </p>
+            </div>
+            <div class="image">
+                <ImageFullscreen
+                        src={asset("/images/Chapitres/Captures/GOU_03_B_0010.PNG")}
+                        legend="Notes manuscrites"
+                />
+                <p>Notes préparatoires © Fonds Goux, GOU 03 B 0010</p>
+            </div>
+
+            <div class="paragraphe">
+                <p>
+                    Certains documents témoignent de la subtilité des principes
+                    d’équilibre que Goux s’est fixés :
+                </p>
+            </div>
+            <div class="image">
+                <ImageFullscreen
+                        src={asset("/images/Chapitres/Captures/GOU_03_E_0019.PNG")}
+                        legend="Notes manuscrites"
+                />
+                <p>Notes préparatoires © Fonds Goux, GOU 03 B 0010</p>
+            </div>
+            <h2 class="titres">L’organisation générale de l’ouvrage</h2>
+            <div class="paragraphe">
+                <p> Un document montre trois étapes successives dans l’élaboration du plan : </p>
+            </div>
+            <div class="image">
+                <ImageFullscreen
+                        src={asset("/images/Chapitres/Chapitre6/GOU_03_E_0008.jpg")}
+                        legend="Notes manuscrites"
+                />
+                <p>Notes préparatoires © Fonds Goux, GOU 03 E 0008</p>
+            </div>
+
+            <div class="paragraphe">
+                <p>
+                    L’étape A, en haut à gauche, renvoie à un premier état rédigé du
+                    texte, sur 78 pages, en continu. Cet état A se retrouve dans le
+                    manuscrit de l’ouvrage conservé dans les archives, avec sa
+                    numérotation particulière, mais il a été totalement redistribué. Il
+                    comportait alors une organisation systématique par dates, comme un
+                    journal intime, ce qui sera gommé lorsque le principe d’organisation
+                    définitif sera trouvé.
+                </p>
+
+                <p>
+                    L’étape B en dessous montre une restructuration en 31 chapitres,
+                    proche du travail final. Elle redistribue, selon un ordre revu, les
+                    sections précédentes qui alternent avec les entretiens, jusque-là
+                    absents.
+                </p>
+                <p>
+                    L’étape C, au milieu vers la droite, se situe dans le prolongement de cette
+                    réorganisation pour parvenir au plan définitif : les pages 38 à 47 de
+                    la première étape – devenues le premier chapitre dans l’étape B –
+                    intègrent le « Journal » dans une première partie désormais isolée. La
+                    seconde partie récupère l’essentiel de l’organisation de l’étape B,
+                    avec les titres pratiquement définitifs des chapitres.
+                </p>
+                <p>
+                    L’encart, en haut à droite, montre une idée finalement abandonnée :
+                    utiliser trois polices différentes pour distinguer « texte », «
+                    citations de textes », « entretiens ».
+                </p>
+                <p>
+                    Tout en maintenant un ouvrage accueillant une grande liberté de
+                    discours (journal intime, entretiens, témoignages, textes de réflexion
+                    historique, sociologique, géographique, tracts syndicaux, extraits de
+                    presse, etc.), Goux est ainsi parvenu à tresser une structure souple
+                    et habile, guidant et stimulant le travail du lecteur. De là cette
+                    citation de Melville en exergue de l’ouvrage : « Il y a certaines
+                    entreprises pour lesquelles un désordre soigneux est la vraie méthode
+                    » (<i>Mémoires</i>, p. 7).
+                </p>
+            </div>
+        </section>
+        <section class="credits">
+            <div class="gauche">
+                <p>
+                    Écrit par <strong>Pascal Lécroart</strong>
+                </p>
+                <p>
+                    Droits photographiques : Fonds Archives Goux
+                </p>
+            </div>
+        </section>
+        <div class="suggestions-tag"><h4>Suggestions</h4></div>
+        <section class="suggestions">
+            <SuggestionsCard
+                    titre="Une œuvre littéraire"
+                    numero_chapitre="5"
+                    lien_image="C5_0407.jpg"
             />
-            <p>Notes préparatoires © Fonds Goux, GOU 03 B 0010</p>
-        </div>
-
-        <div class="paragraphe">
-            <p>
-                Certains documents témoignent de la subtilité des principes
-                d’équilibre que Goux s’est fixés :
-            </p>
-        </div>
-        <div class="image">
-            <ImageFullscreen
-                    src="/images/Chapitres/Captures/GOU_03_E_0019.PNG"
-                    legend="Notes manuscrites"
+            <SuggestionsCard
+                    titre="La fabrique du texte"
+                    numero_chapitre="7"
+                    lien_image="C7_GOU_P17-05_04-P.jpg"
             />
-            <p>Notes préparatoires © Fonds Goux, GOU 03 B 0010</p>
-        </div>
-        <h2 class="titres">L’organisation générale de l’ouvrage</h2>
-        <div class="paragraphe">
-            <p> Un document montre trois étapes successives dans l’élaboration du plan : </p>
-        </div>
-        <div class="image">
-            <ImageFullscreen
-                    src="/images/Chapitres/Chapitre6/GOU_03_E_0008.jpg"
-                    legend="Notes manuscrites"
+            <SuggestionsCard
+                    titre="Du manuscrit au(x) livre(s)"
+                    numero_chapitre="8"
+                    lien_image="C8_GOU_P23-04_05-P.jpg"
             />
-            <p>Notes préparatoires © Fonds Goux, GOU 03 E 0008</p>
-        </div>
-
-        <div class="paragraphe">
-            <p>
-                L’étape A, en haut à gauche, renvoie à un premier état rédigé du
-                texte, sur 78 pages, en continu. Cet état A se retrouve dans le
-                manuscrit de l’ouvrage conservé dans les archives, avec sa
-                numérotation particulière, mais il a été totalement redistribué. Il
-                comportait alors une organisation systématique par dates, comme un
-                journal intime, ce qui sera gommé lorsque le principe d’organisation
-                définitif sera trouvé.
-            </p>
-
-            <p>
-                L’étape B en dessous montre une restructuration en 31 chapitres,
-                proche du travail final. Elle redistribue, selon un ordre revu, les
-                sections précédentes qui alternent avec les entretiens, jusque-là
-                absents.
-            </p>
-            <p>
-                L’étape C, au milieu vers la droite, se situe dans le prolongement de cette
-                réorganisation pour parvenir au plan définitif : les pages 38 à 47 de
-                la première étape – devenues le premier chapitre dans l’étape B –
-                intègrent le « Journal » dans une première partie désormais isolée. La
-                seconde partie récupère l’essentiel de l’organisation de l’étape B,
-                avec les titres pratiquement définitifs des chapitres.
-            </p>
-            <p>
-                L’encart, en haut à droite, montre une idée finalement abandonnée :
-                utiliser trois polices différentes pour distinguer « texte », «
-                citations de textes », « entretiens ».
-            </p>
-            <p>
-                Tout en maintenant un ouvrage accueillant une grande liberté de
-                discours (journal intime, entretiens, témoignages, textes de réflexion
-                historique, sociologique, géographique, tracts syndicaux, extraits de
-                presse, etc.), Goux est ainsi parvenu à tresser une structure souple
-                et habile, guidant et stimulant le travail du lecteur. De là cette
-                citation de Melville en exergue de l’ouvrage : « Il y a certaines
-                entreprises pour lesquelles un désordre soigneux est la vraie méthode
-                » (<i>Mémoires</i>, p. 7).
-            </p>
-        </div>
-    </section>
-    <section class="credits">
-        <div class="gauche">
-            <p>
-                Écrit par <strong>Pascal Lécroart</strong>
-            </p>
-            <p>
-                Droits photographiques : Fonds Archives Goux
-            </p>
-        </div>
-    </section>
-    <div class="suggestions-tag"><h4>Suggestions</h4></div>
-    <section class="suggestions">
-        <SuggestionsCard
-                titre="Une œuvre littéraire"
-                numero_chapitre="5"
-                lien_image="C5_0407.jpg"
-        />
-        <SuggestionsCard
-                titre="La fabrique du texte"
-                numero_chapitre="7"
-                lien_image="C7_GOU_P17-05_04-P.jpg"
-        />
-        <SuggestionsCard
-                titre="Du manuscrit au(x) livre(s)"
-                numero_chapitre="8"
-                lien_image="C8_GOU_P23-04_05-P.jpg"
-        />
-    </section>
-
+        </section>
+    </div>
 
     <style scoped>
         @import "../../styles/chapitres.css";
     </style>
-
 </Layout>

@@ -13,8 +13,6 @@ import Cities from "./collections/Cities";
 import Documents from "./collections/Documents";
 import Sections from "./collections/Sections";
 
-const BASE_PATH = "/memoires-ouvrieres/cms";
-
 export default buildConfig({
   localization: {
     locales: ['fr', 'en'],

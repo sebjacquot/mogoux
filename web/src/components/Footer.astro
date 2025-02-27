@@ -1,6 +1,6 @@
 ---
 
----
+import {asset} from "../utils/url";---
 
 <footer class='container'>
     <div class="haut-footer">
@@ -21,7 +21,7 @@
             <div class="colonne">
                 <h3 class="titre-colonne-footer">Juridique</h3>
                 <a href="#" class="lien-text-footer">Manifeste éditorial</a>
-                <a href="/annexe/mentions_legales" class="lien-text-footer">Mentions légales</a>
+                <a href={asset("/annexe/mentions_legales")} class="lien-text-footer">Mentions légales</a>
             </div>
             <div class="colonne">
                 <h3 class="titre-colonne-footer">TITRE Indéterminé</h3>
@@ -31,12 +31,12 @@
         </div>
         <div class="haut-footer-resaux-droite">
             <div class="image-resaux-haut">
-                <a href="#"><img src="/icones/icon-twitter.svg" alt="Twitter"></a>
-                <a href="#"><img src="/icones/icon-facebook.svg" alt="Facebook"></a>
+                <a href="#"><img src={asset("/icones/icon-twitter.svg")} alt="Twitter"></a>
+                <a href="#"><img src={asset("/icones/icon-facebook.svg")} alt="Facebook"></a>
             </div>
             <div class="image-resaux-bas">
-                <a href="mailto:adresse@email.com"><img src="/icones/icon-mail.svg" alt="Email"></a>
-                <a href="#"><img src="/icones/icon-linkedin.svg" alt="LinkedIn"></a>
+                <a href="mailto:adresse@email.com"><img src={asset("/icones/icon-mail.svg")} alt="Email"></a>
+                <a href="#"><img src={asset("/icones/icon-linkedin.svg")} alt="LinkedIn"></a>
             </div>
         </div>
     </div>
@@ -46,10 +46,10 @@
             <p></p>
         </div>
         <div class="bas-footer-logos-droite">
-            <a href="https://www.bourgognefranchecomte.fr"><img src="/icones/logo-rbfc-blanc.png" alt="Région Bourgogne Franche-Comté"></a>
-            <a href="https://elliadd.univ-fcomte.fr"><img src="/icones/LogoElliadd_blanc.png" alt="ELLIADD"></a>
-            <a href="https://mshe.univ-fcomte.fr"><img src="/icones/mshe-logo-blanc.png" alt="MSHE"></a>
-            <a href="https://www.univ-fcomte.fr/"><img src="/icones/LOGO_UMLP_blanc.png" alt="Université Marie et Louis Pasteur"></a>
+            <a href="https://www.bourgognefranchecomte.fr"><img src={asset("/icones/logo-rbfc-blanc.png")} alt="Région Bourgogne Franche-Comté"></a>
+            <a href="https://elliadd.univ-fcomte.fr"><img src={asset("/icones/LogoElliadd_blanc.png")} alt="ELLIADD"></a>
+            <a href="https://mshe.univ-fcomte.fr"><img src={asset("/icones/mshe-logo-blanc.png")} alt="MSHE"></a>
+            <a href="https://www.univ-fcomte.fr/"><img src={asset("/icones/LOGO_UMLP_blanc.png")} alt="Université Marie et Louis Pasteur"></a>
         </div>
     </div>
 </footer>

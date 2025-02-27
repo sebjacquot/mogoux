@@ -1,51 +1,52 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import {asset} from "../utils/url";
 ---
 
 <Layout title="Carte">
     <div class="map-container">
-        <img src="/Nouvelle-carte.jpeg" alt="Carte" class="carte" id="img-original" loading="lazy" />
+        <img src={asset("/Nouvelle-carte.jpeg")} alt="Carte" class="carte" id="img-original" loading="lazy" />
         <p class="source-carte">IGN-Scan 50® Historique 1950</p>
         <div id="img-zoom" class="img-zoom-result"></div>
         <div class="pins">
-            <a href="/villes/hericourt">
-                <img src="/icones/pin.png" alt="Pin Héricourt" class="pin" style="top: 5%; left: 36%;" />
+            <a href={asset("/villes/hericourt")}>
+                <img src={asset("/icones/pin.png")} alt="Pin Héricourt" class="pin" style="top: 5%; left: 36%;" />
                 <div class="tooltip" style="top: 7%; left: 36%;">Héricourt, lieu marqué par l’usine de tissage de la Grand-Pré, active de la fin du XIXe siècle jusqu’à la fin du XXe siècle</div>
             </a>
-            <a href="/villes/bethoncourt" >
-                <img src="/icones/pin.png" alt="Pin Bethoncourt" class="pin" style="top: 34.5%; left: 45%;" />
+            <a href={asset("/villes/bethoncourt")} >
+                <img src={asset("/icones/pin.png")} alt="Pin Bethoncourt" class="pin" style="top: 34.5%; left: 45%;" />
                 <div class="tooltip" style="top: 36.5%; left: 47%;">Bethoncourt, site industriel important autour de la filature de la Lizaine</div>
             </a>
-            <a href="/villes/montbeliard" >
-                <img src="/icones/pin.png" alt="Pin Montbéliard" class="pin" style="top: 49%; left: 47%;" />
+            <a href={asset("/villes/montbeliard")} >
+                <img src={asset("/icones/pin.png")} alt="Pin Montbéliard" class="pin" style="top: 49%; left: 47%;" />
                 <div class="tooltip" style="top: 51%; left: 47%;">Montbéliard, ville historique majeure et centre du pouvoir du Comté puis de la Principauté de Montbéliard</div>
             </a>
-            <a href="/villes/sochaux">
-                <img src="/icones/pin.png" alt="Pin Sochaux" class="pin" style="top: 46%; left: 51%;" />
+            <a href={asset("/villes/sochaux")}>
+                <img src={asset("/icones/pin.png")} alt="Pin Sochaux" class="pin" style="top: 46%; left: 51%;" />
                 <div class="tooltip" style="top: 48%; left: 51%;">Sochaux est devenu le lieu emblématique de l’entreprise Peugeot au XXe siècle</div>
             </a>
-            <a href="/villes/fesches-le-chatel-dampierre" >
-                <img src="/icones/pin.png" alt="Pin Fesches-le-Châtel" class="pin" style="top: 43%; left: 77%;" />
+            <a href={asset("/villes/fesches-le-chatel-dampierre")} >
+                <img src={asset("/icones/pin.png")} alt="Pin Fesches-le-Châtel" class="pin" style="top: 43%; left: 77%;" />
                 <div class="tooltip" style="top: 45%; left: 77%;">Fesches-le-Châtel, site industriel de la vallée de la Feschotte, lié à l’entreprise Japy</div>
             </a>
-            <a href="/villes/bart-bavans">
-                <img src="/icones/pin.png" alt="Pin Bart-Bavans" class="pin" style="top: 66%; left: 37%;" />
+            <a href={asset("/villes/bart-bavans")}>
+                <img src={asset("/icones/pin.png")} alt="Pin Bart-Bavans" class="pin" style="top: 66%; left: 37%;" />
                 <div class="tooltip" style="top: 68%; left: 37%;">Bart-Bavans, site métallurgique de la Roche (ou Laroche)</div>
             </a>
-            <a href="/villes/audincourt" >
-                <img src="/icones/pin.png" alt="Pin Audincourt" class="pin" style="top: 68%; left: 55%;" />
+            <a href={asset("/villes/audincourt")} >
+                <img src={asset("/icones/pin.png")} alt="Pin Audincourt" class="pin" style="top: 68%; left: 55%;" />
                 <div class="tooltip" style="top: 70%; left: 55%;">Audincourt, forges et fonderies d’Audincourt, haut-lieu industriel depuis la fin du XVIIIe siècle</div>
             </a>
-            <a href="/villes/beaucourt">
-                <img src="/icones/pin.png" alt="Pin Beaucourt" class="pin" style="top: 64%; left: 79%;" />
+            <a href={asset("/villes/beaucourt")}>
+                <img src={asset("/icones/pin.png")} alt="Pin Beaucourt" class="pin" style="top: 64%; left: 79%;" />
                 <div class="tooltip" style="top: 66%; left: 79%;">Beaucourt, lieu emblématique de l’entreprise Japy.</div>
             </a>
-            <a href="/villes/beaulieu-valentigney" >
-                <img src="/icones/pin.png" alt="Pin Beaulieu-Valentigney" class="pin" style="top: 87%; left: 55%;" />
+            <a href={asset("/villes/beaulieu-valentigney")} >
+                <img src={asset("/icones/pin.png")} alt="Pin Beaulieu-Valentigney" class="pin" style="top: 87%; left: 55%;" />
                 <div class="tooltip" style="top: 81%; left: 44.5%;">Site industriel majeur situé entre Valentigney et Mandeure, lié à l’entreprise Peugeot depuis la première moitié du XIXe siècle</div>
             </a>
-            <a href="/villes/herimoncourt" >
-                <img src="/icones/pin.png" alt="Pin Hérimoncourt" class="pin" style="top: 88%; left: 67%;" />
+            <a href={asset("/villes/herimoncourt")} >
+                <img src={asset("/icones/pin.png")} alt="Pin Hérimoncourt" class="pin" style="top: 88%; left: 67%;" />
                 <div class="tooltip" style="top: 83%; left: 78%;">Hérimoncourt, lieu industriel historique majeur et berceau de la famille Peugeot</div>
             </a>
         </div>
@@ -156,7 +157,7 @@ import Layout from "../layouts/Layout.astro";
         }
 
         .img-zoom-result {
-            background-image: url("/Nouvelle-carte.jpeg");
+            background-image: url("/memoires-ouvrieres/Nouvelle-carte.jpeg");
             background-position: 50% 50%;
             background-repeat: no-repeat;
             position: absolute;

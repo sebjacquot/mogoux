@@ -1,5 +1,5 @@
 ---
-import "../styles/global.css";
+import {asset} from "../utils/url";
 type Props = {
   slug: string;
 };
@@ -8,7 +8,7 @@ const { slug } = Astro.props;
 ---
 
 <div class="paragraphe">
-  <a href={`/medias/${slug}`}>link</a>
+  <a href={asset(`/medias/${slug}`)}>link</a>
 </div>
 
 <style scoped>

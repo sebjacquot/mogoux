@@ -1,17 +1,18 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import ImageTooltip from "../../components/ImageTooltip.astro";
+import {asset} from "../../utils/url";
 ---
 
 <Layout title="Mentions Legales">
-    <section class="container">
+    <div class="container">
         <section class="entete">
             <div class="hero">
                 <h1 class="titre">Mentions Légales</h1>
             </div>
             <ImageTooltip
-                    src="/images/Header_Chapitre/A1_0015.jpg"
-                    legend=""
+             src={asset('/images/Header_Chapitre/A1_0015.jpg')}
+             legend=""
             />
             <div class="overlay"></div>
         </section>
@@ -41,7 +42,7 @@ import ImageTooltip from "../../components/ImageTooltip.astro";
                 </p>
             </div>
         </section>
-    </section>
+    </div>
 
 
     <style scoped>

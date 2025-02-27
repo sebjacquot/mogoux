@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import ImageFullscreen from "../components/ImageFullscreen.astro";
 import Layout from "../layouts/Layout.astro";
+import {asset} from "../utils/url";
 
 const chapters = [
     {
@@ -75,13 +76,13 @@ const chapters = [
         {chapters.map((chapter, index) => (
                 <div class="chapitrage">
                     <div class="gauche">
-                        <ImageFullscreen src={chapter.src} legend={chapter.legend} />
+                        <ImageFullscreen src={asset(chapter.src)} legend={chapter.legend} />
                     </div>
                     <div class="droite">
                         <h3>Chapitre {index + 1}</h3>
                         <h2>{chapter.title}</h2>
                         <p set:html={chapter.desc}></p>
-                        <a href={chapter.link} class="button">Lire la suite</a>
+                        <a href={asset(chapter.link)} class="button">Lire la suite</a>
                     </div>
                 </div>
         ))}
