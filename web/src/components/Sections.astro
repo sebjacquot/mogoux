@@ -32,7 +32,7 @@ const { title, thematics, sectionId } = Astro.props;
                 {thematics.map((thematic) => (
                     <div class="carousel-item">
                         <ThematiqueCard
-                            src={(thematic.backgroundImage).filename!}
+                            src={(thematic.backgroundImage).url!}
                             titre={thematic.title}
                             slug={thematic.slug}
                             alt={(thematic.backgroundImage).alt!}

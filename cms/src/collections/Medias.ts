@@ -1,11 +1,9 @@
-import payload from "payload";
-import { CollectionConfig } from "payload/types";
-import checkSlugExists from "../hooks/check-slug-exists";
+import { CollectionConfig } from "payload";
 
 export const Medias: CollectionConfig = {
   slug: "medias",
   admin: {
-    useAsTitle: "alt",
+    useAsTitle: "filename",
   },
   access: {
     read: () => true,
@@ -14,24 +12,29 @@ export const Medias: CollectionConfig = {
     {
       path: "/slug/:slug",
       method: "get",
-      handler: async (req, res, next) => {
-        const data = await payload.find({
-          collection: "medias",
-          where: {
-            slug: { equals: req.params.slug },
-          },
-        });
+      handler: async (req) => {
+        try {
+          const data = await req.payload.find({
+            collection: "medias",
+            where: {
+              // @ts-expect-error: req.routeParams est potentiellement undefined, vérifié dans le bloc try
+              slug: { equals: req.routeParams.slug },
+            },
+          });
 
-        if (data.docs.length === 0) {
-          res.status(404).send({ error: "media not found" });
+          if (!data.docs.length) {
+            return Response.json({ error: "Media not found" }, { status: 404 });
+          }
+
+          return Response.json(data.docs[0]);
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        } catch (error) {
+          return Response.json({ error: "Internal Server Error" }, { status: 500 });
         }
-        res.status(200).send(data.docs[0]);
       },
     },
   ],
   upload: {
-    staticURL: "/medias",
-    staticDir: "medias",
     adminThumbnail: "thumbnail",
     mimeTypes: ["image/*", "audio/mpeg", "audio/x-wav", "video/*"],
   },
@@ -166,9 +169,7 @@ export const Medias: CollectionConfig = {
       type: "text",
       required: true,
       unique: true,
-      hooks: { beforeChange: [checkSlugExists] }
     },
-
     {
       name: "alt",
       label: "Alt",
@@ -181,7 +182,6 @@ export const Medias: CollectionConfig = {
       type: "text",
       required: true,
     },
-
     {
       name: "description",
       label: "Description",
@@ -189,7 +189,6 @@ export const Medias: CollectionConfig = {
       maxLength: 310,
       required: true,
     },
-
     {
       name: "location",
       label: "Lieu",
@@ -203,13 +202,12 @@ export const Medias: CollectionConfig = {
         },
         {
           name: "location_link",
-          label: "lien du lieu",
+          label: "Lien du lieu",
           type: "text",
           required: false,
         },
       ],
     },
-
     {
       name: "type",
       label: "Type",
@@ -220,7 +218,7 @@ export const Medias: CollectionConfig = {
           value: "image",
         },
         {
-          label: "Video",
+          label: "Vidéo",
           value: "video",
         },
         {

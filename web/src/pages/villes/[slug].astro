@@ -21,9 +21,11 @@ const medias = city?.medias?.map((media: any) => ({
     titre: media.identification.title,
 })) ?? []
 
-const descriptionText = city.description
-    .flatMap((d: { children: { text: string }[] }) => d.children.map((child: { text: string }) => child.text))
-    .join("");
+const descriptionText = city.description.root.children
+    .flatMap((paragraph: { children: { text: string }[] }) =>
+        paragraph.children.map((child: { text: string }) => child.text)
+    )
+    .join(" ");
 ---
 
 <Layout title=`${city.name}`>

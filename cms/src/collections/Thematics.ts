@@ -1,5 +1,4 @@
-import payload from "payload";
-import { CollectionConfig } from "payload/types";
+import { CollectionConfig } from "payload";
 
 const Thematics: CollectionConfig = {
   slug: "thematics",
@@ -13,30 +12,39 @@ const Thematics: CollectionConfig = {
     {
       path: "/slug/:slug",
       method: "get",
-      handler: async (req, res, next) => {
-        const data = await payload.find({
-          collection: "thematics",
-          where: {
-            slug: { equals: req.params.slug },
-          },
-        });
+      handler: async (req) => {
+        try {
+          const data = await req.payload.find({
+            collection: "thematics",
+            where: {
+              // @ts-expect-error: req.routeParams est potentiellement undefined, vérifié dans le bloc try
+              slug: { equals: req.routeParams.slug },
+            },
+          });
 
-        if (data.docs.length === 0) {
-          res.status(404).send({ error: "thematics not found" });
+          if (!data.docs.length) {
+            return Response.json({ error: "Thematics not found" }, { status: 404 });
+          }
+
+          return Response.json(data.docs[0]);
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        } catch (error) {
+          return Response.json({ error: "Internal Server Error" }, { status: 500 });
         }
-        res.status(200).send(data.docs[0]);
       },
     },
   ],
   fields: [
     {
-      name: "backgroundImage", // required
-      type: "upload", // required
-      relationTo: "medias", // required
+      name: "backgroundImage",
+      label: "Image de fond",
+      type: "upload",
+      relationTo: "medias",
       required: true,
     },
     {
       name: "slug",
+      label: "Slug",
       type: "text",
       required: true,
       unique: true,
@@ -55,11 +63,17 @@ const Thematics: CollectionConfig = {
     },
     {
       name: "medias",
-      label: "Medias",
+      label: "Médias associés",
       type: "relationship",
       relationTo: "medias",
       hasMany: true,
       required: true,
+    },
+    {
+      name: "description",
+      label: "Description",
+      type: "textarea",
+      required: false,
     },
   ],
 };

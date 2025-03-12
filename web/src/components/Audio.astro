@@ -1,238 +1,248 @@
 ---
 import {asset} from "../utils/url";
 type Props = {
-  src: string;
+    src: string;
 };
 
-const { src } = Astro.props;
+const {src} = Astro.props;
 ---
 
 <div class="custom-audio-container">
-  <audio preload="metadata" id="audio">
-    <source src={src} type="audio/wav" />
-    Your browser does not support the audio element.
-  </audio>
-  <div class="custom-controls">
-    <div class="controls-audio">
-      <button id="playpausebtn">
-        <img
-            src={asset("/icones/pause-white.png")}
-            alt="icone controle audio"
-            id="playicon"
-        />
-      </button>
-      <input id="seekslider" type="range" step="any" value="0" />
-      <span id="curtimetext">0:00</span> / <span id="durtimetext">0:00</span>
+    <audio preload="metadata" id="audio">
+        <source src={src} type="audio/wav"/>
+        Your browser does not support the audio element.
+    </audio>
+    <div class="custom-controls">
+        <div class="controls-audio">
+            <button id="playpausebtn">
+                <img
+                        src={asset("/icones/pause-white.png")}
+                        alt="icone controle audio"
+                        class="playicon"
+                />
+            </button>
+            <input id="seekslider" type="range" step="any" value="0"/>
+            <span id="curtimetext">0:00</span> / <span id="durtimetext">0:00</span>
+        </div>
+        <div class="controls-volume">
+            <button id="mutebtn">
+                <img
+                        src={asset("/icones/haut-parleur.png")}
+                        alt="icone controle sonore"
+                        id="muteicon"
+                />
+            </button>
+            <input
+                    id="volumeslider"
+                    type="range"
+                    min="0"
+                    max="1"
+                    value="0.5"
+                    step="0.1"
+            />
+        </div>
+        <button id="closeBtn">
+            <img src={asset("/icones/white-x.png")} alt="oicone stop son" class="playicon"/>
+        </button>
     </div>
-    <div class="controls-volume">
-      <button id="mutebtn">
-        <img
-            src={asset("/icones/haut-parleur.png")}
-            alt="icone controle sonore"
-            id="muteicon"
-        />
-      </button>
-      <input
-          id="volumeslider"
-          type="range"
-          min="0"
-          max="1"
-          value="0.5"
-          step="0.1"
-      />
-    </div>
-    <button id="closeBtn">
-      <img src={asset("/icones/white-x.png")} alt="oicone stop son" id="playicon" />
-    </button>
-  </div>
 </div>
 
 <script is:inline>
-  function cleanUpPreviousInstances() {
+    function cleanUpPreviousInstances() {
 
-    // Cloner et remplacer les éléments pour éviter la duplication des événements
-    const audio = document.querySelector("#audio");
-    if (audio) {
-      const newAudio = audio.cloneNode(true);
-      audio.replaceWith(newAudio);
+        // Cloner et remplacer les éléments pour éviter la duplication des événements
+        const audio = document.querySelector("#audio");
+        if (audio) {
+            const newAudio = audio.cloneNode(true);
+            audio.replaceWith(newAudio);
+        }
+
+        const audioCard = document.querySelector("#audioCard");
+        if (audioCard) {
+            const newAudioCard = audioCard.cloneNode(true);
+            audioCard.replaceWith(newAudioCard);
+        }
     }
 
-    const audioCard = document.querySelector("#audioCard");
-    if (audioCard) {
-      const newAudioCard = audioCard.cloneNode(true);
-      audioCard.replaceWith(newAudioCard);
+    function initAudio() {
+
+        cleanUpPreviousInstances();
+
+        const audio = document.querySelector("#audio");
+        const playBtn = document.querySelector("#playpausebtn");
+        const mutebtn = document.querySelector("#mutebtn");
+        const closeBtn = document.querySelector("#closeBtn");
+        const seekslider = document.querySelector("#seekslider");
+        const volumeslider = document.querySelector("#volumeslider");
+        const playIcon = document.querySelector(".playicon");
+        const muteIcon = document.querySelector("#muteicon");
+        const curtimetext = document.querySelector("#curtimetext");
+        const durtimetext = document.querySelector("#durtimetext");
+        const audioCard = document.querySelector("#audioCard");
+        const audioContainer = document.querySelector(".audio");
+
+        if (!audio || !playBtn || !mutebtn || !closeBtn || !seekslider || !volumeslider || !playIcon || !muteIcon || !curtimetext || !durtimetext || !audioCard || !audioContainer) {
+            return;
+        }
+
+        function formatTime(seconds) {
+            const min = Math.floor(seconds / 60);
+            const sec = Math.floor(seconds % 60);
+            return `${min}:${sec < 10 ? "0" : ""}${sec}`;
+        }
+
+        function togglePlay() {
+            if (!audio.paused) {
+                playIcon.src = "/memoires-ouvrieres-goux/icones/play-icon.png";
+                return audio.pause();
+            }
+            playIcon.src = "/memoires-ouvrieres-goux/icones/pause-white.png";
+            audio.play();
+        }
+
+        function closeAudio() {
+            audio.pause();
+            audio.currentTime = 0;
+            audioContainer.style.opacity = "0";
+            audioContainer.style.zIndex = "-1";
+        }
+
+        function toggleMute() {
+            if (audio.volume > 0) {
+                audio.volume = 0;
+                volumeslider.value = "0";
+                muteIcon.src = "/memoires-ouvrieres-goux/icones/muet.png";
+            } else {
+                audio.volume = 1;
+                volumeslider.value = "1";
+                muteIcon.src = "/memoires-ouvrieres-goux/icones/haut-parleur.png";
+            }
+        }
+
+        function updateVolume() {
+            audio.volume = parseFloat(volumeslider.value);
+        }
+
+        function updateSeek() {
+            audio.currentTime = parseFloat(seekslider.value);
+        }
+
+        function updateTime() {
+            seekslider.value = audio.currentTime.toString();
+            curtimetext.innerText = formatTime(audio.currentTime);
+        }
+
+        function setupMetadata() {
+            seekslider.max = audio.duration.toString();
+            durtimetext.innerText = formatTime(audio.duration);
+            volumeslider.value = "1";
+            audio.volume = 1;
+        }
+
+        function showAudioControls() {
+            audioContainer.style.opacity = "1";
+            audioContainer.style.zIndex = "100";
+            togglePlay();
+        }
+
+        // Initialisation du volume
+        audio.volume = 1;
+        volumeslider.value = "1";
+
+        // Suppression et réattachement des événements pour éviter les doublons
+        audioCard.addEventListener("click", showAudioControls);
+        playBtn.addEventListener("click", togglePlay);
+        closeBtn.addEventListener("click", closeAudio);
+        mutebtn.addEventListener("click", toggleMute);
+        volumeslider.addEventListener("input", updateVolume);
+        seekslider.addEventListener("input", updateSeek);
+        audio.addEventListener("timeupdate", updateTime);
+        audio.addEventListener("loadedmetadata", setupMetadata);
     }
-  }
 
-      function initAudio() {
+    document.addEventListener("astro:page-load", () => {
+        initAudio();
+    });
 
-          cleanUpPreviousInstances(); // Nettoie les instances précédentes avant d'attacher les nouveaux événements
-
-          const audio = document.querySelector("#audio");
-          const playBtn = document.querySelector("#playpausebtn");
-          const mutebtn = document.querySelector("#mutebtn");
-          const closeBtn = document.querySelector("#closeBtn");
-          const seekslider = document.querySelector("#seekslider");
-          const volumeslider = document.querySelector("#volumeslider");
-          const playIcon = document.querySelector("#playicon");
-          const muteIcon = document.querySelector("#muteicon");
-          const curtimetext = document.querySelector("#curtimetext");
-          const durtimetext = document.querySelector("#durtimetext");
-          const audioCard = document.querySelector("#audioCard");
-          const audioContainer = document.querySelector(".audio");
-
-          if (!audio || !playBtn || !mutebtn || !closeBtn || !seekslider || !volumeslider || !playIcon || !muteIcon || !curtimetext || !durtimetext || !audioCard || !audioContainer) {
-              return;
-          }
-
-          function formatTime(seconds) {
-              const min = Math.floor(seconds / 60);
-              const sec = Math.floor(seconds % 60);
-              return `${min}:${sec < 10 ? "0" : ""}${sec}`;
-              }
-
-          function togglePlay() {
-              if (!audio.paused) {
-                  playIcon.src = "/memoires-ouvrieres/icones/play-icon.png";
-                  return audio.pause();
-                  }
-              playIcon.src = "/memoires-ouvrieres/icones/pause-white.png";
-              audio.play();
-              }
-
-          function closeAudio() {
-              audio.pause();
-              audio.currentTime = 0;
-              audioContainer.style.opacity = "0";
-              audioContainer.style.zIndex = "-1";
-              }
-
-          function toggleMute() {
-              if (audio.volume > 0) {
-                  audio.volume = 0;
-                  volumeslider.value = "0";
-                  muteIcon.src = "/memoires-ouvrieres/icones/muet.png";
-                  } else {
-                  audio.volume = 1;
-                  volumeslider.value = "1";
-                  muteIcon.src = "/memoires-ouvrieres/icones/haut-parleur.png";
-                  }
-              }
-
-          function updateVolume() {
-              audio.volume = parseFloat(volumeslider.value);
-              }
-
-          function updateSeek() {
-              audio.currentTime = parseFloat(seekslider.value);
-              }
-
-          function updateTime() {
-              seekslider.value = audio.currentTime.toString();
-              curtimetext.innerText = formatTime(audio.currentTime);
-              }
-
-          function setupMetadata() {
-              seekslider.max = audio.duration.toString();
-              durtimetext.innerText = formatTime(audio.duration);
-              volumeslider.value = "1";
-              audio.volume = 1;
-              }
-
-          function showAudioControls() {
-              audioContainer.style.opacity = "1";
-              audioContainer.style.zIndex = "100";
-              togglePlay();
-              }
-
-          // Initialisation du volume
-          audio.volume = 1;
-          volumeslider.value = "1";
-
-          // Suppression et réattachement des événements pour éviter les doublons
-          audioCard.addEventListener("click", showAudioControls);
-          playBtn.addEventListener("click", togglePlay);
-          closeBtn.addEventListener("click", closeAudio);
-          mutebtn.addEventListener("click", toggleMute);
-          volumeslider.addEventListener("input", updateVolume);
-          seekslider.addEventListener("input", updateSeek);
-          audio.addEventListener("timeupdate", updateTime);
-          audio.addEventListener("loadedmetadata", setupMetadata);
-          }
-
-      document.addEventListener("astro:page-load", initAudio);
+    document.addEventListener("astro:after-swap", () => {
+        initAudio();
+    });
 </script>
 
 <style scoped>
-  #mutebtn {
-    font-weight: 800;
-    font-size: 15px;
-    cursor: pointer;
+    #mutebtn {
+        font-weight: 800;
+        font-size: 15px;
+        cursor: pointer;
 
-    padding: 0;
-  }
-  #muteicon{
-    width: 35px;
-    height: 35px;
-  }
-  #playicon {
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-  }
-  button {
-    background: none;
-    border: none;
-    color: white;
-  }
-  .custom-audio-container {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin: 0 auto;
-  }
+        padding: 0;
+    }
 
-  .custom-controls {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-  }
+    #muteicon {
+        width: 35px;
+        height: 35px;
+    }
 
-  .custom-controls > * {
-    margin: 0 10px;
-  }
+    .playicon {
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+    }
 
-  .controls-audio{
-    width: 75%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-  }
+    button {
+        background: none;
+        border: none;
+        color: white;
+    }
 
-  .controls-volume{
-    width: 25%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-  }
+    .custom-audio-container {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin: 0 auto;
+    }
 
-  #closeBtn{
-    padding-right: 23px;
-  }
+    .custom-controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
 
-  input[type="range"] {
-    flex-grow: 1;
-    margin: 0 10px;
-  }
+    .custom-controls > * {
+        margin: 0 10px;
+    }
 
-  span {
-    white-space: nowrap;
-  }
+    .controls-audio {
+        width: 75%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+    }
 
-  button {
-    flex-shrink: 0;
-  }
+    .controls-volume {
+        width: 25%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+    }
+
+    #closeBtn {
+        padding-right: 23px;
+    }
+
+    input[type="range"] {
+        flex-grow: 1;
+        margin: 0 10px;
+    }
+
+    span {
+        white-space: nowrap;
+    }
+
+    button {
+        flex-shrink: 0;
+    }
 </style>
