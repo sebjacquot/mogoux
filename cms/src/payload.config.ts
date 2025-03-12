@@ -1,58 +1,68 @@
-import path from "path";
+// storage-adapter-import-placeholder
+import { postgresAdapter } from '@payloadcms/db-postgres'
+import { payloadCloudPlugin } from '@payloadcms/payload-cloud'
+import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import { fr } from '@payloadcms/translations/languages/fr'
+import { buildConfig } from 'payload'
+import { fileURLToPath } from 'url'
 
-import { payloadCloud } from "@payloadcms/plugin-cloud";
-import { postgresAdapter } from "@payloadcms/db-postgres";
-import { webpackBundler } from "@payloadcms/bundler-webpack";
-import { slateEditor } from "@payloadcms/richtext-slate";
-import { buildConfig } from "payload/config";
+import sharp from 'sharp'
+import path from 'path'
 
-import Users from "./collections/Users";
-import Thematics from "./collections/Thematics";
-import Medias from "./collections/Medias";
-import Cities from "./collections/Cities";
-import Documents from "./collections/Documents";
-import Sections from "./collections/Sections";
+import { Users } from '@/collections/Users'
+import { Medias } from '@/collections/Medias'
+import Thematics from '@/collections/Thematics'
+import Cities from '@/collections/Cities'
+import Sections from '@/collections/Sections'
+import Documents from '@/collections/Documents'
+
+const filename = fileURLToPath(import.meta.url)
+const dirname = path.dirname(filename)
 
 export default buildConfig({
-  localization: {
-    locales: ['fr', 'en'],
-    defaultLocale: 'fr',
+  i18n: {
+    supportedLanguages: { fr },
   },
   admin: {
     user: Users.slug,
-    bundler: webpackBundler(),
+    importMap: {
+      baseDir: path.resolve(dirname),
+    },
   },
-  editor: slateEditor({}),
-  collections: [
-    Users,
-    Medias,
-    Thematics,
-    Cities,
-    Documents,
-    Sections
-  ],
+  collections: [Users, Medias, Thematics, Cities, Sections, Documents],
+  editor: lexicalEditor(),
+  secret: process.env.PAYLOAD_SECRET || '',
+  routes: {
+    api: '/memoires-ouvrieres-goux/cms/api',
+    admin: '/memoires-ouvrieres-goux/cms/admin'
+  },
   csrf: [
     // whitelist of domains to allow cookie auth from
     "http://localhost:4321",
     "http://localhost:3000",
-    "http://mogoux-fanum.inframshe.univ-fcomte.fr:3000",
+    "http://mogoux-fanum.inframshe.univ-fcomte.fr",
+    "https://mogoux-fanum.inframshe.univ-fcomte.fr",
+    "https://fanum.univ-fcomte.fr"
   ],
   cors: [
     // whitelist of domains to allow CORS from
     "http://localhost:4321",
     "http://localhost:3000",
-    "http://mogoux-fanum.inframshe.univ-fcomte.fr:8080",
+    "http://mogoux-fanum.inframshe.univ-fcomte.fr",
+    "https://mogoux-fanum.inframshe.univ-fcomte.fr",
+    "https://fanum.univ-fcomte.fr"
   ],
   typescript: {
-    outputFile: path.resolve(__dirname, "generated-types.d.ts"),
+    outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
-  graphQL: {
-    schemaOutputFile: path.resolve(__dirname, "generated-schema.graphql"),
-  },
-  plugins: [payloadCloud()],
   db: postgresAdapter({
     pool: {
-      connectionString: process.env.DATABASE_URI,
+      connectionString: process.env.DATABASE_URI || '',
     },
   }),
-});
+  sharp,
+  plugins: [
+    payloadCloudPlugin(),
+    // storage-adapter-placeholder
+  ],
+})

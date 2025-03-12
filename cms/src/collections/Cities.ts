@@ -1,27 +1,36 @@
-import payload from "payload";
-import { CollectionConfig } from "payload/types";
+import { CollectionConfig } from "payload";
+
+import { SlateToLexicalFeature } from '@payloadcms/richtext-lexical/migrate'
+import { lexicalEditor } from '@payloadcms/richtext-lexical'
 
 const Cities: CollectionConfig = {
+  slug: "cities",
   access: {
     read: () => true,
   },
-  slug: "cities",
   endpoints: [
     {
       path: "/slug/:slug",
       method: "get",
-      handler: async (req, res, next) => {
-        const data = await payload.find({
-          collection: "cities",
-          where: {
-            slug: { equals: req.params.slug },
-          },
-        });
+      handler: async (req) => {
+        try {
+          const data = await req.payload.find({
+            collection: "cities",
+            where: {
+              // @ts-expect-error: req.routeParams est potentiellement undefined, vérifié dans le bloc try
+              slug: { equals: req.routeParams.slug },
+            },
+          });
 
-        if (data.docs.length === 0) {
-          res.status(404).send({ error: "cities not found" });
+          if (!data.docs.length) {
+            return Response.json({ error: "City not found" }, { status: 404 });
+          }
+
+          return Response.json(data.docs[0]);
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        } catch (error) {
+          return Response.json({ error: "Internal Server Error" }, { status: 500 });
         }
-        res.status(200).send(data.docs[0]);
       },
     },
   ],
@@ -45,17 +54,20 @@ const Cities: CollectionConfig = {
       label: "Description",
       type: "richText",
       required: true,
+      editor: lexicalEditor({
+        features: ({ defaultFeatures }) => [...defaultFeatures, SlateToLexicalFeature({})],
+      }),
     },
     {
       name: "thematics",
-      label: "Thematiques",
+      label: "Thématiques",
       type: "relationship",
       relationTo: "thematics",
       hasMany: true,
     },
     {
       name: "medias",
-      label: "Medias",
+      label: "Médias",
       type: "relationship",
       relationTo: "medias",
       hasMany: true,

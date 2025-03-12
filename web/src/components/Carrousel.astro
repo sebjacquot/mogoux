@@ -44,7 +44,7 @@ const reorderedItems = items.sort((a, b) => (a.slug === positionSlugThematique ?
                  data-medias={JSON.stringify(item.medias)}>
               <img
                 class="image"
-                src={`${import.meta.env.CMS_URL}/medias/${item.src}`}
+                src={`${import.meta.env.CMS_URL}${item.src}`}
                 alt={item.alt}
               />
               <div class="texte">

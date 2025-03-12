@@ -1,4 +1,4 @@
-import { CollectionConfig } from "payload/types";
+import { CollectionConfig } from "payload";
 
 export const Sections: CollectionConfig = {
   slug: "sections",
@@ -8,7 +8,8 @@ export const Sections: CollectionConfig = {
   access: {
     read: () => true,
   },
-  defaultSort: "createdAt",
+  timestamps: true,
+  defaultSort: "-createdAt",
   fields: [
     {
       name: "name",
@@ -18,7 +19,7 @@ export const Sections: CollectionConfig = {
     },
     {
       name: "thematics",
-      label: "Thematiques",
+      label: "Thématiques",
       type: "relationship",
       relationTo: "thematics",
       hasMany: true,

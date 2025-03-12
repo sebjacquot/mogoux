@@ -12,7 +12,7 @@ const { src } = Astro.props;
 <div class="audio">
   <Audio src={src} />
 </div>
-<div class="audio-card" id="audioCard">
+<div class="audio-card" id="audioCard" style={`background-image: url(${asset("/Goux_1000kB_3.jpg")})`}>
   <img src={asset("/icones/play-icon.png")} alt="icone controle son" id="playicon" />
 </div>
 
@@ -33,14 +33,13 @@ const { src } = Astro.props;
     width: 100% !important;
     height: 100% !important;
 
-    background-image: url("/memoires-ouvrieres/Goux_1000kB_3.jpg");
     background-position: center;
     background-size: cover;
     border-radius: 3px;
     position: relative;
     display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
+    justify-content: center;
+    align-items: center;
   }
   .audio-card::after {
     content: "";

@@ -14,7 +14,7 @@ try {
 } catch (error) {
     console.error("Failed to fetch medias details", error);
 }
-const tags = detail.identification.tag.map((tag: any) => tag.tag_name);
+const tags = detail.identification?.tag?.map((tag: any) => tag.tag_name);
 
 const queryParams = new URLSearchParams(Astro.url.search);
 const slugsString = queryParams.get("slugs") || "";
@@ -54,7 +54,7 @@ const nextSlug = currentIndex < mediasList.length - 1 ? mediasList[currentIndex 
                 tags={tags}
                 type={detail.type}
                 link_notice={detail.notice}
-                src={detail.filename}
+                src={detail.url}
                 alt={detail.alt}
         />
     </div>

@@ -9,7 +9,7 @@ const sectionId = url.searchParams.get("section");
 type Section = {
   name: string;
   thematics?: {
-    backgroundImage: { filename: string };
+    backgroundImage: { url: string };
     title: string;
     slug: string;
     alt: string;
@@ -37,7 +37,7 @@ try {
 }
 
 const items = section?.thematics?.map((thematic) => ({
-  src: thematic.backgroundImage?.filename || "",
+  src: thematic.backgroundImage?.url || "",
   title: thematic.title || "",
   slug: thematic.slug || "",
   alt: thematic.alt || "",
