@@ -19,7 +19,7 @@ const reorderedItems = items.sort((a, b) => (a.slug === positionSlugThematique ?
       ...item,
       medias: item.medias.map(media => ({
         type: media.type,
-        src: `${import.meta.env.CMS_URL}${media.url}`,
+        src: `${import.meta.env.CMS_BASE_URL}${media.url}`,
         slug: media.slug,
         titre: media.identification.title,
       })),
@@ -44,7 +44,7 @@ const reorderedItems = items.sort((a, b) => (a.slug === positionSlugThematique ?
                  data-medias={JSON.stringify(item.medias)}>
               <img
                 class="image"
-                src={`${import.meta.env.CMS_URL}${item.src}`}
+                src={`${import.meta.env.CMS_BASE_URL}${item.src}`}
                 alt={item.alt}
               />
               <div class="texte">

@@ -16,7 +16,7 @@ try {
 
 const medias = city?.medias?.map((media: any) => ({
     type: media.type,
-    src: `${import.meta.env.CMS_URL}${media.url}`,
+    src: `${import.meta.env.CMS_BASE_URL}${media.url}`,
     slug: media.slug,
     titre: media.identification.title,
 })) ?? []
@@ -53,7 +53,7 @@ const descriptionText = city.description.root.children
 
         {city?.medias?.length > 0 && city.medias[0] !== null && (
                 <ImageTooltip
-                        src={`${import.meta.env.CMS_URL}${city.medias[0].url}`}
+                        src={`${import.meta.env.CMS_BASE_URL}${city.medias[0].url}`}
                         legend={city.medias[0].legend}
                 />
         )}

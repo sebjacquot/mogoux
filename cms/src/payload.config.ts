@@ -32,10 +32,10 @@ export default buildConfig({
   collections: [Users, Medias, Thematics, Cities, Sections, Documents],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
-  routes: {
+ /* routes: {
     api: '/memoires-ouvrieres-goux/cms/api',
     admin: '/memoires-ouvrieres-goux/cms/admin'
-  },
+  },*/
   csrf: [
     // whitelist of domains to allow cookie auth from
     "http://localhost:4321",
@@ -57,6 +57,7 @@ export default buildConfig({
   },
   db: postgresAdapter({
     pool: {
+      // TODO Ajouter encodeURI() pour les problemes de caracteres speciaux dans le mot de passe
       connectionString: process.env.DATABASE_URI || '',
     },
   }),
