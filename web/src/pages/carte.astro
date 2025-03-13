@@ -7,7 +7,8 @@ import {asset} from "../utils/url";
     <div class="map-container">
         <img src={asset("/Nouvelle-carte.jpeg")} alt="Carte" class="carte" id="img-original" loading="lazy" />
         <p class="source-carte">IGN-Scan 50® Historique 1950</p>
-        <div id="img-zoom" class="img-zoom-result"  style={`background-image: url(${asset('Nouvelle-carte.jpeg')});`}></div>
+
+        <div id="img-zoom" class="img-zoom-result"  style={`background-image: url(${asset('/Nouvelle-carte.jpeg')})`}></div>
         <div class="pins">
             <a href={asset("/villes/hericourt")}>
                 <img src={asset("/icones/pin.png")} alt="Pin Héricourt" class="pin" style="top: 5%; left: 36%;" />
