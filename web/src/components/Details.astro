@@ -67,10 +67,10 @@ const props = Astro.props;
     <div class="image">
       {
         props.type === "audio" ? (
-            <AudioCard src={`${import.meta.env.CMS_URL}${props.src}`} />
+            <AudioCard src={`${import.meta.env.CMS_BASE_URL}${props.src}`} />
         ) : (
             <ImageFullscreen
-                src={`${import.meta.env.CMS_URL}${props.src}`}
+                src={`${import.meta.env.CMS_BASE_URL}${props.src}`}
                 legend={props.alt}
             />
         )
