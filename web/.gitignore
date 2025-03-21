@@ -8,7 +8,7 @@ dist/
 node_modules/
 
 # fichier vidéo trop lourd
-public/images/Documentaire/Paroles_Ouvrières.mp4
+public/images/Documentaire/Paroles_Ouvrieres.mp4
 
 # logs
 npm-debug.log*
