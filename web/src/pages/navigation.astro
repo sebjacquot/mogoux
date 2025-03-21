@@ -26,7 +26,7 @@ import {asset} from "../utils/url";
           </a>
         </div>
       </div>
-      <div class="cover">
+      <div>
         <ImageTooltip
             src={asset("/images/0466.jpg")}
             legend="Ouvrières de la SCOP Cristel (ancienne usine Japy du Rondelot, à Fesches-le-Châtel) photographiées au travail le 21 mai 1985 par Gilles Choffé."
@@ -48,11 +48,15 @@ import {asset} from "../utils/url";
           </a>
           <a href={asset("/chapitres")} class="lien">
             <img src={asset("/icones/fleche-goux.svg")} alt="flèche" />
-            <h3>La fabrique des <i>Mémoires de l'Enclave</i></h3>
+            <h3>Chapitrage : la fabrique des <i>Mémoires de l'Enclave</i></h3>
+          </a>
+          <a href={asset("/documentaire")} class="lien">
+            <img src={asset("/icones/fleche-goux.svg")} alt="flèche" />
+            <h3>Documentaire <i>Paroles d'ouvrières</i></h3>
           </a>
         </div>
       </div>
-      <div class="cover">
+      <div>
         <ImageTooltip
             src={asset("/images/GOU_P23-03_02-P.jpg")}
             legend="Jean-Paul Goux dédicaçant son livre au Musée Japy de Beaucourt, en avril 1986. Photographie de Gilles Choffé"
@@ -63,25 +67,9 @@ import {asset} from "../utils/url";
   </div>
 
   <style scoped>
-    .container{
+    .container {
       display: flex;
       justify-content: center;
-    }
-
-    .texte {
-      font-family: var(--titres-font), serif;
-      position: absolute;
-      margin-left: 80px;
-      margin-bottom: 150px;
-      height: 40%;
-      z-index: 100;
-      color: white;
-      pointer-events: auto;
-    }
-
-    .texte a {
-      color: white;
-      pointer-events: auto;
     }
 
     .gauche, .droite {
@@ -93,13 +81,22 @@ import {asset} from "../utils/url";
       position: relative;
     }
 
-    .cover {
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(180deg, rgba(22, 22, 22, 0.2) 0%, rgba(22, 22, 22, 0.7) 100%);
-      opacity: 0.6;
-      z-index: 10;
-      pointer-events: none;
+    /* Texte */
+    .texte {
+      font-family: var(--titres-font), serif;
+      position: absolute;
+      margin-left: 80px;
+      margin-bottom: 50px;
+      width: auto;
+      height: auto;
+      z-index: 100;
+      color: white;
+      pointer-events: auto;
+    }
+
+    .texte a {
+      color: white;
+      pointer-events: auto;
     }
 
     h2 {
@@ -110,10 +107,6 @@ import {asset} from "../utils/url";
       max-width: 50vw;
     }
 
-    .coming-soon {
-      font-size: 40px;
-    }
-
     p {
       font-size: 18px;
       line-height: 30px;
@@ -121,10 +114,11 @@ import {asset} from "../utils/url";
       margin: 15px 0 25px;
     }
 
-    .div-button{
+    /* Boutons et liens */
+    .div-button {
       display: flex;
-      align-items: start;
       flex-direction: column;
+      align-items: flex-start;
     }
 
     .lien, .button {
@@ -135,17 +129,28 @@ import {asset} from "../utils/url";
       font-weight: 700;
       font-size: 18px;
       margin-top: 10px;
-      transition: all 0.3s ease-in-out;
-    }
-
-    .lien h3:hover {
-      color: #e35263;
-      transition: 0.2s;
+      transition: color 0.3s ease-in-out;
+      overflow: auto;
     }
 
     .lien img {
+      width: 25px;
+      height: 25px;
       fill: white;
       color: white;
+      transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    .button svg {
+      color: #fff;
+      width: 25px;
+      height: 25px;
+      transition: transform .4s cubic-bezier(.165,.84,.44,1);
+    }
+
+    /* Effets au survol */
+    .lien h3:hover, .button:hover svg {
+      color: #e35263;
     }
 
     .button {
@@ -155,23 +160,83 @@ import {asset} from "../utils/url";
       width: fit-content;
     }
 
-    .button svg {
-      color: white;
-      width: 25px;
-      height: 25px;
-      transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    }
-
     .button:hover {
       background: var(--secondary-color);
+
+      h3 {
+        color: var(--navigation);
+      }
     }
 
-    .button h3:hover{
+    .button h3:hover {
       color: var(--navigation);
     }
 
-    .button:hover svg {
-      color: var(--navigation);
+    /* Coming soon */
+    .coming-soon {
+      font-size: 40px;
+    }
+
+
+    /* Tablettes et petits écrans */
+    @media (max-width: 1024px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .gauche, .droite {
+        width: 100%;
+        height: auto; /* Hauteur dynamique */
+        min-height: 50vh; /* Conserve de l'espace suffisant */
+      }
+
+      .texte {
+        margin-left: 40px;
+        margin-bottom: 30px;
+      }
+
+      h2 {
+        font-size: 50px; /* Réduction douce des titres */
+        line-height: 60px;
+      }
+
+      p {
+        width: 80%; /* Évite que les paragraphes soient trop larges */
+      }
+
+      .lien, .button {
+        font-size: 16px;
+      }
+    }
+
+    /* Smartphones */
+    @media (max-width: 768px) {
+      .texte {
+        margin-left: 20px;
+        margin-bottom: 20px;
+      }
+
+      h2 {
+        font-size: 40px;
+        line-height: 50px;
+      }
+
+      p {
+        font-size: 16px;
+        line-height: 26px;
+        width: 100%;
+      }
+
+      .lien, .button {
+        font-size: 14px;
+        gap: 10px;
+      }
+
+      .lien img, .button svg {
+        width: 20px;
+        height: 20px;
+      }
     }
   </style>
 </Layout>

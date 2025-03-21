@@ -1,0 +1,219 @@
+---
+import ImageFullScreen from "../components/ImageFullscreen.astro";
+import ImageTooltip from "../components/ImageTooltip.astro";
+import SuggestionsCard from "../components/SuggestionsCard.astro";
+import Layout from "../layouts/Layout.astro";
+import {asset} from "../utils/url";
+---
+
+<Layout title="Documentaire">
+    <div class="container">
+        <section class="entete">
+            <div class="hero">
+                <h2 class="tag">Documentaire</h2>
+                <h1 class="titre"><i>Paroles d'ouvrières</i></h1>
+            </div>
+
+            <ImageTooltip
+                    src={asset("/images/Documentaire/Goux_6.jpg")}
+                    legend="Légende à ajouter"
+                    className="image-documentaire"
+            />
+            <div class="overlay"></div>
+        </section>
+        <div class="contenu-article">
+            <div class="paragraphe">
+                <p>
+                    En 2022, grâce au soutien du Pôle Thématique Lettres Langues Communication de l’UBFC
+                    (projet « Émancipations »), un documentaire a été réalisé par Jean-Baptiste Benoît
+                    dans le cadre du Projet Archives Goux, suite à un travail collectif mené avec Quentin Arnoud,
+                    Andrée Chauvin-Vileno, Pascal Lécroart et David Michon. Ce documentaire, de près d’une heure,
+                    a accompagné l’exposition « Des mémoires ouvrières aux <i>Mémoires de l’Enclave</i> » présentée
+                    à la MSH de Dijon en novembre 2022-janvier 2023 et à la MSHE de Besançon en septembre-octobre 2023.
+                </p>
+                <p>
+                    De fait, parmi les enregistrements sonores des entretiens menés sur le terrain en 1984-1985
+                    par Jean-Paul Goux figurent de nombreux témoignages des femmes : « la […] chose qui m’intéressait
+                    essentiellement, à l’Enclave, c’était de rencontrer des hommes et des femmes, de les rencontrer
+                    vraiment, avec tout ce qu’ils sont, là où ils sont » (J.-P. Goux, conférence prononcée en mars
+                    2017 à Besançon). Le documentaire <i>Paroles d’ouvrières reprend</i> cette matière humaine et sonore en
+                    orientant l’écoute et la réflexion sur la place des femmes, leur rapport à la domination et à
+                    l’émancipation, dans un univers social encore régi par un modèle de paternalisme industriel et ses avatars.
+                </p>
+                <p>
+                    Nous vous offrons de consulter ici ce documentaire, introduit par la voix de Jean-Paul Goux lisant
+                    un extrait des <i>Mémoires de l’Enclave</i>.
+                </p>
+            </div>
+            <div class="video-container">
+                <video controls preload="metadata" poster={asset("/images/Documentaire/Goux_6.jpg")} controlslist="nodownload">
+                    <source src={asset("/images/Documentaire/Paroles_Ouvrières.mp4")} type="video/mp4">
+                    Votre navigateur ne supporte pas la lecture de vidéos.
+                </video>
+
+                <div class="chapitrage-container">
+                    <h2>Chapitrage</h2>
+                    <table class="chapitrage-table">
+                        <tbody>
+                        <tr>
+                            <td>00’35’’</td>
+                            <td><button type="button" onclick="seekToTime(35)">Courrier des usines</button></td>
+                        </tr>
+                        <tr>
+                            <td>03’46’’</td>
+                            <td><button type="button" onclick="seekToTime(226)">Enfance</button></td>
+                        </tr>
+                        <tr>
+                            <td>09’30’’</td>
+                            <td><button type="button" onclick="seekToTime(570)">Filage et tissage</button></td>
+                        </tr>
+                        <tr>
+                            <td>18’04’’</td>
+                            <td><button type="button" onclick="seekToTime(1084)">Des pointes dans la bouche</button></td>
+                        </tr>
+                        <tr>
+                            <td>22’14’’</td>
+                            <td><button type="button" onclick="seekToTime(1334)">Chaîne</button></td>
+                        </tr>
+                        <tr>
+                            <td>22’35’’</td>
+                            <td><button type="button" onclick="seekToTime(1355)">Personne n’en parle</button></td>
+                        </tr>
+                        <tr>
+                            <td>25’29’’</td>
+                            <td><button type="button" onclick="seekToTime(1529)">Sécurité sociale</button></td>
+                        </tr>
+                        <tr>
+                            <td>30’52’’</td>
+                            <td><button type="button" onclick="seekToTime(1852)">Double journée</button></td>
+                        </tr>
+                        <tr>
+                            <td>32’35’’</td>
+                            <td><button type="button" onclick="seekToTime(1955)">Tirer parti de tout</button></td>
+                        </tr>
+                        <tr>
+                            <td>35’28’’</td>
+                            <td><button type="button" onclick="seekToTime(2128)">En lutte</button></td>
+                        </tr>
+                        <tr>
+                            <td>45’42’’</td>
+                            <td><button type="button" onclick="seekToTime(2742)">À l’infirmerie</button></td>
+                        </tr>
+                        <tr>
+                            <td>47’19’’</td>
+                            <td><button type="button" onclick="seekToTime(2839)">Lire</button></td>
+                        </tr>
+                        <tr>
+                            <td>49’25’’</td>
+                            <td><button type="button" onclick="seekToTime(2965)">Abus de position dominante</button></td>
+                        </tr>
+                        <tr>
+                            <td>54’27’’</td>
+                            <td><button type="button" onclick="seekToTime(3267)">Sexualité</button></td>
+                        </tr>
+                        <tr>
+                            <td>57’24’’</td>
+                            <td><button type="button" onclick="seekToTime(3444)">Répondre</button></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <section class="credits">
+            <div class="gauche">
+                <p>
+                    Écrit par <strong>Odile Roynette</strong>
+                </p>
+                <p>
+                    Droits photographiques : Fonds Archives Goux
+                </p>
+            </div>
+        </section>
+        <div class="suggestions-tag"><h4>Suggestions</h4></div>
+        <section class="suggestions">
+            <SuggestionsCard
+                    titre="Une commande de la cité"
+                    numero_chapitre="1"
+                    lien_image="C1_GOU_P17-04_01-P.jpg"
+            />
+            <SuggestionsCard
+                    titre="Du côté de l'Enclave"
+                    numero_chapitre="2"
+                    lien_image="C2_0363.jpg"
+            />
+            <SuggestionsCard
+                    numero_chapitre="3"
+                    titre="Discours du Maître, traces des luttes"
+                    lien_image="C3_Ouvriers filature_2_APB.jpg"
+            />
+        </section>
+    </div>
+
+        <script is:inline>
+            function seekToTime(seconds) {
+                const video = document.querySelector('video');
+                if (video) {
+                    video.currentTime = seconds;
+                    video.play();
+                }
+            }
+        </script>
+
+    <style scoped>
+        @import "../styles/chapitres.css";
+
+        .entete {
+            height: 50vh;
+        }
+
+        .hero {
+            justify-content: center;
+        }
+
+        .chapitrage-container {
+            max-width: 700px;
+            margin: 20px auto 40px;
+            padding: 20px;
+            border-left: 5px solid #e72465;
+        }
+
+        .chapitrage-container h2 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        .chapitrage-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .chapitrage-table td {
+            padding: 2px 5px;
+        }
+
+        .chapitrage-table td:first-child {
+            text-align: right;
+            color: #e72465;
+            width: 100px;
+        }
+
+        .chapitrage-table button {
+            background: none;
+            border: none;
+            text-align: left;
+            cursor: pointer;
+            color: #333;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .chapitrage-table button:hover {
+            color: #e72465;
+            text-decoration: underline;
+        }
+    </style>
+</Layout>

@@ -67,7 +67,7 @@ const { src, legend, className } = Astro.props;
         border-radius: 4px;
         white-space: normal;
         font-size: 14px;
-        z-index: 199;
+        z-index: 10;
         opacity: 0;
         transition: opacity 0.2s ease-in-out;
         pointer-events: none;
@@ -86,24 +86,44 @@ const { src, legend, className } = Astro.props;
         left: -200px;
     }
 
-    .responsive-image {
+    .image {
         width: 100%;
-        height: 75vh;
         object-fit: cover;
-        position: absolute;
         top: 0;
-        left: 0;
         z-index: 1;
         pointer-events: auto;
     }
 
-    .image-navigation, .image2-navigation, .image-index{
+    .responsive-image {
+        position: absolute;
+        height: 75vh;
+    }
+
+    .image-documentaire,
+    .image-annexe {
+        position: absolute;
+        height: 50vh;
+    }
+
+    .image-annexe {
+        object-position: 50% 70%;
+    }
+
+    .image-index {
         height: 100vh;
         width: 50vw;
-        top: 0;
-        object-fit: cover;
-        z-index: 1;
-        pointer-events: auto;
+    }
+
+    .image-index {
+        object-position: 80% 50%;
+    }
+
+    .image-navigation,
+    .image2-navigation {
+        height: 100vh;
+        width: 50vw;
+        background: linear-gradient(180deg, rgba(22, 22, 22, 0.2) 0%, rgba(22, 22, 22, 0.7) 100%);
+        opacity: 0.6;
     }
 
     .image-navigation {
@@ -116,8 +136,27 @@ const { src, legend, className } = Astro.props;
         object-position: 10% 50%;
     }
 
-    .image-index {
-        object-position: 80% 50%;
+    /* Tablettes et petits écrans */
+    @media (max-width: 1024px) {
+        .image-navigation,
+        .image2-navigation {
+            height: 75vh;
+            width: 100%;
+        }
+
+        .image-navigation,
+        .image2-navigation {
+            left: 0;
+        }
+    }
+
+    /* Smartphones */
+    @media (max-width: 768px) {
+        .image-navigation,
+        .image2-navigation {
+            height: 50vh;
+            width: 100%;
+        }
     }
 
 </style>
