@@ -7,6 +7,9 @@ dist/
 # dependencies
 node_modules/
 
+# fichier vidéo trop lourd
+public/images/Documentaire/Paroles_Ouvrières.mp4
+
 # logs
 npm-debug.log*
 yarn-debug.log*

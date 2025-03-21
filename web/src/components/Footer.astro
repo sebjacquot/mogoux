@@ -6,38 +6,32 @@ import {asset} from "../utils/url";---
     <div class="haut-footer">
         <div class="haut-footer-info-gauche">
             <div class="colonne">
-                <h3 class="titre-colonne-footer">Lien internes</h3>
+                <h3 class="titre-colonne-footer">Liens internes</h3>
                 <a href="#" class="lien-text-footer">Fonds d'archives</a>
                 <a href="#" class="lien-text-footer">Accès membre</a>
                 <a href="#" class="lien-text-footer">Recherche</a>
             </div>
             <div class="colonne">
                 <h3 class="titre-colonne-footer">Institutions</h3>
+                <a href="https://www.univ-fcomte.fr/" class="lien-text-footer">UMLP</a>
                 <a href="https://elliadd.univ-fcomte.fr" class="lien-text-footer">ELLIADD</a>
                 <a href="https://fanum.univ-fcomte.fr/fanum/" class="lien-text-footer">FANUM</a>
                 <a href="https://mshe.univ-fcomte.fr" class="lien-text-footer">MSHE</a>
-                <a href="https://www.univ-fcomte.fr/" class="lien-text-footer">UMLP</a>
             </div>
             <div class="colonne">
-                <h3 class="titre-colonne-footer">Juridique</h3>
-                <a href="#" class="lien-text-footer">Manifeste éditorial</a>
+                <h3 class="titre-colonne-footer">Informations légales</h3>
+                <a href="#" class="lien-text-footer">Crédits</a>
                 <a href={asset("/annexe/mentions_legales")} class="lien-text-footer">Mentions légales</a>
             </div>
             <div class="colonne">
-                <h3 class="titre-colonne-footer">TITRE Indéterminé</h3>
+                <h3 class="titre-colonne-footer">Le projet</h3>
+                <a href="#" class="lien-text-footer">Manifeste éditorial</a>
+                <a href="#" class="lien-text-footer">L'équipe</a>
                 <a href="#" class="lien-text-footer">Partenaires</a>
-                <a href="#" class="lien-text-footer">Crédits</a>
             </div>
         </div>
-        <div class="haut-footer-resaux-droite">
-            <div class="image-resaux-haut">
-                <a href="#"><img src={asset("/icones/icon-twitter.svg")} alt="Twitter"></a>
-                <a href="#"><img src={asset("/icones/icon-facebook.svg")} alt="Facebook"></a>
-            </div>
-            <div class="image-resaux-bas">
-                <a href="mailto:adresse@email.com"><img src={asset("/icones/icon-mail.svg")} alt="Email"></a>
-                <a href="#"><img src={asset("/icones/icon-linkedin.svg")} alt="LinkedIn"></a>
-            </div>
+        <div class="haut-footer-mail-droite">
+            <a href="mailto:adresse@email.com"><img src={asset("/icones/icon-mail.svg")} alt="Email"></a>
         </div>
     </div>
     <div class="trait-separation"></div>
@@ -83,13 +77,14 @@ import {asset} from "../utils/url";---
     }
 
     .titre-colonne-footer {
-        font-size: 18px;
+        font-size: 1em;
         font-weight: bold;
         margin-bottom: 20px;
     }
 
     .lien-text-footer {
         color: #aaa;
+        font-size: 0.9em;
         text-decoration: none;
         margin-bottom: 5px;
     }
@@ -105,17 +100,17 @@ import {asset} from "../utils/url";---
         margin: 20px 0;
     }
 
-    .haut-footer-resaux-droite {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
+    .haut-footer-mail-droite {
+
     }
 
-    .image-resaux-haut img,
-    .image-resaux-bas img,
+    .haut-footer-mail-droite img {
+        width: 50px;
+    }
+
     .bas-footer-logos-droite img {
         width: 50px;
-        margin: 5px;
+        margin: 5px 15px;
     }
 
     .bas-footer {

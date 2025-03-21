@@ -11,14 +11,15 @@ import {asset} from "../../utils/url";
                 <h1 class="titre">Mentions Légales</h1>
             </div>
             <ImageTooltip
-             src={asset('/images/Header_Chapitre/A1_0015.jpg')}
-             legend=""
+                 src={asset('/images/Header_Chapitre/A1_0015.jpg')}
+                 legend=""
+                 className="image-annexe"
             />
             <div class="overlay"></div>
         </section>
         <div class="contenu-article">
             <div class="paragraphe">
-                <p>
+                <p class="paragraphe-before-list">
                     Ce Webdocumentaire a été conçu à partir des archives confiées par Jean-Paul Goux.
                     Il a été complété par différentes ressources photographiques provenant :
                 </p>
@@ -47,5 +48,6 @@ import {asset} from "../../utils/url";
 
     <style scoped>
         @import "../../styles/annexes.css";
+
     </style>
 </Layout>

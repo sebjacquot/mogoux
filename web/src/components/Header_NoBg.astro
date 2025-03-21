@@ -31,7 +31,8 @@ import { asset } from "../utils/url";
       <button class="menu-title">Mémoires de l'Enclave</button>
       <div class="menu-links">
         <a href={asset("/chapitres/biographie")}>Biographie</a>
-        <a href={asset("/chapitres")}>Chapitrages</a>
+        <a href={asset("/chapitres")}>Chapitrage</a>
+        <a href={asset("/documentaire")}>Documentaire</a>
       </div>
     </div>
 
@@ -56,7 +57,6 @@ import { asset } from "../utils/url";
 
 <script is:inline>
   function initMenuBurger() {
-
     var burgerIcon = document.getElementById("burger-icon");
     var menuBurger = document.getElementById("menu-burger");
     var menuTitles = document.querySelectorAll(".menu-title");
@@ -71,7 +71,8 @@ import { asset } from "../utils/url";
     menuBurger.style.transition = "max-height 0.3s ease-in-out, opacity 0.3s ease-in-out";
     menuBurger.style.opacity = "0";
 
-    burgerIcon.addEventListener("click", function () {
+    burgerIcon.addEventListener("click", function (event) {
+      event.stopPropagation();
 
       if (menuBurger.style.maxHeight === "0px" || menuBurger.style.opacity === "0") {
         menuBurger.style.display = "block";
@@ -86,11 +87,32 @@ import { asset } from "../utils/url";
       }
     });
 
+    document.addEventListener("click", function (event) {
+      if (menuBurger.style.maxHeight === "100vh" && !menuBurger.contains(event.target)) {
+        menuBurger.style.maxHeight = "0px";
+        menuBurger.style.opacity = "0";
+        setTimeout(() => {
+          menuBurger.style.display = "none";
+        }, 300);
+      }
+    });
+
+    // Gestion des sous-menus
     menuTitles.forEach(function (title) {
       title.addEventListener("click", function () {
         var menuLinks = this.nextElementSibling;
         if (!menuLinks) return;
 
+        // Fermer tous les autres sous-menus avant d'ouvrir le nouveau
+        document.querySelectorAll(".menu-links").forEach(function (otherMenu) {
+          if (otherMenu !== menuLinks) {
+            otherMenu.style.maxHeight = "0";
+            otherMenu.style.paddingTop = "0px";
+            otherMenu.style.paddingBottom = "0px";
+          }
+        });
+
+        // Ouvre/ferme le sous-menu sélectionné
         if (menuLinks.style.maxHeight === "0px" || menuLinks.style.maxHeight === "") {
           menuLinks.style.maxHeight = menuLinks.scrollHeight + "px";
           menuLinks.style.paddingTop = "10px";
@@ -106,7 +128,6 @@ import { asset } from "../utils/url";
 
   document.addEventListener("DOMContentLoaded", initMenuBurger);
   document.addEventListener("astro:after-swap", initMenuBurger);
-
 </script>
 
 <style scoped>

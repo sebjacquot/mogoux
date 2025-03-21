@@ -17,19 +17,34 @@ const { media, mediasList  } = Astro.props;
 
 const slugsParam = mediasList.length > 0 ? encodeURIComponent(mediasList.map(m => m.slug).join(",")) : "";
 
-const currentURL = Astro.url.toString();
 ---
 
-<a href={asset(`/medias/${media.slug}?slugs=${encodeURIComponent(slugsParam)}&from=${encodeURIComponent(currentURL)}`)}>
+<a
+    data-dynamic-url
+    href={asset(`/medias/${media.slug}?slugs=${encodeURIComponent(slugsParam)}&from=__CURRENT_URL__`)}>
   {
     media.type === "audio" ? (
-      <AudioCard src={media.src} />
+        <AudioCard/>
     ) : (
-      <img class="image" src={media.src} loading="lazy" />
+        <img class="image" src={media.src} loading="lazy" />
     )
   }
   <h3>{media.titre}</h3>
 </a>
+
+<script is:inline>
+    function updateLinksWithCurrentURL() {
+    const links = document.querySelectorAll('[data-dynamic-url]');
+    const currentURL = encodeURIComponent(window.location.href);
+
+    links.forEach(link => {
+      link.href = link.href.replace('__CURRENT_URL__', currentURL);
+    });
+  }
+
+  document.addEventListener('astro:page-load', updateLinksWithCurrentURL);
+  document.addEventListener('astro:after-swap', updateLinksWithCurrentURL);
+</script>
 
 <style scoped>
   a,
