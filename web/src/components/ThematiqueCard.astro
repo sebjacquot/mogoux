@@ -3,20 +3,32 @@ import "../styles/global.css";
 import {asset} from "../utils/url";
 
 type Props = {
-  src: string;
-  alt: string;
+  idThematic: string;
   titre: string;
   slug: string;
   color: string;
   sectionId: string
 };
 
-const { src, titre, alt, slug, color, sectionId } = Astro.props;
+const { idThematic, titre, slug, color, sectionId } = Astro.props;
+
+let thematic = [];
+try {
+  const res = await fetch(`${import.meta.env.CMS_URL}/api/thematics/${idThematic}`);
+  thematic = await res.json();
+} catch (error) {
+  console.error("Failed to fetch thematic", error);
+}
+
+const urlPreveiw = thematic.background_image.sizes?.preview?.url
+const altPreveiw = thematic.background_image.alt
 ---
 
 <a href={asset(`/thematiques/${slug}?section=${sectionId}`)}>
   <div class="card">
-    <img src={`${import.meta.env.CMS_BASE_URL}${src}`} alt={alt} />
+    {urlPreveiw.trim() && (
+        <img src={`${import.meta.env.CMS_BASE_URL}${urlPreveiw}`} alt={altPreveiw} />
+    )}
     <h3 class="titre-thematique">{titre}</h3>
   </div>
 </a>

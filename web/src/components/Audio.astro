@@ -2,14 +2,14 @@
 import {asset} from "../utils/url";
 type Props = {
     src: string;
-    imageSrc?: string;
+    preview_audio_video?: string;
 };
 
-const {src, imageSrc} = Astro.props;
+const {src, preview_audio_video} = Astro.props;
 ---
 
-{imageSrc && (
-<div class="audio-card" id="audioCard" style={`background-image: url(${imageSrc})`}>
+{preview_audio_video && (
+<div class="audio-card" id="audioCard" style={`background-image: url(${preview_audio_video})`}>
     <img src={asset("/icones/play-icon.png")} alt="icone controle son" id="playicon" />
 </div>
     )}
@@ -54,6 +54,177 @@ const {src, imageSrc} = Astro.props;
         </button>
     </div>
 </div>
+
+<style scoped>
+    .audio-card {
+        width: 100%;
+        height: 100%;
+
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-color: #2C2C2C;
+
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .audio-card::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: contain;
+        background: rgba(0, 0, 0, 0.5) no-repeat;
+    }
+
+    .audio-card img {
+        width: 50px;
+        height: 50px;
+        object-fit: contain;
+        z-index: 50;
+    }
+
+    .audio-card img:hover{
+        cursor: pointer;
+    }
+
+    .audio {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: #242424;
+        padding: 10px 0;
+        opacity: 0;
+        z-index: -1;
+        transition: opacity 0.5s, z-index 0.3s;
+    }
+
+    #mutebtn {
+        font-weight: 800;
+        font-size: 15px;
+        cursor: pointer;
+
+        padding: 0;
+    }
+
+    #muteicon {
+        width: 35px;
+        height: 35px;
+    }
+
+    .playicon {
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+    }
+
+    button {
+        background: none;
+        border: none;
+        color: white;
+    }
+
+    .custom-audio-container {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .custom-controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .custom-controls > * {
+        margin: 0 10px;
+    }
+
+    .controls-audio {
+        width: 75%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .controls-volume {
+        width: 25%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+    }
+
+    #closeBtn {
+        padding-right: 23px;
+    }
+
+    input[type="range"] {
+        flex-grow: 1;
+        margin: 0 10px;
+    }
+
+    span {
+        white-space: nowrap;
+    }
+
+    button {
+        flex-shrink: 0;
+    }
+
+    input[type="range"] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+
+        width: 100%;
+        height: 8px;
+        border-radius: 5px;
+        outline: none;
+        opacity: 0.9;
+        transition: opacity 0.2s;
+    }
+
+    /* Curseur (Chrome / Safari) */
+    input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        background-color: #fff;
+        border: 2px solid #dddddd;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    /* Curseur (Firefox) */
+    input[type="range"]::-moz-range-thumb {
+        width: 20px;
+        height: 20px;
+        background-color: #fff;
+        border: 2px solid #dddddd;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    /* Barre de progression (Firefox) */
+    input[type="range"]::-moz-range-track {
+        cursor: pointer;
+    }
+
+    /* Barre de progression (Chrome / Safari) */
+    input[type="range"]::-webkit-slider-runnable-track {
+        cursor: pointer;
+    }
+</style>
 
 <script is:inline>
     function initAudio() {
@@ -225,171 +396,3 @@ const {src, imageSrc} = Astro.props;
     document.addEventListener("astro:page-load", initAudio);
     document.addEventListener("astro:after-swap", initAudio);
 </script>
-
-<style scoped>
-    .audio-card {
-        width: 100% !important;
-        height: 100% !important;
-
-        background-position: center;
-        background-size: cover;
-        border-radius: 3px;
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .audio-card::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-    }
-
-    .audio-card img {
-        width: 50px;
-        height: 50px;
-        object-fit: contain;
-        z-index: 50;
-    }
-
-    .audio-card img:hover{
-        cursor: pointer;
-    }
-
-    .audio {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        background: #242424;
-        padding: 10px 0;
-        opacity: 0;
-        z-index: -1;
-        transition: opacity 0.5s, z-index 0.3s;
-    }
-
-    #mutebtn {
-        font-weight: 800;
-        font-size: 15px;
-        cursor: pointer;
-
-        padding: 0;
-    }
-
-    #muteicon {
-        width: 35px;
-        height: 35px;
-    }
-
-    .playicon {
-        width: 40px;
-        height: 40px;
-        cursor: pointer;
-    }
-
-    button {
-        background: none;
-        border: none;
-        color: white;
-    }
-
-    .custom-audio-container {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        margin: 0 auto;
-    }
-
-    .custom-controls {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-    }
-
-    .custom-controls > * {
-        margin: 0 10px;
-    }
-
-    .controls-audio {
-        width: 75%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px;
-    }
-
-    .controls-volume {
-        width: 25%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px;
-    }
-
-    #closeBtn {
-        padding-right: 23px;
-    }
-
-    input[type="range"] {
-        flex-grow: 1;
-        margin: 0 10px;
-    }
-
-    span {
-        white-space: nowrap;
-    }
-
-    button {
-        flex-shrink: 0;
-    }
-
-    input[type="range"] {
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-
-        width: 100%;
-        height: 8px;
-        border-radius: 5px;
-        outline: none;
-        opacity: 0.9;
-        transition: opacity 0.2s;
-    }
-
-    /* Curseur (Chrome / Safari) */
-    input[type="range"]::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        appearance: none;
-        width: 20px;
-        height: 20px;
-        background-color: #fff;
-        border: 2px solid #dddddd;
-        border-radius: 50%;
-        cursor: pointer;
-    }
-
-    /* Curseur (Firefox) */
-    input[type="range"]::-moz-range-thumb {
-        width: 20px;
-        height: 20px;
-        background-color: #fff;
-        border: 2px solid #dddddd;
-        border-radius: 50%;
-        cursor: pointer;
-    }
-
-    /* Barre de progression (Firefox) */
-    input[type="range"]::-moz-range-track {
-        cursor: pointer;
-    }
-
-    /* Barre de progression (Chrome / Safari) */
-    input[type="range"]::-webkit-slider-runnable-track {
-        cursor: pointer;
-    }
-</style>

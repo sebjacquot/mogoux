@@ -16,6 +16,7 @@ import {asset} from "../utils/url";
             <ImageTooltip
                     src={asset("/images/Documentaire/Goux_6.jpg")}
                     legend="Légende à ajouter"
+                    alt="Légende à ajouter"
                     className="image-documentaire"
             />
             <div class="overlay"></div>
@@ -45,7 +46,12 @@ import {asset} from "../utils/url";
                 </p>
             </div>
             <div class="video-container">
-                <video controls preload="metadata" poster={asset("/images/Documentaire/Goux_6.jpg")} controlslist="nodownload">
+                <video
+                    controls
+                    preload="metadata"
+                    poster={asset("/images/Documentaire/Goux_6.jpg")}
+                    controlslist="nodownload">
+
                     <source src={asset("/images/Documentaire/Paroles_Ouvrieres.mp4")} type="video/mp4">
                     Votre navigateur ne supporte pas la lecture de vidéos.
                 </video>
@@ -75,8 +81,8 @@ import {asset} from "../utils/url";
                             <td><button type="button" onclick="seekToTime(1334)">Chaîne</button></td>
                         </tr>
                         <tr>
-                            <td>22’35’’</td>
-                            <td><button type="button" onclick="seekToTime(1355)">Personne n’en parle</button></td>
+                            <td>23’35’’</td>
+                            <td><button type="button" onclick="seekToTime(1415)">Personne n’en parle</button></td>
                         </tr>
                         <tr>
                             <td>25’29’’</td>

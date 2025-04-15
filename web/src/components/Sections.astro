@@ -1,20 +1,32 @@
 ---
 import ThematiqueCard from "../components/ThematiqueCard.astro";
 
-type Thematic = {
-    backgroundImage: { filename: string; alt: string; url: string; };
-    title: string;
-    slug: string;
-    color: string;
-};
-
 type Props = {
     title: string;
-    thematics: Thematic[];
     sectionId: string;
+    color: string;
+    thematics: Thematic[];
 };
 
-const { title, thematics, sectionId } = Astro.props;
+type Thematic = {
+    id: string;
+    title: string;
+    slug: string;
+    rank?: number | null;
+};
+
+const { title, sectionId, color, thematics } = Astro.props;
+
+const sortedThematics = thematics.sort((a, b) => {
+    const rankA = a.rank;
+    const rankB = b.rank;
+
+    if (rankA == null && rankB == null) return 0;
+    if (rankA == null) return 1;
+    if (rankB == null) return -1;
+
+    return rankA - rankB;
+});
 ---
 
 <section class="thematique-section">
@@ -29,14 +41,13 @@ const { title, thematics, sectionId } = Astro.props;
         </button>
         <div class="carousel-wrapper">
             <div class="carousel">
-                {thematics.map((thematic) => (
+                {sortedThematics.map((thematic) => (
                     <div class="carousel-item">
                         <ThematiqueCard
-                            src={(thematic.backgroundImage).url!}
-                            titre={thematic.title}
-                            slug={thematic.slug}
-                            alt={(thematic.backgroundImage).alt!}
-                            color={thematic.color}
+                            idThematic={thematic?.id}
+                            titre={thematic?.title}
+                            slug={thematic?.slug}
+                            color={color}
                             sectionId={sectionId}
                         />
                     </div>
@@ -48,58 +59,6 @@ const { title, thematics, sectionId } = Astro.props;
         </button>
     </div>
 </section>
-
-<script is:inline>
-    function cleanUpCarousel() {
-        document.querySelectorAll(".carousel-container").forEach((carouselContainer) => {
-            const newContainer = carouselContainer.cloneNode(true);
-            carouselContainer.replaceWith(newContainer);
-        });
-    }
-
-    function initCarousel() {
-        cleanUpCarousel();
-
-        document.querySelectorAll(".carousel-container").forEach((carouselContainer) => {
-            const carousel = carouselContainer.querySelector(".carousel");
-            const prevBtn = carouselContainer.querySelector(".left-btn");
-            const nextBtn = carouselContainer.querySelector(".right-btn");
-            const items = carousel ? carousel.querySelectorAll(".carousel-item") : [];
-
-            if (!carousel || !prevBtn || !nextBtn || items.length === 0) return;
-
-            let scrollPosition = 0;
-            const itemWidth = items[0].offsetWidth + 20;
-            const visibleItems = 3;
-            const totalItems = items.length;
-            const totalWidth = itemWidth * totalItems;
-            const maxScroll = totalWidth - (itemWidth * visibleItems);
-
-            function updateButtons() {
-                const shouldHideArrows = totalItems <= visibleItems;
-                prevBtn.style.display = shouldHideArrows ? "none" : "block";
-                nextBtn.style.display = shouldHideArrows ? "none" : "block";
-                prevBtn.classList.toggle("hidden", scrollPosition <= 0);
-                nextBtn.classList.toggle("hidden", scrollPosition >= maxScroll);
-            }
-
-            function moveCarousel(direction) {
-                scrollPosition += direction * itemWidth;
-                scrollPosition = Math.max(0, Math.min(scrollPosition, maxScroll));
-                carousel.style.transform = `translateX(-${scrollPosition}px)`;
-                updateButtons();
-            }
-
-            prevBtn.addEventListener("click", () => moveCarousel(-1));
-            nextBtn.addEventListener("click", () => moveCarousel(1));
-
-            updateButtons();
-        });
-    }
-
-    document.addEventListener("astro:after-swap", initCarousel);
-    document.addEventListener("astro:page-load", initCarousel);
-</script>
 
 <style scoped>
     hr {
@@ -140,9 +99,21 @@ const { title, thematics, sectionId } = Astro.props;
         padding-left: 20px;
     }
 
-    .carousel-item {
-        flex: 0 0 calc(100% / 3 - 20px);
-        max-width: calc(100% / 3 - 20px);
+    .carousel-item.one-per-slide {
+        flex: 0 0 calc(100% - 20px);
+        max-width: calc(100% - 20px);
+        margin-right: 20px;
+    }
+
+    .carousel-item.two-per-slide {
+        flex: 0 0 calc(50% - 20px);
+        max-width: calc(50% - 20px);
+        margin-right: 20px;
+    }
+
+    .carousel-item.three-per-slide {
+        flex: 0 0 calc(33.333% - 20px);
+        max-width: calc(33.333% - 20px);
         margin-right: 20px;
     }
 
@@ -189,4 +160,84 @@ const { title, thematics, sectionId } = Astro.props;
         opacity: 0;
         cursor: default;
     }
+
 </style>
+
+<script is:inline>
+    function cleanUpCarousel() {
+        document.querySelectorAll(".carousel-container").forEach((carouselContainer) => {
+            const newContainer = carouselContainer.cloneNode(true);
+            carouselContainer.replaceWith(newContainer);
+        });
+    }
+
+    function getResponsiveClass() {
+        const width = window.innerWidth;
+        if (width <= 768) return "one-per-slide";
+        if (width <= 1200) return "two-per-slide";
+        return "three-per-slide";
+    }
+
+    function initCarousel() {
+        cleanUpCarousel();
+
+        document.querySelectorAll(".carousel-container").forEach((carouselContainer) => {
+            const carousel = carouselContainer.querySelector(".carousel");
+            const prevBtn = carouselContainer.querySelector(".left-btn");
+            const nextBtn = carouselContainer.querySelector(".right-btn");
+            const items = carousel ? carousel.querySelectorAll(".carousel-item") : [];
+
+            if (!carousel || !prevBtn || !nextBtn || items.length === 0) return;
+
+            const responsiveClass = getResponsiveClass();
+
+            items.forEach(item => {
+                item.classList.remove("one-per-slide", "two-per-slide", "three-per-slide");
+                item.classList.add(responsiveClass);
+            });
+
+            let scrollPosition = 0;
+            const itemWidth = items[0].offsetWidth + 20;
+            const wrapperWidth = carouselContainer.querySelector(".carousel-wrapper").offsetWidth;
+            const visibleItems = Math.floor(wrapperWidth / itemWidth);
+            const totalItems = items.length;
+            const totalWidth = itemWidth * totalItems;
+            const maxScroll = totalWidth - (itemWidth * visibleItems);
+
+            function updateButtons() {
+                const shouldHideArrows = totalItems <= visibleItems;
+
+                if (scrollPosition <= 0 || shouldHideArrows) {
+                    prevBtn.style.display = "none";
+                } else {
+                    prevBtn.style.display = "block";
+                }
+
+                if (scrollPosition >= maxScroll || shouldHideArrows) {
+                    nextBtn.style.display = "none";
+                } else {
+                    nextBtn.style.display = "block";
+                }
+            }
+
+            function moveCarousel(direction) {
+                scrollPosition += direction * itemWidth;
+                scrollPosition = Math.max(0, Math.min(scrollPosition, maxScroll));
+                carousel.style.transform = `translateX(-${scrollPosition}px)`;
+                updateButtons();
+            }
+
+            prevBtn.addEventListener("click", () => moveCarousel(-1));
+            nextBtn.addEventListener("click", () => moveCarousel(1));
+
+            updateButtons();
+        });
+
+        window.addEventListener("resize", () => {
+            initCarousel();
+        }, { once: true });
+    }
+
+    document.addEventListener("astro:after-swap", initCarousel);
+    document.addEventListener("astro:page-load", initCarousel);
+</script>

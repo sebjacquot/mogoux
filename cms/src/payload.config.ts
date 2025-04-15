@@ -10,11 +10,17 @@ import sharp from 'sharp'
 import path from 'path'
 
 import { Users } from '@/collections/Users'
-import { Medias } from '@/collections/Medias'
-import Thematics from '@/collections/Thematics'
-import Cities from '@/collections/Cities'
 import Sections from '@/collections/Sections'
-import Documents from '@/collections/Documents'
+import Thematics from '@/collections/Thematics'
+import ReferenceLocations from '@/collections/ReferenceLocations'
+import MetadataFiles from '@/collections/MetadataFiles'
+import { Documents } from '@/collections/Documents'
+import Medias from '@/collections/Medias'
+
+import DocumentTypes from '@/collections/DocumentTypes'
+import MaterialTypesAndFormats from '@/collections/MaterialTypesAndFormats'
+import Colors from '@/collections/Colors'
+
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -28,8 +34,27 @@ export default buildConfig({
     importMap: {
       baseDir: path.resolve(dirname),
     },
+    components: {
+      views: {
+        ImportDocumentsView: {
+          Component: '@/components/views/ImportDocumentsFormView#ImportDocumentsFormView',
+          path: '/import-documents',
+        },
+      },
+    },
   },
-  collections: [Users, Medias, Thematics, Cities, Sections, Documents],
+  collections: [
+    Users,
+    Sections,
+    Thematics,
+    ReferenceLocations,
+    Documents,
+    Medias,
+    MetadataFiles,
+    DocumentTypes,
+    MaterialTypesAndFormats,
+    Colors,
+  ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
  /* routes: {
@@ -57,9 +82,8 @@ export default buildConfig({
   },
   db: postgresAdapter({
     pool: {
-      // TODO Ajouter encodeURI() pour les problemes de caracteres speciaux dans le mot de passe
-      connectionString: process.env.DATABASE_URI || '',
-    },
+      connectionString: encodeURI(process.env.DATABASE_URI || ''),
+    }
   }),
   sharp,
   plugins: [

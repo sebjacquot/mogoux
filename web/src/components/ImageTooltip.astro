@@ -2,61 +2,23 @@
 type Props = {
     src: string;
     legend: string;
+    alt: string;
     className?: string;
 };
-const { src, legend, className } = Astro.props;
+const { src, legend, alt, className } = Astro.props;
 ---
 
 <img
     src={src}
-    alt={legend}
+    alt={alt}
     class={`${className || "responsive-image"} image`}
     loading="lazy"
 />
-<div class="tooltipImage">{legend}</div>
 
-<script is:inline>
-    function initTooltips() {
-        const images = Array.from(document.querySelectorAll(".image"));
+{ legend &&
+    <div class="tooltipImage">{legend}</div>
+}
 
-        images.forEach((img) => {
-            if (!img.alt.trim()) return;
-
-            const tooltipImage = img.nextElementSibling;
-            if (!tooltipImage) return;
-            let tooltipTimeout;
-
-            tooltipImage.classList.add("invisible");
-
-            img.addEventListener("mouseenter", () => {
-                tooltipTimeout = setTimeout(() => {
-                    tooltipImage.classList.add("visible");
-                    tooltipImage.classList.remove("invisible");
-                }, 1000);
-            });
-
-            img.addEventListener("mousemove", (e) => {
-                clearTimeout(tooltipTimeout);
-                tooltipImage.classList.remove("visible");
-                tooltipImage.classList.add("invisible");
-                tooltipImage.style.left = `${e.clientX + 10}px`;
-                tooltipImage.style.top = `${e.clientY + 10}px`;
-
-                tooltipTimeout = setTimeout(() => {
-                    tooltipImage.classList.add("visible");
-                }, 1000);
-            });
-
-            img.addEventListener("mouseleave", () => {
-                clearTimeout(tooltipTimeout);
-                tooltipImage.classList.remove("visible");
-            });
-        });
-    }
-
-    document.addEventListener("astro:page-load", initTooltips);
-    document.addEventListener("astro:after-swap", initTooltips);
-</script>
 
 <style scoped>
     .tooltipImage {
@@ -78,6 +40,7 @@ const { src, legend, className } = Astro.props;
 
     .tooltipImage.visible {
         opacity: 1;
+        z-index: 999;
     }
 
     .tooltipImage.invisible {
@@ -88,6 +51,7 @@ const { src, legend, className } = Astro.props;
 
     .image {
         width: 100%;
+        height: 100%;
         object-fit: cover;
         top: 0;
         z-index: 1;
@@ -96,7 +60,6 @@ const { src, legend, className } = Astro.props;
 
     .responsive-image {
         position: absolute;
-        height: 75vh;
     }
 
     .image-documentaire,
@@ -160,3 +123,46 @@ const { src, legend, className } = Astro.props;
     }
 
 </style>
+
+<script is:inline>
+    function initTooltips() {
+        const images = Array.from(document.querySelectorAll(".image"));
+
+        images.forEach((img) => {
+            if (!img.alt.trim()) return;
+
+            const tooltipImage = img.nextElementSibling;
+            if (!tooltipImage) return;
+            let tooltipTimeout;
+
+            tooltipImage.classList.add("invisible");
+
+            img.addEventListener("mouseenter", () => {
+                tooltipTimeout = setTimeout(() => {
+                    tooltipImage.classList.add("visible");
+                    tooltipImage.classList.remove("invisible");
+                }, 1000);
+            });
+
+            img.addEventListener("mousemove", (e) => {
+                clearTimeout(tooltipTimeout);
+                tooltipImage.classList.remove("visible");
+                tooltipImage.classList.add("invisible");
+                tooltipImage.style.left = `${e.clientX + 10}px`;
+                tooltipImage.style.top = `${e.clientY + 10}px`;
+
+                tooltipTimeout = setTimeout(() => {
+                    tooltipImage.classList.add("visible");
+                }, 1000);
+            });
+
+            img.addEventListener("mouseleave", () => {
+                clearTimeout(tooltipTimeout);
+                tooltipImage.classList.remove("visible");
+            });
+        });
+    }
+
+    document.addEventListener("astro:page-load", initTooltips);
+    document.addEventListener("astro:after-swap", initTooltips);
+</script>

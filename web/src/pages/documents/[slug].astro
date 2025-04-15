@@ -6,15 +6,13 @@ import {asset} from "../../utils/url";
 
 const { slug } = Astro.params;
 
-let detail: any = [];
+let documents: any = [];
 try {
-    const res = await fetch(`${import.meta.env.CMS_URL}/api/medias/slug/${slug}`);
-    const data = await res.json();
-    detail = data;
+    const res = await fetch(`${import.meta.env.CMS_URL}/api/documents/slug/${slug}`);
+    documents = await res.json();
 } catch (error) {
-    console.error("Failed to fetch medias details", error);
+    console.error("Failed to fetch documents details", error);
 }
-const tags = detail.identification?.tag?.map((tag: any) => tag.tag_name);
 
 const queryParams = new URLSearchParams(Astro.url.search);
 const slugsString = queryParams.get("slugs") || "";
@@ -27,46 +25,49 @@ const nextSlug = currentIndex < mediasList.length - 1 ? mediasList[currentIndex 
 
 ---
 
-<Layout title="Medias">
+<Layout title="Documents">
     <Return fromURL={fromURL} />
     <div class='container'>
         <nav>
             {previousSlug && (
-                    <a href={asset(`/medias/${previousSlug}?slugs=${encodeURIComponent(slugsString)}&from=${encodeURIComponent(fromURL)}`)} class="prev">
+                    <a href={asset(`/documents/${previousSlug}?slugs=${encodeURIComponent(slugsString)}&from=${encodeURIComponent(fromURL)}`)} class="prev">
                         &#10094;
                     </a>
             )}
 
             {nextSlug && (
-                    <a href={asset(`/medias/${nextSlug}?slugs=${encodeURIComponent(slugsString)}&from=${encodeURIComponent(fromURL)}`)} class="next">
+                    <a href={asset(`/documents/${nextSlug}?slugs=${encodeURIComponent(slugsString)}&from=${encodeURIComponent(fromURL)}`)} class="next">
                         &#10095;
                     </a>
             )}
         </nav>
         <Details
-                titre={detail.identification.title}
-                date={detail.identification.date}
-                description={detail.description}
-                lieu_name={detail.location.location_name}
-                lieu_link={detail.location.location_link}
-                credits_name={detail.contexte.credits_name}
-                credits_link={detail.contexte.credits_link}
-                tags={tags}
-                type={detail.type}
-                link_notice={detail.notice}
-                src={detail.url}
-                alt={detail.alt}
+                title={documents.title}
+                date={documents.date}
+                description={documents.description}
+                location={documents.location}
+                credits_name={documents.credits_name}
+                credits_link={documents.credits_link}
+                tags={documents.physical_characteristics}
+                type={documents.type}
+                link_notice={documents.notice}
+                src={documents.url}
+                legend={documents.legend}
+                alt={documents.alt}
+                preview_audio_video={documents.preview_audio_video}
+                thematics={documents.thematics}
         />
     </div>
 
     <style>
         .container {
             position: relative;
-            min-height: 100vh;
+            height: 100vh;
             width: 100%;
             display: flex;
             flex-direction: column;
         }
+
         a {
             position: absolute;
             top: 50%;
@@ -75,6 +76,7 @@ const nextSlug = currentIndex < mediasList.length - 1 ? mediasList[currentIndex 
             font-size: 2rem;
             transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
         }
+
         a:hover {
             text-decoration: none;
             color: #c5c5c5;

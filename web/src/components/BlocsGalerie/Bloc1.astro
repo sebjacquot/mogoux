@@ -1,40 +1,42 @@
 ---
-import BlocMedia from "./BlocMedia.astro";
+import BlocGalerie from "./BlocGalerie.astro";
 
 type Props = {
-  medias: {
-    type: "image" | "audio";
+  documents: {
+    type: "Image" | "Audio" | "Video";
     src: string;
+    alt: string;
     slug: string;
     titre: string;
+    preview_audio_video: string | null;
   }[];
 
-  mediasList: []
+  documentsList: []
 };
 
-const { medias, mediasList } = Astro.props;
+const {documents, documentsList } = Astro.props;
 ---
 
 <div class="bloc1">
   <div class="row-large">
     <div class="rectangle">
-      {medias[0] && <BlocMedia media={medias[0]} mediasList={mediasList} />}
+      {documents[0] && <BlocGalerie document={documents[0]} documentsList={documentsList} />}
     </div>
   </div>
   <div class="row-3-4">
     <div class="rectangle">
-      {medias[1] && <BlocMedia media={medias[1]} mediasList={mediasList} />}
+      {documents[1] && <BlocGalerie document={documents[1]} documentsList={documentsList} />}
     </div>
     <div class="rectangle">
-      {medias[2] && <BlocMedia media={medias[2]} mediasList={mediasList} />}
+      {documents[2] && <BlocGalerie document={documents[2]} documentsList={documentsList} />}
     </div>
   </div>
   <div class="row-1-2">
     <div class="rectangle">
-      {medias[3] && <BlocMedia media={medias[3]} mediasList={mediasList}/>}
+      {documents[3] && <BlocGalerie document={documents[3]} documentsList={documentsList}/>}
     </div>
     <div class="rectangle">
-      {medias[4] && <BlocMedia media={medias[4]} mediasList={mediasList} />}
+      {documents[4] && <BlocGalerie document={documents[4]} documentsList={documentsList} />}
     </div>
   </div>
 </div>

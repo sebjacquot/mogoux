@@ -4,31 +4,46 @@ export const Sections: CollectionConfig = {
   slug: "sections",
   admin: {
     useAsTitle: "name",
+    defaultColumns: ['name', 'thematics', 'rank', 'createdAt'],
+  },
+  defaultSort: "name",
+  labels: {
+    singular: {
+      en: 'Section',
+      fr: 'Rubrique',
+    },
+    plural: {
+      en: 'Sections',
+      fr: 'Rubriques',
+    },
   },
   access: {
     read: () => true,
   },
   timestamps: true,
-  defaultSort: "-createdAt",
   fields: [
     {
       name: "name",
       label: "Nom de la rubrique",
       type: "text",
-      required: false,
+      required: true,
+    },
+    {
+      name: "rank",
+      label: "Ordre",
+      type: "number",
+    },
+    {
+      name: "color",
+      label: "Couleur",
+      type: "text",
+      required: true,
     },
     {
       name: "thematics",
       label: "Thématiques",
       type: "relationship",
       relationTo: "thematics",
-      hasMany: true,
-    },
-    {
-      name: "documents",
-      label: "Documents associés",
-      type: "relationship",
-      relationTo: "documents",
       hasMany: true,
     },
   ],

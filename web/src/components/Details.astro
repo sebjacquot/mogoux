@@ -1,316 +1,416 @@
 ---
 import Audio from "./Audio.astro";
 import ImageFullscreen from "./ImageFullscreen.astro";
+import Video from "./Video.astro";
 import {asset} from "../utils/url";
 
-type Props = {
-  titre: string;
-  date: string;
-  description: string;
-  tags: string[];
-  lieu_name: string;
-  lieu_link: string;
-  credits_name: string;
-  credits_link: string;
-  type: string;
-  link_notice: string;
-  src: string;
-  alt: string;
-};
-
 const props = Astro.props;
+
+const date = (props.date + '').charAt(0).toUpperCase() + (props.date + '').slice(1);
+
 ---
 
 <div class="row">
-  <div class="texte">
-    <h1 class="titre">{props.titre}</h1>
-    <h3 class="date">{props.date}</h3>
-    <p class="description">{props.description}</p>
-    <ul class="liste">
-      {props.tags.map((tag) => <li class="mot-cle">{tag}</li>)}
-    </ul>
-    <div class="datas">
-      <div class="gauche">
-        <div class="row-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
-            <circle cx="12" cy="10" r="3"></circle>
-          </svg>
-          <h3>Lieu</h3>
-        </div>
-        <div class="row-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"></path>
-          </svg>
-          <h3>Type</h3>
-        </div>
-        <div class="row-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="8" r="5"></circle>
-            <path d="M20 21a8 8 0 0 0-16 0"></path>
-          </svg>
-          <h3>Crédits</h3>
-        </div>
-      </div>
-      <div class="droite">
-        <div class="row-link">
-          <a href={props.lieu_link} target="_blank" rel="noopener noreferrer">{props.lieu_name}</a>
-        </div>
-        <h3>{props.type}</h3>
-        <div class="row-link">
-          <a href={props.credits_link} target="_blank" rel="noopener noreferrer">{props.credits_name}</a>
-        </div>
-      </div>
-    </div>
-  </div>
+    <!-- Texte -->
+    <div class="texte">
+        <h1 class="titre">{props.title}</h1>
+        <h3 class="date">
+            {date}
+        </h3>
 
-  <div class="rectangle-image">
-    <div class="image">
-      {
-        props.type === "audio" ? (
-            <Audio
-                src={`${import.meta.env.CMS_BASE_URL}${props.src}`}
-                imageSrc={asset("/Goux_1000kB_3.jpg")}
-            />
+        {props.description &&
+                <p class="description">{props.description}</p>
+        }
+
+        <ul class="liste">
+            {props.tags.document_types && (
+                    <li id="type-de-docuemnt" class="tag">{props.tags.document_types.name}</li>
+            )}
+            {props.tags.material_types_and_formats && (
+                    <li id="support-et-format" class="tag">{props.tags.material_types_and_formats.name}</li>
+            )}
+            {props.tags.colors && (
+                    <li id="couleur" class="tag">{props.tags.colors.name}</li>
+            )}
+        </ul>
+
+
+        <div id="tooltip" class="tooltip">
+            <div class="tooltip-text"></div>
+            <div class="tooltip-arrow"></div>
+        </div>
+
+      <ul class="liste">
+        {props.thematics &&
+            props.thematics.map((thematic: any) => (
+                <li
+                    class="thematic"
+                    style={`background-color: ${thematic.color || 'var(--legende-color)'}`}
+                >
+                  <a href={asset(`/thematiques/${thematic.slug}?section=${thematic.related_sections?.docs?.[0] || ''}`)}>
+                    {thematic.title}
+                  </a>
+                </li>
+            ))}
+      </ul>
+
+        <!-- Infos -->
+        <div class="datas-grid">
+            <!-- Lieu de référence -->
+            <div class="cell-left">
+                <div class="row-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                        <circle cx="12" cy="10" r="3"/>
+                    </svg>
+                    <h3>Lieu de référence</h3>
+                </div>
+            </div>
+            <div class="cell-right">
+              <a href={asset(`/lieux-reference/${props.location.location_reference.slug}`)} target="_blank" rel="noopener noreferrer">{props.location.location_reference.name}</a>
+            </div>
+
+            <!-- Complément de lieu -->
+            {props.location.location_details && props.location.location_details.trim() !== "" && (
+                  <>
+                      <div class="cell-left complement-lieu">
+                          <h3>&nbsp;&nbsp;&nbsp;&nbsp; Complément</h3>
+                      </div>
+                      <div class="cell-right complement-lieu">
+                          {props.location.location_link ? (
+                                <a href={props.location.location_link} target="_blank"
+                                   rel="noopener noreferrer">{props.location.location_details}</a>
+                          ) : (
+                                <p>{props.location.location_details}</p>
+                          )}
+                      </div>
+                  </>
+            )}
+
+            <!-- Crédits -->
+            <div class="cell-left">
+                <div class="row-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="8" r="5"/>
+                        <path d="M20 21a8 8 0 0 0-16 0"/>
+                    </svg>
+                    <h3>Crédits</h3>
+                </div>
+            </div>
+            <div class="cell-right">
+                {props.credits_link ? (
+                        <a href={props.credits_link} target="_blank" rel="noopener noreferrer">{props.credits_name}</a>
+                ) : (
+                        <p>{props.credits_name}</p>
+                )}
+            </div>
+        </div>
+    </div>
+
+    <!-- Média -->
+    <div class="rectangle-image">
+
+        {props.type === "Audio" ? (
+                <Audio
+                        src={`${import.meta.env.CMS_BASE_URL}${props.src}`}
+                        preview_audio_video={`${import.meta.env.CMS_BASE_URL}${props.preview_audio_video?.url}`}
+                />
+        ) : props.type === "Video" ? (
+                <Video
+                        src={`${import.meta.env.CMS_BASE_URL}${props.src}`}
+                        preview_audio_video={`${import.meta.env.CMS_BASE_URL}${props.preview_audio_video?.url}`}
+                />
         ) : (
-            <ImageFullscreen
-                src={`${import.meta.env.CMS_BASE_URL}${props.src}`}
-                legend={props.alt}
-            />
-        )
-      }
-    </div>
+                <div class="image">
+                    <ImageFullscreen
+                            src={`${import.meta.env.CMS_BASE_URL}${props.src}`}
+                            legend={props.legend}
+                            alt={props.alt}
+                            className="responsive-image-details"
+                    />
+                </div>
+        )}
 
-    <a href={props.link_notice} target="_blank" rel="noopener noreferrer" class="icon-link">
-      <!--<svg
-          xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-square-arrow-out-up-right">
-        <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6"></path>
-        <path d="m21 3-9 9"></path>
-        <path d="M15 3h6v6"></path>
-      </svg>-->
-    </a>
-  </div>
+        {props.link_notice && (
+                <a href={props.link_notice} target="_blank" rel="noopener noreferrer" class="icon-link"
+                   title="Notice externe">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6"></path>
+                        <path d="m21 3-9 9"></path>
+                        <path d="M15 3h6v6"></path>
+                    </svg>
+                </a>
+        )}
+    </div>
 </div>
 
 <style scoped>
-  .row {
-    display: flex;
-    align-items: start;
-    padding: 6% 8%;
-    gap: 5em;
-    color: white;
-  }
-
-  .texte {
-    display: flex;
-    flex-direction: column;
-    width: 45%;
-    font-size: 20px;
-  }
-
-  .titre {
-    font-size: 2em;
-    font-weight: 700;
-    margin: 50px 0 30px;
-  }
-
-  .date {
-    font-size: 17px;
-    margin-bottom: 20px;
-    font-family: var(--merriweather);
-  }
-
-  .description {
-    margin-bottom: 1.5em;
-    width: 90%;
-    line-height: 1.2;
-    text-align: justify;
-  }
-
-  .liste {
-    margin-bottom: 1em;
-    display: flex;
-    gap: 5px;
-  }
-
-  .mot-cle {
-    border: 1px solid var(--navigation);
-    color: var(--navigation);
-    padding: 2px 7px;
-    border-radius: 5px;
-    font-size: 1rem;
-    margin-bottom: 4em;
-  }
-
-  .datas {
-    display: flex;
-    justify-content: flex-start;
-    margin-top: auto;
-    font-size: 0.9em;
-    width: 100%;
-
-    h3{
-      text-align: start;
-    }
-  }
-
-  .droite{
-    width: 100%;
-    margin: 0 5%;
-  }
-
-  .row-icon {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .row-link {
-    display: flex;
-    align-items: center;
-  }
-
-  a {
-    color: white;
-    text-decoration: none;
-    cursor: pointer;
-  }
-
-  a:hover {
-    text-decoration: underline;
-    color: rgba(255, 255, 255, 0.7);
-  }
-
-  .rectangle-image {
-    width: 1200px;
-    height: 650px;
-    position: relative;
-  }
-
-  .image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .icon-link {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50px;
-    height: 50px;
-  }
-
-  .icon-link svg {
-    width: 40px;
-    height: 40px;
-    stroke: white;
-    stroke-width: 2;
-    transition: stroke 0.2s ease-in-out;
-  }
-
-  .icon-link:hover svg {
-    stroke: rgba(255, 255, 255, 0.7);
-  }
-
-  @media (max-width: 1024px) {
     .row {
-      flex-direction: column;
-      align-items: center;
-      padding: 5%;
-      gap: 2em;
-      text-align: center;
+        display: flex;
+        align-items: start;
+        padding: 6% 8%;
+        gap: 2em;
+        color: var(--text-color);
+        height: 100%;
     }
 
     .texte {
-      margin-top: 10%;
-      width: 100%;
-      text-align: center;
+        display: flex;
+        flex-direction: column;
+        width: 70%;
+        font-size: 20px;
     }
 
     .titre {
-      font-size: 36px;
-      margin: 20px 0;
+        font-size: 1.7em;
+        font-weight: 700;
+        margin: 50px 0 30px;
     }
 
     .date {
-      font-size: 16px;
-      margin-bottom: 10px;
+        margin-bottom: 20px;
     }
 
     .description {
-      width: 100%;
-      font-size: 18px;
-      line-height: 1.3;
+        margin-bottom: 1.5em;
+        width: 90%;
+        line-height: 1.2;
+        text-align: justify;
     }
 
     .liste {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
+        margin-bottom: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
     }
 
-    .mot-cle {
-      font-size: 0.85rem;
-      padding: 5px 10px;
-      white-space: nowrap;
+    .tag {
+        background-color: var(--legende-color);
+        color: var(--text-color);
+        padding: 2px 5px 0 5px;
+        border-radius: 3px;
+        font-size: 1rem;
+        cursor: help;
+    }
+
+    .tooltip {
+        position: absolute;
+        display: none;
+        z-index: 1000;
+        transform: translate(-50%, -100%);
+        pointer-events: none;
+    }
+
+    .tooltip-text {
+        background-color: black;
+        color: white;
+        padding: 6px 10px;
+        border-radius: 4px;
+        font-size: 13px;
+        white-space: nowrap;
+        position: relative;
+    }
+
+    .tooltip-arrow {
+        width: 0;
+        height: 0;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        border-top: 6px solid black;
+        margin: 0 auto;
+    }
+
+    .thematic {
+        padding: 2px 5px 0 5px;
+        border-radius: 3px;
+        font-size: 1rem;
+        cursor: pointer;
+        color: var(--bg-nav);
+
+      a {
+        text-decoration: none;
+        color: var(--bg-nav);
+      }
+    }
+
+    /* Nouvelle grille infos */
+    .datas-grid {
+        display: grid;
+        grid-template-columns: 220px 1fr;
+        row-gap: 5px;
+        column-gap: 20px;
+        font-size: 0.95em;
+        align-items: start;
+        margin-top: 10px;
+    }
+
+    .cell-left h3 {
+        margin: 0;
+    }
+
+    .row-icon {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .cell-right a,
+    .cell-right p {
+        margin: 0;
+        color: var(--text-color);
+        text-decoration: none;
+    }
+
+    .cell-right a:hover {
+        text-decoration: underline;
+        opacity: 0.7;
+    }
+
+    .complement-lieu {
+        font-size: 0.9em;
     }
 
     .rectangle-image {
-      width: 95%;
-      height: auto;
-    }
-
-    .image {
-      width: 100%;
-      height: auto;
-    }
-
-    .icon-link {
-      width: 35px;
-      height: 35px;
-      top: 10px;
-      right: 10px;
-    }
-
-    .icon-link svg {
-      width: 28px;
-      height: 28px;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .titre {
-      font-size: 28px;
-    }
-
-    .texte {
-      font-size: 16px;
-    }
-
-    .mot-cle {
-      font-size: 0.75rem;
-      padding: 3px 8px;
-    }
-
-    .rectangle-image {
-      width: 100%;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .icon-link {
-      width: 30px;
-      height: 30px;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
     }
 
     .icon-link svg {
-      width: 24px;
-      height: 24px;
+        width: 40px;
+        height: 40px;
+        stroke: var(--text-color);
+        stroke-width: 2;
+        transition: stroke 0.2s ease-in-out;
     }
-  }
+
+    .icon-link:hover svg {
+        opacity: 0.7;
+    }
+
+    @media (max-width: 1024px) {
+        .row {
+            flex-direction: column;
+            align-items: center;
+            padding: 5%;
+            gap: 2em;
+            text-align: center;
+        }
+
+        .texte {
+            margin-top: 10%;
+            width: 100%;
+            text-align: center;
+        }
+
+        .rectangle-image {
+            width: 95%;
+            height: auto;
+        }
+
+        .image {
+            height: auto;
+        }
+
+        .icon-link {
+            width: 35px;
+            height: 35px;
+            top: 10px;
+            right: 10px;
+        }
+
+        .icon-link svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .datas-grid {
+            grid-template-columns: 100%;
+            text-align: left;
+        }
+
+        .cell-left {
+            margin-top: 1em;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .titre {
+            font-size: 28px;
+        }
+
+        .texte {
+            font-size: 16px;
+        }
+
+        .mot-cle {
+            font-size: 0.75rem;
+        }
+
+        .rectangle-image {
+            width: 100%;
+        }
+
+        .icon-link {
+            width: 30px;
+            height: 30px;
+        }
+
+        .icon-link svg {
+            width: 24px;
+            height: 24px;
+        }
+    }
 </style>
+
+<script is:inline>
+    function setupTooltips() {
+        const tooltip = document.getElementById('tooltip');
+        const tooltipText = tooltip?.querySelector('.tooltip-text');
+
+        if (!tooltip || !tooltipText) return;
+
+        const tags = document.querySelectorAll('.tag');
+
+        tags.forEach(tag => {
+            tag.addEventListener('mouseenter', (e) => {
+                const text = e.target.id.replace(/-/g, ' ');
+                tooltipText.textContent = (text + '').charAt(0).toUpperCase() + (text + '').slice(1);
+
+                const rect = e.target.getBoundingClientRect();
+                const scrollY = window.scrollY || document.documentElement.scrollTop;
+
+                tooltip.style.left = `${rect.left + rect.width / 2}px`;
+                tooltip.style.top = `${rect.top + scrollY - 5}px`;
+                tooltip.style.transform = 'translate(-50%, -100%)';
+                tooltip.style.display = 'block';
+            });
+
+            tag.addEventListener('mouseleave', () => {
+                tooltip.style.display = 'none';
+            });
+        });
+    }
+
+    document.addEventListener('astro:page-load', setupTooltips);
+    document.addEventListener('astro:after-swap', setupTooltips);
+    document.addEventListener('DOMContentLoaded', setupTooltips);
+</script>

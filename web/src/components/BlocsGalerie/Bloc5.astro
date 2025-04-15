@@ -1,32 +1,34 @@
 ---
-import BlocMedia from "./BlocMedia.astro";
+import BlocGalerie from "./BlocGalerie.astro";
 
 type Props = {
-  medias: {
-    type: "image" | "audio";
+  documents: {
+    type: "Image" | "Audio" | "Video";
     src: string;
+    alt: string;
     slug: string;
     titre: string;
+    preview_audio_video: string | null;
   }[];
 
-  mediasList: []
+  documentsList: []
 };
 
-const { medias, mediasList } = Astro.props;
+const { documents, documentsList } = Astro.props;
 ---
 
 <div class="bloc5">
   <div class="row-big">
     <div class="rectangle bleu">
-      {medias[0] && <BlocMedia media={medias[0]} mediasList={mediasList} />}
+      {documents[0] && <BlocGalerie document={documents[0]} documentsList={documentsList} />}
     </div>
   </div>
   <div class="row-2-5-reversed">
     <div class="rectangle orange">
-      {medias[1] && <BlocMedia media={medias[1]} mediasList={mediasList} />}
+      {documents[1] && <BlocGalerie document={documents[1]} documentsList={documentsList} />}
     </div>
     <div class="rectangle rose">
-      {medias[2] && <BlocMedia media={medias[2]} mediasList={mediasList} />}
+      {documents[2] && <BlocGalerie document={documents[2]} documentsList={documentsList} />}
     </div>
   </div>
 </div>
