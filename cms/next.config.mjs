@@ -9,9 +9,16 @@ const nextConfig = {
     serverActions: {
       allowedOrigins: ["localhost:3000","172.20.81.117", "fanum.univ-fcomte.fr" ],
       allowedForwardedHosts: ["172.20.81.117", "fanum.univ-fcomte.fr"],
+      bodySizeLimit: '200mb',
       // ^ You might have to use this property depending on your exact version.
     }
-  }
+  },
+
+  api: {
+    bodyParser: {
+      sizeLimit: '200mb',
+    },
+  },
 
   /*  rewrites: async () => [
       {

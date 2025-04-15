@@ -54,6 +54,7 @@ export type SupportedTimezones =
   | 'Asia/Singapore'
   | 'Asia/Tokyo'
   | 'Asia/Seoul'
+  | 'Australia/Brisbane'
   | 'Australia/Sydney'
   | 'Pacific/Guam'
   | 'Pacific/Noumea'
@@ -67,23 +68,39 @@ export interface Config {
   blocks: {};
   collections: {
     users: User;
-    medias: Media;
-    thematics: Thematic;
-    cities: City;
     sections: Section;
+    thematics: Thematic;
+    'reference-locations': ReferenceLocation;
     documents: Document;
+    medias: Media;
+    'metadata-files': MetadataFile;
+    'document-types': DocumentType;
+    'material-types-and-formats': MaterialTypesAndFormat;
+    colors: Color;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
-  collectionsJoins: {};
+  collectionsJoins: {
+    thematics: {
+      related_documents: 'documents';
+      related_sections: 'sections';
+    };
+    'reference-locations': {
+      related_documents: 'documents';
+    };
+  };
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
-    medias: MediasSelect<false> | MediasSelect<true>;
-    thematics: ThematicsSelect<false> | ThematicsSelect<true>;
-    cities: CitiesSelect<false> | CitiesSelect<true>;
     sections: SectionsSelect<false> | SectionsSelect<true>;
+    thematics: ThematicsSelect<false> | ThematicsSelect<true>;
+    'reference-locations': ReferenceLocationsSelect<false> | ReferenceLocationsSelect<true>;
     documents: DocumentsSelect<false> | DocumentsSelect<true>;
+    medias: MediasSelect<false> | MediasSelect<true>;
+    'metadata-files': MetadataFilesSelect<false> | MetadataFilesSelect<true>;
+    'document-types': DocumentTypesSelect<false> | DocumentTypesSelect<true>;
+    'material-types-and-formats': MaterialTypesAndFormatsSelect<false> | MaterialTypesAndFormatsSelect<true>;
+    colors: ColorsSelect<false> | ColorsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -140,44 +157,83 @@ export interface User {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "medias".
+ * via the `definition` "sections".
  */
-export interface Media {
+export interface Section {
   id: number;
-  identification: {
-    cote: string;
-    title: string;
-    date: string;
-    tag: {
-      tag_name: string;
-      id?: string | null;
-    }[];
-  };
-  contexte: {
-    credits_name: string;
-    credits_link?: string | null;
-    modality?: string | null;
-  };
-  access_and_use?: {
-    access_condition?: string | null;
-    reproduction_condition?: string | null;
-  };
-  other_references?: {
-    conservation_location?: string | null;
-    complementary_sources?: string | null;
-    bibliography?: string | null;
-    notes?: string | null;
-  };
-  contributor: string;
+  name: string;
+  rank?: number | null;
+  color: string;
+  thematics?: (number | Thematic)[] | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "thematics".
+ */
+export interface Thematic {
+  id: number;
+  title: string;
   slug: string;
+  background_image: number | Document;
+  rank?: number | null;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  related_documents?: {
+    docs?: (number | Document)[];
+    hasNextPage?: boolean;
+    totalDocs?: number;
+  };
+  related_sections?: {
+    docs?: (number | Section)[];
+    hasNextPage?: boolean;
+    totalDocs?: number;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "documents".
+ */
+export interface Document {
+  id: number;
+  reference_code: string;
+  slug: string;
+  title: string;
+  date: string;
+  type: 'Image' | 'Video' | 'Audio';
+  physical_characteristics: {
+    document_types: number | DocumentType;
+    material_types_and_formats?: (number | null) | MaterialTypesAndFormat;
+    colors?: (number | null) | Color;
+  };
+  preview_audio_video?: (number | null) | Media;
+  credits_name: string;
+  credits_link?: string | null;
+  thematics?: (number | Thematic)[] | null;
+  legend?: string | null;
+  description?: string | null;
   alt: string;
-  legend: string;
-  description: string;
-  location: {
-    location_name: string;
+  location?: {
+    location_reference?: (number | null) | ReferenceLocation;
+    location_details?: string | null;
     location_link?: string | null;
   };
-  type: 'image' | 'video' | 'audio';
   notice?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -190,30 +246,101 @@ export interface Media {
   height?: number | null;
   focalX?: number | null;
   focalY?: number | null;
+  sizes?: {
+    thumbnail?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    preview?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+  };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "thematics".
+ * via the `definition` "document-types".
  */
-export interface Thematic {
+export interface DocumentType {
   id: number;
-  backgroundImage: number | Media;
-  slug: string;
-  title: string;
-  color: string;
-  medias: (number | Media)[];
-  description?: string | null;
+  name: string;
   updatedAt: string;
   createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "cities".
+ * via the `definition` "material-types-and-formats".
  */
-export interface City {
+export interface MaterialTypesAndFormat {
+  id: number;
+  name: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "colors".
+ */
+export interface Color {
+  id: number;
+  name: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "medias".
+ */
+export interface Media {
+  id: number;
+  name?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
+  sizes?: {
+    thumbnail?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    preview?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+  };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "reference-locations".
+ */
+export interface ReferenceLocation {
   id: number;
   name: string;
   slug: string;
+  background_image?: (number | null) | Document;
   description: {
     root: {
       type: string;
@@ -229,31 +356,36 @@ export interface City {
     };
     [k: string]: unknown;
   };
-  thematics?: (number | Thematic)[] | null;
-  medias?: (number | Media)[] | null;
+  quote?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  related_documents?: {
+    docs?: (number | Document)[];
+    hasNextPage?: boolean;
+    totalDocs?: number;
+  };
   updatedAt: string;
   createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "sections".
+ * via the `definition` "metadata-files".
  */
-export interface Section {
+export interface MetadataFile {
   id: number;
-  name?: string | null;
-  thematics?: (number | Thematic)[] | null;
-  documents?: (number | Document)[] | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "documents".
- */
-export interface Document {
-  id: number;
-  alt?: string | null;
-  description?: string | null;
+  standard_name: string;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -278,24 +410,40 @@ export interface PayloadLockedDocument {
         value: number | User;
       } | null)
     | ({
-        relationTo: 'medias';
-        value: number | Media;
+        relationTo: 'sections';
+        value: number | Section;
       } | null)
     | ({
         relationTo: 'thematics';
         value: number | Thematic;
       } | null)
     | ({
-        relationTo: 'cities';
-        value: number | City;
-      } | null)
-    | ({
-        relationTo: 'sections';
-        value: number | Section;
+        relationTo: 'reference-locations';
+        value: number | ReferenceLocation;
       } | null)
     | ({
         relationTo: 'documents';
         value: number | Document;
+      } | null)
+    | ({
+        relationTo: 'medias';
+        value: number | Media;
+      } | null)
+    | ({
+        relationTo: 'metadata-files';
+        value: number | MetadataFile;
+      } | null)
+    | ({
+        relationTo: 'document-types';
+        value: number | DocumentType;
+      } | null)
+    | ({
+        relationTo: 'material-types-and-formats';
+        value: number | MaterialTypesAndFormat;
+      } | null)
+    | ({
+        relationTo: 'colors';
+        value: number | Color;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -357,55 +505,76 @@ export interface UsersSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "medias_select".
+ * via the `definition` "sections_select".
  */
-export interface MediasSelect<T extends boolean = true> {
-  identification?:
-    | T
-    | {
-        cote?: T;
-        title?: T;
-        date?: T;
-        tag?:
-          | T
-          | {
-              tag_name?: T;
-              id?: T;
-            };
-      };
-  contexte?:
-    | T
-    | {
-        credits_name?: T;
-        credits_link?: T;
-        modality?: T;
-      };
-  access_and_use?:
-    | T
-    | {
-        access_condition?: T;
-        reproduction_condition?: T;
-      };
-  other_references?:
-    | T
-    | {
-        conservation_location?: T;
-        complementary_sources?: T;
-        bibliography?: T;
-        notes?: T;
-      };
-  contributor?: T;
+export interface SectionsSelect<T extends boolean = true> {
+  name?: T;
+  rank?: T;
+  color?: T;
+  thematics?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "thematics_select".
+ */
+export interface ThematicsSelect<T extends boolean = true> {
+  title?: T;
   slug?: T;
-  alt?: T;
+  background_image?: T;
+  rank?: T;
+  description?: T;
+  related_documents?: T;
+  related_sections?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "reference-locations_select".
+ */
+export interface ReferenceLocationsSelect<T extends boolean = true> {
+  name?: T;
+  slug?: T;
+  background_image?: T;
+  description?: T;
+  quote?: T;
+  related_documents?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "documents_select".
+ */
+export interface DocumentsSelect<T extends boolean = true> {
+  reference_code?: T;
+  slug?: T;
+  title?: T;
+  date?: T;
+  type?: T;
+  physical_characteristics?:
+    | T
+    | {
+        document_types?: T;
+        material_types_and_formats?: T;
+        colors?: T;
+      };
+  preview_audio_video?: T;
+  credits_name?: T;
+  credits_link?: T;
+  thematics?: T;
   legend?: T;
   description?: T;
+  alt?: T;
   location?:
     | T
     | {
-        location_name?: T;
+        location_reference?: T;
+        location_details?: T;
         location_link?: T;
       };
-  type?: T;
   notice?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -418,52 +587,37 @@ export interface MediasSelect<T extends boolean = true> {
   height?: T;
   focalX?: T;
   focalY?: T;
+  sizes?:
+    | T
+    | {
+        thumbnail?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        preview?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+      };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "thematics_select".
+ * via the `definition` "medias_select".
  */
-export interface ThematicsSelect<T extends boolean = true> {
-  backgroundImage?: T;
-  slug?: T;
-  title?: T;
-  color?: T;
-  medias?: T;
-  description?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "cities_select".
- */
-export interface CitiesSelect<T extends boolean = true> {
+export interface MediasSelect<T extends boolean = true> {
   name?: T;
-  slug?: T;
-  description?: T;
-  thematics?: T;
-  medias?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "sections_select".
- */
-export interface SectionsSelect<T extends boolean = true> {
-  name?: T;
-  thematics?: T;
-  documents?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "documents_select".
- */
-export interface DocumentsSelect<T extends boolean = true> {
-  alt?: T;
-  description?: T;
   updatedAt?: T;
   createdAt?: T;
   url?: T;
@@ -475,6 +629,75 @@ export interface DocumentsSelect<T extends boolean = true> {
   height?: T;
   focalX?: T;
   focalY?: T;
+  sizes?:
+    | T
+    | {
+        thumbnail?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        preview?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+      };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "metadata-files_select".
+ */
+export interface MetadataFilesSelect<T extends boolean = true> {
+  standard_name?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "document-types_select".
+ */
+export interface DocumentTypesSelect<T extends boolean = true> {
+  name?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "material-types-and-formats_select".
+ */
+export interface MaterialTypesAndFormatsSelect<T extends boolean = true> {
+  name?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "colors_select".
+ */
+export interface ColorsSelect<T extends boolean = true> {
+  name?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

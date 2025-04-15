@@ -1,21 +1,23 @@
 ---
-import Bloc1 from "../components/Blocs/Bloc1.astro";
-import Bloc2 from "../components/Blocs/Bloc2.astro";
-import Bloc3 from "../components/Blocs/Bloc3.astro";
-import Bloc4 from "../components/Blocs/Bloc4.astro";
-import Bloc5 from "../components/Blocs/Bloc5.astro";
-import Bloc6 from "../components/Blocs/Bloc6.astro";
+import Bloc1 from "./BlocsGalerie/Bloc1.astro";
+import Bloc2 from "./BlocsGalerie/Bloc2.astro";
+import Bloc3 from "./BlocsGalerie/Bloc3.astro";
+import Bloc4 from "./BlocsGalerie/Bloc4.astro";
+import Bloc5 from "./BlocsGalerie/Bloc5.astro";
+import Bloc6 from "./BlocsGalerie/Bloc6.astro";
 
 type Props = {
-    medias: {
-        type: "image" | "audio" | "video";
+    documents: {
+        type: "Image" | "Audio" | "Video";
         src: string;
+        alt: string;
         slug: string;
         titre: string;
+        preview_audio_video: string | null;
     }[];
 };
 
-const {medias} = Astro.props;
+const {documents} = Astro.props;
 
 const blocs = [
     {component: Bloc1, tile: 5},
@@ -30,25 +32,25 @@ const shuffle = (items: any[]) => {
     return items.sort(() => Math.random() - 0.5);
 };
 
-shuffle(medias);
+const shuffledDocuments = [...documents].sort(() => Math.random() - 0.5);
 
 let results: any[] = [];
 let blocIndex = 0;
 
-for (let i = 0; i < medias.length;) {
+for (let i = 0; i < shuffledDocuments.length;) {
     const {component, tile} = blocs[blocIndex];
 
-    const blocMedias = medias.slice(i, i + tile);
+    const blocDocuments = shuffledDocuments.slice(i, i + tile);
 
     results.push({
         id: blocIndex,
         component,
-        medias: blocMedias,
-        isFull: blocMedias.length === tile, // Vérifie si le bloc est rempli au max
+        documents: blocDocuments,
+        isFull: blocDocuments.length === tile, // Vérifie si le bloc est rempli au max
     });
 
     blocIndex = blocIndex >= blocs.length - 1 ? 0 : blocIndex + 1;
-    i += blocMedias.length; // Avance du nombre réel d'éléments ajoutés
+    i += blocDocuments.length; // Avance du nombre réel d'éléments ajoutés
 }
 
 // Séparer les blocs remplis et non remplis
@@ -61,21 +63,24 @@ shuffle(partialResults);
 results = [...fullResults, ...partialResults];
 
 
-const mediasList: { slug: string }[] = [];
+const documentsList: { slug: string }[] = [];
 
 results.forEach(item => {
-    item.medias.forEach((media: { slug: string }) => {
-        mediasList.push({
-            slug: media.slug
+    item.documents.forEach((document: { slug: string }) => {
+        documentsList.push({
+            slug: document.slug
         });
     });
 });
 ---
 
-<section class="galerie">
-    {results.map(({component: Bloc, medias}) =>
-            <Bloc medias={medias} mediasList={mediasList}/>)}
-</section>
+{documents.length > 0 && (
+    <section class="galerie">
+        {results.map(({ component: Bloc, documents }) =>
+                <Bloc documents={documents} documentsList={documentsList} />
+        )}
+    </section>
+)}
 
 
 <style scoped>

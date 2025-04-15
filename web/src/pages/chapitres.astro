@@ -75,7 +75,7 @@ const chapters = [
         {chapters.map((chapter, index) => (
                 <div class="chapitrage">
                     <div class="gauche">
-                        <ImageFullscreen src={asset(chapter.src)} legend={chapter.legend} />
+                        <ImageFullscreen src={asset(chapter.src)} legend={chapter.legend} alt={chapter.legend} />
                     </div>
                     <div class="droite">
                         <h3>Chapitre {index + 1}</h3>
