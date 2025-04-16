@@ -14,26 +14,20 @@ const nextConfig = {
     }
   },
 
-  api: {
-    bodyParser: {
-      sizeLimit: '200mb',
-    },
+    rewrites: async () => [
+  /*{
+    source: "/memoires-ouvrieres-goux/cms/api/:path*",
+    destination: "/api/:path*",
   },
-
-  /*  rewrites: async () => [
-      {
-        source: "/memoires-ouvrieres-goux/cms/api/:path*",
-        destination: "/api/:path*",
-      },
-      {
-        source: "/memoires-ouvrieres-goux/cms/admin/:path*",
-        destination: "/admin/:path*",
-      },
-      {
-        source: "/memoires-ouvrieres-goux/cms",
-        destination: "/admin",
-      }
-    ]*/
+  {
+    source: "/memoires-ouvrieres-goux/cms/admin/:path*",
+    destination: "/admin/:path*",
+  },*/
+  {
+    source: "/",
+    destination: "/admin",
+  }
+]
 }
 
 export default withPayload(nextConfig)

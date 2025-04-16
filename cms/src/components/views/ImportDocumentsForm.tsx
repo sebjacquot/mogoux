@@ -246,10 +246,10 @@ const ImportDocumentsForm: React.FC = () => {
         const workbook = new ExcelJS.Workbook();
         await workbook.xlsx.load(await file.arrayBuffer());
 
-        // 1. Récupère la feuille principale contenant les données des médias
+        // 1. Récupère la feuille principale contenant les données des documents
         const dataSheet = workbook.getWorksheet('Modèle Import Documents');
         if (!dataSheet) {
-            throw new Error("La feuille 'Modèle Import Médias' est manquante.");
+            throw new Error("La feuille 'Modèle Import Documents' est manquante.");
         }
 
         // 2. Liste des feuilles de référence à charger (document-types, colors, etc.)
@@ -334,7 +334,7 @@ const ImportDocumentsForm: React.FC = () => {
 
         // Étape 1 - Validation initiale des fichiers
         if (!excelFile || !documentFiles) {
-            setError('Veuillez sélectionner un fichier Excel et des médias.');
+            setError('Veuillez sélectionner un fichier Excel et des documents.');
             return;
         }
 
