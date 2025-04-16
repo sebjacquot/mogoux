@@ -106,7 +106,7 @@ const ExportTemplateButton: React.FC = () => {
                 refSheets['document-types']?.docs[0]?.name || '',
                 refSheets['material-types-and-formats']?.docs[0]?.name || '',
                 refSheets['colors']?.docs[0]?.name || '',
-                refSheets['medias']?.docs[0]?.filename || '',
+                refSheets['medias']?.docs[0]?.name || '',
                 'Nom crédit',
                 'https://credit.exemple.com',
                 refSheets['thematics']?.docs[0]?.title || '',
