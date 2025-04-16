@@ -82,7 +82,7 @@ export default buildConfig({
   },
   db: postgresAdapter({
     pool: {
-      connectionString: encodeURI(process.env.DATABASE_URI || ''),
+      connectionString: process.env.DATABASE_URI || '',
     }
   }),
   sharp,
