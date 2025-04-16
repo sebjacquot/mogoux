@@ -241,7 +241,7 @@ export const Documents: CollectionConfig = {
     },
     {
       name: "notice",
-      label: "Lien vers notice externe du docuemnt",
+      label: "Lien vers notice externe du document",
       type: "text",
       required: false,
     },
