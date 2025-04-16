@@ -20,7 +20,7 @@ const reorderedThematics = thematics.sort((a, b) => (a.slug === positionSlugThem
       ...thematic,
       documents: thematic.documents.map(document => ({
         type: document.type,
-        src: `${import.meta.env.CMS_BASE_URL}${document.url}`,
+        src: `${import.meta.env.CMS_BASE_URL}${document.sizes.preview.url ?? document.url}`,
         alt: document.alt,
         slug: document.slug,
         titre: document.title,
@@ -49,6 +49,7 @@ const reorderedThematics = thematics.sort((a, b) => (a.slug === positionSlugThem
                 class="image"
                 src={`${import.meta.env.CMS_BASE_URL}${thematic.src}`}
                 alt={thematic.alt}
+                loading="lazy"
               />
               <div class="texte">
                 <h3>Thématique</h3>
@@ -204,38 +205,28 @@ const reorderedThematics = thematics.sort((a, b) => (a.slug === positionSlugThem
 
 
 <script is:inline>
-  let currentIndex = 0;
-  let totalThematics = 0;
+  window.currentIndex = window.currentIndex ?? 0;
   let carouselWidth = 0;
-
-  function cleanUpCarousel() {
-
-    const carouselInner = document.querySelector(".carousel-inner");
-    if (carouselInner) {
-      const newCarouselInner = carouselInner.cloneNode(true);
-      carouselInner.replaceWith(newCarouselInner);
-    }
-  }
 
   function moveCarousel(direction) {
     const carouselInner = document.querySelector(".carousel-inner");
     const items = document.querySelectorAll(".carousel-inner .carousel-element");
 
-    totalThematics = items.length;
+    const totalThematics = items.length;
     if (!carouselInner || totalThematics === 0) return;
 
     // Mise à jour de l'index avec boucle infinie
-    currentIndex = (currentIndex + direction + totalThematics) % totalThematics;
+    window.currentIndex = (window.currentIndex + direction + totalThematics) % totalThematics;
 
     // Recalcule la largeur du carrousel pour éviter les erreurs
     const carousel = document.querySelector(".carousel");
-    if (carousel) {
+    if (carouselWidth === 0 && carousel) {
       carouselWidth = carousel.clientWidth;
     }
 
     // Appliquer le scroll
     carouselInner.style.transition = "transform 0.5s ease-in-out";
-    carouselInner.style.transform = `translateX(-${currentIndex * carouselWidth}px)`;
+    carouselInner.style.transform = `translateX(-${window.currentIndex * carouselWidth}px)`;
 
     updateIndicators();
   }
@@ -244,22 +235,26 @@ const reorderedThematics = thematics.sort((a, b) => (a.slug === positionSlugThem
     const indicators = document.querySelectorAll(".index .index-pos");
 
     indicators.forEach((indicator, index) => {
-      indicator.classList.toggle("checked", index === currentIndex);
+      indicator.classList.toggle("checked", index === window.currentIndex);
     });
 
     updateMediaDisplay();
   }
 
   function updateMediaDisplay() {
-    const galleries = document.querySelectorAll(".gallery");
-    galleries.forEach((gallery, index) => {
-      gallery.style.display = index === currentIndex ? "block" : "none";
+    const activeGallery = document.querySelector(`.gallery[data-gallery-index="${window.currentIndex}"]`);
+    const allGalleries = document.querySelectorAll(".gallery");
+
+    allGalleries.forEach(gallery => {
+      gallery.style.display = "none";
     });
+
+    if (activeGallery) {
+      activeGallery.style.display = "block";
+    }
   }
 
   function initializeCarousel() {
-    cleanUpCarousel(); // Nettoyage avant d'ajouter les nouveaux événements
-
     const carouselInner = document.querySelector(".carousel-inner");
     const indicators = document.querySelectorAll(".index .index-pos");
     const thematics = document.querySelectorAll(".carousel-inner .carousel-element");
@@ -267,7 +262,6 @@ const reorderedThematics = thematics.sort((a, b) => (a.slug === positionSlugThem
 
     if (!carouselInner || thematics.length === 0 || !carousel) return;
 
-    totalThematics = thematics.length;
     carouselWidth = carousel.clientWidth;
 
     carouselInner.style.transition = "none";
@@ -279,12 +273,7 @@ const reorderedThematics = thematics.sort((a, b) => (a.slug === positionSlugThem
     updateIndicators();
   }
 
-  function resetCarousel() {
-    currentIndex = 0;
-    initializeCarousel();
-  }
-
-  const resizeObserver = new ResizeObserver(() => {
+  window.resizeObserver = window.resizeObserver ?? new ResizeObserver(() => {
     const carousel = document.querySelector(".carousel");
     if (carousel) {
       carouselWidth = carousel.clientWidth;
@@ -292,11 +281,13 @@ const reorderedThematics = thematics.sort((a, b) => (a.slug === positionSlugThem
     }
   });
 
-  document.addEventListener("astro:page-load", () => {
+  function setupCarousel() {
     initializeCarousel();
+    updateMediaDisplay();
     const carousel = document.querySelector(".carousel");
-    if (carousel) resizeObserver.observe(carousel);
-  });
+    if (carousel) window.resizeObserver.observe(carousel);
+  }
 
-  document.addEventListener("astro:after-swap", resetCarousel);
+  document.addEventListener("astro:page-load", setupCarousel);
+  document.addEventListener("astro:after-swap", setupCarousel);
 </script>

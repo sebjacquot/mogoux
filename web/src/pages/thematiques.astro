@@ -46,16 +46,14 @@ try {
         </div>
 
         <div class="col">
-            {
-                sections.map((section: any) => (
+            {sections.map((section: any) => (
                     <Sections
                         title={section.name!}
                         sectionId={section.id}
                         color={section.color}
                         thematics={section.thematics}
                     />
-                ))
-            }
+                ))}
             {metadataFiles.length > 0 && (
                 <div class="export-archive">
                     <p>Exporter l'instrument de recherche</p>

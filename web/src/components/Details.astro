@@ -47,7 +47,7 @@ const date = (props.date + '').charAt(0).toUpperCase() + (props.date + '').slice
                     class="thematic"
                     style={`background-color: ${thematic.color || 'var(--legende-color)'}`}
                 >
-                  <a href={asset(`/thematiques/${thematic.slug}?section=${thematic.related_sections?.docs?.[0] || ''}`)}>
+                  <a href={asset(`/thematiques/${thematic.slug}?section=${thematic.related_sections?.docs?.[0] || ''}`)} target="_self">
                     {thematic.title}
                   </a>
                 </li>
@@ -68,14 +68,14 @@ const date = (props.date + '').charAt(0).toUpperCase() + (props.date + '').slice
                 </div>
             </div>
             <div class="cell-right">
-              <a href={asset(`/lieux-reference/${props.location.location_reference.slug}`)} target="_blank" rel="noopener noreferrer">{props.location.location_reference.name}</a>
+              <a href={asset(`/lieux-reference/${props.location.location_reference.slug}`)} rel="noopener noreferrer">{props.location.location_reference.name}</a>
             </div>
 
             <!-- Complément de lieu -->
             {props.location.location_details && props.location.location_details.trim() !== "" && (
                   <>
                       <div class="cell-left complement-lieu">
-                          <h3>&nbsp;&nbsp;&nbsp;&nbsp; Complément</h3>
+                          <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Précision sur le lieu</h3>
                       </div>
                       <div class="cell-right complement-lieu">
                           {props.location.location_link ? (
@@ -175,7 +175,7 @@ const date = (props.date + '').charAt(0).toUpperCase() + (props.date + '').slice
     }
 
     .description {
-        margin-bottom: 1.5em;
+        margin-bottom: 2.5em;
         width: 90%;
         line-height: 1.2;
         text-align: justify;
@@ -194,7 +194,7 @@ const date = (props.date + '').charAt(0).toUpperCase() + (props.date + '').slice
         padding: 2px 5px 0 5px;
         border-radius: 3px;
         font-size: 1rem;
-        cursor: help;
+        cursor: default;
     }
 
     .tooltip {
