@@ -6,6 +6,7 @@ const MaterialTypesAndFormats: CollectionConfig = {
         useAsTitle: 'name',
         group: 'Caractéristiques physiques',
     },
+    defaultSort: "name",
     labels: {
         singular: {
             en: 'Material type and format',

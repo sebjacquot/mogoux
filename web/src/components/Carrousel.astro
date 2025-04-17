@@ -205,89 +205,93 @@ const reorderedThematics = thematics.sort((a, b) => (a.slug === positionSlugThem
 
 
 <script is:inline>
-  window.currentIndex = window.currentIndex ?? 0;
-  let carouselWidth = 0;
+  if (!window.__carousel_initialized__) {
+    window.__carousel_initialized__ = true;
 
-  function moveCarousel(direction) {
-    const carouselInner = document.querySelector(".carousel-inner");
-    const items = document.querySelectorAll(".carousel-inner .carousel-element");
+    window.currentIndex = window.currentIndex ?? 0;
+    let carouselWidth = 0;
 
-    const totalThematics = items.length;
-    if (!carouselInner || totalThematics === 0) return;
+    function moveCarousel(direction) {
+      const carouselInner = document.querySelector(".carousel-inner");
+      const items = document.querySelectorAll(".carousel-inner .carousel-element");
 
-    // Mise à jour de l'index avec boucle infinie
-    window.currentIndex = (window.currentIndex + direction + totalThematics) % totalThematics;
+      const totalThematics = items.length;
+      if (!carouselInner || totalThematics === 0) return;
 
-    // Recalcule la largeur du carrousel pour éviter les erreurs
-    const carousel = document.querySelector(".carousel");
-    if (carouselWidth === 0 && carousel) {
-      carouselWidth = carousel.clientWidth;
+      // Mise à jour de l'index avec boucle infinie
+      window.currentIndex = (window.currentIndex + direction + totalThematics) % totalThematics;
+
+      // Recalcule la largeur du carrousel pour éviter les erreurs
+      const carousel = document.querySelector(".carousel");
+      if (carouselWidth === 0 && carousel) {
+        carouselWidth = carousel.clientWidth;
+      }
+
+      // Appliquer le scroll
+      carouselInner.style.transition = "transform 0.5s ease-in-out";
+      carouselInner.style.transform = `translateX(-${window.currentIndex * carouselWidth}px)`;
+
+      updateIndicators();
     }
 
-    // Appliquer le scroll
-    carouselInner.style.transition = "transform 0.5s ease-in-out";
-    carouselInner.style.transform = `translateX(-${window.currentIndex * carouselWidth}px)`;
+    function updateIndicators() {
+      const indicators = document.querySelectorAll(".index .index-pos");
 
-    updateIndicators();
-  }
+      indicators.forEach((indicator, index) => {
+        indicator.classList.toggle("checked", index === window.currentIndex);
+      });
 
-  function updateIndicators() {
-    const indicators = document.querySelectorAll(".index .index-pos");
+      updateMediaDisplay();
+    }
 
-    indicators.forEach((indicator, index) => {
-      indicator.classList.toggle("checked", index === window.currentIndex);
+    function updateMediaDisplay() {
+      const activeGallery = document.querySelector(`.gallery[data-gallery-index="${window.currentIndex}"]`);
+      const allGalleries = document.querySelectorAll(".gallery");
+
+      allGalleries.forEach(gallery => {
+        gallery.style.display = "none";
+      });
+
+      if (activeGallery) {
+        activeGallery.style.display = "block";
+      }
+    }
+
+    function initializeCarousel() {
+      const carouselInner = document.querySelector(".carousel-inner");
+      const indicators = document.querySelectorAll(".index .index-pos");
+      const thematics = document.querySelectorAll(".carousel-inner .carousel-element");
+      const carousel = document.querySelector(".carousel");
+
+      if (!carouselInner || thematics.length === 0 || !carousel) return;
+
+      carouselWidth = carousel.clientWidth;
+
+      carouselInner.style.transition = "none";
+      carouselInner.style.transform = `translateX(0px)`;
+
+      indicators.forEach(indicator => indicator.classList.remove("checked"));
+      if (indicators[0]) indicators[0].classList.add("checked");
+
+      updateIndicators();
+    }
+
+    window.resizeObserver = window.resizeObserver ?? new ResizeObserver(() => {
+      const carousel = document.querySelector(".carousel");
+      if (carousel) {
+        carouselWidth = carousel.clientWidth;
+        moveCarousel(0); // Réajuster la position après redimensionnement
+      }
     });
 
-    updateMediaDisplay();
-  }
-
-  function updateMediaDisplay() {
-    const activeGallery = document.querySelector(`.gallery[data-gallery-index="${window.currentIndex}"]`);
-    const allGalleries = document.querySelectorAll(".gallery");
-
-    allGalleries.forEach(gallery => {
-      gallery.style.display = "none";
-    });
-
-    if (activeGallery) {
-      activeGallery.style.display = "block";
+    function setupCarousel() {
+      initializeCarousel();
+      updateMediaDisplay();
+      const carousel = document.querySelector(".carousel");
+      if (carousel) window.resizeObserver.observe(carousel);
     }
+
+    document.addEventListener("astro:page-load", setupCarousel);
+    document.addEventListener("astro:after-swap", setupCarousel);
   }
-
-  function initializeCarousel() {
-    const carouselInner = document.querySelector(".carousel-inner");
-    const indicators = document.querySelectorAll(".index .index-pos");
-    const thematics = document.querySelectorAll(".carousel-inner .carousel-element");
-    const carousel = document.querySelector(".carousel");
-
-    if (!carouselInner || thematics.length === 0 || !carousel) return;
-
-    carouselWidth = carousel.clientWidth;
-
-    carouselInner.style.transition = "none";
-    carouselInner.style.transform = `translateX(0px)`;
-
-    indicators.forEach(indicator => indicator.classList.remove("checked"));
-    if (indicators[0]) indicators[0].classList.add("checked");
-
-    updateIndicators();
-  }
-
-  window.resizeObserver = window.resizeObserver ?? new ResizeObserver(() => {
-    const carousel = document.querySelector(".carousel");
-    if (carousel) {
-      carouselWidth = carousel.clientWidth;
-      moveCarousel(0); // Réajuster la position après redimensionnement
-    }
-  });
-
-  function setupCarousel() {
-    initializeCarousel();
-    updateMediaDisplay();
-    const carousel = document.querySelector(".carousel");
-    if (carousel) window.resizeObserver.observe(carousel);
-  }
-
-  document.addEventListener("astro:page-load", setupCarousel);
-  document.addEventListener("astro:after-swap", setupCarousel);
 </script>

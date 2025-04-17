@@ -1,6 +1,6 @@
 ---
 import AudioVideoCard from "../AudioVideoCard.astro";
-import {asset} from "../../utils/url";
+import { asset } from "../../utils/url";
 
 type Props = {
     document: {
@@ -11,22 +11,24 @@ type Props = {
         titre: string;
         preview_audio_video: string | null;
     };
-
-    documentsList: { slug: string } [];
+    documentsList: { slug: string }[];
 };
 
-const {document, documentsList} = Astro.props;
-const slugsParam = documentsList.length > 0 ? encodeURIComponent(documentsList.map(m => m.slug).join(",")) : "";
+const { document, documentsList } = Astro.props;
+const slugsParam = documentsList.length > 0
+    ? encodeURIComponent(documentsList.map(m => m.slug).join(","))
+    : "";
 ---
 
 <a
-    data-dynamic-url
-    href={asset(`/documents/${document.slug}?slugs=${encodeURIComponent(slugsParam)}&from=__CURRENT_URL__`)}>
-
+        data-dynamic-url
+        href={asset(`/documents/${document.slug}?slugs=${encodeURIComponent(slugsParam)}&from=__CURRENT_URL__`)}
+        onclick="event.preventDefault(); this.href = this.href.replace('__CURRENT_URL__', encodeURIComponent(window.location.href)); window.location.href = this.href;"
+>
     {document.type === "Audio" || document.type === "Video" ? (
-            <AudioVideoCard preview_audio_video={document.preview_audio_video}/>
+            <AudioVideoCard preview_audio_video={document.preview_audio_video} />
     ) : (
-            <img class="image" src={document.src} loading="lazy" alt={document.alt}/>
+            <img class="image" src={document.src} loading="lazy" alt={document.alt} />
     )}
 
     <h3>{document.titre}</h3>
@@ -56,14 +58,12 @@ const slugsParam = documentsList.length > 0 ? encodeURIComponent(documentsList.m
         left: 0;
         text-align: center;
         width: calc(100% - 10px);
-
         font-size: 17px;
         color: whitesmoke;
         font-weight: 700;
         font-family: var(--primary-font);
         line-height: 1.1;
-
-        padding:0 5px 10px 5px;
+        padding: 0 5px 10px 5px;
         z-index: 2;
         opacity: 0;
         transition: all 0.5s;
@@ -92,19 +92,4 @@ const slugsParam = documentsList.length > 0 ? encodeURIComponent(documentsList.m
     a:hover h3 {
         opacity: 1;
     }
-
 </style>
-
-<script is:inline>
-    function updateLinksWithCurrentURL() {
-        const links = document.querySelectorAll('[data-dynamic-url]');
-        const currentURL = encodeURIComponent(window.location.href);
-
-        links.forEach(link => {
-            link.href = link.href.replace('__CURRENT_URL__', currentURL);
-        });
-    }
-
-    document.addEventListener('astro:page-load', updateLinksWithCurrentURL);
-    document.addEventListener('astro:after-swap', updateLinksWithCurrentURL);
-</script>

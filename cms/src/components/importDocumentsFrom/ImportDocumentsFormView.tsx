@@ -4,7 +4,7 @@ import { DefaultTemplate } from '@payloadcms/next/templates'
 import { Gutter } from '@payloadcms/ui'
 import React from 'react'
 import { redirect } from 'next/navigation';
-import ImportDocumentsForm from "@/components/views/ImportDocumentsForm";
+import ImportDocumentsForm from "@/components/importDocumentsFrom/ImportDocumentsForm";
 
 export const ImportDocumentsFormView: React.FC<AdminViewProps> = ({
     initPageResult,

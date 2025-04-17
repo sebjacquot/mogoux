@@ -83,8 +83,8 @@ export interface Config {
   };
   collectionsJoins: {
     thematics: {
-      related_documents: 'documents';
       related_sections: 'sections';
+      related_documents: 'documents';
     };
     'reference-locations': {
       related_documents: 'documents';
@@ -177,7 +177,6 @@ export interface Thematic {
   title: string;
   slug: string;
   background_image: number | Document;
-  rank?: number | null;
   description?: {
     root: {
       type: string;
@@ -193,13 +192,14 @@ export interface Thematic {
     };
     [k: string]: unknown;
   } | null;
-  related_documents?: {
-    docs?: (number | Document)[];
+  rank?: number | null;
+  related_sections?: {
+    docs?: (number | Section)[];
     hasNextPage?: boolean;
     totalDocs?: number;
   };
-  related_sections?: {
-    docs?: (number | Section)[];
+  related_documents?: {
+    docs?: (number | Document)[];
     hasNextPage?: boolean;
     totalDocs?: number;
   };
@@ -523,10 +523,10 @@ export interface ThematicsSelect<T extends boolean = true> {
   title?: T;
   slug?: T;
   background_image?: T;
-  rank?: T;
   description?: T;
-  related_documents?: T;
+  rank?: T;
   related_sections?: T;
+  related_documents?: T;
   updatedAt?: T;
   createdAt?: T;
 }

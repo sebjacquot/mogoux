@@ -1,12 +1,12 @@
 ---
-const { fromURL } = Astro.props;
+const { linkURL, linkText = "Retourner en arrière" } = Astro.props;
 ---
 
-{fromURL && (
-<a href={fromURL} class="go-back">
-    <p>Retourner en arrière</p>
-</a>
-    )}
+{linkURL && (
+    <a href={linkURL} class="go-back">
+        <p>{linkText}</p>
+    </a>
+)}
 
 <style>
 
@@ -15,7 +15,6 @@ const { fromURL } = Astro.props;
         top: 0;
         left: 80px;
         color: var(--secondary-color);
-        padding: 29.9px 15.5px;
         background: var(--bg-nav);
         cursor: pointer;
         z-index: 99;
@@ -25,6 +24,8 @@ const { fromURL } = Astro.props;
         text-decoration: none;
         display: flex;
         align-items: center;
+        width: 220px;
+        height: 80px;
 
         p{
             margin: 0;

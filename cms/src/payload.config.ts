@@ -37,7 +37,7 @@ export default buildConfig({
     components: {
       views: {
         ImportDocumentsView: {
-          Component: '@/components/views/ImportDocumentsFormView#ImportDocumentsFormView',
+          Component: '@/components/importDocumentsFrom/ImportDocumentsFormView#ImportDocumentsFormView',
           path: '/import-documents',
         },
       },

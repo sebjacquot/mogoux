@@ -64,7 +64,7 @@ const listThematics = thematics.map((thematic: any) => ({
 ---
 
 <Layout title="Thématiques">
-  <Return fromURL={asset("/thematiques")} />
+  <Return linkURL={asset("/thematiques")} linkText = "Retourner aux thématiques" />
   <div class="container">
     <div class="container2">
       <h1> {section ? section.name : "Rubrique introuvable"}</h1>
