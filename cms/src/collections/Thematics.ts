@@ -116,11 +116,6 @@ const Thematics: CollectionConfig = {
       required: true,
     },
     {
-      name: "rank",
-      label: "Ordre",
-      type: "number",
-    },
-    {
       name: "description",
       label: "Description",
       type: "richText",
@@ -129,17 +124,22 @@ const Thematics: CollectionConfig = {
       }),
     },
     {
-      name: "related_documents",
-      label: "Documents associés",
-      type: "join",
-      collection: "documents",
-      on: "thematics",
+      name: "rank",
+      label: "Ordre",
+      type: "number",
     },
     {
       name: "related_sections",
       label: "Section associé",
       type: "join",
       collection: "sections",
+      on: "thematics",
+    },
+    {
+      name: "related_documents",
+      label: "Documents associés",
+      type: "join",
+      collection: "documents",
       on: "thematics",
     }
   ],

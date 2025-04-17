@@ -6,6 +6,7 @@ const DocumentTypes: CollectionConfig = {
         useAsTitle: 'name',
         group: 'Caractéristiques physiques',
     },
+    defaultSort: "name",
     labels: {
         singular: {
             en: 'Document type',
@@ -22,7 +23,7 @@ const DocumentTypes: CollectionConfig = {
     fields: [
         {
             name: 'name',
-            label: 'Nom du type',
+            label: 'Nom du type de document',
             type: 'text',
             required: true,
             unique: true,

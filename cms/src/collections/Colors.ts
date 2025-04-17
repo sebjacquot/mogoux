@@ -6,6 +6,7 @@ const Colors: CollectionConfig = {
         useAsTitle: 'name',
         group: 'Caractéristiques physiques',
     },
+    defaultSort: "name",
     labels: {
         singular: {
             en: 'Color',

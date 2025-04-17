@@ -45,9 +45,13 @@ const date = (props.date + '').charAt(0).toUpperCase() + (props.date + '').slice
             props.thematics.map((thematic: any) => (
                 <li
                     class="thematic"
-                    style={`background-color: ${thematic.color || 'var(--legende-color)'}`}
+                    style={`border: solid 1px ${thematic.color || 'white'};`}
                 >
-                  <a href={asset(`/thematiques/${thematic.slug}?section=${thematic.related_sections?.docs?.[0] || ''}`)} target="_self">
+                  <a
+                    href={asset(`/thematiques/${thematic.slug}?section=${thematic.related_sections?.docs?.[0] || ''}`)}
+                    target="_self"
+                    style={`color: ${thematic.color || 'white'};`}
+                  >
                     {thematic.title}
                   </a>
                 </li>
@@ -229,11 +233,9 @@ const date = (props.date + '').charAt(0).toUpperCase() + (props.date + '').slice
         border-radius: 3px;
         font-size: 1rem;
         cursor: pointer;
-        color: var(--bg-nav);
 
       a {
         text-decoration: none;
-        color: var(--bg-nav);
       }
     }
 
