@@ -3,6 +3,7 @@ import { postgresAdapter } from '@payloadcms/db-postgres'
 import { payloadCloudPlugin } from '@payloadcms/payload-cloud'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { fr } from '@payloadcms/translations/languages/fr'
+import { en } from '@payloadcms/translations/languages/en'
 import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
 
@@ -27,7 +28,7 @@ const dirname = path.dirname(filename)
 
 export default buildConfig({
   i18n: {
-    supportedLanguages: { fr },
+    supportedLanguages: { fr, en },
   },
   admin: {
     user: Users.slug,

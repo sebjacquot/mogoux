@@ -1,4 +1,6 @@
 import { CollectionConfig } from "payload";
+import {lexicalEditor} from "@payloadcms/richtext-lexical";
+import {SlateToLexicalFeature} from "@payloadcms/richtext-lexical/migrate";
 
 export const Medias: CollectionConfig = {
     slug: "medias",
@@ -37,9 +39,12 @@ export const Medias: CollectionConfig = {
     },
     fields: [
         {
-            name: "name",
-            label: "Nom",
-            type: "text",
+            name: "legende",
+            label: "Légende",
+            type: "richText",
+            editor: lexicalEditor({
+                features: ({ defaultFeatures }) => [...defaultFeatures, SlateToLexicalFeature({})],
+            }),
         },
     ]
 };

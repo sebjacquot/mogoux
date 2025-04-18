@@ -115,7 +115,7 @@ const ExportAllDocumentsButton: React.FC = () => {
                     'physical_characteristics.document_types': doc.physical_characteristics?.document_types?.name || '',
                     'physical_characteristics.material_types_and_formats': doc.physical_characteristics?.material_types_and_formats?.name || '',
                     'physical_characteristics.colors': doc.physical_characteristics?.colors?.name || '',
-                    preview_audio_video: doc.preview_audio_video?.name || '',
+                    preview_audio_video: doc.preview_audio_video?.filename || '',
                     credits_name: doc.credits_name || '',
                     credits_link: doc.credits_link || '',
                     thematics_1: doc.thematics?.[0]?.title || '',
