@@ -1,4 +1,5 @@
 import { CollectionConfig } from "payload";
+import { checkSlug } from '@/hooks/checkSlug';
 
 export const Documents: CollectionConfig = {
   slug: "documents",
@@ -113,6 +114,9 @@ export const Documents: CollectionConfig = {
       type: "text",
       required: true,
       unique: true,
+      hooks: {
+        beforeValidate: [checkSlug('documents')],
+      },
     },
     {
       name: "title",
