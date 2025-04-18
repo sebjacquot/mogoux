@@ -49,6 +49,7 @@ const Thematics: CollectionConfig = {
       },
     },
     {
+      // Récupérer plusieurs thématiques avec les données complètes des documents associés
       path: "/by-ids",
       method: "post",
       handler: async (req) => {
