@@ -29,20 +29,27 @@ try {
   if (!responseThematics.ok) throw new Error(`HTTP error! status: ${responseThematics.status}`);
   const thematicsOfSection = await responseThematics.json();
 
-  // 5. Ajout de la couleur de section à chaque thématique
-  thematics = thematicsOfSection.map((thematic: any) => ({
-    ...thematic,
-    color: section?.color || "#000000"
-  }));
+  // 5. Réindexation des thématiques récupérées par ID
+  const thematicsMap = new Map(
+      thematicsOfSection.map((t: any) => [t.id, t])
+  );
 
-  // 6. Tri par rank
-  thematics = thematics.sort((a: any, b: any) => {
-    const rankA = a.rank;
-    const rankB = b.rank;
+// 6. Reconstruction dans l'ordre de la section
+  thematics = thematicIds
+      .map((id: string) => {
+        const thematic = thematicsMap.get(id);
+        if (!thematic) return null;
+        return {
+          ...thematic,
+          color: section?.color || "#000000"
+        };
+      })
+      .filter((t: any) => t !== null);
 
-    if (rankA == null && rankB == null) return 0;
-    if (rankA == null) return 1;
-    if (rankB == null) return -1;
+// 7. Tri dans cet ordre selon le champ `rank`
+  thematics.sort((a: any, b: any) => {
+    const rankA = a.rank ?? Infinity;
+    const rankB = b.rank ?? Infinity;
     return rankA - rankB;
   });
 
@@ -54,7 +61,7 @@ try {
 
 // 7. Construction finale pour le carrousel
 const listThematics = thematics.map((thematic: any) => ({
-  src: thematic.background_image?.url || "",
+  src: `${import.meta.env.CMS_BASE_URL}${thematic.background_image?.url || ""}`,
   title: thematic.title || "",
   slug: thematic.slug || "",
   alt: thematic.background_image?.alt || "",
@@ -67,7 +74,9 @@ const listThematics = thematics.map((thematic: any) => ({
   <Return linkURL={asset("/thematiques")} linkText = "Retourner aux thématiques" />
   <div class="container">
     <div class="container2">
-      <h1> {section ? section.name : "Rubrique introuvable"}</h1>
+      <div class="div-titre">
+        <h1 style=`background-color: ${section.color}80`> {section ? section.name : "Rubrique introuvable"}</h1>
+      </div>
       <Carrousel
           thematics={listThematics}
           positionSlugThematique={slug || ""}
@@ -86,13 +95,20 @@ const listThematics = thematics.map((thematic: any) => ({
       width: 98vw;
     }
 
+    .div-titre {
+      display: flex;
+      justify-content: center;
+    }
+
     h1 {
-      color: #e4e4e4;
+      color: #ffffff;
       text-align: center;
       font-size: 30px;
       font-family: var(--article-font), Helvetica, serif;
       font-weight: bold;
       margin: 25px 0;
+      padding: 0 11px;
+      border-radius: 2px;
     }
   </style>
 </Layout>

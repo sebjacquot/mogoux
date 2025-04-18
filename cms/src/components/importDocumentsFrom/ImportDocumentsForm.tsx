@@ -450,7 +450,7 @@ const ImportDocumentsForm: React.FC = () => {
     return (
         <div>
             <form className="import-documents-form" onSubmit={handleSubmit}>
-                <p>Fichier excel</p>
+                <p>Fichier Excel</p>
                 <div className="upload-box">
                     <input
                         ref={excelInputRef}
@@ -468,7 +468,7 @@ const ImportDocumentsForm: React.FC = () => {
                     )}
                 </div>
 
-                <p>Médias</p>
+                <p>Documents</p>
                 <div className="upload-box">
                     <input
                         ref={documentInputRef}
@@ -478,7 +478,7 @@ const ImportDocumentsForm: React.FC = () => {
                         multiple
                         onChange={handleDocumentChange}
                     />
-                    <label htmlFor="document-files">Sélectionnez des médias</label>
+                    <label htmlFor="document-files">Sélectionnez des documents</label>
                     {documentFiles && (
                         <div className="file-preview">
                             {documentFiles.length} fichier(s) sélectionné(s)

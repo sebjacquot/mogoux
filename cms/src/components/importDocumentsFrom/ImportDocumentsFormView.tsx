@@ -29,7 +29,7 @@ export const ImportDocumentsFormView: React.FC<AdminViewProps> = ({
             visibleEntities={initPageResult.visibleEntities}
         >
             <Gutter>
-                <h1>Import de documents</h1>
+                <h1>Import de Documents</h1>
                 <br />
                 <ImportDocumentsForm />
             </Gutter>
