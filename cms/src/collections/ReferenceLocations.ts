@@ -2,6 +2,7 @@ import { CollectionConfig } from "payload";
 
 import { SlateToLexicalFeature } from '@payloadcms/richtext-lexical/migrate'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import { checkSlug } from '@/hooks/checkSlug';
 
 const ReferenceLocations: CollectionConfig = {
   slug: "reference-locations",
@@ -81,6 +82,9 @@ const ReferenceLocations: CollectionConfig = {
       type: "text",
       required: true,
       unique: true,
+      hooks: {
+        beforeValidate: [checkSlug('reference-locations')],
+      },
     },
     {
       name: "background_image",

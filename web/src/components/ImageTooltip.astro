@@ -6,17 +6,21 @@ type Props = {
     className?: string;
 };
 const { src, legend, alt, className } = Astro.props;
+
+function stripHTML(str: string): string {
+    return str.replace(/<[^>]*>?/gm, '');
+}
 ---
 
 <img
     src={src}
-    alt={alt}
+    alt={stripHTML(alt)}
     class={`${className || "responsive-image"} image`}
     loading="lazy"
 />
 
 { legend &&
-    <div class="tooltipImage">{legend}</div>
+    <div class="tooltipImage" set:html={legend}></div>
 }
 
 

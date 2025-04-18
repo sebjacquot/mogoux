@@ -1,6 +1,8 @@
 import { CollectionConfig } from "payload";
+
 import {lexicalEditor} from "@payloadcms/richtext-lexical";
 import {SlateToLexicalFeature} from "@payloadcms/richtext-lexical/migrate";
+import { checkSlug } from '@/hooks/checkSlug';
 
 const Thematics: CollectionConfig = {
   slug: "thematics",
@@ -107,6 +109,9 @@ const Thematics: CollectionConfig = {
       type: "text",
       required: true,
       unique: true,
+      hooks: {
+        beforeValidate: [checkSlug('thematics')],
+      },
     },
     {
       name: "background_image",

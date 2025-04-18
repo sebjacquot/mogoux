@@ -68,6 +68,7 @@ const listThematics = thematics.map((thematic: any) => ({
   couleur: thematic.color || "",
   documents: thematic.related_documents || []
 }));
+
 ---
 
 <Layout title="Thématiques">
@@ -75,7 +76,7 @@ const listThematics = thematics.map((thematic: any) => ({
   <div class="container">
     <div class="container2">
       <div class="div-titre">
-        <h1 style=`background-color: ${section.color}80`> {section ? section.name : "Rubrique introuvable"}</h1>
+        <h1 style=`background-color: ${section.color}D6`> {section ? section.name : "Rubrique introuvable"}</h1>
       </div>
       <Carrousel
           thematics={listThematics}

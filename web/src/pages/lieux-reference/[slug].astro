@@ -67,6 +67,10 @@ const descriptionHtml = referenceLocations?.description?.root?.children
 const quoteHtml = referenceLocations?.quote?.root?.children
     ? renderLexicalToHTML(referenceLocations.quote.root.children)
     : "";
+
+const legendeHtml = referenceLocations?.background_image?.legende?.root?.children
+    ? renderLexicalToHTML(referenceLocations?.background_image?.legende?.root?.children)
+    : ""
 ---
 
 <Layout title=`${referenceLocations.name}`>
@@ -94,8 +98,8 @@ const quoteHtml = referenceLocations?.quote?.root?.children
         {referenceLocations?.background_image && (
             <ImageTooltip
                 src={`${import.meta.env.CMS_BASE_URL}${referenceLocations.background_image.url}`}
-                legend={referenceLocations.background_image.legend}
-                alt={referenceLocations.background_image.alt}
+                legend={legendeHtml}
+                alt={legendeHtml}
             />
         )}
 
