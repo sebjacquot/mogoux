@@ -128,7 +128,7 @@ export const Documents: CollectionConfig = {
     },
     {
       name: "type",
-      label: "Type de médias",
+      label: "Type de document",
       type: "select",
       options: [
         {

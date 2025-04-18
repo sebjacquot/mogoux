@@ -9,11 +9,21 @@ import {asset} from "../../utils/url";
 const {slug} = Astro.params;
 
 let referenceLocations = null;
+
 try {
     const res = await fetch(`${import.meta.env.CMS_URL}/api/reference-locations/slug/${slug}`);
     referenceLocations = await res.json();
 } catch (error) {
     console.error("Failed to fetch reference locations", error);
+}
+
+let sections = null;
+try {
+    const res = await fetch(`${import.meta.env.CMS_URL}/api/sections`);
+    const json = await res.json();
+    sections = json.docs ?? [];
+} catch (error) {
+    console.error("Failed to fetch sections", error);
 }
 
 const documents = await Promise.all(
@@ -44,14 +54,19 @@ const documents = await Promise.all(
             alt: document.alt ?? '',
             slug: document.slug ?? '',
             titre: document.title ?? '',
+            section: document.thematics?.[0]?.related_sections?.docs ?? '',
             preview_audio_video: previewAudioVideoUrl,
         };
     }) ?? []
 );
 
-const descriptionHtml = renderLexicalToHTML(referenceLocations?.description.root.children)
-const quoteHtml = renderLexicalToHTML(referenceLocations?.quote.root.children)
+const descriptionHtml = referenceLocations?.description?.root?.children
+    ? renderLexicalToHTML(referenceLocations.description.root.children)
+    : "";
 
+const quoteHtml = referenceLocations?.quote?.root?.children
+    ? renderLexicalToHTML(referenceLocations.quote.root.children)
+    : "";
 ---
 
 <Layout title=`${referenceLocations.name}`>
@@ -77,11 +92,11 @@ const quoteHtml = renderLexicalToHTML(referenceLocations?.quote.root.children)
         </div>
 
         {referenceLocations?.background_image && (
-                <ImageTooltip
-                        src={`${import.meta.env.CMS_BASE_URL}${referenceLocations.background_image.url}`}
-                        legend={referenceLocations.background_image.legend}
-                        alt={referenceLocations.background_image.alt}
-                />
+            <ImageTooltip
+                src={`${import.meta.env.CMS_BASE_URL}${referenceLocations.background_image.url}`}
+                legend={referenceLocations.background_image.legend}
+                alt={referenceLocations.background_image.alt}
+            />
         )}
 
         <div class="overlay"></div>
@@ -89,7 +104,7 @@ const quoteHtml = renderLexicalToHTML(referenceLocations?.quote.root.children)
 
     <section class="content">
         <div class="frise grid-wrapper">
-            <Galerie documents={documents}/>
+            <Galerie documents={documents} sections={sections} />
         </div>
 
     </section>

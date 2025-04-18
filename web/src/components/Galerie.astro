@@ -6,70 +6,101 @@ import Bloc4 from "./BlocsGalerie/Bloc4.astro";
 import Bloc5 from "./BlocsGalerie/Bloc5.astro";
 import Bloc6 from "./BlocsGalerie/Bloc6.astro";
 
-type Props = {
-    documents: {
-        type: "Image" | "Audio" | "Video";
-        src: string;
-        alt: string;
-        slug: string;
-        titre: string;
-        preview_audio_video: string | null;
-    }[];
+type Section = {
+    id: number;
+    name: string;
+    rank: number;
+    color: string;
+    [key: string]: any;
 };
 
-const {documents} = Astro.props;
+type Document = {
+    type: "Image" | "Audio" | "Video";
+    src: string;
+    alt: string;
+    slug: string;
+    section?: number[];
+    titre: string;
+    preview_audio_video: string | null;
+};
 
+type Props = {
+    documents: Document[];
+    sections?: Section[];
+};
+
+const { documents, sections } = Astro.props;
+
+// Mélange un tableau aléatoirement
+const shuffle = (items: any[]) => items.sort(() => Math.random() - 0.5);
+
+// Étape 1 : Trier les sections par rank
+const sortedSections = Array.isArray(sections)
+    ? sections
+        .filter(section => typeof section?.id === 'number' && typeof section?.rank === 'number')
+        .sort((a, b) => a.rank - b.rank)
+    : [];
+
+// Étape 2 : Organiser les documents selon l'ordre des sections
+let orderedDocuments: Document[] = [];
+
+for (const section of sortedSections) {
+    const docsInSection = documents.filter(doc =>
+        Array.isArray(doc.section) && doc.section.includes(section.id)
+    );
+    orderedDocuments.push(...shuffle(docsInSection));
+}
+
+// Étape 3 : Ajouter les documents sans section à la fin
+const docsWithoutSection = documents.filter(
+    doc => !Array.isArray(doc.section) || doc.section.length === 0
+);
+orderedDocuments.push(...shuffle(docsWithoutSection));
+
+// Étape 4 : Répartition dans les blocs
 const blocs = [
-    {component: Bloc1, tile: 5},
-    {component: Bloc2, tile: 3},
-    {component: Bloc3, tile: 5},
-    {component: Bloc4, tile: 6},
-    {component: Bloc5, tile: 3},
-    {component: Bloc6, tile: 6},
+    { component: Bloc1, tile: 5 },
+    { component: Bloc2, tile: 3 },
+    { component: Bloc3, tile: 5 },
+    { component: Bloc4, tile: 6 },
+    { component: Bloc5, tile: 3 },
+    { component: Bloc6, tile: 6 },
 ];
 
-const shuffle = (items: any[]) => {
-    return items.sort(() => Math.random() - 0.5);
-};
-
-const shuffledDocuments = [...documents].sort(() => Math.random() - 0.5);
-
-let results: any[] = [];
+let resultsFull: any[] = [];
+let resultsPartial: any[] = [];
 let blocIndex = 0;
 
-for (let i = 0; i < shuffledDocuments.length;) {
-    const {component, tile} = blocs[blocIndex];
+for (let i = 0; i < orderedDocuments.length;) {
+    const { component, tile } = blocs[blocIndex];
 
-    const blocDocuments = shuffledDocuments.slice(i, i + tile);
+    const blocDocuments = orderedDocuments.slice(i, i + tile);
 
-    results.push({
+    const bloc = {
         id: blocIndex,
         component,
         documents: blocDocuments,
-        isFull: blocDocuments.length === tile, // Vérifie si le bloc est rempli au max
-    });
+        isFull: blocDocuments.length === tile,
+    };
+
+    if (bloc.isFull) {
+        resultsFull.push(bloc);
+    } else {
+        resultsPartial.push(bloc);
+    }
 
     blocIndex = blocIndex >= blocs.length - 1 ? 0 : blocIndex + 1;
-    i += blocDocuments.length; // Avance du nombre réel d'éléments ajoutés
+    i += blocDocuments.length;
 }
 
-// Séparer les blocs remplis et non remplis
-const fullResults = results.filter(({isFull}) => isFull);
-const partialResults = results.filter(({isFull}) => !isFull);
+const results = [...resultsFull, ...resultsPartial];
 
-
-shuffle(fullResults);
-shuffle(partialResults);
-results = [...fullResults, ...partialResults];
-
-
+// Liste à plat des slugs pour paramètre `slugs`
 const documentsList: { slug: string }[] = [];
 
 results.forEach(item => {
     item.documents.forEach((document: { slug: string }) => {
-        documentsList.push({
-            slug: document.slug
-        });
+        documentsList.push({ slug: document.slug });
     });
 });
 ---

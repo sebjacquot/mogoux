@@ -129,7 +129,7 @@ const { src, legend, alt, className } = Astro.props;
         const images = Array.from(document.querySelectorAll(".image"));
 
         images.forEach((img) => {
-            if (!img.alt.trim()) return;
+            if (typeof img.alt !== "string" || !img.alt.trim()) return;
 
             const tooltipImage = img.nextElementSibling;
             if (!tooltipImage) return;

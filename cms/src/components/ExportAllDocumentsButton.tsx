@@ -201,7 +201,7 @@ const ExportAllDocumentsButton: React.FC = () => {
 
     return (
         <Button onClick={handleExport}>
-            Exporter tous les documents
+            Exporter tous les Documents
         </Button>
     );
 };
