@@ -86,7 +86,7 @@ const ReferenceLocations: CollectionConfig = {
       name: "background_image",
       label: "Image de fond",
       type: "upload",
-      relationTo: "documents",
+      relationTo: "medias",
     },
     {
       name: "description",

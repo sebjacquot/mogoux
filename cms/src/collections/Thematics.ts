@@ -112,8 +112,7 @@ const Thematics: CollectionConfig = {
       name: "background_image",
       label: "Image de fond",
       type: "upload",
-      relationTo: "documents",
-      required: true,
+      relationTo: "medias",
     },
     {
       name: "description",

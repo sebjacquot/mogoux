@@ -20,8 +20,8 @@ try {
   console.error("Failed to fetch thematic", error);
 }
 
-const urlPreveiw = thematic.background_image.sizes?.preview?.url
-const altPreveiw = thematic.background_image.alt
+const urlPreveiw = thematic.background_image?.sizes?.preview?.url || ''
+const altPreveiw = thematic.background_image?.alt || ''
 ---
 
 <a href={asset(`/thematiques/${slug}?section=${sectionId}`)} rel="external">

@@ -176,7 +176,7 @@ export interface Thematic {
   id: number;
   title: string;
   slug: string;
-  background_image: number | Document;
+  background_image?: (number | null) | Media;
   description?: {
     root: {
       type: string;
@@ -205,6 +205,57 @@ export interface Thematic {
   };
   updatedAt: string;
   createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "medias".
+ */
+export interface Media {
+  id: number;
+  legende?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
+  sizes?: {
+    thumbnail?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    preview?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+  };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -297,50 +348,13 @@ export interface Color {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "medias".
- */
-export interface Media {
-  id: number;
-  name?: string | null;
-  updatedAt: string;
-  createdAt: string;
-  url?: string | null;
-  thumbnailURL?: string | null;
-  filename?: string | null;
-  mimeType?: string | null;
-  filesize?: number | null;
-  width?: number | null;
-  height?: number | null;
-  focalX?: number | null;
-  focalY?: number | null;
-  sizes?: {
-    thumbnail?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-    preview?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-  };
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "reference-locations".
  */
 export interface ReferenceLocation {
   id: number;
   name: string;
   slug: string;
-  background_image?: (number | null) | Document;
+  background_image?: (number | null) | Media;
   description: {
     root: {
       type: string;
@@ -617,7 +631,7 @@ export interface DocumentsSelect<T extends boolean = true> {
  * via the `definition` "medias_select".
  */
 export interface MediasSelect<T extends boolean = true> {
-  name?: T;
+  legende?: T;
   updatedAt?: T;
   createdAt?: T;
   url?: T;
