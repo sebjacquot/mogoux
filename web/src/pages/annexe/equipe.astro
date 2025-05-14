@@ -1,0 +1,54 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ImageTooltip from "../../components/ImageTooltip.astro";
+import {asset} from "../../utils/url";
+---
+
+<Layout title="Equipe">
+    <div class="container">
+        <section class="entete">
+            <div class="hero">
+                <h1 class="titre">Equipe</h1>
+            </div>
+            <ImageTooltip
+                 src={asset('/images/Header_Chapitre/A1_0015.jpg')}
+                 legend=""
+                 alt=""
+                 className="image-annexe"
+            />
+            <div class="overlay"></div>
+        </section>
+        <div class="contenu-article">
+            <div class="paragraphe">
+                <p class="paragraphe-before-list">
+                    Ce Webdocumentaire a été conçu à partir des archives confiées par Jean-Paul Goux.
+                    Il a été complété par différentes ressources photographiques provenant :
+                </p>
+                <ul>
+                    <li>
+                        de Gilles Choffé qui, avec une extrême générosité, a bien voulu nous confier l'ensemble de
+                        ses archives constituées autour de la résidence de Jean-Paul Goux à Montbéliard en 1984-1986,
+                        avec les droits afférents
+                    </li>
+                    <li>de l'Association du Patrimoine Bethoncourtois</li>
+                    <li>du Fonds de dotation Peugeot pour la mémoire de l'histoire industrielle</li>
+
+                </ul>
+            </div>
+        </div>
+        <section class="credits">
+            <div class="gauche">
+                <p>
+                    Droits photographiques : Madeure - Cités Blanches. <br/>
+                    Photographie du 10 mars 1985 de Gilles Choffé
+                </p>
+            </div>
+        </section>
+    </div>
+
+
+    <style scoped>
+        @import "../../styles/annexes.css";
+
+    </style>
+</Layout>
