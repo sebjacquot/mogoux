@@ -1,6 +1,7 @@
 ---
+import {asset} from "../utils/url";
 
-import {asset} from "../utils/url";---
+---
 
 <footer class='container'>
     <div class="haut-footer">
@@ -25,13 +26,13 @@ import {asset} from "../utils/url";---
             </div>
             <div class="colonne">
                 <h3 class="titre-colonne-footer">Le projet</h3>
-                <a href="#" class="lien-text-footer">Manifeste éditorial</a>
-                <a href="#" class="lien-text-footer">L'équipe</a>
-                <a href="#" class="lien-text-footer">Partenaires</a>
+                <a href="{asset("/annexe/presentation_projet")}" class="lien-text-footer">Manifeste éditorial</a>
+                <a href="{asset("/annexe/equipe")}" class="lien-text-footer">L'équipe</a>
+                <a href="{asset("/annexe/partenaires")}" class="lien-text-footer">Partenaires</a>
             </div>
         </div>
         <div class="haut-footer-mail-droite">
-            <a href="mailto:adresse@email.com"><img src={asset("/icones/icon-mail.svg")} alt="Email"></a>
+            <a href="mailto:elliadd@univ-fcomte.fr"><img src={asset("/icones/icon-mail.svg")} alt="Email"></a>
         </div>
     </div>
     <div class="trait-separation"></div>
