@@ -1,18 +1,14 @@
 ---
-
 import {asset} from "../utils/url";
-
 ---
 
-<footer class="container">
+<footer class='container'>
     <div class="haut-footer">
         <div class="haut-footer-info-gauche">
-            <div class="colonne">
+<!--            <div class="colonne">
                 <h3 class="titre-colonne-footer">Liens internes</h3>
                 <a href="#" class="lien-text-footer">Fonds d'archives</a>
-                <a href="#" class="lien-text-footer">Accès membre</a>
-                <a href="#" class="lien-text-footer">Recherche</a>
-            </div>
+            </div>-->
             <div class="colonne">
                 <h3 class="titre-colonne-footer">Institutions</h3>
                 <a href="https://www.univ-fcomte.fr/" class="lien-text-footer">UMLP</a>
@@ -22,14 +18,13 @@ import {asset} from "../utils/url";
             </div>
             <div class="colonne">
                 <h3 class="titre-colonne-footer">Informations légales</h3>
-                <a href="#" class="lien-text-footer">Crédits</a>
                 <a href={asset("/annexe/mentions_legales")} class="lien-text-footer">Mentions légales</a>
             </div>
             <div class="colonne">
                 <h3 class="titre-colonne-footer">Le projet</h3>
-                <a href="{asset("/annexe/presentation_projet")}" class="lien-text-footer">Manifeste éditorial</a>
-                <a href="{asset("/annexe/equipe")}" class="lien-text-footer">L'équipe</a>
-                <a href="{asset("/annexe/partenaires")}" class="lien-text-footer">Partenaires</a>
+                <a href={asset("/annexe/presentation_projet")} class="lien-text-footer">Manifeste éditorial</a>
+                <a href={asset("/annexe/equipe")} class="lien-text-footer">L'équipe</a>
+                <a href={asset("/annexe/partenaires")} class="lien-text-footer">Partenaires</a>
             </div>
         </div>
         <div class="haut-footer-mail-droite">
