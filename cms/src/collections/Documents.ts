@@ -85,6 +85,12 @@ export const Documents: CollectionConfig = {
     },
   ],
   upload: {
+    	// SJ: fix seek in mp3 audio on Chrome/Edge by adding "Accept-Ranges = bytes" to response header.
+      modifyResponseHeaders: ({ headers }) => {
+        const newHeaders = new Headers(headers) // Copy existing headers
+        newHeaders.set('Accept-Ranges', 'bytes') // Set new header
+      return newHeaders
+    },
     adminThumbnail: "thumbnail",
     mimeTypes: ["image/*", "audio/mpeg", "audio/x-wav", "video/*"],
     imageSizes: [
