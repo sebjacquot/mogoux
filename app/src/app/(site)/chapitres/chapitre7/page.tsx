@@ -1,0 +1,110 @@
+import ImageTooltip from '@/components/ImageTooltip'
+import ImageFullscreen from '@/components/ImageFullscreen'
+import SuggestionsCard from '@/components/SuggestionsCard'
+
+const base = process.env.NEXT_PUBLIC_BASE_PATH || ''
+
+export default function Chapitre7Page() {
+  return (
+    <div className="bg-[hsl(0,0%,96%)]">
+      <section className="chapter-entete">
+        <div className="chapter-overlay" />
+        <div className="chapter-hero">
+          <span className="chapter-tag">CHAPITRE 7</span>
+          <h1 className="chapter-titre">La fabrique du texte</h1>
+          <h2 className="chapter-soustitre">Découpages, collages, montages et jeux de construction</h2>
+          <div className="bg-[hsl(0,0%,96%)] w-full max-w-[75em] mt-8 pt-5 px-4 md:px-10 pb-5 flex flex-col justify-center">
+            <p className="font-serif text-[17px] text-center self-center"><em>Mémoires de l'Enclave</em> est né d'un travail complexe à partir de sources diverses : aux nombreux textes et documents préexistants s'ajoute la matière des entretiens oraux ensuite transcrits par écrit.</p>
+            <div className="flex justify-center items-center relative mt-5">
+              <div className="px-2.5 bg-[hsl(0,0%,96%)] z-[3]" />
+              <div className="border-b border-[#d9d9d9] block w-full absolute top-2.5 z-0" />
+            </div>
+          </div>
+        </div>
+        <ImageTooltip src={`${base}/images/Header_Chapitre/C7_GOU_P17-05_04-P.jpg`} legend="Jean-Paul Goux en discussion à l'occasion d'une exposition organisée lors d'un meeting de Lutte ouvrière le 3 mars 1985. Photographie de Gilles Choffé" alt="Goux exposition 1985" />
+      </section>
+
+      <div className="article-content">
+        <div className="article-paragraph">
+          <p>Les <em>Mémoires de l'Enclave</em> ont pour particularité d'accueillir différentes écritures et différentes voix.</p>
+        </div>
+
+        <h2 className="article-section-title">La documentation écrite</h2>
+        <div className="article-paragraph">
+          <p>La plupart des chapitres d'analyse critique, historique et sociologique des <em>Mémoires de l'Enclave</em> font une large place à des citations de textes, particulièrement visibles dans le manuscrit de l'ouvrage.</p>
+        </div>
+        <div className="article-image">
+          <ImageFullscreen src={`${base}/images/Chapitres/Chapitre7/GOU_03_13_0010.jpg`} legend="Manuscrit (avec découpages) des Mémoires de l'Enclave" alt="Manuscrit découpages" />
+          <p>Manuscrit (avec découpages) des Mémoires de l'Enclave © Fonds Goux, GOU 03 13 00010</p>
+        </div>
+        <div className="article-paragraph">
+          <p>De fait, Goux a souvent procédé par découpages et collages à partir de multiples documents photocopiés : journaux, revues, publicités, brochures historiques, documents promotionnels des entreprises, tracts syndicaux, comptes rendus de réunions d'entreprises, etc.</p>
+        </div>
+        <div className="max-w-[700px] w-full mx-auto mb-6">
+          <video controls preload="metadata" poster={`${base}/images/Chapitres/Chapitre7/image-animation-1.jpg`} controlsList="nodownload" className="w-full h-auto">
+            <source src={`${base}/images/Chapitres/Chapitre7/Jean-Paul_Goux_Animation1.mp4`} type="video/mp4" />
+            Votre navigateur ne supporte pas la lecture de vidéos.
+          </video>
+          <p className="text-[14px] italic text-[#666] text-center">Animation vidéo montrant comment Goux a exploité la documentation</p>
+        </div>
+
+        <h2 className="article-section-title">La réécriture des entretiens oraux</h2>
+        <div className="article-paragraph">
+          <p>Par ailleurs, <em>Les Mémoires de l'Enclave</em> ont été en partie écrites à partir d'entretiens réalisés par Jean-Paul Goux auprès d'ouvriers et ouvrières d'usines.</p>
+        </div>
+        <div className="max-w-[700px] w-full mx-auto mb-6">
+          <video controls preload="metadata" poster={`${base}/images/Chapitres/Chapitre7/image-animation-2.jpg`} controlsList="nodownload" className="w-full h-auto">
+            <source src={`${base}/images/Chapitres/Chapitre7/Jean-Paul_Goux_Animation2.mp4`} type="video/mp4" />
+            Votre navigateur ne supporte pas la lecture de vidéos.
+          </video>
+          <p className="text-[14px] italic text-[#666] text-center">Animation vidéo montrant comment Goux a tiré parti d'un entretien audio pour son ouvrage</p>
+        </div>
+
+        <h2 className="article-section-title">En remontant le fil d'un entretien</h2>
+        <div className="article-paragraph">
+          <p>Pour mettre en évidence ce travail, on peut prendre l'exemple du chapitre X.</p>
+        </div>
+        <div className="article-image">
+          <ImageFullscreen src={`${base}/images/Chapitres/Chapitre7/GOU_01_02_29_30_0005.jpg`} legend="Transcription entretien cassette 29-30, Mme B., p. 1" alt="Transcription entretien 1" />
+          <p>Transcription entretien cassette 29-30, Mme B., p. 1 © Fonds Goux, GOU 01 02 29 30 0005</p>
+        </div>
+        <div className="article-image">
+          <ImageFullscreen src={`${base}/images/Chapitres/Chapitre7/GOU_01_02_29_30_0007.jpg`} legend="Transcription entretien cassette 29-30, Mme B., p. 2" alt="Transcription entretien 2" />
+          <p>Transcription entretien cassette 29-30, Mme B., p. 2 © Fonds Goux, GOU 01 02 29 30 0007</p>
+        </div>
+        <div className="article-paragraph">
+          <p>Cette confrontation entre le chapitre final et la transcription d'entretien illustre le montage opéré.</p>
+        </div>
+        <div className="article-image">
+          <ImageFullscreen src={`${base}/images/Chapitres/Chapitre7/GOU_01_02_29_30p6.jpg`} legend="Transcription entretien cassette 29-30, Mme B., p. 6, (extraits)" alt="Transcription entretien 3" />
+          <p>Transcription entretien cassette 29-30, Mme B., p. 6, (extraits) © Fonds Goux, GOU 01 02 29 30 0015</p>
+        </div>
+        <div className="article-paragraph">
+          <p>Le brouillon porte la trace de ce collage, au sens propre du terme.</p>
+        </div>
+        <div className="article-image">
+          <ImageFullscreen src={`${base}/images/Chapitres/Chapitre7/GOU_03_10_bis0006.jpg`} legend="Manuscrit correspondant au chapitre X" alt="Manuscrit chapitre X" />
+          <p>Manuscrit correspondant au chapitre X © Fonds Goux, GOU 03 10 bis 0006</p>
+        </div>
+        <div className="article-image">
+          <ImageFullscreen src={`${base}/images/Chapitres/Chapitre7/GOU_05_01_0005.jpg`} legend="Photographie Tissage du Paquis, Héricourt" alt="Tissage Paquis Héricourt" />
+          <p>Photographie Tissage du Paquis, Héricourt © Fonds Goux, GOU 05 01 0005</p>
+        </div>
+      </div>
+
+      <section className="credits-section">
+        <div className="credits-inner">
+          <p>Écrit par <strong>Pascal Lécroart et Yvon Houssais</strong></p>
+          <p>Droits photographiques : Fonds Archives Goux</p>
+        </div>
+      </section>
+
+      <div className="suggestions-tag"><h4>Suggestions</h4></div>
+      <section className="suggestions-section">
+        <SuggestionsCard titre="La structuration des Mémoires" numero_chapitre="6" lien_image="C6_0100.jpg" />
+        <SuggestionsCard titre="Du manuscrit au(x) livre(s)" numero_chapitre="8" lien_image="C8_GOU_P23-04_05-P.jpg" />
+        <SuggestionsCard titre="Le fonds photographique" numero_chapitre="9" lien_image="C9_GOU_A_08_04_083.jpg" />
+      </section>
+    </div>
+  )
+}

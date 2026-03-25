@@ -1,0 +1,71 @@
+// ============================================================
+//  Mémoires Ouvrières — Thème Payload CMS
+// ============================================================
+
+// ── Couleurs de marque ───────────────────────────────────────
+$brand-red:    #e22b40;
+$brand-dark:   #161616;
+$brand-light:  #f3f3f3;
+
+// ── Surcharge des variables CSS de Payload (thème sombre) ───
+[data-theme='dark'],
+:root {
+    // Accent / boutons principaux
+    --color-success-500:     #{$brand-red};
+    --color-success-400:     #e84055;
+    --color-success-600:     #c42336;
+
+    // Fond de la sidebar
+    --theme-elevation-0:     #111111;
+    --theme-elevation-50:    #1a1a1a;
+    --theme-elevation-100:   #242424;
+    --theme-elevation-150:   #2a2a2a;
+    --theme-elevation-200:   #313131;
+    --theme-elevation-300:   #3d3d3d;
+    --theme-elevation-400:   #4f4f4f;
+    --theme-elevation-500:   #636363;
+    --theme-elevation-600:   #787878;
+    --theme-elevation-700:   #949494;
+    --theme-elevation-800:   #b0b0b0;
+    --theme-elevation-900:   #cccccc;
+    --theme-elevation-1000:  #f3f3f3;
+}
+
+// ── Boutons Save / Create ────────────────────────────────────
+.btn.btn--style-primary,
+button[class*='btn--style-primary'] {
+    background-color: $brand-red !important;
+    border-color:     $brand-red !important;
+
+    &:hover {
+        background-color: darken(#e22b40, 8%) !important;
+        border-color:     darken(#e22b40, 8%) !important;
+    }
+}
+
+// ── Liens actifs dans la nav ─────────────────────────────────
+.nav__link--active,
+[class*='navLink'][class*='active'] {
+    color: $brand-red !important;
+
+    &::before {
+        background-color: $brand-red !important;
+    }
+}
+
+// ── Barre de progression / focus ────────────────────────────
+:focus-visible {
+    outline-color: $brand-red !important;
+}
+
+// ── Logo / header zone ───────────────────────────────────────
+.step-nav__chevron,
+[class*='step-nav'] svg {
+    color: $brand-red;
+}
+
+// ── Dashboard — retire le titre "Dashboard" par défaut ───────
+.dashboard__label,
+[class*='dashboard__label'] {
+    display: none;
+}
