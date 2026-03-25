@@ -1,0 +1,55 @@
+{
+  "name": "mogoux-app",
+  "version": "1.0.0",
+  "description": "Webdocumentaire Mémoires Ouvrières – site Next.js + PayloadCMS unifiés",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev",
+    "build": "cross-env NODE_OPTIONS=--no-deprecation next build",
+    "start": "cross-env NODE_OPTIONS=--no-deprecation next start",
+    "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
+    "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
+    "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
+    "migrate": "cross-env NODE_OPTIONS=--no-deprecation payload migrate",
+    "migrate:create": "cross-env NODE_OPTIONS=--no-deprecation payload migrate:create",
+    "lint": "cross-env NODE_OPTIONS=--no-deprecation next lint"
+  },
+  "dependencies": {
+    "@payloadcms/db-postgres": "latest",
+    "@payloadcms/next": "latest",
+    "@payloadcms/payload-cloud": "latest",
+    "@payloadcms/richtext-lexical": "latest",
+    "@payloadcms/translations": "^3.25.0",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.4.7",
+    "exceljs": "^4.4.0",
+    "graphql": "^16.8.1",
+    "next": "~15.4.11",
+    "payload": "latest",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "sharp": "0.32.6"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.2.0",
+    "@tailwindcss/typography": "^0.5.15",
+    "@types/node": "^22.5.4",
+    "@types/react": "19.0.7",
+    "@types/react-dom": "19.0.3",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.16.0",
+    "eslint-config-next": "15.1.5",
+    "postcss": "^8.4.49",
+    "prettier": "^3.4.2",
+    "tailwindcss": "^3.4.17",
+    "typescript": "5.7.3"
+  },
+  "overrides": {
+    "@esbuild-kit/esm-loader": "npm:tsx@latest",
+    "@esbuild-kit/core-utils": "npm:tsx@latest"
+  },
+  "engines": {
+    "node": "^18.20.2 || >=20.9.0"
+  }
+}

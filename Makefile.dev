@@ -1,0 +1,273 @@
+# ============================================================
+#  Makefile.dev – Lancement LOCAL du projet
+#  Fonctionne sur macOS (Homebrew) et Linux (apt)
+#
+#  Première installation complète :
+#    make -f Makefile.dev setup
+#
+#  Puis lancer le serveur de dev :
+#    make -f Makefile.dev dev
+#
+#  Tout en une seule commande :
+#    make -f Makefile.dev
+# ============================================================
+
+# ---- Config (modifiable) ----
+DB_USER  ?= fanum
+DB_PASS  ?= fanum
+DB_NAME  ?= mogoux
+DB_HOST  ?= 127.0.0.1
+DB_PORT  ?= 5432
+APP_DIR  ?= app
+PORT     ?= 3000
+
+SQL_FILE     := backups/2026-03-13_export_gou-db.sql
+MEDIA_ARCHIVE:= backups/2026-03-13_export_medias.tar.gz
+DOCS_ARCHIVE := backups/2026-03-13_export_documents.tar.gz
+
+ROOT_DIR := $(shell pwd)
+
+# Détection de l'OS
+OS := $(shell uname -s)
+
+# Couleurs terminal
+GREEN  := \033[0;32m
+YELLOW := \033[0;33m
+CYAN   := \033[0;36m
+RESET  := \033[0m
+
+.PHONY: help setup dev check-node install-node check-pg install-pg-mac \
+        install-pg-linux db-create db-restore media-extract env-setup \
+        deps clean-db reset
+
+# ============================================================
+# Cible par défaut : setup complet + lancement dev
+# ============================================================
+all: setup dev
+
+# ============================================================
+help: ## Affiche cette aide
+	@echo ""
+	@echo "  $(CYAN)Makefile.dev – Lancement local Mémoires Ouvrières$(RESET)"
+	@echo "  =================================================="
+	@echo ""
+	@echo "  $(GREEN)make -f Makefile.dev$(RESET)          → Setup complet + lance le dev"
+	@echo "  $(GREEN)make -f Makefile.dev setup$(RESET)    → Installation complète (une seule fois)"
+	@echo "  $(GREEN)make -f Makefile.dev dev$(RESET)      → Lance le serveur de dev"
+	@echo "  $(GREEN)make -f Makefile.dev reset$(RESET)    → Repart de zéro (supprime DB + node_modules)"
+	@echo ""
+	@awk 'BEGIN {FS = ":.*##"} /^[a-zA-Z_-]+:.*##/ { printf "  $(CYAN)%-20s$(RESET) %s\n", $$1, $$2 }' $(MAKEFILE_LIST)
+	@echo ""
+
+# ============================================================
+# SETUP COMPLET (ordre : node → pg → db → médias → .env → deps)
+# ============================================================
+setup: check-node check-pg db-create db-restore media-extract env-setup deps ## Installation complète en local
+	@echo ""
+	@echo "  $(GREEN)╔══════════════════════════════════════════════════╗$(RESET)"
+	@echo "  $(GREEN)║  ✓ Setup terminé ! Lance le dev avec :           ║$(RESET)"
+	@echo "  $(GREEN)║    make -f Makefile.dev dev                      ║$(RESET)"
+	@echo "  $(GREEN)╚══════════════════════════════════════════════════╝$(RESET)"
+	@echo ""
+
+# ============================================================
+# 1. Node.js
+# ============================================================
+check-node: ## Vérifie/installe Node.js ≥ 20
+	@if command -v node >/dev/null 2>&1; then \
+	  NODE_VER=$$(node -e "process.stdout.write(process.versions.node.split('.')[0])"); \
+	  if [ "$$NODE_VER" -ge 20 ]; then \
+	    echo "  $(GREEN)✓$(RESET) Node.js $$(node --version) déjà installé"; \
+	  else \
+	    echo "  $(YELLOW)⚠$(RESET)  Node.js $$(node --version) trop ancien (besoin ≥ 20)"; \
+	    $(MAKE) -f Makefile.dev install-node; \
+	  fi \
+	else \
+	  echo "  → Node.js absent, installation..."; \
+	  $(MAKE) -f Makefile.dev install-node; \
+	fi
+
+install-node: ## Installe Node.js 20.x
+ifeq ($(OS),Darwin)
+	@echo "  → Installation via Homebrew..."
+	@command -v brew >/dev/null 2>&1 || (echo "  $(YELLOW)Homebrew requis :$(RESET) /bin/bash -c \"\$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\"" && exit 1)
+	brew install node@20
+	brew link node@20 --force --overwrite
+else
+	@echo "  → Installation via NodeSource (apt)..."
+	curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+	sudo apt-get install -y nodejs
+endif
+	@echo "  $(GREEN)✓$(RESET) Node.js $$(node --version) installé"
+
+# ============================================================
+# 2. PostgreSQL
+# ============================================================
+check-pg: ## Vérifie/installe PostgreSQL
+	@if command -v psql >/dev/null 2>&1; then \
+	  echo "  $(GREEN)✓$(RESET) PostgreSQL $$(psql --version | awk '{print $$3}') déjà installé"; \
+	  $(MAKE) -f Makefile.dev pg-start; \
+	else \
+	  echo "  → PostgreSQL absent, installation..."; \
+	  $(MAKE) -f Makefile.dev install-pg-$(OS); \
+	fi
+
+install-pg-Darwin: ## Installe PostgreSQL sur macOS
+	brew install postgresql@15
+	brew services start postgresql@15
+	@echo "  $(GREEN)✓$(RESET) PostgreSQL installé (macOS)"
+
+install-pg-Linux: ## Installe PostgreSQL sur Linux
+	sudo apt-get update
+	sudo apt-get install -y postgresql postgresql-client
+	sudo systemctl enable postgresql
+	sudo systemctl start postgresql
+	@echo "  $(GREEN)✓$(RESET) PostgreSQL installé (Linux)"
+
+pg-start: ## S'assure que PostgreSQL tourne
+ifeq ($(OS),Darwin)
+	@brew services list | grep -q "postgresql.*started" || brew services start postgresql@15 2>/dev/null || true
+else
+	@sudo systemctl start postgresql 2>/dev/null || true
+endif
+
+# Commande psql adaptée selon l'OS
+ifeq ($(OS),Darwin)
+PG_CMD = psql -U $(DB_USER) -h $(DB_HOST) -p $(DB_PORT)
+PG_SUPER = psql -U $(shell whoami) -h $(DB_HOST) -p $(DB_PORT) postgres
+else
+PG_CMD = psql -U $(DB_USER) -h $(DB_HOST) -p $(DB_PORT)
+PG_SUPER = sudo -u postgres psql
+endif
+
+# ============================================================
+# 3. Base de données
+# ============================================================
+
+# Wrapper : exécute une commande psql en tant que superuser
+ifeq ($(OS),Darwin)
+define PG_SUPER_RUN
+psql -U $(shell whoami) -h $(DB_HOST) postgres -c $(1) 2>/dev/null || true
+endef
+else
+define PG_SUPER_RUN
+sudo -u postgres psql -c $(1) 2>/dev/null || true
+endef
+endif
+
+db-create: ## Crée le rôle et la base de données
+	@echo "  → Création du rôle '$(DB_USER)'..."
+	@$(call PG_SUPER_RUN,"CREATE ROLE $(DB_USER) LOGIN PASSWORD '$(DB_PASS)';")
+	@echo "  → Création de la base '$(DB_NAME)'..."
+	@$(call PG_SUPER_RUN,"CREATE DATABASE $(DB_NAME) OWNER $(DB_USER);")
+	@$(call PG_SUPER_RUN,"GRANT ALL PRIVILEGES ON DATABASE $(DB_NAME) TO $(DB_USER);")
+	@echo "  $(GREEN)✓$(RESET) Base '$(DB_NAME)' prête (les erreurs 'already exists' sont normales)"
+
+db-restore: ## Restaure les données depuis le dump SQL
+	@if [ ! -f "$(SQL_FILE)" ]; then \
+	  echo "  $(YELLOW)⚠$(RESET)  Dump SQL introuvable : $(SQL_FILE)"; \
+	  echo "     (ignoré - si c'est un re-setup, la base existante est conservée)"; \
+	else \
+	  echo "  → Restauration depuis $(SQL_FILE)..."; \
+	  PGPASSWORD=$(DB_PASS) psql -U $(DB_USER) -h $(DB_HOST) -p $(DB_PORT) \
+	    -d $(DB_NAME) -f "$(ROOT_DIR)/$(SQL_FILE)" 2>&1 | grep -v "^ERROR:.*unrecognized" | tail -5; \
+	  echo "  $(GREEN)✓$(RESET) Base restaurée"; \
+	fi
+
+# ============================================================
+# 4. Médias Payload
+# ============================================================
+media-extract: ## Extrait les archives médias dans app/public/
+	@echo "  → Extraction des médias Payload..."
+	@if [ -f "$(MEDIA_ARCHIVE)" ]; then \
+	  if [ "$$(ls -A $(APP_DIR)/public/medias 2>/dev/null)" ]; then \
+	    echo "  $(GREEN)✓$(RESET) app/public/medias/ déjà présent, extraction ignorée"; \
+	  else \
+	    mkdir -p $(APP_DIR)/public/medias; \
+	    tar -xzf "$(MEDIA_ARCHIVE)" --strip-components=4 -C "$(APP_DIR)/public/medias/"; \
+	    echo "  $(GREEN)✓$(RESET) Médias extraits dans app/public/medias/"; \
+	  fi \
+	else \
+	  echo "  $(YELLOW)⚠$(RESET)  $(MEDIA_ARCHIVE) introuvable, ignoré"; \
+	fi
+	@echo "  → Extraction des documents Payload..."
+	@if [ -f "$(DOCS_ARCHIVE)" ]; then \
+	  if [ "$$(ls -A $(APP_DIR)/public/documents 2>/dev/null)" ]; then \
+	    echo "  $(GREEN)✓$(RESET) app/public/documents/ déjà présent, extraction ignorée"; \
+	  else \
+	    mkdir -p $(APP_DIR)/public/documents; \
+	    tar -xzf "$(DOCS_ARCHIVE)" --strip-components=4 -C "$(APP_DIR)/public/documents/"; \
+	    echo "  $(GREEN)✓$(RESET) Documents extraits dans app/public/documents/"; \
+	  fi \
+	else \
+	  echo "  $(YELLOW)⚠$(RESET)  $(DOCS_ARCHIVE) introuvable, ignoré"; \
+	fi
+
+# ============================================================
+# 5. Fichier .env
+# ============================================================
+env-setup: ## Crée app/.env si absent (depuis .env.example)
+	@if [ -f "$(APP_DIR)/.env" ]; then \
+	  echo "  $(GREEN)✓$(RESET) app/.env déjà présent"; \
+	else \
+	  cp $(APP_DIR)/.env.example $(APP_DIR)/.env; \
+	  sed -i.bak \
+	    -e "s|DATABASE_URI=.*|DATABASE_URI=postgres://$(DB_USER):$(DB_PASS)@$(DB_HOST):$(DB_PORT)/$(DB_NAME)|" \
+	    -e "s|NEXT_PUBLIC_SERVER_URL=.*|NEXT_PUBLIC_SERVER_URL=http://localhost:$(PORT)|" \
+	    -e "s|PORT=.*|PORT=$(PORT)|" \
+	    $(APP_DIR)/.env && rm -f $(APP_DIR)/.env.bak; \
+	  echo "  $(GREEN)✓$(RESET) app/.env créé (pensez à définir PAYLOAD_SECRET)"; \
+	fi
+
+# ============================================================
+# 6. Dépendances npm
+# ============================================================
+deps: ## Installe les dépendances npm
+	@if [ -d "$(APP_DIR)/node_modules" ]; then \
+	  echo "  $(GREEN)✓$(RESET) node_modules déjà présent (supprimez-le pour réinstaller)"; \
+	else \
+	  echo "  → npm install..."; \
+	  cd $(APP_DIR) && npm install --legacy-peer-deps && \
+	    echo "  $(GREEN)✓$(RESET) Dépendances installées" || \
+	    (echo "  $(YELLOW)⚠$(RESET)  npm install a échoué. Voir erreur ci-dessus." && exit 1); \
+	fi
+
+# ============================================================
+# LANCER LE SERVEUR DE DÉVELOPPEMENT
+# ============================================================
+dev: ## Lance le serveur Next.js en mode développement
+	@echo ""
+	@echo "  $(CYAN)→ Démarrage du serveur de développement...$(RESET)"
+	@echo "  $(CYAN)  Site  : http://localhost:$(PORT)$(RESET)"
+	@echo "  $(CYAN)  Admin : http://localhost:$(PORT)/admin$(RESET)"
+	@echo ""
+	@if [ ! -f "$(APP_DIR)/.env" ]; then \
+	  echo "  $(YELLOW)⚠$(RESET)  app/.env manquant ! Lancez d'abord : make -f Makefile.dev setup"; \
+	  exit 1; \
+	fi
+	cd $(APP_DIR) && PORT=$(PORT) npm run dev
+
+# ============================================================
+# REMISE À ZÉRO (reset complet)
+# ============================================================
+clean-db: ## Supprime la base de données locale
+	@echo "  → Suppression de la base '$(DB_NAME)'..."
+ifeq ($(OS),Darwin)
+	@psql -U $(shell whoami) -h $(DB_HOST) postgres -c \
+	  "DROP DATABASE IF EXISTS $(DB_NAME);" 2>/dev/null || true
+	@psql -U $(shell whoami) -h $(DB_HOST) postgres -c \
+	  "DROP ROLE IF EXISTS $(DB_USER);" 2>/dev/null || true
+else
+	@sudo -u postgres psql -c "DROP DATABASE IF EXISTS $(DB_NAME);" 2>/dev/null || true
+	@sudo -u postgres psql -c "DROP ROLE IF EXISTS $(DB_USER);" 2>/dev/null || true
+endif
+	@echo "  $(GREEN)✓$(RESET) Base supprimée"
+
+clean-deps: ## Supprime node_modules et .next
+	rm -rf $(APP_DIR)/node_modules $(APP_DIR)/.next
+	@echo "  $(GREEN)✓$(RESET) node_modules et .next supprimés"
+
+reset: clean-deps clean-db ## Repart de zéro (clean-deps + clean-db)
+	@echo ""
+	@echo "  Remis à zéro. Relancez avec : $(GREEN)make -f Makefile.dev setup$(RESET)"
+	@echo ""

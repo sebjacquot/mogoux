@@ -1,0 +1,157 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Fonts */
+@import url('https://fonts.cdnfonts.com/css/helvetica-neue-5');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Inter:wght@400;600;800&display=swap');
+
+/* ──────────────────────────────────────────────
+   Reset de base
+────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  background: #161616;
+  overflow-x: hidden;
+  font-family: 'Graphik', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* ──────────────────────────────────────────────
+   Styles partagés réutilisables via @layer
+────────────────────────────────────────────── */
+@layer components {
+  /* Hero de chapitre / annexe */
+  .chapter-entete {
+    @apply relative w-full flex justify-center items-center overflow-hidden;
+    height: 75vh;
+  }
+
+  .chapter-overlay {
+    @apply absolute inset-0 bg-black/35 z-[2] pointer-events-none;
+  }
+
+  .chapter-hero {
+    @apply absolute bottom-0 left-0 z-[5] flex flex-col items-center justify-end w-full pointer-events-none;
+    padding: 0 0 2rem 0;
+    height: 75vh;
+  }
+
+  .chapter-tag {
+    @apply text-secondary text-xs font-bold uppercase px-2.5 py-0.5 rounded bg-[#e72465] mb-8;
+  }
+
+  .chapter-titre {
+    @apply text-secondary font-bold text-center pointer-events-auto px-4;
+    font-size: clamp(26px, 6vw, 60px);
+    line-height: 1.15;
+  }
+
+  .chapter-soustitre {
+    @apply text-secondary font-light text-center px-4;
+    font-size: clamp(16px, 3vw, 30px);
+  }
+
+  /* Barre de séparation sous sous-titre */
+  .chapter-soustitre::before {
+    content: '';
+    display: block;
+    border-left: 1px solid #d9d9d9;
+    height: 50px;
+    width: 1px;
+    margin: 20px auto 5px;
+  }
+
+  /* Corps d'article */
+  .article-content {
+    @apply pt-12 pb-12;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: hsl(0, 0%, 96%);
+  }
+
+  .article-section-title {
+    @apply font-bold pb-1 text-[#161616] mx-auto px-4;
+    font-size: clamp(18px, 3.5vw, 24px);
+    max-width: 700px;
+  }
+
+  .article-paragraph {
+    @apply flex flex-col justify-center items-start mx-auto text-[#222] leading-relaxed px-4;
+    max-width: 700px;
+    font-size: clamp(15px, 2.5vw, 17px);
+  }
+
+  .article-paragraph p {
+    @apply mb-5;
+  }
+
+  .article-image {
+    @apply flex flex-col mx-auto pb-6 px-4;
+    max-width: 500px;
+    width: 100%;
+  }
+
+  .article-image p {
+    @apply self-end italic text-[#666] text-sm;
+  }
+
+  /* Section crédits */
+  .credits-section {
+    @apply pb-36;
+    background-color: hsl(0, 0%, 96%);
+  }
+
+  .credits-section .credits-inner {
+    @apply flex flex-col justify-center font-light mx-auto text-xs;
+    max-width: 1100px;
+  }
+
+  /* Suggestions */
+  .suggestions-tag {
+    @apply flex justify-center text-[#8d8d8d] italic font-light;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 27px;
+    background-color: hsl(0, 0%, 96%);
+  }
+
+  .suggestions-section {
+    @apply flex flex-wrap justify-center items-center gap-5 bg-[#e4e4e4] py-6;
+    min-height: 220px;
+  }
+}
+
+/* Range input styling */
+input[type='range'] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 8px;
+  border-radius: 5px;
+  outline: none;
+  opacity: 0.9;
+}
+
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border: 2px solid #ddd;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+input[type='range']::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border: 2px solid #ddd;
+  border-radius: 50%;
+  cursor: pointer;
+}

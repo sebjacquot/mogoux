@@ -1,0 +1,95 @@
+import ImageTooltip from '@/components/ImageTooltip'
+import ImageFullscreen from '@/components/ImageFullscreen'
+import SuggestionsCard from '@/components/SuggestionsCard'
+
+const base = process.env.NEXT_PUBLIC_BASE_PATH || ''
+
+export default function Chapitre9Page() {
+  return (
+    <div className="bg-[hsl(0,0%,96%)]">
+      <section className="chapter-entete">
+        <div className="chapter-overlay" />
+        <div className="chapter-hero">
+          <span className="chapter-tag">CHAPITRE 9</span>
+          <h1 className="chapter-titre">Le fonds photographique</h1>
+          <h2 className="chapter-soustitre">La place des images</h2>
+          <div className="bg-[hsl(0,0%,96%)] w-full max-w-[75em] mt-8 pt-5 px-4 md:px-10 pb-5 flex flex-col justify-center">
+            <p className="font-serif text-[17px] text-center self-center">Au-delà des mots, l'ouvrage aurait dû comprendre un dossier photographique finalement abandonné. Grâce aux archives, il est possible de donner une large place à l'ensemble des documents photographiques qui ont accompagné la genèse et la publication de l'ouvrage.</p>
+            <div className="flex justify-center items-center relative mt-5">
+              <div className="px-2.5 bg-[hsl(0,0%,96%)] z-[3]" />
+              <div className="border-b border-[#d9d9d9] block w-full absolute top-2.5 z-0" />
+            </div>
+          </div>
+        </div>
+        <ImageTooltip src={`${base}/images/Header_Chapitre/C9_GOU_A_08_04_083.jpg`} legend="Photographie promotionnelle de la Peugeot 202 en 1939. © Fonds de dotation Peugeot pour la mémoire de l'histoire industrielle" alt="Peugeot 202 1939" />
+      </section>
+
+      <div className="article-content">
+        <div className="article-paragraph">
+          <p>La résidence à Montbéliard de Jean-Paul Goux, construite autour d'un projet d'écriture, a néanmoins très vite rencontré la question des images. Dans le projet d'édition, il était initialement prévu de joindre en annexe un « Dossier photographique » qui, pour des problèmes de coût, sera finalement abandonné.</p>
+        </div>
+
+        <h2 className="article-section-title">Les photographies de Jean-Paul Goux</h2>
+        <div className="article-paragraph">
+          <p>Dans le « Journal » qui ouvre les <em>Mémoires de l'Enclave</em>, le narrateur écrit : « J'ai repris ces jours derniers mes expéditions photographiques : j'accumule par centaines les photos d'usines abandonnées, de maisons, de cités, de pierres tombales, de plaques émaillées, de potagers et de rues. »</p>
+        </div>
+        <div className="article-image">
+          <ImageFullscreen src={`${base}/images/Chapitres/Chapitre9/Pochette1.jpg`} legend="Pochettes photographiques de Jean-Paul Goux" alt="Pochettes photos Goux" />
+          <p>Pochettes photographiques de Jean-Paul Goux © Fonds Goux</p>
+        </div>
+        <div className="article-image">
+          <ImageFullscreen src={`${base}/images/Chapitres/Chapitre9/Pochette2.jpg`} legend="Détail d'une pochette photographique de Jean-Paul Goux" alt="Détail pochette Goux" />
+          <p>Détail d'une pochette photographique de Jean-Paul Goux © Fonds Goux</p>
+        </div>
+
+        <h2 className="article-section-title">Les photographies historiques de Peugeot</h2>
+        <div className="article-paragraph">
+          <p>En vue du carnet photographique, Jean-Paul Goux a récupéré, auprès des archives Peugeot, un tirage d'une vingtaine de photographies anciennes noir et blanc en grand format.</p>
+        </div>
+        <div className="article-image">
+          <ImageFullscreen src={`${base}/images/Chapitres/Chapitre9/GOU_A_08_02_001.jpg`} legend="Sortie des usines Beaulieu de Peugeot vers 1906" alt="Usines Beaulieu 1906" />
+          <p>Sortie des usines Beaulieu de Peugeot vers 1906 © Fonds de dotation Peugeot pour la mémoire de l'histoire industrielle</p>
+        </div>
+
+        <h2 className="article-section-title">Les photographies de Gilles Choffé</h2>
+        <div className="article-paragraph">
+          <p>Par l'intermédiaire de l'association La Cité, Jean-Paul Goux a fait la connaissance, pendant sa résidence, d'un jeune ouvrier de Peugeot, passionné par la photographie : Gilles Choffé. À partir de décembre 1984, Jean-Paul Goux a ainsi emmené Gilles Choffé dans ses déplacements afin qu'il prenne de nombreuses photos de sites et de paysages. Au total, près de 300 photographies seront réalisées.</p>
+        </div>
+        <div className="article-image">
+          <ImageFullscreen src={`${base}/images/Chapitres/Chapitre9/0007.jpg`} legend="Atelier de Pompes Japy, Fesches-le-Châtel, photographié par Gilles Choffé le 21 mai 1985" alt="Atelier Japy Choffé 1985" />
+          <p>Atelier de Pompes Japy, Fesches-le-Châtel, photographié par Gilles Choffé le 21 mai 1985 © Fonds Goux</p>
+        </div>
+        <div className="article-paragraph">
+          <p>Ce fonds est enfin exploité grâce à ce webdocumentaire, en particulier dans la partie « Mémoires ouvrières » qui présente environ 80% des photographies réalisées.</p>
+        </div>
+        <div className="article-image">
+          <ImageFullscreen src={`${base}/images/Chapitres/Chapitre9/GOU_A_08_03_041.jpg`} legend="Jean-Paul Goux dédicaçant son ouvrage à l'occasion de la présentation de l'ouvrage au Musée du Château de Montbéliard les 26 et 27 avril 1986" alt="Goux dédicace 1986" />
+          <p>Jean-Paul Goux dédicaçant son ouvrage à l'occasion de la présentation de l'ouvrage au Musée du Château de Montbéliard les 26 et 27 avril 1986 © Fonds Goux</p>
+        </div>
+
+        <h2 className="article-section-title">Les photographies de Werner Hannappel</h2>
+        <div className="article-paragraph">
+          <p>Dans le cadre des contributions artistiques du colloque national sur le tourisme industriel (14 et 15 novembre 1985), Jean-Paul Goux et le photographe Werner Hannappel, né en 1949, avaient été sollicités.</p>
+        </div>
+        <div className="article-image">
+          <ImageFullscreen src={`${base}/images/Chapitres/Chapitre9/GOU_A_08_01_001.jpg`} legend="© Fonds Goux, GOU A 08 01 001" alt="Photo Hannappel" />
+          <p>© Fonds Goux, GOU A 08 01 001</p>
+        </div>
+      </div>
+
+      <section className="credits-section">
+        <div className="credits-inner">
+          <p>Écrit par <strong>Pascal Lécroart</strong></p>
+          <p>Droits photographiques : Fonds Archives Goux & Fonds de dotation Peugeot pour la mémoire de l'histoire industrielle</p>
+        </div>
+      </section>
+
+      <div className="suggestions-tag"><h4>Suggestions</h4></div>
+      <section className="suggestions-section">
+        <SuggestionsCard titre="La fabrique du texte" numero_chapitre="7" lien_image="C7_GOU_P17-05_04-P.jpg" />
+        <SuggestionsCard titre="Du manuscrit au(x) livre(s)" numero_chapitre="8" lien_image="C8_GOU_P23-04_05-P.jpg" />
+        <SuggestionsCard titre="Une commande de la cité" numero_chapitre="1" lien_image="C1_GOU_P17-04_01-P.jpg" />
+      </section>
+    </div>
+  )
+}
