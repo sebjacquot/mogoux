@@ -279,20 +279,20 @@ sudo apt-get update && sudo apt-get upgrade -y
 
 # Installer les outils de base
 sudo apt-get install -y curl git build-essential
-
-# Installer Node.js 20.x
-make install-node
-
-# Installer PostgreSQL 15
-make install-pg
 ```
 
 ### Déploiement complet (première installation)
 
 ```bash
 # 1. Cloner le dépôt
-git clone <url-du-depot> /var/www/mogoux
-cd /var/www/mogoux
+git clone <url-du-depot> ~/mogoux/src
+cd ~/mogoux/src
+
+# Installer Node.js 20.x
+make install-node
+
+# Installer PostgreSQL 15
+make install-pg
 
 # 2. Créer et configurer le fichier .env
 cp app/.env.example app/.env
