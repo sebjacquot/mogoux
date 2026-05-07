@@ -299,8 +299,10 @@ cp app/.env.example app/.env
 nano app/.env
 # → Renseignez DATABASE_URI et PAYLOAD_SECRET
 
-# 3. Lancer le déploiement complet
-export DB_PASS=db_password
+# 3. Stocker le mot de passe de l'utilisateur PostgreSQL qui va être créé
+export DB_PASS='db_password'
+
+# 4. Lancer le déploiement complet
 make full-deploy
 ```
 
@@ -316,7 +318,7 @@ La commande `make full-deploy` effectue dans l'ordre :
 8. Build de production Next.js
 
 ```bash
-# 4. Démarrer le serveur
+# 5. Démarrer le serveur
 make start          # en premier plan
 # ou
 make start-bg       # en arrière-plan (recommandé en production)
