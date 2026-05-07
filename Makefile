@@ -68,14 +68,9 @@ install-deps-system: ## Installe les dépendances système nécessaires (curl, g
 # ============================================================
 db-create: ## Crée l'utilisateur et la base de données PostgreSQL
 	@echo "→ Création du rôle PostgreSQL '$(DB_USER)'..."
-	sudo -u postgres psql -c "DO \$\$ BEGIN \
-	  IF NOT EXISTS (SELECT FROM pg_roles WHERE rolname = '$(DB_USER)') THEN \
-	    CREATE ROLE $(DB_USER) LOGIN PASSWORD '$(DB_PASS)'; \
-	  END IF; \
-	END \$\$;" 2>/dev/null || true
+	sudo -u postgres psql -c "DO \$\$ BEGIN IF NOT EXISTS (SELECT FROM pg_roles WHERE rolname = '$(DB_USER)') THEN CREATE ROLE $(DB_USER) LOGIN PASSWORD '$(DB_PASS)'; END IF; END \$\$;" 2>/dev/null || true
 	@echo "→ Création de la base de données '$(DB_NAME)'..."
-	sudo -u postgres psql -c "CREATE DATABASE $(DB_NAME) OWNER $(DB_USER);" 2>/dev/null || \
-	  echo "  (base déjà existante, ignoré)"
+	sudo -u postgres psql -c "CREATE DATABASE $(DB_NAME) OWNER $(DB_USER);" 2>/dev/null || echo "  (base déjà existante, ignoré)"
 	sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE $(DB_NAME) TO $(DB_USER);"
 	@echo "✓ Base '$(DB_NAME)' prête"
 
