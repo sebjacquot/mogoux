@@ -51,8 +51,8 @@ install-node: ## Installe Node.js 20.x via NodeSource
 	node --version
 	npm --version
 
-install-pg: ## Installe PostgreSQL 15
-	@echo "→ Installation de PostgreSQL 15..."
+install-pg: ## Installe la dernière version de PostgreSQL (actuellement 17 sous Debian 13 au 07-05-2026)
+	@echo "→ Installation de la dernière version de PostgreSQL..."
 	sudo apt-get update
 	sudo apt-get install -y postgresql postgresql-client
 	sudo systemctl enable postgresql
