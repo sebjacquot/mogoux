@@ -13,7 +13,8 @@ DB_PORT      ?= 5432
 SQL_FILE     ?= $(HOME)/backups/2026-03-13_export_gou-db.sql
 DOCS_ARCHIVE ?= $(HOME)/backups/2026-03-13_export_documents.tar.gz
 MEDIA_ARCHIVE?= $(HOME)/backups/2026-03-13_export_medias.tar.gz
-APP_DIR      ?= /var/www/mogoux/app
+APP_DIR      ?= app
+#APP_SRC_DIR  ?= /var/www/mogoux/app #TODO: Seb, 2026-05-07: les src doivent être dans home/mogoux alors que l'app est dans /var/www/mogoux, modifier le script en conséquence
 NODE_ENV     ?= production
 PORT         ?= 3000
 
