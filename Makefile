@@ -7,12 +7,13 @@
 # ---- Variables par défaut (surchargeables depuis l'environnement) ----
 DB_USER      ?= fanum
 DB_NAME      ?= mogoux
+DB_PASS      ?= default_password
 DB_HOST      ?= 127.0.0.1
 DB_PORT      ?= 5432
-SQL_FILE     ?= backups/2026-03-13_export_gou-db.sql
-DOCS_ARCHIVE ?= backups/2026-03-13_export_documents.tar.gz
-MEDIA_ARCHIVE?= backups/2026-03-13_export_medias.tar.gz
-APP_DIR      ?= app
+SQL_FILE     ?= $(HOME)/backups/2026-03-13_export_gou-db.sql
+DOCS_ARCHIVE ?= $(HOME)/backups/2026-03-13_export_documents.tar.gz
+MEDIA_ARCHIVE?= $(HOME)/backups/2026-03-13_export_medias.tar.gz
+APP_DIR      ?= /var/www/mogoux/app
 NODE_ENV     ?= production
 PORT         ?= 3000
 
@@ -68,7 +69,7 @@ db-create: ## Crée l'utilisateur et la base de données PostgreSQL
 	@echo "→ Création du rôle PostgreSQL '$(DB_USER)'..."
 	sudo -u postgres psql -c "DO \$\$ BEGIN \
 	  IF NOT EXISTS (SELECT FROM pg_roles WHERE rolname = '$(DB_USER)') THEN \
-	    CREATE ROLE $(DB_USER) LOGIN PASSWORD '$(DB_USER)'; \
+	    CREATE ROLE $(DB_USER) LOGIN PASSWORD '$(DB_PASS)'; \
 	  END IF; \
 	END \$\$;" 2>/dev/null || true
 	@echo "→ Création de la base de données '$(DB_NAME)'..."
@@ -82,7 +83,7 @@ db-restore: ## Restaure la base de données depuis le dump SQL
 	  echo "✗ Fichier SQL introuvable : $(SQL_FILE)"; exit 1; \
 	fi
 	@echo "→ Restauration de la base depuis $(SQL_FILE)..."
-	sudo -u postgres psql -d $(DB_NAME) -f "$(ROOT_DIR)/$(SQL_FILE)"
+	sudo -u postgres psql -d $(DB_NAME) -f "$(SQL_FILE)"
 	@echo "✓ Base restaurée"
 
 db-setup: db-create db-restore ## Crée et restaure la base (db-create + db-restore)
