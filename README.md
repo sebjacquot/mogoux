@@ -291,7 +291,7 @@ cd ~/mogoux/src
 # Installer Node.js 20.x
 make install-node
 
-# Installer PostgreSQL 15
+# Installer la derni_re version de PostgreSQL (17 sur Debian 13 au 07-05-2026)
 make install-pg
 
 # 2. Créer et configurer le fichier .env
