@@ -244,7 +244,7 @@ cp app/.env.example app/.env
 
 | Variable | Description | Exemple |
 |----------|-------------|---------|
-| `DATABASE_URI` | URL de connexion PostgreSQL | `postgres://fanum:motdepasse@127.0.0.1:5432/mogoux` |
+| `DATABASE_URI` | URL de connexion PostgreSQL | `postgres://fanum:db_password@127.0.0.1:5432/mogoux` |
 | `PAYLOAD_SECRET` | Secret JWT pour PayloadCMS (min. 32 chars) | `openssl rand -base64 32` |
 
 ### Variables optionnelles
@@ -300,6 +300,7 @@ nano app/.env
 # → Renseignez DATABASE_URI et PAYLOAD_SECRET
 
 # 3. Lancer le déploiement complet
+export DB_PASS=db_password
 make full-deploy
 ```
 
