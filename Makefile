@@ -17,8 +17,8 @@ APP_DIR      ?= /var/www/mogoux/app
 NODE_ENV     ?= production
 PORT         ?= 3000
 
-# Chemin absolu du répertoire courant
-ROOT_DIR := $(shell pwd)
+# Chemin absolu du répertoire courant : [Seb, 2026-05-07 : non utilisé finalement ?]
+#ROOT_DIR := $(shell pwd)
 
 # ============================================================
 .PHONY: help install-node install-pg db-create db-restore \
@@ -37,7 +37,7 @@ help: ## Affiche cette aide
 	@echo "    make full-deploy"
 	@echo ""
 	@echo "  Variables configurables (ex: make db-restore DB_USER=postgres) :"
-	@echo "    DB_USER=$(DB_USER)  DB_NAME=$(DB_NAME)  DB_HOST=$(DB_HOST)  PORT=$(PORT)"
+	@echo "    DB_USER=$(DB_USER)  DB_PASS=$(DB_PASS)  DB_NAME=$(DB_NAME)  DB_HOST=$(DB_HOST)  PORT=$(PORT)"
 	@echo ""
 
 # ============================================================
