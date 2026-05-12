@@ -299,8 +299,8 @@ cp app/.env.example app/.env
 nano app/.env
 # → Renseignez DATABASE_URI et PAYLOAD_SECRET
 
-# 3. Stocker le mot de passe de l'utilisateur PostgreSQL qui va être créer dans une variable d'environnement
-export DB_PASS='db_password'
+# 3. Stocker le mot de passe de l'utilisateur PostgreSQL qui va être créé dans une variable d'environnement
+export DB_PASS='indiquer_le_mot_de_passe'
 
 # 4. Lancer le déploiement complet
 make full-deploy
