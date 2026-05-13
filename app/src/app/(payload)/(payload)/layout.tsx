@@ -7,7 +7,8 @@ import { handleServerFunctions, RootLayout } from '@payloadcms/next/layouts'
 import React from 'react'
 
 import { importMap } from './admin/importMap.js'
-import './custom.scss'
+//SJ, 2026-05-13: désactivation temporaire car l'interface est illisble
+//import './custom.scss'
 
 type Args = {
   children: React.ReactNode
