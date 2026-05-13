@@ -24,7 +24,7 @@ export const Medias: CollectionConfig = {
     },
     upload: {
         staticDir: path.resolve(process.cwd(), 'public/medias'),
-        staticURL: '/medias',
+       // staticURL: '/medias',
         adminThumbnail: "thumbnail",
         mimeTypes: ["image/*"],
         imageSizes: [
