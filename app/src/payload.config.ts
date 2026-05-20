@@ -61,8 +61,48 @@ export default buildConfig({
   ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
-  csrf: [serverURL],
-  cors: [serverURL],
+  /* routes: {
+    api: '/memoires-ouvrieres-goux/cms/api',
+    admin: '/memoires-ouvrieres-goux/cms/admin'
+  },*/
+  //serverURL: serverURL,
+  //serverURL: process.env.NEXT_PUBLIC_SERVER_URL,
+//  serverURL: process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000',
+  
+  // pour accès depuis le FQDN mais en http pour le dev sinon les navigateur n'envoie pas certains header (Origin ou Sec-Fetch-Site )
+  csrf: [],
+    
+  /*csrf: [
+    // whitelist of domains to allow cookie auth from
+    serverURL,
+//    "http://localhost:4321",
+    "http://localhost:3000",
+    "http://172.20.81.112:3000",
+    "http://mogoux-fanum.inframshe.univ-fcomte.fr",
+    "https://mogoux-fanum.inframshe.univ-fcomte.fr",
+    "http://mogoux-dev-fanum.inframshe.univ-fcomte.fr", // sans Ngnix
+    "http://mogoux-dev-fanum.inframshe.univ-fcomte.fr:3000", // sans Ngnix
+    "https://mogoux-dev-fanum.inframshe.univ-fcomte.fr:3000", // sans Ngnix
+    "https://fanum.univ-fcomte.fr" // config finale
+  ],
+  */
+  
+  cors: [
+     serverURL,
+    // whitelist of domains to allow CORS from
+//    "http://localhost:4321",
+    "http://localhost:3000",
+    "http://172.20.81.112:3000",
+    "http://mogoux-fanum.inframshe.univ-fcomte.fr",
+    "https://mogoux-fanum.inframshe.univ-fcomte.fr",
+    "http://mogoux-dev-fanum.inframshe.univ-fcomte.fr", // sans Ngnix
+    "http://mogoux-dev-fanum.inframshe.univ-fcomte.fr:3000", // sans Ngnix
+    "https://mogoux-dev-fanum.inframshe.univ-fcomte.fr:3000", // sans Ngnix
+    "https://fanum.univ-fcomte.fr" // config finale
+  ],
+ 
+/*  csrf: [serverURL],
+  cors: [serverURL],*/
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
