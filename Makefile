@@ -10,9 +10,9 @@ DB_NAME      ?= mogoux
 DB_PASS      ?= default_password
 DB_HOST      ?= 127.0.0.1
 DB_PORT      ?= 5432
-SQL_FILE     ?= $(HOME)/backups/2026-03-13_export_gou-db.sql
-DOCS_ARCHIVE ?= $(HOME)/backups/2026-03-13_export_documents.tar.gz
-MEDIA_ARCHIVE?= $(HOME)/backups/2026-03-13_export_medias.tar.gz
+SQL_FILE     ?= $(HOME)/mogoux/backups/2026-03-13_export_gou-db.sql
+DOCS_ARCHIVE ?= $(HOME)/mogoux/backups/2026-03-13_export_documents.tar.gz
+MEDIA_ARCHIVE?= $(HOME)/mogoux/backups/2026-03-13_export_medias.tar.gz
 APP_DIR      ?= app
 #APP_SRC_DIR  ?= /var/www/mogoux/app #TODO: Seb, 2026-05-07: les src doivent être dans home/mogoux alors que l'app est dans /var/www/mogoux, modifier le script en conséquence
 NODE_ENV     ?= production
@@ -68,12 +68,12 @@ install-deps-system: ## Installe les dépendances système nécessaires (curl, g
 # ============================================================
 db-create: ## Crée l'utilisateur et la base de données PostgreSQL
 	@echo "→ Création du rôle PostgreSQL '$(DB_USER)'..."
-	su - root -c 'sudo -u postgres psql -c "DROP ROLE IF EXISTS $(DB_USER);"'
-	su - root -c 'sudo -u postgres psql -c "CREATE ROLE $(DB_USER) LOGIN PASSWORD \'$(DB_PASS)\';"'
+	sudo -u postgres psql -c "DROP ROLE IF EXISTS $(DB_USER);" || true
+	sudo -u postgres psql -c "CREATE ROLE $(DB_USER) LOGIN PASSWORD '$(DB_PASS)';" || true
 	#sudo -u postgres psql -c "CREATE ROLE $(DB_USER) LOGIN PASSWORD '$(DB_PASS)'" 2>/dev/null || true
 	@echo "→ Création de la base de données '$(DB_NAME)'..."
-	su - root -c 'sudo -u postgres psql -c "CREATE DATABASE $(DB_NAME) OWNER $(DB_USER);" 2>/dev/null || echo "  (base déjà existante, ignoré)"'
-	su - root -c 'sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE $(DB_NAME) TO $(DB_USER);"'
+	sudo -u postgres psql -c "CREATE DATABASE $(DB_NAME) OWNER $(DB_USER);" 2>/dev/null || echo "  (base déjà existante, ignoré)"
+	sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE $(DB_NAME) TO $(DB_USER);" || true
 	@echo "✓ Base '$(DB_NAME)' prête"
 
 db-restore: ## Restaure la base de données depuis le dump SQL
@@ -81,7 +81,8 @@ db-restore: ## Restaure la base de données depuis le dump SQL
 	  echo "✗ Fichier SQL introuvable : $(SQL_FILE)"; exit 1; \
 	fi
 	@echo "→ Restauration de la base depuis $(SQL_FILE)..."
-	sudo -u postgres psql -d $(DB_NAME) -f "$(SQL_FILE)"
+	#sudo -u postgres psql -d $(DB_NAME) -f "$(SQL_FILE)"
+	cat $(SQL_FILE) | sudo -u postgres psql -d $(DB_NAME)
 	@echo "✓ Base restaurée"
 
 db-setup: db-create db-restore ## Crée et restaure la base (db-create + db-restore)
@@ -93,7 +94,7 @@ assets-extract: ## Extrait les archives médias et documents Payload dans app/pu
 	@echo "→ Extraction des médias Payload (backups → app/public/medias/)..."
 	@if [ -f "$(MEDIA_ARCHIVE)" ]; then \
 	  mkdir -p $(APP_DIR)/public/medias; \
-	  tar -xzf "$(MEDIA_ARCHIVE)" --strip-components=4 -C "$(APP_DIR)/public/medias/"; \
+	  tar -xzf "$(MEDIA_ARCHIVE)" --strip-components=5 -C "$(APP_DIR)/public/medias/"; \
 	  echo "✓ Médias extraits dans $(APP_DIR)/public/medias/"; \
 	else \
 	  echo "  (archive médias introuvable, ignorée)"; \
@@ -101,7 +102,7 @@ assets-extract: ## Extrait les archives médias et documents Payload dans app/pu
 	@echo "→ Extraction des documents Payload (backups → app/public/documents/)..."
 	@if [ -f "$(DOCS_ARCHIVE)" ]; then \
 	  mkdir -p $(APP_DIR)/public/documents; \
-	  tar -xzf "$(DOCS_ARCHIVE)" --strip-components=4 -C "$(APP_DIR)/public/documents/"; \
+	  tar -xzf "$(DOCS_ARCHIVE)" --strip-components=5 -C "$(APP_DIR)/public/documents/"; \
 	  echo "✓ Documents extraits dans $(APP_DIR)/public/documents/"; \
 	else \
 	  echo "  (archive documents introuvable, ignorée)"; \
@@ -134,12 +135,25 @@ migrate: env-check ## Exécute les migrations Payload
 
 build: env-check ## Compile l'application Next.js en production
 	@echo "→ Build de production Next.js..."
-	cd $(APP_DIR) && NODE_ENV=$(NODE_ENV) npm run build
+	#cd $(APP_DIR) && NODE_ENV=$(NODE_ENV) npm run build
+	#cd $(APP_DIR) && NODE_ENV=$(NODE_ENV) NEXT_TELEMETRY_DISABLED=0 DEBUG=* npm run build --loglevel verbose
+	cd $(APP_DIR) && NODE_ENV=$(NODE_ENV) NEXT_TELEMETRY_DISABLED=0 DEBUG=* NEXT_DEBUG_BUILD=1 npm run build --loglevel verbose
 	@echo "✓ Build terminé"
 
 start: env-check ## Démarre le serveur Next.js en production
 	@echo "→ Démarrage du serveur sur le port $(PORT)..."
-	cd $(APP_DIR) && PORT=$(PORT) NODE_ENV=$(NODE_ENV) npm run start
+	#normal mode
+	#cd $(APP_DIR) && PORT=$(PORT) NODE_ENV=$(NODE_ENV) npm run start
+	#cd $(APP_DIR) && PORT=$(PORT) NODE_ENV=$(NODE_ENV)  NEXT_TELEMETRY_DEBUG=1 npm run start --loglevel silly
+	# full debug mode
+	#cd $(APP_DIR) && PORT=$(PORT) NODE_ENV=$(NODE_ENV) DEBUG=* PAYLOAD_LOG_LEVEL=debug npm run start
+	# debug mode juste pour payload et next
+	cd $(APP_DIR) && PORT=$(PORT) NODE_ENV=$(NODE_ENV) DEBUG=payload:*,next:* PAYLOAD_LOG_LEVEL=debug npm run start
+	#cd $(APP_DIR) && PORT=$(PORT) NODE_ENV=$(NODE_ENV) DEBUG=payload:*,next:* PAYLOAD_LOG_LEVEL=warn npm run start
+	
+	#cd $(APP_DIR) && PORT=$(PORT) NODE_ENV=$(NODE_ENV) DEBUG=payload:*,next:* PAYLOAD_LOG_LEVEL=info npm run start
+	#dev
+	#cd $(APP_DIR) && PORT=$(PORT) NODE_ENV=$(NODE_ENV) PAYLOAD_LOG_LEVEL=info npm run dev
 
 start-bg: env-check ## Démarre le serveur en arrière-plan (avec nohup)
 	@echo "→ Démarrage en arrière-plan (log: $(APP_DIR)/server.log)..."
