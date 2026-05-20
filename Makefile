@@ -144,13 +144,12 @@ start: env-check ## Démarre le serveur Next.js en production
 	@echo "→ Démarrage du serveur sur le port $(PORT)..."
 	#normal mode
 	#cd $(APP_DIR) && PORT=$(PORT) NODE_ENV=$(NODE_ENV) npm run start
-	#cd $(APP_DIR) && PORT=$(PORT) NODE_ENV=$(NODE_ENV)  NEXT_TELEMETRY_DEBUG=1 npm run start --loglevel silly
+	
 	# full debug mode
 	#cd $(APP_DIR) && PORT=$(PORT) NODE_ENV=$(NODE_ENV) DEBUG=* PAYLOAD_LOG_LEVEL=debug npm run start
 	# debug mode juste pour payload et next
 	cd $(APP_DIR) && PORT=$(PORT) NODE_ENV=$(NODE_ENV) DEBUG=payload:*,next:* PAYLOAD_LOG_LEVEL=debug npm run start
 	#cd $(APP_DIR) && PORT=$(PORT) NODE_ENV=$(NODE_ENV) DEBUG=payload:*,next:* PAYLOAD_LOG_LEVEL=warn npm run start
-	
 	#cd $(APP_DIR) && PORT=$(PORT) NODE_ENV=$(NODE_ENV) DEBUG=payload:*,next:* PAYLOAD_LOG_LEVEL=info npm run start
 	#dev
 	#cd $(APP_DIR) && PORT=$(PORT) NODE_ENV=$(NODE_ENV) PAYLOAD_LOG_LEVEL=info npm run dev
