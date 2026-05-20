@@ -13,6 +13,10 @@ const nextConfig = {
 	
 /*
 était nécessaire sur l'ancienne machine, à voir si on en a encore besoin	
+	Il y a botamment un warning de NextJS sur l'admin :
+	Cross origin request detected from mogoux-dev-fanum.inframshe.univ-fcomte.fr to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+
+	
 	  experimental: {
     serverActions: {
       allowedOrigins: [
@@ -29,6 +33,11 @@ const nextConfig = {
     }
   },
   */
+  
+/*  routes: {
+  admin: '/memoires-ouvrieres-goux-dev/admin',
+  api: '/memoires-ouvrieres-goux-dev/api',
+},*/
   
   // Permet de servir les médias uploadés dans PayloadCMS
   images: {
