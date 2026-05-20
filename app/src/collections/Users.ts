@@ -5,11 +5,11 @@ export const Users: CollectionConfig = {
   admin: {
     useAsTitle: 'email',
   },
-  //auth: true,
+  auth: true,
   // SJ, 2026-05-13: force JWT auth sinon il faudrait créer la table users_sessions
-  auth: {
+  /*auth: {
     useSessions: false,
-  },
+  },*/
   labels: {
     singular: {
       en: 'User',
