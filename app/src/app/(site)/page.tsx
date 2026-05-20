@@ -26,7 +26,7 @@ export default function HomePage() {
           </p>
 
           <Link
-            href={`${base}/navigation`}
+	    href="/navigation"
             className="flex items-center gap-2.5 text-secondary no-underline group w-fit"
           >
             <h2 className="text-[13px] uppercase font-semibold tracking-wide transition-all duration-200 group-hover:tracking-widest">

@@ -99,7 +99,7 @@ export default function ChapitresPage() {
               dangerouslySetInnerHTML={{ __html: chapter.desc }}
             />
             <Link
-              href={`${base}${chapter.link}`}
+              href={`${chapter.link}`}
               className="relative inline-block bg-white/10 border-none text-secondary font-graphik font-extrabold text-[13px] leading-[2.9] px-5 rounded no-underline transition-colors hover:bg-white/20 shadow-[#efefef_0px_0px_2px_inset] hover:shadow-[#efefef_0px_0px_2px_inset]"
             >
               Lire la suite

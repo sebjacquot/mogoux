@@ -31,7 +31,7 @@ export default function GalleryItem({ document: doc, allSlugs }: Props) {
     } catch {
       // sessionStorage unavailable — navigation will fall back to /thematiques
     }
-    router.push(`${base}/documents/${doc.slug}`)
+    router.push(`/documents/${doc.slug}`)
   }
 
   const isMedia = doc.type === 'Audio' || doc.type === 'Video'

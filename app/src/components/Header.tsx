@@ -96,7 +96,7 @@ export default function Header() {
               {item.links.map((link, j) => (
                 <Link
                   key={j}
-                  href={`${base}${link.href}`}
+                  href={`${link.href}`}
                   onClick={() => setMenuOpen(false)}
                   className="block px-5 py-1 text-secondary no-underline uppercase text-sm hover:underline hover:opacity-50 pl-10"
                 >

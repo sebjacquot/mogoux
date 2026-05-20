@@ -10,7 +10,7 @@ interface Props {
 
 export default function SuggestionsCard({ titre, numero_chapitre, lien_image }: Props) {
   return (
-    <Link href={`${base}/chapitres/chapitre${numero_chapitre}`} className="no-underline">
+    <Link href={`/chapitres/chapitre${numero_chapitre}`} className="no-underline">
       <div className="w-[85vw] max-w-[300px] h-[180px] overflow-hidden rounded-sm relative group">
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-black/40 z-[5] group-hover:bg-[#e72465]/30 transition-all duration-300" />

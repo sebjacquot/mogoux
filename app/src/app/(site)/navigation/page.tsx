@@ -30,11 +30,11 @@ export default function NavigationPage() {
             accompagnés de documents iconographiques.
           </p>
           <div className="flex flex-col gap-2.5">
-            <Link href={`${base}/thematiques`} className="group flex items-center gap-4 text-white no-underline font-bold text-[18px] md:text-[18px] sm:text-base">
+            <Link href="/thematiques" className="group flex items-center gap-4 text-white no-underline font-bold text-[18px] md:text-[18px] sm:text-base">
               <ArrowIcon />
               <h3>Découvrir les thématiques</h3>
             </Link>
-            <Link href={`${base}/carte`} className="group flex items-center gap-4 text-white no-underline font-bold text-[18px] md:text-[18px] sm:text-base">
+            <Link href="/carte" className="group flex items-center gap-4 text-white no-underline font-bold text-[18px] md:text-[18px] sm:text-base">
               <ArrowIcon />
               <h3>Parcourir la carte</h3>
             </Link>
@@ -61,15 +61,15 @@ export default function NavigationPage() {
             puis reçu par le public.
           </p>
           <div className="flex flex-col gap-2.5">
-            <Link href={`${base}/chapitres/biographie`} className="group flex items-center gap-4 text-white no-underline font-bold text-[18px] sm:text-base">
+            <Link href="/chapitres/biographie" className="group flex items-center gap-4 text-white no-underline font-bold text-[18px] sm:text-base">
               <ArrowIcon />
               <h3>Présentation de Jean-Paul Goux</h3>
             </Link>
-            <Link href={`${base}/chapitres`} className="group flex items-center gap-4 text-white no-underline font-bold text-[18px] sm:text-base">
+            <Link href="/chapitres" className="group flex items-center gap-4 text-white no-underline font-bold text-[18px] sm:text-base">
               <ArrowIcon />
               <h3>Chapitrage : la fabrique des <em>Mémoires de l'Enclave</em></h3>
             </Link>
-            <Link href={`${base}/documentaire`} className="group flex items-center gap-4 text-white no-underline font-bold text-[18px] sm:text-base">
+            <Link href="/documentaire" className="group flex items-center gap-4 text-white no-underline font-bold text-[18px] sm:text-base">
               <ArrowIcon />
               <h3>Documentaire <em>Paroles d'ouvrières</em></h3>
             </Link>

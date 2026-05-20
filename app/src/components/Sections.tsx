@@ -33,7 +33,7 @@ export default function Sections({ title, sectionId, color, thematics }: Props) 
             return (
               <Link
                 key={i}
-                href={`${base}/thematiques/${slug}?section=${sectionId}`}
+                href={`/thematiques/${slug}?section=${sectionId}`}
                 className="px-4 py-2 rounded text-sm font-semibold no-underline text-secondary hover:opacity-80 transition-opacity"
                 style={{ backgroundColor: color + 'CC' }}
               >

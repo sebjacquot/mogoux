@@ -7,7 +7,7 @@ interface Props {
 
 export default function Return({ linkURL, linkText = 'Retour' }: Props) {
   const base = process.env.NEXT_PUBLIC_BASE_PATH || ''
-  const href = linkURL.startsWith('http') ? linkURL : `${base}${linkURL}`
+  const href = linkURL.startsWith('http') ? linkURL : `${linkURL}`
 
   return (
     <div className="fixed top-0 left-20 z-[999] h-20 flex items-center pl-4 bg-nav/90 backdrop-blur-sm">

@@ -91,7 +91,7 @@ export default async function LieuReferencePage({ params }: Props) {
 
   return (
     <>
-      <Return linkURL={`${base}/carte`} linkText="Retourner à la carte" />
+      <Return linkURL="/carte" linkText="Retourner à la carte" />
 
       {/* Hero */}
       <section className="relative w-full flex justify-center items-center overflow-hidden" style={{ height: '75vh', maxHeight: '700px', minHeight: '560px' }}>

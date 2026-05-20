@@ -68,7 +68,7 @@ export default function Details({
                 style={{ border: `1px solid ${t.color || 'white'}` }}
               >
                 <Link
-                  href={`${base}/thematiques/${t.slug}?section=${t.related_sections?.docs?.[0] || ''}`}
+                  href={`/thematiques/${t.slug}?section=${t.related_sections?.docs?.[0] || ''}`}
                   className="no-underline"
                   style={{ color: t.color || 'white' }}
                 >
@@ -93,7 +93,7 @@ export default function Details({
                 <h3 className="m-0 font-semibold">Lieu de référence</h3>
               </div>
               <div>
-                <Link href={`${base}/lieux-reference/${location.location_reference.slug}`} className="text-site-text no-underline hover:underline hover:opacity-70">
+                <Link href={`/lieux-reference/${location.location_reference.slug}`} className="text-site-text no-underline hover:underline hover:opacity-70">
                   {location.location_reference.name}
                 </Link>
               </div>

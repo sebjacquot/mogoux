@@ -85,7 +85,7 @@ export default async function ThematiqueDetailPage({ params, searchParams }: Pro
 
   return (
     <>
-      <Return linkURL={`${base}/thematiques`} linkText="Retourner aux thématiques" />
+      <Return linkURL="/thematiques" linkText="Retourner aux thématiques" />
       <div className="flex justify-center w-screen">
         <div className="w-[98vw]">
           <div className="flex justify-center">

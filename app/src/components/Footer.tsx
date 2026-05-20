@@ -17,13 +17,13 @@ export default function Footer() {
           </div>
           <div className="flex flex-col">
             <h3 className="font-bold text-base mb-5">Informations légales</h3>
-            <Link href={`${base}/annexe/mentions_legales`} className="text-[#aaa] text-sm mb-1 no-underline hover:text-white">Mentions légales</Link>
+            <Link href="/annexe/mentions_legales" className="text-[#aaa] text-sm mb-1 no-underline hover:text-white">Mentions légales</Link>
           </div>
           <div className="flex flex-col">
             <h3 className="font-bold text-base mb-5">Le projet</h3>
-            <Link href={`${base}/annexe/presentation_projet`} className="text-[#aaa] text-sm mb-1 no-underline hover:text-white">Manifeste éditorial</Link>
-            <Link href={`${base}/annexe/equipe`} className="text-[#aaa] text-sm mb-1 no-underline hover:text-white">L'équipe</Link>
-            <Link href={`${base}/annexe/partenaires`} className="text-[#aaa] text-sm mb-1 no-underline hover:text-white">Partenaires</Link>
+            <Link href="/annexe/presentation_projet" className="text-[#aaa] text-sm mb-1 no-underline hover:text-white">Manifeste éditorial</Link>
+            <Link href="/annexe/equipe" className="text-[#aaa] text-sm mb-1 no-underline hover:text-white">L'équipe</Link>
+            <Link href="/annexe/partenaires" className="text-[#aaa] text-sm mb-1 no-underline hover:text-white">Partenaires</Link>
           </div>
         </div>
         <a href="mailto:elliadd@univ-fcomte.fr">
