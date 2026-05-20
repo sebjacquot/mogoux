@@ -150,7 +150,7 @@ export default function CarteMap() {
           {pins.map((pin, i) => (
             <Link
               key={i}
-              href={`${base}${pin.href}`}
+              href={`${pin.href}`}
               className="pointer-events-auto absolute"
               style={{ top: pin.top, left: pin.left }}
               onMouseEnter={() => setHoveredPin(i)}
@@ -191,7 +191,7 @@ export default function CarteMap() {
         {pins.map((pin, i) => (
           <Link
             key={`list-${i}`}
-            href={`${base}${pin.href}`}
+            href={`${pin.href}`}
             className="flex items-start gap-3 px-3 py-2.5 rounded bg-white/5 hover:bg-white/10 transition-colors no-underline"
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}

@@ -33,7 +33,7 @@ export default function DocumentNav({ currentSlug }: { currentSlug: string }) {
   const idx = slugs.indexOf(currentSlug)
   const prevSlug = idx > 0 ? slugs[idx - 1] : null
   const nextSlug = idx >= 0 && idx < slugs.length - 1 ? slugs[idx + 1] : null
-  const returnUrl = nav?.returnUrl ?? `${base}/thematiques`
+  const returnUrl = nav?.returnUrl ?? "/thematiques"
 
   return (
     <>
@@ -64,7 +64,7 @@ export default function DocumentNav({ currentSlug }: { currentSlug: string }) {
       {/* Prev navigation arrow */}
       {prevSlug && (
         <Link
-          href={`${base}/documents/${prevSlug}`}
+          href={`/documents/${prevSlug}`}
           className="fixed left-[30px] top-1/2 -translate-y-1/2 text-white text-4xl no-underline z-50 transition-transform hover:scale-125 hover:text-[#c5c5c5]"
           aria-label="Document précédent"
         >
@@ -75,7 +75,7 @@ export default function DocumentNav({ currentSlug }: { currentSlug: string }) {
       {/* Next navigation arrow */}
       {nextSlug && (
         <Link
-          href={`${base}/documents/${nextSlug}`}
+          href={`/documents/${nextSlug}`}
           className="fixed right-[30px] top-1/2 -translate-y-1/2 text-white text-4xl no-underline z-50 transition-transform hover:scale-125 hover:text-[#c5c5c5]"
           aria-label="Document suivant"
         >
