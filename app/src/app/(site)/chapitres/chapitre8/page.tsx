@@ -55,12 +55,35 @@ export default function Chapitre8Page() {
           <p>Compte-rendu de René Gaudy dans M mensuel, marxisme mouvement (extrait) © Fonds Goux, GOU 04 D 0012</p>
         </div>
         <div className="article-paragraph">
-          <p>Le plus sévère est alors l'intellectuel communiste René Gaudy. Il reproche à Goux d'avoir oublié son commanditaire. Dix-sept ans plus tard, en 2003, l'ouvrage est réédité au format de poche chez Actes Sud dans la collection « Babel ».</p>
+          <p>Le plus sévère est alors l'intellectuel communiste René Gaudy. Il reproche à Goux d'avoir oublié son commanditaire, la Cité, et derrière elle le combat des militants communistes – Paul Cèbe en tête – pour rendre visible la condition ouvrière en Franche-Comté, à la Rhodiaceta de Besançon (Chris Marker) ou aux usines Peugeot de Sochaux (les groupes Medvedkine). Selon lui, Goux est trop extérieur au monde qu’il décrit et le témoin « ne se fait pas assez égorger ». Ces crispations montrent combien ce qui touche au mouvement ouvrier et à ses luttes reste très sensible au milieu des années 1980 et expliquent cette réception réservée dans la presse militante.</p>
         </div>
+        
+  <h2 className="article-section-title">Les rééditions</h2>
+        <div className="article-paragraph">
+          <p>Dix-sept ans plus tard, en 2003, l'ouvrage est réédité au format de poche chez Actes Sud dans la collection « Babel ». Entre-temps, l’écrivain s’est imposé comme une des voix majeures du roman contemporain. 
+            Sa réflexion sur le temps, sur les voix individuelles et sur la mémoire collective, poursuivie dans ses romans ultérieurs, souligne rétrospectivement 
+            la cohérence et l’actualité de l’entreprise menée dans les Mémoires de l’Enclave. Elle trouve des échos dans la création contemporaine, notamment chez un écrivain comme François Bon, auteur de <i>Daewoo</i> en 2004. </p>
+        </div>      
         <div className="article-image">
           <ImageFullscreen src={`${base}/images/Chapitres/Chapitre9/couverture.jpg`} legend="1re de couverture de l'édition de poche des Mémoires de l'Enclave, Actes Sud, 2003" alt="Couverture Actes Sud 2003" />
           <p>1re de couverture de l'édition de poche des Mémoires de l'Enclave, Actes Sud, 2003</p>
         </div>
+        
+        <div className="article-paragraph">
+          <p>A partir de 2015, alors que le projet de recherche mené sous la responsabilité d'Andrée Chauvin-Vileno autour de <i>Mémoires de l'Enclave</i> se développe, l'ouvrage devient difficilement accessible. Un projet d'édition
+             critique voit alors le jour, réunissant différents collègues associés au projet : Andrée Chauvin-Vileno, Corinne Grenouillet, Yvon Houssais, Odile Roynette et le doctorant Quentin Arnoud, sous la responsabilité de Pascal Lécroart. 
+            La directrice des Belles Lettres, Caroline Noirot, originaire du Pays de Montbéliard, accueille le projet avec enthousiasme. Le texte est attentivement revu, annoté, accompagné d'une introduction et d'un vaste dossier critique
+             contenant de nombreux documents. Surtout, l'équipe a pu remettre la main sur le travail du photographe Gilles Choffé et le livre pourra accueillir près d'une centaine de photographies. Sortie en février 2026 sous une luxueuse couverture 
+            tissée et cartonnée, l'ouvrage se fait à nouveau remarquer, donnant lieu à des comptes rendus dans <i>L'Est Républicain</i>, <i>Le Monde</i> et <i>Le Monde dimplomatique</i>, sans parler de différents articles en ligne (on tun très beau compte rendu 
+            sur le site <i>En attendant Nadeau</i>.
+            </p>
+        </div>
+          <div className="article-image">
+          <ImageFullscreen src={`${base}/images/Chapitres/Chapitre9/couverture.jpg`} legend="Article d'Anne Both paru dans Le Monde, 27 mars 2026" alt="Article Le Monde" />
+          <p>1re de couverture de l'édition de poche des Mémoires de l'Enclave, Actes Sud, 2003</p>
+        </div>
+
+        
       </div>
 
       <section className="credits-section">
