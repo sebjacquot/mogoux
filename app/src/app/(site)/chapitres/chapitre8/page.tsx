@@ -40,7 +40,7 @@ export default function Chapitre8Page() {
         </div>
         <div className="article-image">
           <ImageFullscreen src={`${base}/images/Chapitres/Chapitre8/GOU_04_D_0022.jpg`} legend="Compte-rendu de Laurent Lemire dans La Croix (2 juin 1986)" alt="Compte-rendu La Croix 1986" />
-          <p>Compte-rendu de Laurent Lemire dans La Croix (2 juin 1986) © Fonds Goux, GOU 4 D 0022</p>
+          <p>Compte-rendu de Laurent Lemire dans <i>La Croix</i> (2 juin 1986) © Fonds Goux, GOU 4 D 0022</p>
         </div>
         <div className="article-paragraph">
           <p>Les critiques parues dans la presse nationale, la presse régionale et dans les magazines littéraires, soulignent toutes l'originalité d'un texte « inclassable ». La critique met également en relief un aspect essentiel : la mise en valeur du caractère clairement « consenti » de la domination subie par le monde ouvrier dans l'Enclave.</p>
@@ -52,7 +52,7 @@ export default function Chapitre8Page() {
         </div>
         <div className="article-image">
           <ImageFullscreen src={`${base}/images/Chapitres/Chapitre8/GOU_04_D_0012.jpg`} legend="Compte-rendu de René Gaudy dans M mensuel, marxisme mouvement (extrait)" alt="Compte-rendu Gaudy 1986" />
-          <p>Compte-rendu de René Gaudy dans M mensuel, marxisme mouvement (extrait) © Fonds Goux, GOU 04 D 0012</p>
+          <p>Compte-rendu de René Gaudy dans <i>M mensuel, marxisme mouvement</i> (extrait) © Fonds Goux, GOU 04 D 0012</p>
         </div>
         <div className="article-paragraph">
           <p>Le plus sévère est alors l'intellectuel communiste René Gaudy. Il reproche à Goux d'avoir oublié son commanditaire, la Cité, et derrière elle le combat des militants communistes – Paul Cèbe en tête – pour rendre visible la condition ouvrière en Franche-Comté, à la Rhodiaceta de Besançon (Chris Marker) ou aux usines Peugeot de Sochaux (les groupes Medvedkine). Selon lui, Goux est trop extérieur au monde qu’il décrit et le témoin « ne se fait pas assez égorger ». Ces crispations montrent combien ce qui touche au mouvement ouvrier et à ses luttes reste très sensible au milieu des années 1980 et expliquent cette réception réservée dans la presse militante.</p>
@@ -66,7 +66,7 @@ export default function Chapitre8Page() {
         </div>      
         <div className="article-image">
           <ImageFullscreen src={`${base}/images/Chapitres/Chapitre8/couverture.jpg`} legend="1re de couverture de l'édition de poche des Mémoires de l'Enclave, Actes Sud, 2003" alt="Couverture Actes Sud 2003" />
-          <p>1re de couverture de l'édition de poche des <i>Mémoires de l'Enclave</i>, Actes Sud, 2003</p>
+          <p>Première de couverture de l'édition de poche des <i>Mémoires de l'Enclave</i>, Actes Sud, 2003</p>
         </div>
         
         <div className="article-paragraph">
@@ -79,9 +79,9 @@ export default function Chapitre8Page() {
            </div>
         <div className="article-image">
           <ImageFullscreen src={`${base}/images/Chapitres/Chapitre8/couverture_edition_critique.jpg`} legend="Couverture de l'édition critique parue aux Belles Lettres" alt="Couverture de l'édition critique parue aux Belles Lettres" />
-          <p></p>Couverture de l'édition critique parue aux Belles Lettres</p>
+          <p></p>Couverture de l'édition critique parue aux Belles Lettres en 2026</p>
         </div>
-                <div className="article-paragraph">
+            <div className="article-paragraph">
             <p>
             Sortie en février 2026 sous une luxueuse couverture tissée et cartonnée, l'ouvrage se fait à nouveau remarquer, donnant lieu à des comptes rendus dans <i>L'Est Républicain</i>, <i>Le Monde</i> et <i>Le Monde dimplomatique</i>, sans parler de différents articles en ligne (on tun très beau compte rendu 
             sur le site <i>En attendant Nadeau</i> (https://www.en-attendant-nadeau.fr/2026/03/12/un-monde-englouti-ressurgit-jean-paul-goux/).
