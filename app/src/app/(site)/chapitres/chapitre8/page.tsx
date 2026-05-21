@@ -83,8 +83,9 @@ export default function Chapitre8Page() {
         </div>
             <div className="article-paragraph">
             <p>
-            Sorti en février 2026 sous une luxueuse couverture tissée et cartonnée, riche de plus de 550 pages, l'ouvrage, monumentalisé, se fait à nouveau remarquer, donnant lieu à des comptes rendus dans <i>L'Est Républicain</i>, <i>Le Monde</i> et <i>Le Monde dimplomatique</i>, sans parler de différents articles en ligne (on tun très beau compte rendu 
-            sur le site <i>En attendant Nadeau</i> (https://www.en-attendant-nadeau.fr/2026/03/12/un-monde-englouti-ressurgit-jean-paul-goux/).
+            Sorti en février 2026 sous une luxueuse couverture tissée et cartonnée, riche de plus de 550 pages, l'ouvrage, monumentalisé, se fait à nouveau remarquer,
+              donnant lieu à des comptes rendus dans <i>L'Est Républicain</i>, <i>Le Monde</i> et <i>Le Monde dimplomatique</i>, sans parler de différents articles en ligne (dont un très beau compte rendu 
+            sur le site <i>En attendant Nadeau</i> (<a href="https://www.en-attendant-nadeau.fr/2026/03/12/un-monde-englouti-ressurgit-jean-paul-goux" target="_blank">https://www.en-attendant-nadeau.fr/2026/03/12/un-monde-englouti-ressurgit-jean-paul-goux</a>).
             </p>
         </div>
           <div className="article-image">
