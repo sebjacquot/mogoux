@@ -66,7 +66,7 @@ export default function Chapitre8Page() {
         </div>      
         <div className="article-image">
           <ImageFullscreen src={`${base}/images/Chapitres/Chapitre9/couverture.jpg`} legend="1re de couverture de l'édition de poche des Mémoires de l'Enclave, Actes Sud, 2003" alt="Couverture Actes Sud 2003" />
-          <p>1re de couverture de l'édition de poche des Mémoires de l'Enclave, Actes Sud, 2003</p>
+          <p>1re de couverture de l'édition de poche des <i>Mémoires de l'Enclave</i>, Actes Sud, 2003</p>
         </div>
         
         <div className="article-paragraph">
@@ -92,7 +92,7 @@ export default function Chapitre8Page() {
         </div>
  <div className="article-image">
           <ImageFullscreen src={`${base}/images/Chapitres/Chapitre8/Le_monde_2.jpg`} legend="Article d'Anne Both paru dans Le Monde, 27 mars 2026" alt="Article Le Monde" />
-         <p>Article d'Anne Both paru dans Le Monde, 27 mars 2026</p>
+         <p>Article d'Anne Both paru dans <i>Le Monde</i>, 27 mars 2026</p>
           </div>
         
       </div>
