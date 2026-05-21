@@ -26,12 +26,11 @@ export default function Chapitre9Page() {
 
       <div className="article-content">
         <div className="article-paragraph">
-          <p>La résidence à Montbéliard de Jean-Paul Goux, construite autour d'un projet d'écriture, a néanmoins très vite rencontré la question des images. Dans le projet d'édition, il était initialement prévu de joindre en annexe un « Dossier photographique » qui, pour des problèmes de coût, sera finalement abandonné.</p>
-        </div>
+          <p>La résidence à Montbéliard de Jean-Paul Goux, construite autour d'un projet d'écriture, a très vite rencontré la question des images.</p>
 
         <h2 className="article-section-title">Les photographies de Jean-Paul Goux</h2>
         <div className="article-paragraph">
-          <p>Dans le « Journal » qui ouvre les <em>Mémoires de l'Enclave</em>, le narrateur écrit : « J'ai repris ces jours derniers mes expéditions photographiques : j'accumule par centaines les photos d'usines abandonnées, de maisons, de cités, de pierres tombales, de plaques émaillées, de potagers et de rues. »</p>
+          <p>Dans le « Journal » qui ouvre <i>Mémoires de l'Enclave</i>, le narrateur écrit : « J'ai repris ces jours derniers mes expéditions photographiques : j'accumule par centaines les photos d'usines abandonnées, de maisons, de cités, de pierres tombales, de plaques émaillées, de potagers et de rues. »  De fait, Jean-Paul Goux a accumulé tout un ensemble de photographies personnelles, en noir-et-blanc ou en couleurs, parfois prises directement depuis une voiture. Elles avaient vocation à servir de traces ou de mémoires de ces différents parcours plus que d’objets artistiques. Les pochettes détaillent précisément les lieux photographiés. Cependant, au-delà de la réussite esthétique de certaines, elles témoignent aujourd’hui de l’état des différents lieux visités en 1985-1986, alors que la crise économique de l’époque entraînait une douloureuse reconversion industrielle et l’abandon de nombreux sites. </p>
         </div>
         <div className="article-image">
           <ImageFullscreen src={`${base}/images/Chapitres/Chapitre9/Pochette1.jpg`} legend="Pochettes photographiques de Jean-Paul Goux" alt="Pochettes photos Goux" />
