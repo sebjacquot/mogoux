@@ -65,7 +65,7 @@ export default function Chapitre8Page() {
             la cohérence et l’actualité de l’entreprise menée dans <i>Mémoires de l’Enclave</i>. Elle trouve des échos dans la création contemporaine, notamment chez un écrivain comme François Bon, auteur de <i>Daewoo</i> en 2004. </p>
         </div>      
         <div className="article-image">
-          <ImageFullscreen src={`${base}/images/Chapitres/Chapitre9/couverture.jpg`} legend="1re de couverture de l'édition de poche des Mémoires de l'Enclave, Actes Sud, 2003" alt="Couverture Actes Sud 2003" />
+          <ImageFullscreen src={`${base}/images/Chapitres/Chapitre8/couverture.jpg`} legend="1re de couverture de l'édition de poche des Mémoires de l'Enclave, Actes Sud, 2003" alt="Couverture Actes Sud 2003" />
           <p>1re de couverture de l'édition de poche des <i>Mémoires de l'Enclave</i>, Actes Sud, 2003</p>
         </div>
         
