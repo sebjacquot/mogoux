@@ -79,9 +79,9 @@ export default function Chapitre8Page() {
            </div>
         <div className="article-image">
           <ImageFullscreen src={`${base}/images/Chapitres/Chapitre8/couverture_edition_critique.jpg`} legend="Couverture de l'édition critique parue aux Belles Lettres" alt="Couverture de l'édition critique parue aux Belles Lettres" />
-          <p></p>Couverture de l'édition critique parue aux Belles Lettres en 2026</p>
+          <p>Couverture de l'édition critique parue aux Belles Lettres en 2026</p>
         </div>
-            <div className="article-paragraph">
+        <div className="article-paragraph">
             <p>
             Sorti en février 2026 sous une luxueuse couverture tissée et cartonnée, riche de plus de 550 pages, l'ouvrage, monumentalisé, se fait à nouveau remarquer,
               donnant lieu à des comptes rendus dans <i>L'Est Républicain</i>, <i>Le Monde</i> et <i>Le Monde dimplomatique</i>, sans parler de différents articles en ligne (dont un très beau compte rendu 
