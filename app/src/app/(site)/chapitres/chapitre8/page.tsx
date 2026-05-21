@@ -78,13 +78,13 @@ export default function Chapitre8Page() {
             </p>
            </div>
         <div className="article-image">
-          <ImageFullscreen src={`${base}/images/Chapitres/Chapitre8/couverture_edition_critique.jpg`} legend="Compte-rendu de Laurent Lemire dans La Croix (2 juin 1986)" alt="Compte-rendu La Croix 1986" />
-          <p>Compte-rendu de Laurent Lemire dans La Croix (2 juin 1986) © Fonds Goux, GOU 4 D 0022</p>
+          <ImageFullscreen src={`${base}/images/Chapitres/Chapitre8/couverture_edition_critique.jpg`} legend="Couverture de l'édition critique parue aux Belles Lettres" alt="Couverture de l'édition critique parue aux Belles Lettres" />
+          <p></p>Couverture de l'édition critique parue aux Belles Lettres</p>
         </div>
                 <div className="article-paragraph">
             <p>
             Sortie en février 2026 sous une luxueuse couverture tissée et cartonnée, l'ouvrage se fait à nouveau remarquer, donnant lieu à des comptes rendus dans <i>L'Est Républicain</i>, <i>Le Monde</i> et <i>Le Monde dimplomatique</i>, sans parler de différents articles en ligne (on tun très beau compte rendu 
-            sur le site <i>En attendant Nadeau</i>.
+            sur le site <i>En attendant Nadeau</i> (https://www.en-attendant-nadeau.fr/2026/03/12/un-monde-englouti-ressurgit-jean-paul-goux/).
             </p>
         </div>
           <div className="article-image">
