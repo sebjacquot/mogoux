@@ -27,7 +27,7 @@ export default function Chapitre9Page() {
       <div className="article-content">
         <div className="article-paragraph">
           <p>La résidence à Montbéliard de Jean-Paul Goux, construite autour d'un projet d'écriture, a très vite rencontré la question des images.</p>
-
+        </div>
         <h2 className="article-section-title">Les photographies de Jean-Paul Goux</h2>
         <div className="article-paragraph">
           <p>Dans le « Journal » qui ouvre <i>Mémoires de l'Enclave</i>, le narrateur écrit : « J'ai repris ces jours derniers mes expéditions photographiques : j'accumule par centaines les photos d'usines abandonnées, de maisons, de cités, de pierres tombales, de plaques émaillées, de potagers et de rues. »  De fait, Jean-Paul Goux a accumulé tout un ensemble de photographies personnelles, en noir-et-blanc ou en couleurs, parfois prises directement depuis une voiture. Elles avaient vocation à servir de traces ou de mémoires de ces différents parcours plus que d’objets artistiques. Les pochettes détaillent précisément les lieux photographiés. Cependant, au-delà de la réussite esthétique de certaines, elles témoignent aujourd’hui de l’état des différents lieux visités en 1985-1986, alors que la crise économique de l’époque entraînait une douloureuse reconversion industrielle et l’abandon de nombreux sites. </p>
@@ -66,7 +66,7 @@ export default function Chapitre9Page() {
           <ImageFullscreen src={`${base}/images/Chapitres/Chapitre9/GOU_A_08_03_041.jpg`} legend="Jean-Paul Goux dédicaçant son ouvrage à l'occasion de la présentation de l'ouvrage au Musée du Château de Montbéliard les 26 et 27 avril 1986" alt="Goux dédicace 1986" />
           <p>Jean-Paul Goux dédicaçant son ouvrage à l'occasion de la présentation de l'ouvrage au Musée du Château de Montbéliard les 26 et 27 avril 1986 © Fonds Goux</p>
         </div>
-   <div className="article-paragraph">
+        <div className="article-paragraph">
           <p>Lorsque l’ouvrage de Jean-Paul Goux sera officiellement présenté à l'ensemble des personnes et des institutions qui ont favorisé son écriture, le vendredi 25 avril 1986, Gilles Choffé sera encore présent pour réaliser tout un ensemble de portraits des participants.</p>
         </div>
         <h2 className="article-section-title">Les photographies de Werner Hannappel</h2>
