@@ -88,13 +88,13 @@ export default function Chapitre8Page() {
             sur le site <i>En attendant Nadeau</i> (<a href="https://www.en-attendant-nadeau.fr/2026/03/12/un-monde-englouti-ressurgit-jean-paul-goux" target="_blank">https://www.en-attendant-nadeau.fr/2026/03/12/un-monde-englouti-ressurgit-jean-paul-goux</a>).
             </p>
         </div>
-          <div className="article-image">
-          <ImageFullscreen src={`${base}/images/Chapitres/Chapitre8/Le_monde_1.jpg`}/>
+       <div className="article-image">
+          <ImageFullscreen src={`${base}/images/Chapitres/Chapitre8/Le_monde_1.jpg`} legend="Article d'Anne Both paru dans Le Monde, 27 mars 2026" alt="Article Le Monde" />
         </div>
- <div className="article-image">
+       <div className="article-image">
           <ImageFullscreen src={`${base}/images/Chapitres/Chapitre8/Le_monde_2.jpg`} legend="Article d'Anne Both paru dans Le Monde, 27 mars 2026" alt="Article Le Monde" />
          <p>Article d'Anne Both paru dans <i>Le Monde</i>, 27 mars 2026</p>
-          </div>
+      </div>
         
       </div>
 
