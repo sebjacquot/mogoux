@@ -62,7 +62,7 @@ export default function Chapitre8Page() {
         <div className="article-paragraph">
           <p>Dix-sept ans plus tard, en 2003, l'ouvrage est réédité au format de poche chez Actes Sud dans la collection « Babel ». Entre-temps, l’écrivain s’est imposé comme une des voix majeures du roman contemporain. 
             Sa réflexion sur le temps, sur les voix individuelles et sur la mémoire collective, poursuivie dans ses romans ultérieurs, souligne rétrospectivement 
-            la cohérence et l’actualité de l’entreprise menée dans les Mémoires de l’Enclave. Elle trouve des échos dans la création contemporaine, notamment chez un écrivain comme François Bon, auteur de <i>Daewoo</i> en 2004. </p>
+            la cohérence et l’actualité de l’entreprise menée dans <i>Mémoires de l’Enclave</i>. Elle trouve des échos dans la création contemporaine, notamment chez un écrivain comme François Bon, auteur de <i>Daewoo</i> en 2004. </p>
         </div>      
         <div className="article-image">
           <ImageFullscreen src={`${base}/images/Chapitres/Chapitre9/couverture.jpg`} legend="1re de couverture de l'édition de poche des Mémoires de l'Enclave, Actes Sud, 2003" alt="Couverture Actes Sud 2003" />
@@ -70,19 +70,30 @@ export default function Chapitre8Page() {
         </div>
         
         <div className="article-paragraph">
-          <p>A partir de 2015, alors que le projet de recherche mené sous la responsabilité d'Andrée Chauvin-Vileno autour de <i>Mémoires de l'Enclave</i> se développe, l'ouvrage devient difficilement accessible. Un projet d'édition
+          <p>A partir de 2015, alors que le projet de recherche mené sous la responsabilité d'Andrée Chauvin-Vileno autour de <i>Mémoires de l'Enclave</i> et de ses archives se développe au sein du laboratoire ELLIADD de l'Université de Franche-Comté (devenue Université Marie et Louis Pasteur),
+            l'ouvrage devient difficilement accessible. Un projet d'édition
              critique voit alors le jour, réunissant différents collègues associés au projet : Andrée Chauvin-Vileno, Corinne Grenouillet, Yvon Houssais, Odile Roynette et le doctorant Quentin Arnoud, sous la responsabilité de Pascal Lécroart. 
             La directrice des Belles Lettres, Caroline Noirot, originaire du Pays de Montbéliard, accueille le projet avec enthousiasme. Le texte est attentivement revu, annoté, accompagné d'une introduction et d'un vaste dossier critique
-             contenant de nombreux documents. Surtout, l'équipe a pu remettre la main sur le travail du photographe Gilles Choffé et le livre pourra accueillir près d'une centaine de photographies. Sortie en février 2026 sous une luxueuse couverture 
-            tissée et cartonnée, l'ouvrage se fait à nouveau remarquer, donnant lieu à des comptes rendus dans <i>L'Est Républicain</i>, <i>Le Monde</i> et <i>Le Monde dimplomatique</i>, sans parler de différents articles en ligne (on tun très beau compte rendu 
+             contenant de nombreux documents. Surtout, l'équipe a pu remettre la main sur le travail du photographe Gilles Choffé et le livre pourra accueillir plus d'une cinquantaine de ses photographies. 
+            </p>
+           </div>
+        <div className="article-image">
+          <ImageFullscreen src={`${base}/images/Chapitres/Chapitre8/couverture_edition_critique.jpg`} legend="Compte-rendu de Laurent Lemire dans La Croix (2 juin 1986)" alt="Compte-rendu La Croix 1986" />
+          <p>Compte-rendu de Laurent Lemire dans La Croix (2 juin 1986) © Fonds Goux, GOU 4 D 0022</p>
+        </div>
+                <div className="article-paragraph">
+            <p>
+            Sortie en février 2026 sous une luxueuse couverture tissée et cartonnée, l'ouvrage se fait à nouveau remarquer, donnant lieu à des comptes rendus dans <i>L'Est Républicain</i>, <i>Le Monde</i> et <i>Le Monde dimplomatique</i>, sans parler de différents articles en ligne (on tun très beau compte rendu 
             sur le site <i>En attendant Nadeau</i>.
             </p>
         </div>
           <div className="article-image">
-          <ImageFullscreen src={`${base}/images/Chapitres/Chapitre9/couverture.jpg`} legend="Article d'Anne Both paru dans Le Monde, 27 mars 2026" alt="Article Le Monde" />
-          <p>1re de couverture de l'édition de poche des Mémoires de l'Enclave, Actes Sud, 2003</p>
+          <ImageFullscreen src={`${base}/images/Chapitres/Chapitre8/Le_monde_1.jpg`}/>
         </div>
-
+ <div className="article-image">
+          <ImageFullscreen src={`${base}/images/Chapitres/Chapitre8/Le_monde_2.jpg`} legend="Article d'Anne Both paru dans Le Monde, 27 mars 2026" alt="Article Le Monde" />
+         <p>Article d'Anne Both paru dans Le Monde, 27 mars 2026</p>
+          </div>
         
       </div>
 
