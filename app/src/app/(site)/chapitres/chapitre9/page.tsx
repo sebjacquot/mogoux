@@ -44,7 +44,7 @@ export default function Chapitre9Page() {
 
         <h2 className="article-section-title">Les photographies historiques de Peugeot</h2>
         <div className="article-paragraph">
-          <p>En vue du carnet photographique, Jean-Paul Goux a récupéré, auprès des archives Peugeot, un tirage d'une vingtaine de photographies anciennes noir et blanc en grand format.</p>
+          <p>En vue du carnet photographique, Jean-Paul Goux a récupéré, auprès des archives Peugeot, un tirage d'une vingtaine de photographies anciennes noir et blanc en grand format.  C’est parmi elles qu’il a trouvé la photographie qui servira de couverture pour les deux premières éditions. </p>
         </div>
         <div className="article-image">
           <ImageFullscreen src={`${base}/images/Chapitres/Chapitre9/GOU_A_08_02_001.jpg`} legend="Sortie des usines Beaulieu de Peugeot vers 1906" alt="Usines Beaulieu 1906" />
@@ -53,23 +53,26 @@ export default function Chapitre9Page() {
 
         <h2 className="article-section-title">Les photographies de Gilles Choffé</h2>
         <div className="article-paragraph">
-          <p>Par l'intermédiaire de l'association La Cité, Jean-Paul Goux a fait la connaissance, pendant sa résidence, d'un jeune ouvrier de Peugeot, passionné par la photographie : Gilles Choffé. À partir de décembre 1984, Jean-Paul Goux a ainsi emmené Gilles Choffé dans ses déplacements afin qu'il prenne de nombreuses photos de sites et de paysages. Au total, près de 300 photographies seront réalisées.</p>
+          <p>Par l’intermédiaire de l’association La Cité, Jean-Paul Goux a fait la connaissance, pendant sa résidence, d’un jeune ouvrier de Peugeot, passionné par la photographie : Gilles Choffé. La Cité possédait de fait du matériel photographique et un laboratoire permettant de développer les photographies qui étaient mis à la disposition du personnel de Peugeot. Un projet d'exposition est alors envisagé par la Cité, sous la responsabilité de l'écrivain. A partir de décembre 1984, Jean-Paul Goux a ainsi occasionnellement emmené Gilles Choffé dans ses déplacements afin qu’il puisse prendre de nombreuses photos de sites et de paysages. Jusqu’en juin 1985, il lui passera également différentes commandes. Au total, près de 400 photographies seront réalisées, captées avec du matériel professionnel ancien, en noir et blanc, le plus souvent sur un format 4,5x6 ou 6x9 assurant des tirages et des agrandissements de très grande qualité. </p>
         </div>
         <div className="article-image">
           <ImageFullscreen src={`${base}/images/Chapitres/Chapitre9/0007.jpg`} legend="Atelier de Pompes Japy, Fesches-le-Châtel, photographié par Gilles Choffé le 21 mai 1985" alt="Atelier Japy Choffé 1985" />
           <p>Atelier de Pompes Japy, Fesches-le-Châtel, photographié par Gilles Choffé le 21 mai 1985 © Fonds Goux</p>
         </div>
         <div className="article-paragraph">
-          <p>Ce fonds est enfin exploité grâce à ce webdocumentaire, en particulier dans la partie « Mémoires ouvrières » qui présente environ 80% des photographies réalisées.</p>
+          <p>En septembre 1985, en vue de l'exposition prévue, Jean-Paul Goux envoie ainsi à Gilles Choffé un ensemble d’extraits de l’ouvrage qui pourraient servir à ponctuer littérairement l’exposition. Cependant, alors que Jean-Paul Goux a quitté Montbéliard pour rejoindre bientôt la Villa Médicis à Rome, le projet ne se réalise pas. La direction de La Cité a changé et met un coup de frein sur les projets antérieurs. En parallèle, le projet de cahier photographique, occasionnant un surcoût, est abandonné. Quelques-unes des photos réalisées seront néanmoins exposées lorsque Jean-Paul Goux viendra célébrer la sortie de son livre à Montbéliard, les 26 et 27 avril 1986, ou publiées dans <i>L'Est Républicain</i> lorsque François Moulin a consacré une série d'articles à la publication.</p> 
+          <p> Ce fonds est enfin exploité grâce à ce webdocumentaire, en particulier dans la partie « Mémoires ouvrières » qui présente environ 80% des photographies réalisées, tandis que l'édition critique, parue en 2026 aux Belles Lettres, en rassemble plus d'une cinquantaine.</p>         
         </div>
         <div className="article-image">
           <ImageFullscreen src={`${base}/images/Chapitres/Chapitre9/GOU_A_08_03_041.jpg`} legend="Jean-Paul Goux dédicaçant son ouvrage à l'occasion de la présentation de l'ouvrage au Musée du Château de Montbéliard les 26 et 27 avril 1986" alt="Goux dédicace 1986" />
           <p>Jean-Paul Goux dédicaçant son ouvrage à l'occasion de la présentation de l'ouvrage au Musée du Château de Montbéliard les 26 et 27 avril 1986 © Fonds Goux</p>
         </div>
-
+   <div className="article-paragraph">
+          <p>Lorsque l’ouvrage de Jean-Paul Goux sera officiellement présenté à l'ensemble des personnes et des institutions qui ont favorisé son écriture, le vendredi 25 avril 1986, Gilles Choffé sera encore présent pour réaliser tout un ensemble de portraits des participants.</p>
+        </div>
         <h2 className="article-section-title">Les photographies de Werner Hannappel</h2>
         <div className="article-paragraph">
-          <p>Dans le cadre des contributions artistiques du colloque national sur le tourisme industriel (14 et 15 novembre 1985), Jean-Paul Goux et le photographe Werner Hannappel, né en 1949, avaient été sollicités.</p>
+          <p>Dans le cadre des contributions artistiques du colloque national sur le tourisme industriel (14 et 15 novembre 1985) organisé par l'Association Comtoise des Arts et Traditions Populaires et coproduit par le Centre d'Art Contemporain de Montbéliard, Jean-Paul Goux et le photographe Werner Hannappel, né en 1949, avaient été sollicités. Le photographe avait ainsi réalisé une série « Les sites industriels du Nord Franche-Comté ». De son côté, Jean-Paul Goux achevait alors l’écriture de <i>Mémoires de l’Enclave</i>. Une brochure, contenant deux textes de Jean-Paul Goux et 24 photographies de Werner Hannappel a été éditée à cette occasion. </p>
         </div>
         <div className="article-image">
           <ImageFullscreen src={`${base}/images/Chapitres/Chapitre9/GOU_A_08_01_001.jpg`} legend="© Fonds Goux, GOU A 08 01 001" alt="Photo Hannappel" />
