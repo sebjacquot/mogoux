@@ -41,7 +41,7 @@ export default function Chapitre3Page() {
         </div>
         <div className="article-image">
           <ImageFullscreen src={`${base}/images/Chapitres/Chapitre3/GOU_04_D_0030.jpg`} legend="Article de François Moulin, L'Est Républicain (1986)" alt="Article Moulin 1986" />
-          <p>Article de François Moulin, L'Est Républicain (1986) © Fonds Goux, GOU 04 D 0030</p>
+          <p>Article de François Moulin, <span>L'Est Républicain</span> (1986) © Fonds Goux, GOU 04 D 0030</p>
         </div>
 
         <h2 className="article-section-title">Se souvenir des luttes</h2>
