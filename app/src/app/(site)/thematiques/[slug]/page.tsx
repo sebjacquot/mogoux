@@ -2,6 +2,7 @@ import { getPayload } from '@/utils/payload'
 import Carousel from '@/components/Carousel'
 import Return from '@/components/Return'
 import { notFound } from 'next/navigation'
+import { sortAndDisperseAudios } from '@/utils/sortGallery'
 
 export const dynamic = 'force-dynamic'
 
@@ -67,20 +68,22 @@ export default async function ThematiqueDetailPage({ params, searchParams }: Pro
     slug: t.slug || '',
     alt: t.background_image?.alt || '',
     couleur: section.color || '',
-    documents: (t.related_documents || []).map((doc: any) => ({
-      type: doc.type,
-      src: doc.sizes?.preview?.url
-        ? `${cmsBase}${doc.sizes.preview.url}`
-        : `${cmsBase}${doc.url || ''}`,
-      alt: doc.alt || '',
-      slug: doc.slug || '',
-      titre: doc.title || '',
-      preview_audio_video: doc.preview_audio_video?.sizes?.preview?.url
-        ? `${cmsBase}${doc.preview_audio_video.sizes.preview.url}`
-        : doc.preview_audio_video?.url
-        ? `${cmsBase}${doc.preview_audio_video.url}`
-        : null,
-    })),
+    documents: sortAndDisperseAudios(
+      (t.related_documents || []).map((doc: any) => ({
+        type: doc.type,
+        src: doc.sizes?.preview?.url
+          ? `${cmsBase}${doc.sizes.preview.url}`
+          : `${cmsBase}${doc.url || ''}`,
+        alt: doc.alt || '',
+        slug: doc.slug || '',
+        titre: doc.title || '',
+        preview_audio_video: doc.preview_audio_video?.sizes?.preview?.url
+          ? `${cmsBase}${doc.preview_audio_video.sizes.preview.url}`
+          : doc.preview_audio_video?.url
+          ? `${cmsBase}${doc.preview_audio_video.url}`
+          : null,
+      })),
+    ),
   }))
 
   return (
@@ -88,10 +91,14 @@ export default async function ThematiqueDetailPage({ params, searchParams }: Pro
       <Return linkURL="/thematiques" linkText="Retourner aux thématiques" />
       <div className="flex justify-center w-screen">
         <div className="w-[98vw]">
-          <div className="flex justify-center">
+          <div className="flex justify-center items-center gap-3 my-6">
+            <span
+              className="inline-block w-4 h-4 rounded-sm flex-shrink-0"
+              style={{ backgroundColor: section.color }}
+            />
             <h1
-              className="text-white text-center text-[30px] font-bold my-6 px-3 rounded-sm"
-              style={{ backgroundColor: `${section.color}D6` }}
+              className="text-center text-[30px] font-bold"
+              style={{ color: section.color }}
             >
               {section.name || 'Rubrique introuvable'}
             </h1>

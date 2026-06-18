@@ -5,6 +5,7 @@ import ImageTooltip from '@/components/ImageTooltip'
 import Gallery from '@/components/Gallery'
 import LieuReferenceToggle from '@/components/LieuReferencePage'
 import { renderLexicalToHTML } from '@/utils/renderLexical'
+import { sortBySection } from '@/utils/sortGallery'
 
 export const dynamic = 'force-dynamic'
 
@@ -41,9 +42,19 @@ export default async function LieuReferencePage({ params }: Props) {
   })
   const sections = sectionsRes.docs
 
+  // Build thematicId → sectionRank map for gallery sorting
+  const thematicToSectionRank = new Map<string, number>()
+  sections.forEach((section: any, idx: number) => {
+    const rank = section.rank ?? idx
+    ;(section.thematics || []).forEach((t: any) => {
+      const id = typeof t === 'string' ? t : t.id
+      if (id) thematicToSectionRank.set(id, rank)
+    })
+  })
+
   // Build documents list for Gallery
   // related_documents est un champ "join" Payload → { docs: [...], hasNextPage: bool }
-  const documents = (referenceLocation.related_documents?.docs || [])
+  const rawDocuments = (referenceLocation.related_documents?.docs || [])
     .map((doc: any) => {
       if (!doc) return null
 
@@ -61,6 +72,16 @@ export default async function LieuReferencePage({ params }: Props) {
 
       if (!src) return null
 
+      // Retrieve section rank via the document's first thematic
+      const firstThematicId = Array.isArray(doc.thematics)
+        ? typeof doc.thematics[0] === 'string'
+          ? doc.thematics[0]
+          : doc.thematics[0]?.id
+        : null
+      const sectionRank = firstThematicId != null
+        ? (thematicToSectionRank.get(firstThematicId) ?? 999)
+        : 999
+
       return {
         type: doc.type ?? '',
         src,
@@ -68,9 +89,13 @@ export default async function LieuReferencePage({ params }: Props) {
         slug: doc.slug ?? '',
         titre: doc.title ?? '',
         preview_audio_video: previewAudioVideoUrl,
+        sectionRank,
       }
     })
-    .filter(Boolean)
+    .filter(Boolean) as any[]
+
+  // Sort: group by section rank, then sort by cote alphabetically, audios dispersed
+  const documents = sortBySection(rawDocuments, (d) => d.sectionRank)
 
   // Render lexical content
   const descriptionHtml = referenceLocation?.description?.root?.children
@@ -98,11 +123,11 @@ export default async function LieuReferencePage({ params }: Props) {
         <div className="absolute inset-0 bg-black/50 z-[2] pointer-events-none" />
 
         {/* Hero content */}
-        <div className="absolute bottom-0 left-0 w-full z-[5] flex flex-col items-start px-[100px] pb-10 gap-5 text-white pointer-events-none overflow-hidden">
-          <h2 className="text-[50px] font-light italic border-b border-white leading-[65px] w-fit" style={{ fontFamily: 'Merryweather, serif' }}>
+        <div className="absolute bottom-0 left-0 w-full z-[5] flex flex-col items-start px-4 sm:px-[100px] pb-6 sm:pb-10 gap-3 sm:gap-5 text-white pointer-events-none overflow-hidden">
+          <h2 className="text-[28px] sm:text-[50px] font-light italic border-b border-white leading-tight sm:leading-[65px] w-fit" style={{ fontFamily: 'Merryweather, serif' }}>
             Lieu
           </h2>
-          <h1 className="text-[60px] font-bold leading-[65px]" style={{ fontFamily: 'var(--article-font, Helvetica)' }}>
+          <h1 className="text-[32px] sm:text-[60px] font-bold leading-tight sm:leading-[65px]" style={{ fontFamily: 'var(--article-font, Helvetica)' }}>
             {referenceLocation.name}
           </h1>
 
@@ -112,10 +137,6 @@ export default async function LieuReferencePage({ params }: Props) {
               descriptionHtml={descriptionHtml}
               quoteHtml={quoteHtml}
             />
-            <div className="flex justify-center items-center relative mt-5">
-              <div className="px-2.5 z-[3]" />
-              <div className="border-b border-[#d9d9d9] block w-full absolute top-2.5 z-0" />
-            </div>
           </div>
         </div>
 

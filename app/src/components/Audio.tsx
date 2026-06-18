@@ -99,17 +99,19 @@ export default function Audio({ src, preview_audio_video }: Props) {
           visible ? 'opacity-100' : 'opacity-0 -z-10'
         }`}
       >
-        <div className="flex items-center justify-between w-full">
-          {/* Play/Pause + seek */}
-          <div className="flex items-center gap-2.5 px-2.5 w-3/4">
-            <button onClick={play} className="bg-transparent border-none text-white p-0">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={playing ? `${base}/icones/pause-white.png` : `${base}/icones/play-icon.png`}
-                alt="lecture"
-                className="w-10 h-10 cursor-pointer"
-              />
-            </button>
+        <div className="flex items-center justify-between w-full gap-1">
+          {/* Play/Pause */}
+          <button onClick={play} className="bg-transparent border-none text-white p-0 flex-shrink-0 px-2">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={playing ? `${base}/icones/pause-white.png` : `${base}/icones/play-icon.png`}
+              alt="lecture"
+              className="w-8 h-8 cursor-pointer"
+            />
+          </button>
+
+          {/* Seek + time */}
+          <div className="flex items-center gap-1.5 flex-1 min-w-0">
             <input
               type="range"
               min={0}
@@ -121,21 +123,21 @@ export default function Audio({ src, preview_audio_video }: Props) {
                 if (audioRef.current) audioRef.current.currentTime = t
                 setCurrent(t)
               }}
-              className="flex-grow mx-2.5"
+              className="flex-1 min-w-0"
             />
-            <span className="text-white text-sm whitespace-nowrap">
+            <span className="text-white text-xs whitespace-nowrap hidden sm:inline">
               {formatTime(current)} / {formatTime(duration)}
             </span>
           </div>
 
-          {/* Volume */}
-          <div className="flex items-center gap-2.5 px-2.5 w-1/4">
-            <button onClick={toggleMute} className="bg-transparent border-none p-0">
+          {/* Volume (hidden on mobile) */}
+          <div className="hidden sm:flex items-center gap-1.5 px-2 w-[160px] flex-shrink-0">
+            <button onClick={toggleMute} className="bg-transparent border-none p-0 flex-shrink-0">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={muted ? `${base}/icones/muet.png` : `${base}/icones/haut-parleur.png`}
                 alt="volume"
-                className="w-8 h-8"
+                className="w-7 h-7"
               />
             </button>
             <input
@@ -150,14 +152,14 @@ export default function Audio({ src, preview_audio_video }: Props) {
                 setVolume(v)
                 setMuted(v === 0)
               }}
-              className="flex-grow mx-2.5"
+              className="flex-1"
             />
           </div>
 
           {/* Close */}
-          <button onClick={close} className="bg-transparent border-none pr-6">
+          <button onClick={close} className="bg-transparent border-none pr-3 flex-shrink-0">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={`${base}/icones/white-x.png`} alt="Fermer" className="w-10 h-10 cursor-pointer" />
+            <img src={`${base}/icones/white-x.png`} alt="Fermer" className="w-8 h-8 cursor-pointer" />
           </button>
         </div>
       </div>

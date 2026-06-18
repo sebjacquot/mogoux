@@ -11,6 +11,7 @@ export default async function ThematiquesPage() {
     collection: 'sections',
     limit: 100,
     sort: 'rank',
+    depth: 2,
   })
   const sections = sectionsRes.docs
 
@@ -44,7 +45,15 @@ export default async function ThematiquesPage() {
             title={section.name}
             sectionId={section.id}
             color={section.color}
-            thematics={section.thematics || []}
+            thematics={(section.thematics || []).map((t: any) => ({
+              id: t.id,
+              title: t.title || t.value || '',
+              slug: t.slug || t.id,
+              backgroundImageUrl: t.background_image?.url
+                ? `${cmsBase}${t.background_image.url}`
+                : null,
+              backgroundImageAlt: t.background_image?.alt || t.title || '',
+            }))}
           />
         ))}
 

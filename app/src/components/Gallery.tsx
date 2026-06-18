@@ -37,7 +37,7 @@ export default function Gallery({ documents }: Props) {
 
   return (
     <>
-      <hr className="w-1/5 my-5 border border-white rounded bg-white" />
+      <hr className="w-1/5 my-5 border border-white rounded bg-white mx-auto" />
       <section className="grid gap-1" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(min(330px,100%),1fr))' }}>
         {blocs.map((bloc, bi) => (
           <BlocLayout key={bi} layout={bloc.layout} docs={bloc.docs} allSlugs={allSlugs} />

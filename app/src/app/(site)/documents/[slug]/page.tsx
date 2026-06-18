@@ -31,17 +31,34 @@ export default async function DocumentPage({ params }: Props) {
   const doc: any = docRes.docs[0]
 
   // Build media src (full absolute URL)
+  const originalSrc = doc.url ? `${cmsBase}${doc.url}` : ''
   const src = doc.sizes?.preview?.url
     ? `${cmsBase}${doc.sizes.preview.url}`
-    : doc.url
-    ? `${cmsBase}${doc.url}`
-    : ''
+    : originalSrc
 
   const previewAudioVideo = doc.preview_audio_video?.sizes?.preview?.url
     ? `${cmsBase}${doc.preview_audio_video.sizes.preview.url}`
     : doc.preview_audio_video?.url
     ? `${cmsBase}${doc.preview_audio_video.url}`
     : null
+
+  // Fetch sections to resolve thematic colors
+  const thematicIds: string[] = (doc.thematics || []).map((t: any) =>
+    typeof t === 'string' ? t : t.id,
+  )
+  let thematicsWithColor: any[] = doc.thematics || []
+  if (thematicIds.length > 0) {
+    const sectionsRes = await payload.find({ collection: 'sections', limit: 100 }).catch(() => null)
+    if (sectionsRes) {
+      thematicsWithColor = (doc.thematics || []).map((t: any) => {
+        const tid = typeof t === 'string' ? t : t.id
+        const section = sectionsRes.docs.find((s: any) =>
+          (s.thematics || []).some((st: any) => (typeof st === 'string' ? st : st.id) === tid),
+        )
+        return { ...t, color: section?.color || null }
+      })
+    }
+  }
 
   return (
     <div className="relative min-h-screen w-full flex flex-col">
@@ -59,10 +76,11 @@ export default async function DocumentPage({ params }: Props) {
         type={doc.type || 'Image'}
         link_notice={doc.notice || ''}
         src={src}
+        originalSrc={originalSrc}
         legend={doc.legend || ''}
         alt={doc.alt || ''}
         preview_audio_video={previewAudioVideo}
-        thematics={doc.thematics || []}
+        thematics={thematicsWithColor}
       />
     </div>
   )
