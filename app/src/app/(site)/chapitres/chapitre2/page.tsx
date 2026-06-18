@@ -13,7 +13,7 @@ export default function Chapitre2Page() {
           <span className="chapter-tag">CHAPITRE 2</span>
           <h1 className="chapter-titre">Du côté de l'Enclave</h1>
           <h2 className="chapter-soustitre">Géographie d'un territoire industriel</h2>
-          <div className="bg-[hsl(0,0%,96%)] w-full max-w-[75em] mt-8 pt-5 px-4 md:px-10 pb-5 flex flex-col justify-center">
+          <div className="bg-[hsl(0,0%,96%)] w-full max-w-[75em] mt-8 pt-5 px-4 md:px-10 pb-5 hidden sm:flex flex-col justify-center">
             <p className="font-serif text-[17px] text-center self-center">Façonné par l'activité industrielle, le Pays de Montbéliard, ancienne enclave germanique et protestante sur le territoire français, prend, chez Goux, le seul nom d'«&nbsp;Enclave&nbsp;», ce qui lui confère une dimension quasi mythique et légendaire.</p>
             <div className="flex justify-center items-center relative mt-5">
               <div className="px-2.5 bg-[hsl(0,0%,96%)] z-[3]" />
@@ -90,3 +90,4 @@ export default function Chapitre2Page() {
     </div>
   )
 }
+

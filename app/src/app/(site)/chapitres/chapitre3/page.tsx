@@ -13,7 +13,7 @@ export default function Chapitre3Page() {
           <span className="chapter-tag">CHAPITRE 3</span>
           <h1 className="chapter-titre">Discours du Maître, traces des luttes</h1>
           <h2 className="chapter-soustitre">Paternalisme contre lutte des classes</h2>
-          <div className="bg-[hsl(0,0%,96%)] w-full max-w-[75em] mt-8 pt-5 px-4 md:px-10 pb-5 flex flex-col justify-center">
+          <div className="bg-[hsl(0,0%,96%)] w-full max-w-[75em] mt-8 pt-5 px-4 md:px-10 pb-5 hidden sm:flex flex-col justify-center">
             <p className="font-serif text-[17px] text-center self-center">Singulier par son capitalisme animé par un patronat d'origine protestante, le monde industriel du pays de Montbéliard est inséparable d'un paternalisme qui, promouvant un mieux vivre collectif, contrôle tout et s'efforce de contenir toute forme de luttes, sans parvenir à les empêcher.</p>
             <div className="flex justify-center items-center relative mt-5">
               <div className="px-2.5 bg-[hsl(0,0%,96%)] z-[3]" />
@@ -59,7 +59,7 @@ export default function Chapitre3Page() {
           <p>La répression brutale liée aux mouvements collectifs n'est pas la seule violence subie. Celle-ci s'exerce dans le quotidien des conditions de travail et des sanctions qui visent certains militants.</p>
         </div>
         <div className="article-paragraph">
-          <p>L'élaboration des <em>Mémoires</em> s'accompagne d'une remontée dans le temps, en quête des récits consignés de mobilisations, de conflits ou de drames du passé mis en regard du présent, de textes engagés (journal <em>Germinal</em>, publications au quotidien telles que tracts ou courriers). Goux a aussi rencontré beaucoup d'militants et de syndicalistes pour les entretiens. Ainsi le livre fait-il entendre des contre-discours de combat.</p>
+          <p>L'élaboration des <em>Mémoires</em> s'accompagne d'une remontée dans le temps, en quête des récits consignés de mobilisations, de conflits ou de drames du passé mis en regard du présent, de textes engagés (journal <em>Germinal</em>, publications au quotidien telles que tracts ou courriers). Goux a aussi rencontré beaucoup d'militants et de syndicalistes pour les entretiens. Ainsi le livre fait-il entendre des contre-discours de combat. Parmi ceux-ci la subversion ironique du « Clan des planches de bord » (chap. VI) qui met des « grains de sable sous le capot » (pour reprendre le titre du livre de Marcel Durand, paru en 2006) ou les analyses vigoureuses de Christian Corouge (chap. VIII et XVI) qui réfléchit à l'expérience de la chaîne et aux moyens d'y résister. Corouge publiera en 2011 avec le sociologue Michel Pialoux un ouvrage à ce sujet : <em>Résister à la chaîne. Dialogue entre un ouvrier de Peugeot et un sociologue</em>, Agone, 2011, 416 p.</p>
         </div>
       </div>
 
@@ -79,3 +79,4 @@ export default function Chapitre3Page() {
     </div>
   )
 }
+
