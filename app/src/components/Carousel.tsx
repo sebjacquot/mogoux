@@ -95,7 +95,12 @@ export default function Carousel({ thematics, initialSlug }: Props) {
                 <h3 className="text-xl md:text-[45px] font-light italic border-b border-white w-fit leading-tight md:leading-[65px] font-merriweather">
                   Thématique
                 </h3>
-                <h2 className="text-2xl md:text-[55px] font-bold leading-tight md:leading-[65px] w-full md:w-[60%] font-helvetica">{t.title}</h2>
+                <h2
+                  className="font-bold leading-tight w-full md:w-[60%] font-helvetica"
+                  style={{ fontSize: 'clamp(18px, 3.5vw, 50px)', lineHeight: 1.2 }}
+                >
+                  {t.title}
+                </h2>
               </div>
             </div>
           ))}

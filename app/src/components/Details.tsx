@@ -16,6 +16,7 @@ interface Props {
   type: 'Image' | 'Audio' | 'Video'
   link_notice?: string
   src: string
+  originalSrc?: string
   legend?: string
   alt: string
   preview_audio_video?: any
@@ -24,7 +25,7 @@ interface Props {
 
 export default function Details({
   title, date, description, location, credits_name, credits_link,
-  tags, type, link_notice, src, legend, alt, preview_audio_video, thematics,
+  tags, type, link_notice, src, originalSrc, legend, alt, preview_audio_video, thematics,
 }: Props) {
   const dateStr = (date + '').charAt(0).toUpperCase() + (date + '').slice(1)
 
@@ -65,12 +66,12 @@ export default function Details({
               <li
                 key={i}
                 className="px-1.5 py-0.5 rounded-sm text-base cursor-pointer"
-                style={{ border: `1px solid ${t.color || 'white'}` }}
+                style={{ border: `1px solid ${t.color || '#aaa'}` }}
               >
                 <Link
                   href={`/thematiques/${t.slug}?section=${t.related_sections?.docs?.[0] || ''}`}
                   className="no-underline"
-                  style={{ color: t.color || 'white' }}
+                  style={{ color: t.color || '#aaa' }}
                 >
                   {t.title}
                 </Link>
@@ -158,10 +159,12 @@ export default function Details({
       {/* Media column */}
       <div className="w-full md:w-full flex justify-center items-center">
         {type === 'Audio' ? (
-          <Audio
-            src={src}
-            preview_audio_video={typeof preview_audio_video === 'string' ? preview_audio_video : undefined}
-          />
+          <div className="w-full" style={{ minHeight: '300px' }}>
+            <Audio
+              src={src}
+              preview_audio_video={typeof preview_audio_video === 'string' ? preview_audio_video : undefined}
+            />
+          </div>
         ) : type === 'Video' ? (
           <Video
             src={src}
@@ -169,7 +172,7 @@ export default function Details({
           />
         ) : (
           <div className="w-full">
-            <ImageFullscreen src={src} alt={alt} className="w-full max-h-[80vh] object-contain cursor-zoom-in" />
+            <ImageFullscreen src={src} originalSrc={originalSrc} alt={alt} legend={legend} className="w-full max-h-[80vh] object-contain cursor-zoom-in" />
           </div>
         )}
       </div>
