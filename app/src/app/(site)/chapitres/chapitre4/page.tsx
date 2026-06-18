@@ -13,7 +13,7 @@ export default function Chapitre4Page() {
           <span className="chapter-tag">CHAPITRE 4</span>
           <h1 className="chapter-titre">Enquête sur la mémoire collective</h1>
           <h2 className="chapter-soustitre">Le travail de documentation mené par l'écrivain</h2>
-          <div className="bg-[hsl(0,0%,96%)] w-full max-w-[75em] mt-8 pt-5 px-4 md:px-10 pb-5 flex flex-col justify-center">
+          <div className="bg-[hsl(0,0%,96%)] w-full max-w-[75em] mt-8 pt-5 px-4 md:px-10 pb-5 hidden sm:flex flex-col justify-center">
             <p className="font-serif text-[17px] text-center self-center">Pendant sa résidence, Jean-Paul Goux a longuement travaillé sur des ouvrages et des archives, tout en menant de très nombreux entretiens, multipliant les rencontres avec des ouvrières et des ouvriers, qu'ils soient à la retraite ou toujours actifs et engagés dans leur activité professionnelle.</p>
             <div className="flex justify-center items-center relative mt-5">
               <div className="px-2.5 bg-[hsl(0,0%,96%)] z-[3]" />
@@ -82,3 +82,4 @@ export default function Chapitre4Page() {
     </div>
   )
 }
+
