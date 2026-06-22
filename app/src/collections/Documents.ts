@@ -86,8 +86,7 @@ export const Documents: CollectionConfig = {
     },
   ],
   upload: {
-    staticDir: path.resolve(process.cwd(), 'public/documents'),
-//    staticURL: '/documents',
+    staticDir: path.resolve(process.cwd(), 'storage/documents'),
     	// SJ: fix seek in mp3 audio on Chrome/Edge by adding "Accept-Ranges = bytes" to response header.
       modifyResponseHeaders: ({ headers }) => {
         const newHeaders = new Headers(headers) // Copy existing headers

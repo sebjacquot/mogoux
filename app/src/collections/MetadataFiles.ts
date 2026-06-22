@@ -1,4 +1,5 @@
 import { CollectionConfig } from "payload";
+import path from 'path';
 
 export const MetadataFiles: CollectionConfig = {
   slug: "metadata-files",
@@ -22,7 +23,7 @@ export const MetadataFiles: CollectionConfig = {
   },
   timestamps: true,
   upload: {
-    staticDir: "metadata-files",
+    staticDir: path.resolve(process.cwd(), 'storage/metadata-files'),
     mimeTypes: [
       "application/pdf",
       "application/vnd.ms-excel",            // .xls (Excel ancien)

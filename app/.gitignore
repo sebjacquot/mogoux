@@ -2,3 +2,7 @@
 .env.local
 .next/
 node_modules/
+storage/medias/*
+storage/documents/*
+storage/metadata-files/*
+!storage/**/.gitkeep
