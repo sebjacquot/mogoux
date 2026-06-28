@@ -48,7 +48,7 @@
   "overrides": {
     "@esbuild-kit/esm-loader": "npm:tsx@latest",
     "@esbuild-kit/core-utils": "npm:tsx@latest",
-    "uuid": "^9.0.0",
+    "uuid": "^10.0.0",
     "undici": "^6.21.2"
   },
   "engines": {

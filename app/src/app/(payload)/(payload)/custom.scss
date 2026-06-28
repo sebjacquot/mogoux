@@ -7,14 +7,15 @@ $brand-red:    #e22b40;
 $brand-dark:   #161616;
 $brand-light:  #f3f3f3;
 
-// ── Surcharge des variables CSS de Payload (thème sombre) ───
-[data-theme='dark'],
+// ── Couleurs d'accent (rouge marque) — les deux thèmes ───────
 :root {
-    // Accent / boutons principaux
     --color-success-500:     #{$brand-red};
     --color-success-400:     #e84055;
     --color-success-600:     #c42336;
+}
 
+// ── Surcharge des variables CSS de Payload (thème sombre uniquement) ───
+[data-theme='dark'] {
     // Fond de la sidebar
     --theme-elevation-0:     #111111;
     --theme-elevation-50:    #1a1a1a;
