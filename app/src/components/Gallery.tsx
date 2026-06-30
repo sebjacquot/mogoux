@@ -63,7 +63,7 @@ function BlocLayout({ layout, docs, allSlugs }: { layout: number; docs: DocItem[
   return (
     <div className="flex flex-col gap-1">
       {config.rows.map((row, ri) => (
-        <div key={ri} className="flex gap-1" style={{ height: 170 / config.rows.length + 'px' }}>
+        <div key={ri} className="flex gap-1" style={{ height: 290 / config.rows.length + 'px' }}>
           {row.map((docIdx) => {
             const doc = docs[docIdx]
             if (!doc) return <div key={docIdx} className="flex-1" />
