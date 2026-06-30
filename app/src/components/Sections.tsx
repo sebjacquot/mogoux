@@ -46,8 +46,8 @@ export default function Sections({ title, sectionId, color, thematics }: Props) 
           <Link
             key={t.id}
             href={`/thematiques/${t.slug}?section=${sectionId}`}
-            className="relative flex-1 overflow-hidden no-underline group"
-            style={{ aspectRatio: '4/3', minHeight: 140, maxHeight: 220 }}
+            className="relative overflow-hidden no-underline group"
+            style={{ aspectRatio: '4/3', minHeight: 140, maxHeight: 220, width: 280 }}
           >
             {t.backgroundImageUrl ? (
               // eslint-disable-next-line @next/next/no-img-element
