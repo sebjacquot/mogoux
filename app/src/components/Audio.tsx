@@ -95,11 +95,11 @@ export default function Audio({ src, preview_audio_video }: Props) {
 
       {/* Controls bar */}
       <div
-        className={`fixed bottom-0 left-0 w-full bg-nav px-0 py-2.5 z-[100] transition-opacity duration-500 ${
+        className={`fixed bottom-0 left-0 w-full max-w-[100vw] overflow-hidden bg-nav px-0 py-2.5 z-[100] transition-opacity duration-500 ${
           visible ? 'opacity-100' : 'opacity-0 -z-10'
         }`}
       >
-        <div className="flex items-center justify-between w-full gap-1">
+        <div className="flex items-center w-full gap-1 overflow-hidden">
           {/* Play/Pause */}
           <button onClick={play} className="bg-transparent border-none text-white p-0 flex-shrink-0 px-2">
             {/* eslint-disable-next-line @next/next/no-img-element */}
