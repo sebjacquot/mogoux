@@ -33,7 +33,7 @@ export default function Details({
     <div className="flex items-start px-4 md:px-[8%] py-[6%] gap-8 text-site-text h-full flex-col md:flex-row">
       {/* Text column */}
       <div className="flex flex-col w-full md:w-[70%] text-xl">
-        <h1 className="text-[1.7em] font-bold mt-12 mb-8">{title}</h1>
+        <h1 className="text-[1.7em] font-bold mt-12 mb-8 leading-tight">{title}</h1>
         <h3 className="mb-5 font-normal">{dateStr}</h3>
 
         {description && (
