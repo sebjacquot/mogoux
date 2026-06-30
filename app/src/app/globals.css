@@ -116,7 +116,7 @@ html, body {
   }
 
   .article-image p {
-    @apply self-end text-[#666] text-sm;
+    @apply self-end text-[#666] text-sm not-italic;
   }
 
   /* Section crédits */
