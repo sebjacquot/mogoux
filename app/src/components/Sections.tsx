@@ -73,24 +73,26 @@ export default function Sections({ title, sectionId, color, thematics }: Props) 
         ))}
 
         {/* Flèches navigation */}
-        <div className="flex flex-col justify-center gap-1 pl-2">
+        {canPrev && (
           <button
             onClick={() => setOffset((o) => Math.max(0, o - VISIBLE))}
-            disabled={!canPrev}
-            className="w-7 h-7 flex items-center justify-center text-secondary/50 hover:text-secondary disabled:opacity-20 transition-colors text-lg"
+            className="w-[45px] bg-primary text-white text-2xl border-none rounded-tl rounded-bl hover:bg-secondary hover:text-black hover:w-[50px] transition-all flex-shrink-0"
+            style={{ minHeight: 140, maxHeight: 220 }}
             aria-label="Précédents"
           >
-            ‹
+            &#10094;
           </button>
+        )}
+        {canNext && (
           <button
             onClick={() => setOffset((o) => Math.min(thematics.length - VISIBLE, o + VISIBLE))}
-            disabled={!canNext}
-            className="w-7 h-7 flex items-center justify-center text-secondary/50 hover:text-secondary disabled:opacity-20 transition-colors text-lg"
+            className="w-[45px] bg-primary text-white text-2xl border-none rounded-tr rounded-br hover:bg-secondary hover:text-black hover:w-[50px] transition-all flex-shrink-0"
+            style={{ minHeight: 140, maxHeight: 220 }}
             aria-label="Suivants"
           >
-            ›
+            &#10095;
           </button>
-        </div>
+        )}
       </div>
 
       {/* Mobile : tampons colorés */}
