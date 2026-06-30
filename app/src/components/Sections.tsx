@@ -42,6 +42,17 @@ export default function Sections({ title, sectionId, color, thematics }: Props) 
 
       {/* Desktop / Tablette : rangée de 3 cartes avec navigation */}
       <div className="hidden sm:flex items-stretch gap-[2px] pl-0 sm:pl-7">
+        {/* Flèche précédent */}
+        <button
+          onClick={() => setOffset((o) => Math.max(0, o - VISIBLE))}
+          disabled={!canPrev}
+          className="w-[45px] bg-primary text-white text-2xl border-none rounded-tl rounded-bl hover:bg-secondary hover:text-black hover:w-[50px] disabled:opacity-30 disabled:hover:bg-primary disabled:hover:text-white disabled:hover:w-[45px] disabled:cursor-not-allowed transition-all flex-shrink-0"
+          style={{ minHeight: 140, maxHeight: 220 }}
+          aria-label="Précédents"
+        >
+          &#10094;
+        </button>
+
         {thematics.slice(offset, offset + VISIBLE).map((t, i) => (
           <Link
             key={t.id}
@@ -72,16 +83,7 @@ export default function Sections({ title, sectionId, color, thematics }: Props) 
           </Link>
         ))}
 
-        {/* Flèches navigation */}
-        <button
-          onClick={() => setOffset((o) => Math.max(0, o - VISIBLE))}
-          disabled={!canPrev}
-          className="w-[45px] bg-primary text-white text-2xl border-none rounded-tl rounded-bl hover:bg-secondary hover:text-black hover:w-[50px] disabled:opacity-30 disabled:hover:bg-primary disabled:hover:text-white disabled:hover:w-[45px] disabled:cursor-not-allowed transition-all flex-shrink-0"
-          style={{ minHeight: 140, maxHeight: 220 }}
-          aria-label="Précédents"
-        >
-          &#10094;
-        </button>
+        {/* Flèche suivant */}
         <button
           onClick={() => setOffset((o) => Math.min(thematics.length - VISIBLE, o + VISIBLE))}
           disabled={!canNext}
