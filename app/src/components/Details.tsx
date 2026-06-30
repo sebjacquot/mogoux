@@ -66,12 +66,12 @@ export default function Details({
               <li
                 key={i}
                 className="px-1.5 py-0.5 rounded-sm text-base cursor-pointer"
-                style={{ border: `1px solid ${t.color || '#aaa'}` }}
+                style={{ border: `1px solid ${t.color || '#aaa'}`, color: t.color || '#aaa' }}
               >
                 <Link
-                  href={`/thematiques/${t.slug}?section=${t.related_sections?.docs?.[0] || ''}`}
+                  href={`/thematiques/${t.slug}?section=${t.sectionId || ''}`}
                   className="no-underline"
-                  style={{ color: t.color || '#aaa' }}
+                  style={{ color: 'inherit' }}
                 >
                   {t.title}
                 </Link>

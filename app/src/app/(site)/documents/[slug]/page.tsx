@@ -51,11 +51,11 @@ export default async function DocumentPage({ params }: Props) {
     const sectionsRes = await payload.find({ collection: 'sections', limit: 100 }).catch(() => null)
     if (sectionsRes) {
       thematicsWithColor = (doc.thematics || []).map((t: any) => {
-        const tid = typeof t === 'string' ? t : t.id
+        const tid = String(typeof t === 'string' ? t : t.id)
         const section = sectionsRes.docs.find((s: any) =>
-          (s.thematics || []).some((st: any) => (typeof st === 'string' ? st : st.id) === tid),
+          (s.thematics || []).some((st: any) => String(typeof st === 'string' ? st : st.id) === tid),
         )
-        return { ...t, color: section?.color || null }
+        return { ...t, color: section?.color || null, sectionId: section?.id || null }
       })
     }
   }
