@@ -20,12 +20,12 @@ export default async function LieuReferencePage({ params }: Props) {
   const { slug } = await params
   const payload = await getPayload()
 
-  // Fetch reference location by slug
+  // Fetch reference location by slug (depth:1 suffit, on requête les docs séparément)
   const refRes = await payload
     .find({
       collection: 'reference-locations',
       where: { slug: { equals: slug } },
-      depth: 3,
+      depth: 1,
       limit: 1,
     })
     .catch(() => null)
@@ -34,12 +34,16 @@ export default async function LieuReferencePage({ params }: Props) {
 
   const referenceLocation: any = refRes.docs[0]
 
-  // Fetch sections for gallery
-  const sectionsRes = await payload.find({
-    collection: 'sections',
-    limit: 100,
-    sort: 'rank',
-  })
+  // Fetch all documents linked to this location directly (no join field limit)
+  const [docsRes, sectionsRes] = await Promise.all([
+    payload.find({
+      collection: 'documents',
+      where: { 'location.location_reference': { equals: referenceLocation.id } },
+      limit: 300,
+      depth: 1,
+    }),
+    payload.find({ collection: 'sections', limit: 100, sort: 'rank' }),
+  ])
   const sections = sectionsRes.docs
 
   // Build thematicId → sectionRank map for gallery sorting
@@ -53,8 +57,7 @@ export default async function LieuReferencePage({ params }: Props) {
   })
 
   // Build documents list for Gallery
-  // related_documents est un champ "join" Payload → { docs: [...], hasNextPage: bool }
-  const rawDocuments = (referenceLocation.related_documents?.docs || [])
+  const rawDocuments = docsRes.docs
     .map((doc: any) => {
       if (!doc) return null
 
@@ -72,7 +75,6 @@ export default async function LieuReferencePage({ params }: Props) {
 
       if (!src) return null
 
-      // Retrieve section rank via the document's first thematic
       const firstThematicId = Array.isArray(doc.thematics)
         ? typeof doc.thematics[0] === 'string'
           ? doc.thematics[0]
