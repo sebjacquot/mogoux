@@ -45,10 +45,10 @@ export default function GalleryItem({ document: doc, allSlugs }: Props) {
       {isMedia && preview ? (
         <div className="relative w-full h-full bg-[#2C2C2C]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={preview} alt={doc.alt} className="w-full h-full object-cover opacity-70" />
-          <div className="absolute inset-0 flex items-center justify-center">
+          <img src={preview} alt={doc.alt} className="w-full h-full object-cover" />
+          <div className="absolute top-1.5 right-1.5 w-7 h-7 rounded-full bg-black/60 flex items-center justify-center">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={`${base}/icones/play-icon.png`} alt="play" className="w-10 h-10" />
+            <img src={`${base}/icones/play-icon.png`} alt="play" className="w-4 h-4" />
           </div>
         </div>
       ) : (
