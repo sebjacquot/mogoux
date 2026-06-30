@@ -26,8 +26,8 @@ export default async function ThematiquesPage() {
   return (
     <div className="text-white max-w-[1300px] mx-auto px-4">
       {/* Intro */}
-      <div className="w-full max-w-[800px] mx-auto mt-10 mb-24 text-justify">
-        <h2 className="text-[60px] font-extrabold mb-4">Thématiques</h2>
+      <div className="w-full max-w-[800px] mx-auto mt-24 sm:mt-10 mb-24 text-justify">
+        <h2 className="font-extrabold mb-4" style={{ fontSize: 'clamp(26px, 7vw, 60px)' }}>Thématiques</h2>
         <p className="text-[17px] font-normal leading-snug">
           Découvrez ici différentes thématiques, regroupées au sein de 4 rubriques principales,
           permettant de regrouper autrement les photographies et les audios disponibles depuis
