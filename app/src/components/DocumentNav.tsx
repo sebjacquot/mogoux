@@ -38,7 +38,7 @@ export default function DocumentNav({ currentSlug }: { currentSlug: string }) {
   return (
     <>
       {/* Return button (replaces static Return component) */}
-      <div className="fixed top-0 left-20 z-[999] h-20 flex items-center pl-4 bg-nav/90 backdrop-blur-sm">
+      <div className="fixed top-0 left-20 z-[999] h-20 flex items-center pl-4 pr-4 bg-nav/90 backdrop-blur-sm" style={{ maxWidth: 'calc(100vw - 5rem)' }}>
         <button
           onClick={() => router.push(returnUrl)}
           className="text-secondary/70 text-sm uppercase tracking-widest flex items-center gap-2 hover:text-secondary transition-colors bg-transparent border-none cursor-pointer"

@@ -89,7 +89,7 @@ export default async function ThematiqueDetailPage({ params, searchParams }: Pro
   return (
     <>
       <Return linkURL="/thematiques" linkText="Retourner aux thématiques" />
-      <div className="flex justify-center w-screen">
+      <div className="flex justify-center w-screen pt-20">
         <div className="w-[98vw]">
           <div className="flex justify-center items-center gap-3 my-6">
             <span
@@ -97,8 +97,8 @@ export default async function ThematiqueDetailPage({ params, searchParams }: Pro
               style={{ backgroundColor: section.color }}
             />
             <h1
-              className="text-center text-[30px] font-bold"
-              style={{ color: section.color }}
+              className="text-center font-bold"
+              style={{ color: section.color, fontSize: 'clamp(20px, 5vw, 30px)' }}
             >
               {section.name || 'Rubrique introuvable'}
             </h1>
