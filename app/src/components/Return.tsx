@@ -10,7 +10,7 @@ export default function Return({ linkURL, linkText = 'Retour' }: Props) {
   const href = linkURL.startsWith('http') ? linkURL : `${linkURL}`
 
   return (
-    <div className="fixed top-0 left-20 z-[999] h-20 flex items-center pl-4 pr-4 bg-nav/90 backdrop-blur-sm" style={{ maxWidth: 'calc(100vw - 5rem)' }}>
+    <div className="fixed top-0 left-20 z-[999] h-20 flex items-center pl-4 pr-8 bg-nav/90 backdrop-blur-sm w-fit" style={{ maxWidth: 'calc(100vw - 5rem)' }}>
       <Link
         href={href}
         className="text-secondary/70 text-sm uppercase tracking-widest no-underline flex items-center gap-2 hover:text-secondary transition-colors truncate"
