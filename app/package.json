@@ -26,7 +26,7 @@
     "dotenv": "^16.4.7",
     "exceljs": "^4.4.0",
     "graphql": "^16.8.1",
-    "next": "^15.5.19",
+    "next": "latest",
     "payload": "latest",
     "react": "^19.0.1",
     "react-dom": "^19.0.1",
@@ -49,7 +49,7 @@
   "overrides": {
     "@esbuild-kit/esm-loader": "npm:tsx@latest",
     "@esbuild-kit/core-utils": "npm:tsx@latest",
-    "uuid": "^10.0.0",
+    "uuid": "latest",
     "undici": "^6.21.2"
   },
   "engines": {
