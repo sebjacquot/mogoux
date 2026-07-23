@@ -21,8 +21,6 @@ export default async function ThematiquesPage() {
   })
   const metadataFiles = metadataRes.docs
 
-  const cmsBase = process.env.NEXT_PUBLIC_SERVER_URL || ''
-
   return (
     <div className="text-white max-w-[1300px] mx-auto px-4">
       {/* Intro */}
@@ -49,9 +47,7 @@ export default async function ThematiquesPage() {
               id: t.id,
               title: t.title || t.value || '',
               slug: t.slug || t.id,
-              backgroundImageUrl: t.background_image?.url
-                ? `${cmsBase}${t.background_image.url}`
-                : null,
+              backgroundImageUrl: t.background_image?.url || null,
               backgroundImageAlt: t.background_image?.alt || t.title || '',
             }))}
           />
@@ -65,7 +61,7 @@ export default async function ThematiquesPage() {
               {metadataFiles.map((file: any) => (
                 <a
                   key={file.id}
-                  href={`${cmsBase}${file.url}`}
+                  href={file.url || '#'}
                   className="bg-navigation text-secondary inline-block px-5 py-2.5 text-base w-[85px] text-center no-underline rounded font-graphik transition-colors hover:bg-[#fd6674]"
                 >
                   {file.standard_name}

@@ -7,7 +7,6 @@ import { sortAndDisperseAudios } from '@/utils/sortGallery'
 export const dynamic = 'force-dynamic'
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH || ''
-const cmsBase = process.env.NEXT_PUBLIC_SERVER_URL || ''
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -63,7 +62,7 @@ export default async function ThematiqueDetailPage({ params, searchParams }: Pro
   })
 
   const listThematics = sorted.map((t: any) => ({
-    src: t.background_image?.url ? `${cmsBase}${t.background_image.url}` : '',
+    src: t.background_image?.url || '',
     title: t.title || '',
     slug: t.slug || '',
     alt: t.background_image?.alt || '',
@@ -71,17 +70,13 @@ export default async function ThematiqueDetailPage({ params, searchParams }: Pro
     documents: sortAndDisperseAudios(
       (t.related_documents || []).map((doc: any) => ({
         type: doc.type,
-        src: doc.sizes?.preview?.url
-          ? `${cmsBase}${doc.sizes.preview.url}`
-          : `${cmsBase}${doc.url || ''}`,
+        src: doc.sizes?.preview?.url || doc.url || '',
         alt: doc.alt || '',
         slug: doc.slug || '',
         titre: doc.title || '',
         preview_audio_video: doc.preview_audio_video?.sizes?.preview?.url
-          ? `${cmsBase}${doc.preview_audio_video.sizes.preview.url}`
-          : doc.preview_audio_video?.url
-          ? `${cmsBase}${doc.preview_audio_video.url}`
-          : null,
+          || doc.preview_audio_video?.url
+          || null,
       })),
     ),
   }))

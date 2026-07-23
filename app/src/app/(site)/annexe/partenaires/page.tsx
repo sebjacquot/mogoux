@@ -6,12 +6,9 @@ export default function PartenairesPage() {
   return (
     <div className="bg-[hsl(0,0%,96%)]">
       {/* Hero */}
-      <section className="chapter-entete" style={{ height: '50vh' }}>
+      <section className="chapter-entete">
         <div className="chapter-overlay" />
-        <div
-          className="absolute bottom-0 left-0 z-[5] flex flex-col items-center justify-end w-full pointer-events-none pb-8"
-          style={{ height: '50vh' }}
-        >
+        <div className="chapter-hero">
           <h1 className="chapter-titre">Partenaires</h1>
         </div>
         <ImageTooltip
