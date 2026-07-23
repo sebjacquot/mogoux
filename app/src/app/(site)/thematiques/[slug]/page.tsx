@@ -4,6 +4,15 @@ import Return from '@/components/Return'
 import { notFound } from 'next/navigation'
 import { sortAndDisperseAudios } from '@/utils/sortGallery'
 
+type DocItem = {
+  type: 'Image' | 'Audio' | 'Video'
+  src: string
+  alt: string
+  slug: string
+  titre: string
+  preview_audio_video: string | null
+}
+
 export const dynamic = 'force-dynamic'
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH || ''
@@ -67,9 +76,9 @@ export default async function ThematiqueDetailPage({ params, searchParams }: Pro
     slug: t.slug || '',
     alt: t.background_image?.alt || '',
     couleur: section.color || '',
-    documents: sortAndDisperseAudios(
-      (t.related_documents || []).map((doc: any) => ({
-        type: doc.type,
+    documents: sortAndDisperseAudios<DocItem>(
+      (t.related_documents || []).map((doc: any): DocItem => ({
+        type: doc.type as 'Image' | 'Audio' | 'Video',
         src: doc.sizes?.preview?.url || doc.url || '',
         alt: doc.alt || '',
         slug: doc.slug || '',
