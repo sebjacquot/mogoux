@@ -1,8 +1,11 @@
 'use client'
 
+import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH || ''
+const PLACEHOLDER = '/Goux_1000kB_3.jpg'
+const AUDIO_PLACEHOLDER = `${base}/icones/haut-parleur.png`
 
 interface DocItem {
   type: 'Image' | 'Audio' | 'Video'
@@ -20,6 +23,8 @@ interface Props {
 
 export default function GalleryItem({ document: doc, allSlugs }: Props) {
   const router = useRouter()
+  const [imgSrc, setImgSrc] = useState(doc.src || PLACEHOLDER)
+  const [previewSrc, setPreviewSrc] = useState(doc.preview_audio_video || null)
 
   const handleClick = () => {
     // Store nav context in sessionStorage for clean, shareable URLs
@@ -34,18 +39,35 @@ export default function GalleryItem({ document: doc, allSlugs }: Props) {
     router.push(`/documents/${doc.slug}`)
   }
 
+  const isAudio = doc.type === 'Audio'
   const isMedia = doc.type === 'Audio' || doc.type === 'Video'
-  const preview = doc.preview_audio_video
 
   return (
     <div
       onClick={handleClick}
       className="relative w-full h-full cursor-pointer group"
     >
-      {isMedia && preview ? (
+      {isMedia ? (
         <div className="relative w-full h-full bg-[#2C2C2C]">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={preview} alt={doc.alt} className="w-full h-full object-cover" />
+          {previewSrc ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={previewSrc}
+              alt={doc.alt}
+              className="w-full h-full object-cover"
+              onError={() => setPreviewSrc(null)}
+            />
+          ) : (
+            /* Pas d'image de preview : icône haut-parleur centrée sur fond sombre */
+            <div className="w-full h-full flex items-center justify-center bg-[#1a1a1a]">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={AUDIO_PLACEHOLDER}
+                alt="audio"
+                className="w-12 h-12 opacity-50"
+              />
+            </div>
+          )}
           <div className="absolute top-1.5 right-1.5 w-7 h-7 rounded-full bg-black/60 flex items-center justify-center">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={`${base}/icones/play-icon.png`} alt="play" className="w-4 h-4" />
@@ -54,10 +76,11 @@ export default function GalleryItem({ document: doc, allSlugs }: Props) {
       ) : (
         // eslint-disable-next-line @next/next/no-img-element
         <img
-          src={doc.src}
+          src={imgSrc}
           alt={doc.alt}
           loading="lazy"
           className="w-full h-full object-cover block rounded-sm"
+          onError={() => { if (imgSrc !== PLACEHOLDER) setImgSrc(PLACEHOLDER) }}
         />
       )}
 
