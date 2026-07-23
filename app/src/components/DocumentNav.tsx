@@ -69,11 +69,12 @@ export default function DocumentNav({ currentSlug }: { currentSlug: string }) {
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
+            className="flex-shrink-0"
           >
             <path d="m12 19-7-7 7-7" />
             <path d="M19 12H5" />
           </svg>
-          Retour
+          <span className="hidden sm:inline">Retour</span>
         </button>
       </div>
 

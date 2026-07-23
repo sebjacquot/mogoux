@@ -33,7 +33,7 @@ export default function Details({
     <div className="flex items-start px-4 md:px-[8%] py-[6%] gap-8 text-site-text h-full flex-col md:flex-row">
       {/* Text column */}
       <div className="flex flex-col w-full md:w-[70%] text-xl">
-        <h1 className="text-[1.7em] font-bold mt-12 mb-8 leading-tight">{title}</h1>
+        <h1 className="font-bold mt-24 sm:mt-12 mb-8 leading-tight" style={{ fontSize: 'clamp(18px, 3.5vw, 34px)' }}>{title}</h1>
         <h3 className="mb-5 font-normal">{dateStr}</h3>
 
         {description && (
@@ -159,7 +159,7 @@ export default function Details({
       {/* Media column */}
       <div className="w-full md:w-full flex justify-center items-start">
         {type === 'Audio' ? (
-          <div className="w-full mt-12">
+          <div className="w-full mt-0 sm:mt-12">
             <Audio
               src={src}
               preview_audio_video={typeof preview_audio_video === 'string' ? preview_audio_video : undefined}
