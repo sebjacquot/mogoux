@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
@@ -14,6 +14,19 @@ interface NavState {
 export default function DocumentNav({ currentSlug }: { currentSlug: string }) {
   const router = useRouter()
   const [nav, setNav] = useState<NavState | null>(null)
+  const [headerVisible, setHeaderVisible] = useState(true)
+  const lastScrollY = useRef(0)
+
+  useEffect(() => {
+    const onScroll = () => {
+      const y = window.scrollY
+      if (y > lastScrollY.current && y > 80) setHeaderVisible(false)
+      else setHeaderVisible(true)
+      lastScrollY.current = y
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   useEffect(() => {
     try {
@@ -38,7 +51,10 @@ export default function DocumentNav({ currentSlug }: { currentSlug: string }) {
   return (
     <>
       {/* Return button (replaces static Return component) */}
-      <div className="fixed top-0 left-20 z-[999] h-20 flex items-center pl-4 pr-8 bg-nav/90 backdrop-blur-sm" style={{ maxWidth: 'calc(100vw - 5rem)' }}>
+      <div
+        className="fixed top-0 left-20 z-[999] h-20 flex items-center pl-4 pr-8 bg-nav/90 backdrop-blur-sm transition-transform duration-300"
+        style={{ maxWidth: 'calc(100vw - 5rem)', transform: headerVisible ? 'translateY(0)' : 'translateY(-100%)' }}
+      >
         <button
           onClick={() => router.push(returnUrl)}
           className="text-secondary/70 text-sm uppercase tracking-widest flex items-center gap-2 hover:text-secondary transition-colors bg-transparent border-none cursor-pointer"

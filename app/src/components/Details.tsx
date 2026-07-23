@@ -157,9 +157,9 @@ export default function Details({
       </div>
 
       {/* Media column */}
-      <div className="w-full md:w-full flex justify-center items-center">
+      <div className="w-full md:w-full flex justify-center items-start">
         {type === 'Audio' ? (
-          <div className="w-full" style={{ minHeight: '300px' }}>
+          <div className="w-full mt-12">
             <Audio
               src={src}
               preview_audio_video={typeof preview_audio_video === 'string' ? preview_audio_video : undefined}

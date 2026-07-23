@@ -3,6 +3,8 @@
 import { useState, useEffect, useRef } from 'react'
 import Gallery from './Gallery'
 
+const PLACEHOLDER = '/Goux_1000kB_3.jpg'
+
 interface ThematicItem {
   src: string
   title: string
@@ -89,7 +91,13 @@ export default function Carousel({ thematics, initialSlug }: Props) {
           {thematics.map((t, i) => (
             <div key={i} className="relative w-full h-full flex-shrink-0 flex items-center justify-center">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={t.src} alt={t.alt} className="w-full h-full object-cover" loading="lazy" />
+              <img
+                src={t.src || PLACEHOLDER}
+                alt={t.alt}
+                className="w-full h-full object-cover"
+                loading="lazy"
+                onError={e => { if ((e.target as HTMLImageElement).src !== window.location.origin + PLACEHOLDER) (e.target as HTMLImageElement).src = PLACEHOLDER }}
+              />
               <div className="absolute inset-0 bg-black/50 z-[4]" />
               <div className="absolute bottom-0 left-0 px-4 pb-6 md:px-[100px] md:pb-[100px] w-full z-[5] text-white flex flex-col gap-2 md:gap-5">
                 <h3 className="text-xl md:text-[45px] font-light italic border-b border-white w-fit leading-tight md:leading-[65px] font-merriweather">

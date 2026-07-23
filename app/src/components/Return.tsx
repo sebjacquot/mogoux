@@ -1,4 +1,7 @@
+'use client'
+
 import Link from 'next/link'
+import { useState, useEffect, useRef } from 'react'
 
 interface Props {
   linkURL: string
@@ -6,11 +9,33 @@ interface Props {
 }
 
 export default function Return({ linkURL, linkText = 'Retour' }: Props) {
-  const base = process.env.NEXT_PUBLIC_BASE_PATH || ''
-  const href = linkURL.startsWith('http') ? linkURL : `${linkURL}`
+  const [visible, setVisible] = useState(true)
+  const lastScrollY = useRef(0)
+
+  useEffect(() => {
+    const onScroll = () => {
+      const y = window.scrollY
+      if (y > lastScrollY.current && y > 80) {
+        setVisible(false)
+      } else {
+        setVisible(true)
+      }
+      lastScrollY.current = y
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  const href = linkURL.startsWith('http') ? linkURL : linkURL
 
   return (
-    <div className="fixed top-0 left-20 z-[999] h-20 flex items-center pl-4 pr-8 bg-nav/90 backdrop-blur-sm w-fit" style={{ maxWidth: 'calc(100vw - 5rem)' }}>
+    <div
+      className="fixed top-0 left-20 z-[999] h-20 flex items-center pl-4 pr-8 bg-nav/90 backdrop-blur-sm w-fit transition-transform duration-300"
+      style={{
+        maxWidth: 'calc(100vw - 5rem)',
+        transform: visible ? 'translateY(0)' : 'translateY(-100%)',
+      }}
+    >
       <Link
         href={href}
         className="text-secondary/70 text-sm uppercase tracking-widest no-underline flex items-center gap-2 hover:text-secondary transition-colors truncate"
