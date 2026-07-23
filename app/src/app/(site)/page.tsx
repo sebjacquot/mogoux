@@ -7,7 +7,7 @@ export default function HomePage() {
   return (
     <div className="flex min-h-screen flex-col md:flex-row">
       {/* Left panel */}
-      <div className="flex items-center justify-center bg-primary md:max-w-[55%] w-full py-16 md:py-0">
+      <div className="flex items-center justify-center bg-primary md:max-w-[55%] w-full pt-28 pb-16 md:py-0">
         <div className="flex flex-col gap-7 px-8 md:px-[120px] md:pr-[251px] font-inter text-secondary">
           <h1 className="leading-tight">
             <span className="block text-[clamp(32px,4vw,50px)]">Des</span>

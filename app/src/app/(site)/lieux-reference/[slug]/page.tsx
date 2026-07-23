@@ -111,8 +111,8 @@ export default async function LieuReferencePage({ params }: Props) {
     <>
       <Return linkURL="/carte" linkText="Retourner à la carte" />
 
-      {/* Hero */}
-      <section className="relative w-full flex justify-center items-center overflow-hidden" style={{ height: '75vh', maxHeight: '700px', minHeight: '560px' }}>
+      {/* Hero — mt-20 sur mobile pour ne pas se faire couvrir par le bouton Retour fixe */}
+      <section className="relative w-full flex justify-center items-center overflow-hidden mt-20 sm:mt-0" style={{ height: '75vh', maxHeight: '700px', minHeight: '560px' }}>
         <div className="absolute inset-0 bg-black/50 z-[2] pointer-events-none" />
 
         {/* Hero content */}
