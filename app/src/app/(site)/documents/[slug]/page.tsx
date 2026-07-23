@@ -5,7 +5,6 @@ import { notFound } from 'next/navigation'
 
 export const dynamic = 'force-dynamic'
 
-const cmsBase = process.env.NEXT_PUBLIC_SERVER_URL || ''
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -31,16 +30,12 @@ export default async function DocumentPage({ params }: Props) {
   const doc: any = docRes.docs[0]
 
   // Build media src (full absolute URL)
-  const originalSrc = doc.url ? `${cmsBase}${doc.url}` : ''
-  const src = doc.sizes?.preview?.url
-    ? `${cmsBase}${doc.sizes.preview.url}`
-    : originalSrc
+  const originalSrc = doc.url || ''
+  const src = doc.sizes?.preview?.url || originalSrc
 
   const previewAudioVideo = doc.preview_audio_video?.sizes?.preview?.url
-    ? `${cmsBase}${doc.preview_audio_video.sizes.preview.url}`
-    : doc.preview_audio_video?.url
-    ? `${cmsBase}${doc.preview_audio_video.url}`
-    : null
+    || doc.preview_audio_video?.url
+    || null
 
   // Fetch sections to resolve thematic colors
   const thematicIds: string[] = (doc.thematics || []).map((t: any) =>

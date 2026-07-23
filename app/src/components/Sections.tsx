@@ -43,15 +43,18 @@ export default function Sections({ title, sectionId, color, thematics }: Props) 
       {/* Desktop / Tablette : rangée de 3 cartes avec navigation */}
       <div className="hidden sm:flex items-stretch gap-[2px] pl-0 sm:pl-7">
         {/* Flèche précédent */}
-        <button
-          onClick={() => setOffset((o) => Math.max(0, o - VISIBLE))}
-          disabled={!canPrev}
-          className="w-[45px] bg-primary text-white text-2xl border-none rounded-tl rounded-bl hover:bg-secondary hover:text-black hover:w-[50px] disabled:opacity-30 disabled:hover:bg-primary disabled:hover:text-white disabled:hover:w-[45px] disabled:cursor-not-allowed transition-all flex-shrink-0"
-          style={{ minHeight: 140, maxHeight: 220 }}
-          aria-label="Précédents"
-        >
-          &#10094;
-        </button>
+        {canPrev ? (
+          <button
+            onClick={() => setOffset((o) => Math.max(0, o - VISIBLE))}
+            className="w-[45px] bg-primary text-white text-2xl border-none rounded-tl rounded-bl hover:bg-secondary hover:text-black hover:w-[50px] transition-all flex-shrink-0"
+            style={{ minHeight: 140, maxHeight: 220 }}
+            aria-label="Précédents"
+          >
+            &#10094;
+          </button>
+        ) : (
+          <div className="w-[45px] flex-shrink-0" style={{ minHeight: 140, maxHeight: 220 }} />
+        )}
 
         {thematics.slice(offset, offset + VISIBLE).map((t, i) => (
           <Link
@@ -71,7 +74,7 @@ export default function Sections({ title, sectionId, color, thematics }: Props) 
               <div className="w-full h-full" style={{ backgroundColor: color + '44' }} />
             )}
             {/* Overlay sombre, plus clair au hover */}
-            <div className="absolute inset-0 bg-black/55 group-hover:bg-black/35 transition-colors duration-300" />
+            <div className="absolute inset-0 bg-black/35 group-hover:bg-black/20 transition-colors duration-300" />
             {/* Liseré coloré en bas */}
             <div className="absolute bottom-0 left-0 w-full h-[3px]" style={{ backgroundColor: color }} />
             {/* Titre */}
@@ -84,15 +87,18 @@ export default function Sections({ title, sectionId, color, thematics }: Props) 
         ))}
 
         {/* Flèche suivant */}
-        <button
-          onClick={() => setOffset((o) => Math.min(thematics.length - VISIBLE, o + VISIBLE))}
-          disabled={!canNext}
-          className="w-[45px] bg-primary text-white text-2xl border-none rounded-tr rounded-br hover:bg-secondary hover:text-black hover:w-[50px] disabled:opacity-30 disabled:hover:bg-primary disabled:hover:text-white disabled:hover:w-[45px] disabled:cursor-not-allowed transition-all flex-shrink-0"
-          style={{ minHeight: 140, maxHeight: 220 }}
-          aria-label="Suivants"
-        >
-          &#10095;
-        </button>
+        {canNext ? (
+          <button
+            onClick={() => setOffset((o) => Math.min(thematics.length - VISIBLE, o + VISIBLE))}
+            className="w-[45px] bg-primary text-white text-2xl border-none rounded-tr rounded-br hover:bg-secondary hover:text-black hover:w-[50px] transition-all flex-shrink-0"
+            style={{ minHeight: 140, maxHeight: 220 }}
+            aria-label="Suivants"
+          >
+            &#10095;
+          </button>
+        ) : (
+          <div className="w-[45px] flex-shrink-0" style={{ minHeight: 140, maxHeight: 220 }} />
+        )}
       </div>
 
       {/* Mobile : tampons colorés */}

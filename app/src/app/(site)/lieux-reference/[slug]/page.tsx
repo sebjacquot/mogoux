@@ -10,7 +10,6 @@ import { sortBySection } from '@/utils/sortGallery'
 export const dynamic = 'force-dynamic'
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH || ''
-const cmsBase = process.env.NEXT_PUBLIC_SERVER_URL || ''
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -62,16 +61,10 @@ export default async function LieuReferencePage({ params }: Props) {
       if (!doc) return null
 
       const previewAudioVideoUrl = doc.preview_audio_video?.sizes?.preview?.url
-        ? `${cmsBase}${doc.preview_audio_video.sizes.preview.url}`
-        : doc.preview_audio_video?.url
-        ? `${cmsBase}${doc.preview_audio_video.url}`
-        : null
+        || doc.preview_audio_video?.url
+        || null
 
-      const src = doc.sizes?.preview?.url
-        ? `${cmsBase}${doc.sizes.preview.url}`
-        : doc.url
-        ? `${cmsBase}${doc.url}`
-        : null
+      const src = doc.sizes?.preview?.url || doc.url || null
 
       if (!src) return null
 
@@ -112,9 +105,7 @@ export default async function LieuReferencePage({ params }: Props) {
     ? renderLexicalToHTML(referenceLocation.background_image.legende.root.children)
     : ''
 
-  const backgroundImageUrl = referenceLocation?.background_image?.url
-    ? `${cmsBase}${referenceLocation.background_image.url}`
-    : ''
+  const backgroundImageUrl = referenceLocation?.background_image?.url || ''
 
   return (
     <>
@@ -126,7 +117,7 @@ export default async function LieuReferencePage({ params }: Props) {
 
         {/* Hero content */}
         <div className="absolute bottom-0 left-0 w-full z-[5] flex flex-col items-start px-4 sm:px-[100px] pb-6 sm:pb-10 gap-3 sm:gap-5 text-white pointer-events-none overflow-hidden">
-          <h2 className="text-[28px] sm:text-[50px] font-light italic leading-tight sm:leading-[65px] w-fit" style={{ fontFamily: 'Merryweather, serif' }}>
+          <h2 className="text-[28px] sm:text-[50px] font-light italic leading-tight sm:leading-[65px] w-fit font-merriweather">
             Lieu
           </h2>
           <h1 className="text-[32px] sm:text-[60px] font-bold leading-tight sm:leading-[65px]" style={{ fontFamily: 'var(--article-font, Helvetica)' }}>
