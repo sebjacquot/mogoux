@@ -39,7 +39,7 @@ const checkDuplicatesInExcel = (rows: any[]) => {
 };
 
 const checkExistingSlugsAndCodes = async (rows: any[]) => {
-    const res = await fetch('/memoires-ouvrieres-goux/cms/api/documents?limit=1000');
+    const res = await fetch(`${apiBase}/documents?limit=1000`);
     const data = await res.json();
 
     const existingSlugs = new Set(data.docs.map((doc: any) => doc.slug));
@@ -156,6 +156,8 @@ const extractPlainText = (value: any): string => {
     }
     return typeof value === 'string' ? value : '';
 };
+
+const apiBase = (process.env.NEXT_PUBLIC_BASE_PATH || '') + '/api'
 
 const ImportDocumentsForm: React.FC = () => {
     const [excelFile, setExcelFile] = useState<File | null>(null);
@@ -419,9 +421,10 @@ const ImportDocumentsForm: React.FC = () => {
                     formData.append('_payload', JSON.stringify(documentData));
 
                     // Étape 7 - Envoi de la requête
-                    const response = await fetch('/memoires-ouvrieres-goux/cms/api/documents', {
+                    const response = await fetch(`${apiBase}/documents`, {
                         method: 'POST',
-                        body: formData
+                        credentials: 'include',
+                        body: formData,
                     });
 
                     if (!response.ok) {

@@ -4,6 +4,8 @@ import React from 'react';
 import { Button } from '@payloadcms/ui';
 import ExcelJS from 'exceljs';
 
+const apiBase = (process.env.NEXT_PUBLIC_BASE_PATH || '') + '/api'
+
 const ExportTemplateButton: React.FC = () => {
     const handleExport = async () => {
         try {
@@ -19,7 +21,7 @@ const ExportTemplateButton: React.FC = () => {
 
             const refSheets: Record<string, any> = {};
             for (const endpoint of endpoints) {
-                const res = await fetch(`/memoires-ouvrieres-goux/cms/api/${endpoint}?limit=1000`);
+                const res = await fetch(`${apiBase}/${endpoint}?limit=1000`);
                 refSheets[endpoint] = await res.json();
             }
 
