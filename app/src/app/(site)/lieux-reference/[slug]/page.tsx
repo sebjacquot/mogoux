@@ -117,7 +117,7 @@ export default async function LieuReferencePage({ params }: Props) {
 
         {/* Hero content */}
         <div className="absolute bottom-0 left-0 w-full z-[5] flex flex-col items-start px-4 sm:px-[100px] pb-6 sm:pb-10 gap-3 sm:gap-5 text-white pointer-events-none overflow-hidden">
-          <h2 className="text-[28px] sm:text-[50px] font-light italic leading-tight sm:leading-[65px] w-fit font-merriweather">
+          <h2 className="text-[28px] sm:text-[50px] font-light italic leading-tight sm:leading-[65px] w-fit font-helvetica">
             Lieu
           </h2>
           <h1 className="text-[32px] sm:text-[60px] font-bold leading-tight sm:leading-[65px]" style={{ fontFamily: 'var(--article-font, Helvetica)' }}>
