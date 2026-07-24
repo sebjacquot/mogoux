@@ -100,7 +100,7 @@ export default function Carousel({ thematics, initialSlug }: Props) {
               />
               <div className="absolute inset-0 bg-black/50 z-[4]" />
               <div className="absolute bottom-0 left-0 px-4 pb-6 md:px-[100px] md:pb-[100px] w-full z-[5] text-white flex flex-col gap-2 md:gap-5">
-                <h3 className="text-xl md:text-[45px] font-light italic border-b border-white w-fit leading-tight md:leading-[65px] font-merriweather">
+                <h3 className="text-xl md:text-[45px] font-light italic border-b border-white w-fit leading-tight md:leading-[65px] font-helvetica">
                   Thématique
                 </h3>
                 <h2
