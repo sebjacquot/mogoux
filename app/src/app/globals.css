@@ -30,7 +30,7 @@ html, body {
   /* Hero de chapitre / annexe */
   .chapter-entete {
     @apply relative w-full flex justify-center items-center overflow-hidden;
-    height: 35vh;
+    height: 50vh;
   }
 
   @media (min-width: 640px) {

@@ -125,7 +125,7 @@ export default async function LieuReferencePage({ params }: Props) {
           </h1>
 
           {/* Description / Quote toggle */}
-          <div className="w-full mt-[5vh] text-secondary pointer-events-none">
+          <div className="w-full mt-2 sm:mt-[5vh] text-secondary pointer-events-auto max-h-[28vh] overflow-y-auto sm:max-h-none sm:overflow-visible">
             <LieuReferenceToggle
               descriptionHtml={descriptionHtml}
               quoteHtml={quoteHtml}

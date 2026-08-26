@@ -84,7 +84,7 @@ export default function Audio({ src, preview_audio_video }: Props) {
 
   // ── Controls bar (shared between inline desktop and fixed mobile) ──────────
   const Controls = ({ className = '' }: { className?: string }) => (
-    <div className={`flex items-center w-full gap-1 overflow-hidden bg-nav px-0 py-2.5 ${className}`}>
+    <div className={`flex items-center w-full gap-1 bg-nav px-0 py-2.5 ${className}`}>
       {/* Play/Pause */}
       <button onClick={play} className="bg-transparent border-none text-white p-0 flex-shrink-0 px-2">
         {/* eslint-disable-next-line @next/next/no-img-element */}

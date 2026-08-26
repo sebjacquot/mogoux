@@ -1,4 +1,4 @@
-import ImageTooltip from '@/components/ImageTooltip'
+﻿import ImageTooltip from '@/components/ImageTooltip'
 import ImageFullscreen from '@/components/ImageFullscreen'
 import SuggestionsCard from '@/components/SuggestionsCard'
 
@@ -13,7 +13,7 @@ export default function Chapitre6Page() {
           <span className="chapter-tag">CHAPITRE 6</span>
           <h1 className="chapter-titre">La structuration des <em>Mémoires</em></h1>
           <h2 className="chapter-soustitre">Un ouvrage à multiples facettes</h2>
-          <div className="bg-[hsl(0,0%,96%)] w-full max-w-[75em] mt-8 pt-5 px-4 md:px-10 pb-5 hidden sm:flex flex-col justify-center">
+          <div className="bg-[hsl(0,0%,96%)] w-full max-w-[75em] mt-8 pt-5 px-4 md:px-10 pb-5 flex flex-col justify-center max-h-[22vh] overflow-hidden sm:max-h-none sm:overflow-visible">
             <p className="font-serif text-[17px] text-center self-center">Dans la première partie de l'ouvrage, Goux met en scène les problèmes d'organisation qui se sont posés à lui : désireux de favoriser une pluralité de discours et de types d'écriture, il allait néanmoins progressivement élaborer une structuration souple et inventive, parfaitement élaborée et réfléchie.</p>
             <div className="flex justify-center items-center relative mt-5">
               <div className="px-2.5 bg-[hsl(0,0%,96%)] z-[3]" />

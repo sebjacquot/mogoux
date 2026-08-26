@@ -1,4 +1,4 @@
-import ImageTooltip from '@/components/ImageTooltip'
+﻿import ImageTooltip from '@/components/ImageTooltip'
 import ImageFullscreen from '@/components/ImageFullscreen'
 import SuggestionsCard from '@/components/SuggestionsCard'
 
@@ -13,7 +13,7 @@ export default function Chapitre5Page() {
           <span className="chapter-tag">CHAPITRE 5</span>
           <h1 className="chapter-titre">Une œuvre littéraire</h1>
           <h2 className="chapter-soustitre">Naissance d'un <em>"récit d'industrie"</em></h2>
-          <div className="bg-[hsl(0,0%,96%)] w-full max-w-[75em] mt-8 pt-5 px-4 md:px-10 pb-5 hidden sm:flex flex-col justify-center">
+          <div className="bg-[hsl(0,0%,96%)] w-full max-w-[75em] mt-8 pt-5 px-4 md:px-10 pb-5 flex flex-col justify-center max-h-[22vh] overflow-hidden sm:max-h-none sm:overflow-visible">
             <p className="font-serif text-[17px] text-center self-center">Si les auteurs de la commande s'attendaient plutôt à un roman, Goux leur a finalement proposé un ouvrage littéraire très singulier et divers, empruntant partiellement à la forme du journal intime tout en jouant sur la fiction, et revendiquant parallèlement une vraie valeur historique.</p>
             <div className="flex justify-center items-center relative mt-5">
               <div className="px-2.5 bg-[hsl(0,0%,96%)] z-[3]" />
