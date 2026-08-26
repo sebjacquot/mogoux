@@ -21,7 +21,7 @@ export default function NavigationPage() {
           />
           <div className="absolute inset-0 bg-black/50" />
         </div>
-        <div className="relative z-10 p-10 md:p-[80px] md:pb-[50px] text-white">
+        <div className="relative z-10 p-10 pt-24 md:p-[80px] md:pt-[80px] md:pb-[50px] text-white">
           <h2 className="font-bold text-[clamp(36px,4.5vw,70px)] leading-[1.15] w-[70%] max-w-[50vw] mb-4">
             Mémoires ouvrières
           </h2>
@@ -52,7 +52,7 @@ export default function NavigationPage() {
           />
           <div className="absolute inset-0 bg-black/50" />
         </div>
-        <div className="relative z-10 p-10 md:p-[80px] md:pb-[50px] text-white">
+        <div className="relative z-10 p-10 pt-24 md:p-[80px] md:pt-[80px] md:pb-[50px] text-white">
           <h2 className="font-bold text-[clamp(36px,4.5vw,70px)] leading-[1.15] w-[70%] max-w-[50vw] mb-4">
             <em>Mémoires de l'Enclave</em>
           </h2>

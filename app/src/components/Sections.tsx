@@ -175,7 +175,7 @@ const ThematiqueCard = forwardRef<HTMLDivElement, CardProps>(
             onError={() => { if (imgSrc !== PLACEHOLDER) setImgSrc(PLACEHOLDER) }}
           />
           <h3
-            className="absolute bottom-0 left-0 px-[15px] py-[5px] text-[1.1em] font-bold w-[94%] text-white"
+            className="absolute bottom-0 left-0 px-[15px] py-[5px] text-[1.1em] font-bold w-[94%] text-white line-clamp-2"
             style={{
               backgroundColor: hovered
                 ? `color-mix(in srgb, ${color} 70%, transparent)`

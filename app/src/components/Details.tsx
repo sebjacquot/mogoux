@@ -32,9 +32,9 @@ export default function Details({
   return (
     <div className="flex items-start px-4 md:px-[8%] py-[6%] gap-8 text-site-text h-full flex-col md:flex-row">
       {/* Text column */}
-      <div className="flex flex-col w-full md:w-[70%] text-xl">
-        <h1 className="font-bold mt-24 sm:mt-12 mb-8 leading-tight" style={{ fontSize: 'clamp(18px, 3.5vw, 34px)' }}>{title}</h1>
-        <h3 className="mb-5 font-normal">{dateStr}</h3>
+      <div className="flex flex-col w-full md:w-[70%] text-base md:text-xl">
+        <h1 className="font-bold mt-24 sm:mt-12 mb-8 leading-tight" style={{ fontSize: 'clamp(22px, 3.5vw, 34px)' }}>{title}</h1>
+        <h3 className="mb-5 font-normal text-base md:text-xl">{dateStr}</h3>
 
         {description && (
           <p className="mb-10 w-[90%] leading-snug text-justify">{description}</p>

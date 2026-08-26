@@ -1,4 +1,4 @@
-import ImageTooltip from '@/components/ImageTooltip'
+﻿import ImageTooltip from '@/components/ImageTooltip'
 import ImageFullscreen from '@/components/ImageFullscreen'
 import SuggestionsCard from '@/components/SuggestionsCard'
 
@@ -13,7 +13,7 @@ export default function Chapitre1Page() {
           <span className="chapter-tag">CHAPITRE 1</span>
           <h1 className="chapter-titre">Une commande de la Cité</h1>
           <h2 className="chapter-soustitre">Une résidence d'écriture bien singulière</h2>
-          <div className="bg-[hsl(0,0%,96%)] w-full max-w-[75em] mt-8 pt-5 px-4 md:px-10 pb-5 hidden sm:flex flex-col justify-center">
+          <div className="bg-[hsl(0,0%,96%)] w-full max-w-[75em] mt-8 pt-5 px-4 md:px-10 pb-5 flex flex-col justify-center max-h-[22vh] overflow-hidden sm:max-h-none sm:overflow-visible">
             <p className="font-serif text-[17px] text-center self-center">Qu'une Association de culture et de loisirs nommée la Cité, liée au Comité d'établissements des automobiles Peugeot, passe commande d'un ouvrage sur la mémoire industrielle à un écrivain peut paraître bien étonnant : c'est le fruit de circonstances et de coïncidences remarquables.</p>
             <div className="flex justify-center items-center relative mt-5">
               <div className="px-2.5 bg-[hsl(0,0%,96%)] z-[3]" />

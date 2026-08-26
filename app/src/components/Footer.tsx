@@ -38,22 +38,22 @@ export default function Footer() {
       {/* Bottom row */}
       <div className="flex justify-between items-center flex-wrap gap-4">
         <p className="text-[#ccc] text-sm" />
-        <div className="flex items-center">
+        <div className="flex flex-wrap items-center gap-4 md:gap-0">
           <a href="https://www.bourgognefranchecomte.fr">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={`${base}/icones/logo-rbfc-blanc.png`} alt="Région Bourgogne Franche-Comté" className="w-24 ml-5" />
+            <img src={`${base}/icones/logo-rbfc-blanc.png`} alt="Région Bourgogne Franche-Comté" className="w-16 md:w-24 md:ml-5" />
           </a>
           <a href="https://elliadd.univ-fcomte.fr">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={`${base}/icones/LogoElliadd_blanc.png`} alt="ELLIADD" className="w-24 ml-5" />
+            <img src={`${base}/icones/LogoElliadd_blanc.png`} alt="ELLIADD" className="w-16 md:w-24 md:ml-5" />
           </a>
           <a href="https://mshe.univ-fcomte.fr">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={`${base}/icones/mshe-logo-blanc.png`} alt="MSHE" className="w-24 ml-5" />
+            <img src={`${base}/icones/mshe-logo-blanc.png`} alt="MSHE" className="w-16 md:w-24 md:ml-5" />
           </a>
           <a href="https://www.univ-fcomte.fr/">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={`${base}/icones/LOGO_UMLP_blanc.png`} alt="Université Marie et Louis Pasteur" className="w-24 ml-5" />
+            <img src={`${base}/icones/LOGO_UMLP_blanc.png`} alt="Université Marie et Louis Pasteur" className="w-16 md:w-24 md:ml-5" />
           </a>
         </div>
       </div>
