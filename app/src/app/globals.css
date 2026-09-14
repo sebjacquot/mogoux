@@ -49,7 +49,8 @@ html, body {
     overflow-y: hidden;
   }
 
-  @media (min-width: 640px) {
+  /* Seulement sur des écrans larges ET hauts (tablettes/desktop, pas paysage téléphone) */
+  @media (min-width: 640px) and (min-height: 600px) {
     .chapter-hero {
       justify-content: center;
       padding-top: 0;
