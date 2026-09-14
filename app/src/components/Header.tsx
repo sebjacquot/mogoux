@@ -76,7 +76,7 @@ export default function Header() {
 
       {/* Dropdown menu */}
       <div
-        className={`fixed top-20 left-0 w-[300px] bg-nav z-[999] shadow-lg transition-all duration-300 ease-in-out overflow-hidden ${
+        className={`fixed top-20 left-0 w-[min(300px,85vw)] bg-nav z-[999] shadow-lg transition-all duration-300 ease-in-out overflow-hidden ${
           menuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
         }`}
       >

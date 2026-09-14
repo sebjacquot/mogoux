@@ -44,7 +44,16 @@ html, body {
   }
 
   .chapter-hero {
-    @apply absolute inset-0 z-[5] flex flex-col items-center justify-center w-full pointer-events-none;
+    @apply absolute inset-0 z-[5] flex flex-col items-center justify-start w-full pointer-events-none;
+    padding-top: 1.5rem;
+    overflow-y: hidden;
+  }
+
+  @media (min-width: 640px) {
+    .chapter-hero {
+      justify-content: center;
+      padding-top: 0;
+    }
   }
 
   .chapter-tag {

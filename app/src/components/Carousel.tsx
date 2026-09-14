@@ -99,18 +99,19 @@ export default function Carousel({ thematics, initialSlug }: Props) {
                 onError={e => { if ((e.target as HTMLImageElement).src !== window.location.origin + PLACEHOLDER) (e.target as HTMLImageElement).src = PLACEHOLDER }}
               />
               <div className="absolute inset-0 bg-black/50 z-[4]" />
-              <div className="absolute bottom-0 left-0 px-4 pb-6 md:px-[100px] md:pb-[100px] w-full z-[5] text-white flex flex-col gap-2 md:gap-5">
+              <div className="absolute bottom-0 left-0 pl-20 pr-4 pb-6 md:px-[100px] md:pb-[100px] w-full z-[5] text-white flex flex-col gap-2 md:gap-5">
                 <h3 className="text-xl md:text-[45px] font-light italic border-b border-white w-fit leading-tight md:leading-[65px] font-helvetica">
                   Thématique
                 </h3>
                 <h2
-                  className="font-bold leading-tight w-full md:w-[60%] font-helvetica overflow-hidden"
+                  className="font-bold leading-tight w-full md:w-[60%] font-helvetica"
                   style={{
                     fontSize: 'clamp(18px, 3.5vw, 50px)',
                     lineHeight: 1.2,
                     display: '-webkit-box',
                     WebkitLineClamp: 2,
                     WebkitBoxOrient: 'vertical',
+                    overflow: 'hidden',
                   }}
                 >
                   {t.title}

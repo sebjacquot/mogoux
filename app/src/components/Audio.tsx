@@ -112,7 +112,7 @@ export default function Audio({ src, preview_audio_video }: Props) {
       </div>
 
       {/* Volume (desktop only) */}
-      <div className="hidden sm:flex items-center gap-1.5 px-2 w-[160px] flex-shrink-0">
+      <div className="hidden sm:flex items-center gap-1.5 px-2 w-[160px] min-w-0 flex-shrink">
         <button onClick={toggleMute} className="bg-transparent border-none p-0 flex-shrink-0">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img

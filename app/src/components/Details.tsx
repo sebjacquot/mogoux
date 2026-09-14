@@ -33,8 +33,8 @@ export default function Details({
     <div className="flex items-start px-4 md:px-[8%] py-[6%] gap-8 text-site-text h-full flex-col md:flex-row">
       {/* Text column */}
       <div className="flex flex-col w-full md:w-[70%] text-base md:text-xl">
-        <h1 className="font-bold mt-24 sm:mt-12 mb-8 leading-tight" style={{ fontSize: 'clamp(22px, 3.5vw, 34px)' }}>{title}</h1>
-        <h3 className="mb-5 font-normal text-base md:text-xl">{dateStr}</h3>
+        <h1 className="font-bold mt-24 sm:mt-12 mb-8 leading-tight" style={{ fontSize: 'clamp(28px, 5vw, 38px)' }}>{title}</h1>
+        <h3 className="mb-5 font-normal text-sm md:text-xl">{dateStr}</h3>
 
         {description && (
           <p className="mb-10 w-[90%] leading-snug text-justify">{description}</p>
@@ -43,17 +43,17 @@ export default function Details({
         {/* Physical tags */}
         <ul className="mb-5 flex flex-wrap gap-1.5 list-none p-0">
           {tags?.document_types && (
-            <li id="type-de-document" className="bg-legende text-site-text px-1.5 py-0.5 rounded-sm text-base cursor-default">
+            <li id="type-de-document" className="bg-legende text-site-text px-1.5 py-0.5 rounded-sm text-sm md:text-base cursor-default">
               {tags.document_types.name}
             </li>
           )}
           {tags?.material_types_and_formats && (
-            <li id="support-et-format" className="bg-legende text-site-text px-1.5 py-0.5 rounded-sm text-base cursor-default">
+            <li id="support-et-format" className="bg-legende text-site-text px-1.5 py-0.5 rounded-sm text-sm md:text-base cursor-default">
               {tags.material_types_and_formats.name}
             </li>
           )}
           {tags?.colors && (
-            <li id="couleur" className="bg-legende text-site-text px-1.5 py-0.5 rounded-sm text-base cursor-default">
+            <li id="couleur" className="bg-legende text-site-text px-1.5 py-0.5 rounded-sm text-sm md:text-base cursor-default">
               {tags.colors.name}
             </li>
           )}
@@ -81,7 +81,7 @@ export default function Details({
         )}
 
         {/* Info grid */}
-        <div className="grid gap-x-5 gap-y-1 mt-2.5 text-[0.95em]" style={{ gridTemplateColumns: 'minmax(0,auto) 1fr' }}>
+        <div className="grid gap-x-5 gap-y-1 mt-2.5 text-xs md:text-[0.95em]" style={{ gridTemplateColumns: 'minmax(0,auto) 1fr' }}>
           {/* Location */}
           {location?.location_reference && (
             <>
