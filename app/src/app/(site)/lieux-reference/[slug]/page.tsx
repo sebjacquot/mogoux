@@ -112,20 +112,20 @@ export default async function LieuReferencePage({ params }: Props) {
       <Return linkURL="/carte" linkText="Retourner à la carte" />
 
       {/* Hero — mt-20 sur mobile pour ne pas se faire couvrir par le bouton Retour fixe */}
-      <section className="relative w-full flex justify-center items-center overflow-hidden mt-20 sm:mt-0 sm:min-h-[400px]" style={{ height: '75vh', maxHeight: '700px' }}>
+      <section className="relative w-full flex justify-center items-center overflow-hidden mt-20 sm:mt-0" style={{ height: '75vh', maxHeight: '700px' }}>
         <div className="absolute inset-0 bg-black/50 z-[2] pointer-events-none" />
 
         {/* Hero content */}
-        <div className="absolute bottom-0 left-0 w-full z-[5] flex flex-col items-start px-4 sm:px-[100px] pb-3 sm:pb-10 gap-2 sm:gap-5 text-white pointer-events-none overflow-hidden">
-          <h2 className="text-[22px] sm:text-[50px] font-light italic leading-tight sm:leading-[65px] w-fit font-helvetica">
+        <div className="lieu-hero-content">
+          <h2 className="lieu-hero-h2 font-light italic leading-tight w-fit font-helvetica">
             Lieu
           </h2>
-          <h1 className="text-[26px] sm:text-[60px] font-bold leading-tight sm:leading-[65px]" style={{ fontFamily: 'var(--article-font, Helvetica)' }}>
+          <h1 className="lieu-hero-h1 font-bold leading-tight" style={{ fontFamily: 'var(--article-font, Helvetica)' }}>
             {referenceLocation.name}
           </h1>
 
           {/* Description / Quote toggle */}
-          <div className="w-full mt-1 sm:mt-[5vh] text-secondary pointer-events-auto max-h-[20vh] overflow-y-auto sm:max-h-none sm:overflow-visible">
+          <div className="lieu-hero-toggle">
             <LieuReferenceToggle
               descriptionHtml={descriptionHtml}
               quoteHtml={quoteHtml}

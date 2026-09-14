@@ -132,6 +132,45 @@ html, body {
     max-width: 700px;
   }
 
+  /* Hero des lieux-référence — grandes tailles seulement sur écrans hauts (pas paysage téléphone) */
+  .lieu-hero-content {
+    @apply absolute bottom-0 left-0 w-full z-[5] flex flex-col items-start px-4 pb-3 gap-2 text-white pointer-events-none overflow-hidden;
+  }
+
+  .lieu-hero-h2 {
+    font-size: 22px;
+  }
+
+  .lieu-hero-h1 {
+    font-size: 26px;
+  }
+
+  .lieu-hero-toggle {
+    @apply w-full mt-1 text-secondary pointer-events-auto max-h-[20vh] overflow-y-auto;
+  }
+
+  @media (min-width: 640px) and (min-height: 600px) {
+    .lieu-hero-content {
+      padding-left: 100px;
+      padding-right: 100px;
+      padding-bottom: 2.5rem;
+      gap: 1.25rem;
+    }
+
+    .lieu-hero-h2 {
+      font-size: 50px;
+    }
+
+    .lieu-hero-h1 {
+      font-size: 60px;
+    }
+
+    .lieu-hero-toggle {
+      max-height: none;
+      overflow: visible;
+    }
+  }
+
   /* Suggestions */
   .suggestions-tag {
     @apply flex justify-center text-[#8d8d8d] italic font-light;
