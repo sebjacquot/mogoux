@@ -100,7 +100,7 @@ export default function Sections({ title, sectionId, color, thematics }: Props) 
         {/* Wrapper masquant */}
         <div ref={wrapperRef} className="overflow-hidden" style={{ width: 'calc(100% - 20px)' }}>
           <div
-            className="flex pl-5"
+            className="flex"
             style={{
               transform: `translateX(-${index * cardSlotPx}px)`,
               transition: 'transform 0.5s ease-in-out',
