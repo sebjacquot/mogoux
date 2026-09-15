@@ -33,8 +33,7 @@ const ReferenceLocations: CollectionConfig = {
           const referenceLocationsResult = await req.payload.find({
             collection: "reference-locations",
             where: {
-              // @ts-expect-error
-              slug: { equals: req.routeParams.slug },
+              slug: { equals: (req.routeParams as Record<string, string>).slug },
             },
             depth: 2,
           });

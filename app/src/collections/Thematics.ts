@@ -33,8 +33,7 @@ const Thematics: CollectionConfig = {
           const data = await req.payload.find({
             collection: "thematics",
             where: {
-              // @ts-expect-error
-              slug: { equals: req.routeParams.slug },
+              slug: { equals: (req.routeParams as Record<string, string>).slug },
             },
           });
 

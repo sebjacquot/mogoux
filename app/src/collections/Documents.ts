@@ -36,8 +36,7 @@ export const Documents: CollectionConfig = {
             collection: "documents",
             where: {
               slug: {
-                // @ts-ignore
-                equals: req.routeParams.slug,
+                equals: (req.routeParams as Record<string, string>).slug,
               },
             },
           });
@@ -49,30 +48,25 @@ export const Documents: CollectionConfig = {
           const document = result.docs[0];
 
           // Injecter les couleurs dans chaque thématique
+          type ThematicWithSections = {
+            id: number
+            related_sections?: { docs?: (number | { id: number })[] }
+            [key: string]: unknown
+          }
           const thematicsWithColors = await Promise.all(
-              // @ts-ignore
-              document.thematics.map(async (thematic) => {
-                // @ts-ignore
-                const sectionIDs = thematic?.related_sections?.docs || [];
+            ((document.thematics ?? []) as ThematicWithSections[]).map(async (thematic) => {
+              const sectionIDs = thematic?.related_sections?.docs ?? []
+              if (!sectionIDs.length) return { ...thematic, color: null }
 
-                // @ts-ignore
-                if (!sectionIDs.length) return { ...thematic, color: null };
-
-                // On suppose qu'on prend la couleur de la première section liée
-                const firstSectionID = sectionIDs[0];
-
-                const section = await req.payload.findByID({
-                  collection: "sections",
-                  id: firstSectionID,
-                });
-
-                return {
-                  // @ts-ignore
-                  ...thematic,
-                  color: section?.color || null,
-                };
+              // Prend la couleur de la première section liée
+              const firstSectionID = typeof sectionIDs[0] === 'number' ? sectionIDs[0] : sectionIDs[0].id
+              const section = await req.payload.findByID({
+                collection: 'sections',
+                id: firstSectionID,
               })
-          );
+              return { ...thematic, color: (section as any)?.color ?? null }
+            })
+          )
 
           return Response.json({
             ...document,

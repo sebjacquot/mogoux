@@ -7,9 +7,19 @@ import Gallery from '@/components/Gallery'
 import LieuReferenceToggle from '@/components/LieuReferencePage'
 import { renderLexicalToHTML } from '@/utils/renderLexical'
 import { sortBySection } from '@/utils/sortGallery'
+import type { ReferenceLocation, Section, Document, Thematic, Media } from '@/payload-types'
 
 export const dynamic = 'force-dynamic'
 
+interface GalleryDoc {
+  type: string
+  src: string
+  alt: string
+  slug: string
+  titre: string
+  preview_audio_video: string | null
+  sectionRank: number
+}
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -19,7 +29,6 @@ export default async function LieuReferencePage({ params }: Props) {
   const { slug } = await params
   const payload = await getPayload()
 
-  // Fetch reference location by slug (depth:1 suffit, on requête les docs séparément)
   const refRes = await payload
     .find({
       collection: 'reference-locations',
@@ -31,9 +40,8 @@ export default async function LieuReferencePage({ params }: Props) {
 
   if (!refRes || refRes.docs.length === 0) notFound()
 
-  const referenceLocation: any = refRes.docs[0]
+  const referenceLocation = refRes.docs[0] as ReferenceLocation
 
-  // Fetch all documents linked to this location directly (no join field limit)
   const [docsRes, sectionsRes] = await Promise.all([
     payload.find({
       collection: 'documents',
@@ -43,69 +51,67 @@ export default async function LieuReferencePage({ params }: Props) {
     }),
     payload.find({ collection: 'sections', limit: 100, sort: 'rank' }),
   ])
-  const sections = sectionsRes.docs
+  const sections = sectionsRes.docs as Section[]
 
-  // Build thematicId → sectionRank map for gallery sorting
+  // Construit la map thematicId → sectionRank pour le tri de galerie
   const thematicToSectionRank = new Map<string, number>()
-  sections.forEach((section: any, idx: number) => {
+  sections.forEach((section, idx) => {
     const rank = section.rank ?? idx
-    ;(section.thematics || []).forEach((t: any) => {
-      const id = typeof t === 'string' ? t : t.id
+    ;((section.thematics ?? []) as (number | Thematic)[]).forEach((t) => {
+      const id = String(typeof t === 'number' ? t : t.id)
       if (id) thematicToSectionRank.set(id, rank)
     })
   })
 
-  // Build documents list for Gallery
-  const rawDocuments = docsRes.docs
-    .map((doc: any) => {
-      if (!doc) return null
-
+  const rawDocuments = (docsRes.docs as Document[])
+    .map((doc): GalleryDoc | null => {
+      const previewMedia = doc.preview_audio_video as Media | null
       const previewAudioVideoUrl = toAbsolute(
-        doc.preview_audio_video?.sizes?.preview?.url || doc.preview_audio_video?.url
+        previewMedia?.sizes?.preview?.url || previewMedia?.url
       ) || null
 
       const src = toAbsolute(doc.sizes?.preview?.url || doc.url) || null
-
       if (!src) return null
 
-      const firstThematicId = Array.isArray(doc.thematics)
-        ? typeof doc.thematics[0] === 'string'
-          ? doc.thematics[0]
-          : doc.thematics[0]?.id
+      const firstThematic = Array.isArray(doc.thematics) ? doc.thematics[0] : null
+      const firstThematicId = firstThematic != null
+        ? String(typeof firstThematic === 'number' ? firstThematic : firstThematic.id)
         : null
       const sectionRank = firstThematicId != null
         ? (thematicToSectionRank.get(firstThematicId) ?? 999)
         : 999
 
       return {
-        type: doc.type ?? '',
+        type: doc.type,
         src,
-        alt: doc.alt ?? '',
-        slug: doc.slug ?? '',
-        titre: doc.title ?? '',
+        alt: doc.alt,
+        slug: doc.slug,
+        titre: doc.title,
         preview_audio_video: previewAudioVideoUrl,
         sectionRank,
       }
     })
-    .filter(Boolean) as any[]
+    .filter((d): d is GalleryDoc => d !== null)
 
-  // Sort: group by section rank, then sort by cote alphabetically, audios dispersed
   const documents = sortBySection(rawDocuments, (d) => d.sectionRank)
 
-  // Render lexical content
-  const descriptionHtml = referenceLocation?.description?.root?.children
+  const bgImage = typeof referenceLocation.background_image === 'object' && referenceLocation.background_image
+    ? referenceLocation.background_image as Media
+    : null
+
+  const descriptionHtml = referenceLocation.description?.root?.children
     ? renderLexicalToHTML(referenceLocation.description.root.children)
     : ''
 
-  const quoteHtml = referenceLocation?.quote?.root?.children
+  const quoteHtml = referenceLocation.quote?.root?.children
     ? renderLexicalToHTML(referenceLocation.quote.root.children)
     : ''
 
-  const legendeHtml = referenceLocation?.background_image?.legende?.root?.children
-    ? renderLexicalToHTML(referenceLocation.background_image.legende.root.children)
+  const legendeHtml = bgImage?.legende?.root?.children
+    ? renderLexicalToHTML(bgImage.legende.root.children)
     : ''
 
-  const backgroundImageUrl = referenceLocation?.background_image?.url || ''
+  const backgroundImageUrl = bgImage?.url || ''
 
   return (
     <>
@@ -115,7 +121,6 @@ export default async function LieuReferencePage({ params }: Props) {
       <section className="relative w-full flex justify-center items-center overflow-hidden mt-20 sm:mt-0" style={{ height: '75vh', maxHeight: '700px' }}>
         <div className="absolute inset-0 bg-black/50 z-[2] pointer-events-none" />
 
-        {/* Hero content */}
         <div className="lieu-hero-content">
           <h2 className="lieu-hero-h2 font-light italic leading-tight w-fit font-helvetica">
             Lieu
@@ -124,7 +129,6 @@ export default async function LieuReferencePage({ params }: Props) {
             {referenceLocation.name}
           </h1>
 
-          {/* Description / Quote toggle */}
           <div className="lieu-hero-toggle">
             <LieuReferenceToggle
               descriptionHtml={descriptionHtml}
@@ -142,7 +146,6 @@ export default async function LieuReferencePage({ params }: Props) {
         )}
       </section>
 
-      {/* Gallery */}
       <section className="flex flex-col justify-center gap-[50px] w-[97.5vw] mx-auto mt-[15px]">
         <Gallery documents={documents} />
       </section>

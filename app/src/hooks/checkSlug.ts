@@ -20,8 +20,7 @@ const generateUniqueSlug = async (
 
   while (true) {
     const existingEntry = await req.payload.find({
-      // @ts-ignore
-      collection: collection,
+      collection: collection as Parameters<typeof req.payload.find>[0]['collection'],
       where: {
         slug: { equals: uniqueSlug },
         ...(documentId ? { id: { not_equals: documentId } } : {}),
