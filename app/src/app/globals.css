@@ -57,6 +57,13 @@ html, body {
     }
   }
 
+  /* Paysage mobile : hero trop court → cacher la boîte texte blanche */
+  @media (min-width: 640px) and (max-height: 599px) {
+    .chapter-text-box {
+      display: none;
+    }
+  }
+
   .chapter-tag {
     @apply text-secondary text-xs font-bold uppercase px-2.5 py-0.5 rounded bg-[#e72465] mb-8;
   }
