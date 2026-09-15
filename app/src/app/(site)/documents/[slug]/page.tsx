@@ -3,12 +3,27 @@ import { toAbsolute } from '@/utils/url'
 import DocumentNav from '@/components/DocumentNav'
 import Details from '@/components/Details'
 import { notFound } from 'next/navigation'
+import type { Metadata } from 'next'
 import type { Document, Section, Thematic } from '@/payload-types'
 
 export const dynamic = 'force-dynamic'
 
 interface Props {
   params: Promise<{ slug: string }>
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params
+  const payload = await getPayload()
+  const res = await payload
+    .find({ collection: 'documents', where: { slug: { equals: slug } }, limit: 1, depth: 0 })
+    .catch(() => null)
+  const doc = res?.docs[0] as Document | undefined
+  if (!doc) return {}
+  return {
+    title: `${doc.title} | Mémoires Ouvrières`,
+    description: doc.description ?? undefined,
+  }
 }
 
 export default async function DocumentPage({ params }: Props) {

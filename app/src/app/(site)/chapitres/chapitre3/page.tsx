@@ -1,6 +1,11 @@
-﻿import ImageTooltip from '@/components/ImageTooltip'
+﻿import type { Metadata } from 'next'
+import ImageTooltip from '@/components/ImageTooltip'
 import ImageFullscreen from '@/components/ImageFullscreen'
 import SuggestionsCard from '@/components/SuggestionsCard'
+
+export const metadata: Metadata = {
+  title: 'Discours du Maître, traces des luttes | Mémoires Ouvrières',
+}
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH || ''
 

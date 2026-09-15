@@ -4,6 +4,7 @@ import Carousel from '@/components/Carousel'
 import Return from '@/components/Return'
 import { notFound } from 'next/navigation'
 import { sortAndDisperseAudios } from '@/utils/sortGallery'
+import type { Metadata } from 'next'
 import type { Section, Thematic, Document, Media } from '@/payload-types'
 
 type DocItem = {
@@ -20,6 +21,19 @@ export const dynamic = 'force-dynamic'
 interface Props {
   params: Promise<{ slug: string }>
   searchParams: Promise<{ section?: string }>
+}
+
+export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
+  const { section: sectionId } = await searchParams
+  if (!sectionId) return {}
+  const payload = await getPayload()
+  const sectionRes = await payload
+    .findByID({ collection: 'sections', id: sectionId, depth: 0 })
+    .catch(() => null)
+  if (!sectionRes) return {}
+  return {
+    title: `${sectionRes.name} | Thématiques | Mémoires Ouvrières`,
+  }
 }
 
 export default async function ThematiqueDetailPage({ params, searchParams }: Props) {

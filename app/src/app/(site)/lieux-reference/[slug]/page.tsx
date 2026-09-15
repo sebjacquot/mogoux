@@ -7,6 +7,7 @@ import Gallery from '@/components/Gallery'
 import LieuReferenceToggle from '@/components/LieuReferencePage'
 import { renderLexicalToHTML } from '@/utils/renderLexical'
 import { sortBySection } from '@/utils/sortGallery'
+import type { Metadata } from 'next'
 import type { ReferenceLocation, Section, Document, Thematic, Media } from '@/payload-types'
 
 export const dynamic = 'force-dynamic'
@@ -23,6 +24,19 @@ interface GalleryDoc {
 
 interface Props {
   params: Promise<{ slug: string }>
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params
+  const payload = await getPayload()
+  const res = await payload
+    .find({ collection: 'reference-locations', where: { slug: { equals: slug } }, limit: 1, depth: 0 })
+    .catch(() => null)
+  const lieu = res?.docs[0] as ReferenceLocation | undefined
+  if (!lieu) return {}
+  return {
+    title: `${lieu.name} | Lieux de référence | Mémoires Ouvrières`,
+  }
 }
 
 export default async function LieuReferencePage({ params }: Props) {
