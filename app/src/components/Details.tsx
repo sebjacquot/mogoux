@@ -47,19 +47,19 @@ export default function Details({
           <p className="mb-10 w-[90%] leading-snug text-justify">{description}</p>
         )}
 
-        {/* Physical tags */}
+        {/* Physical tags — les relations Payload peuvent être un id (number) ou l'objet peuplé */}
         <ul className="mb-5 flex flex-wrap gap-1.5 list-none p-0">
-          {tags?.document_types && (
+          {tags?.document_types && typeof tags.document_types === 'object' && (
             <li id="type-de-document" className="bg-legende text-site-text px-1.5 py-0.5 rounded-sm text-sm md:text-base cursor-default">
               {tags.document_types.name}
             </li>
           )}
-          {tags?.material_types_and_formats && (
+          {tags?.material_types_and_formats && typeof tags.material_types_and_formats === 'object' && (
             <li id="support-et-format" className="bg-legende text-site-text px-1.5 py-0.5 rounded-sm text-sm md:text-base cursor-default">
               {tags.material_types_and_formats.name}
             </li>
           )}
-          {tags?.colors && (
+          {tags?.colors && typeof tags.colors === 'object' && (
             <li id="couleur" className="bg-legende text-site-text px-1.5 py-0.5 rounded-sm text-sm md:text-base cursor-default">
               {tags.colors.name}
             </li>
@@ -89,8 +89,8 @@ export default function Details({
 
         {/* Info grid */}
         <div className="grid gap-x-5 gap-y-1 mt-2.5 text-xs md:text-[0.95em]" style={{ gridTemplateColumns: 'minmax(0,auto) 1fr' }}>
-          {/* Location */}
-          {location?.location_reference && (
+          {/* Location — location_reference peut être un id ou l'objet peuplé selon depth */}
+          {location?.location_reference && typeof location.location_reference === 'object' && (
             <>
               <div className="flex items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
@@ -179,7 +179,7 @@ export default function Details({
           />
         ) : (
           <div className="w-full">
-            <ImageFullscreen src={src} originalSrc={originalSrc} alt={alt} legend={legend} className="w-full max-h-[80vh] object-contain cursor-zoom-in" />
+            <ImageFullscreen src={src} originalSrc={originalSrc} alt={alt} legend={legend ?? undefined} className="w-full max-h-[80vh] object-contain cursor-zoom-in" />
           </div>
         )}
       </div>

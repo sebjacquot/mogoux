@@ -39,12 +39,25 @@ export default async function DocumentPage({ params }: Props) {
 
   // Résoud la couleur de section pour chaque thématique
   const rawThematics = (doc.thematics ?? []) as (number | Thematic)[]
-  const thematicIds = rawThematics
-    .map((t) => (typeof t === 'number' ? String(t) : String(t.id)))
-
-  let thematicsWithColor = rawThematics.map((t) =>
-    typeof t === 'number' ? { id: t, title: '', slug: '', color: null, sectionId: null } : { ...t, color: null, sectionId: null }
+  const thematicIds = rawThematics.map((t) =>
+    typeof t === 'number' ? String(t) : String(t.id)
   )
+
+  interface ThematicItem {
+    id: number
+    title: string
+    slug: string
+    color: string | null
+    sectionId: number | null
+  }
+
+  let thematicsWithColor: ThematicItem[] = rawThematics.map((t) => ({
+    id: typeof t === 'number' ? t : t.id,
+    title: typeof t === 'number' ? '' : t.title,
+    slug: typeof t === 'number' ? '' : t.slug,
+    color: null,
+    sectionId: null,
+  }))
 
   if (thematicIds.length > 0) {
     const sectionsRes = await payload.find({ collection: 'sections', limit: 100 }).catch(() => null)

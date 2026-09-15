@@ -12,7 +12,7 @@ import type { ReferenceLocation, Section, Document, Thematic, Media } from '@/pa
 export const dynamic = 'force-dynamic'
 
 interface GalleryDoc {
-  type: string
+  type: 'Image' | 'Video' | 'Audio'
   src: string
   alt: string
   slug: string

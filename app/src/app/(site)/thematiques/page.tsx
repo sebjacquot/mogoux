@@ -42,12 +42,12 @@ export default async function ThematiquesPage() {
           <Sections
             key={section.id}
             title={section.name}
-            sectionId={section.id}
+            sectionId={String(section.id)}
             color={section.color}
             thematics={((section.thematics ?? []) as (number | Thematic)[])
               .filter((t): t is Thematic => typeof t !== 'number')
               .map((t) => ({
-                id: t.id,
+                id: String(t.id),
                 title: t.title,
                 slug: t.slug,
                 backgroundImageUrl: typeof t.background_image === 'object' && t.background_image

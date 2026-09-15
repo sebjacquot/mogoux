@@ -54,7 +54,7 @@ export const Documents: CollectionConfig = {
             [key: string]: unknown
           }
           const thematicsWithColors = await Promise.all(
-            ((document.thematics ?? []) as ThematicWithSections[]).map(async (thematic) => {
+            ((document.thematics ?? []) as unknown as ThematicWithSections[]).map(async (thematic) => {
               const sectionIDs = thematic?.related_sections?.docs ?? []
               if (!sectionIDs.length) return { ...thematic, color: null }
 
