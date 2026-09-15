@@ -15,7 +15,6 @@ type DocItem = {
 
 export const dynamic = 'force-dynamic'
 
-const base = process.env.NEXT_PUBLIC_BASE_PATH || ''
 const serverURL = process.env.NEXT_PUBLIC_SERVER_URL || ''
 
 // Rend une URL absolue si elle est relative (compatibilité avec ou sans serverURL Payload)

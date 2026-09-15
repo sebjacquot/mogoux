@@ -9,7 +9,6 @@ import { sortBySection } from '@/utils/sortGallery'
 
 export const dynamic = 'force-dynamic'
 
-const base = process.env.NEXT_PUBLIC_BASE_PATH || ''
 const serverURL = process.env.NEXT_PUBLIC_SERVER_URL || ''
 
 function toAbsolute(url: string | null | undefined): string {
