@@ -44,12 +44,12 @@ export default async function DocumentPage({ params }: Props) {
 
   const doc = docRes.docs[0] as Document
 
-  const previewMedia = doc.preview_audio_video as Document | null
+  const previewMedia = typeof doc.preview_audio_video === 'object' ? doc.preview_audio_video : null
   const originalSrc = toAbsolute(doc.url)
   const src = toAbsolute(doc.sizes?.preview?.url) || originalSrc
 
   const previewAudioVideo = toAbsolute(
-    (previewMedia as any)?.sizes?.preview?.url || (previewMedia as any)?.url
+    previewMedia?.sizes?.preview?.url || previewMedia?.url
   ) || null
 
   // Résoud la couleur de section pour chaque thématique
