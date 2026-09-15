@@ -57,10 +57,24 @@ html, body {
     }
   }
 
-  /* Paysage mobile : hero trop court → cacher la boîte texte blanche */
+  /* Paysage mobile : boîte texte ancrée en bas du hero, séparateur masqué */
   @media (min-width: 640px) and (max-height: 599px) {
-    .chapter-text-box {
+    .chapter-soustitre::before {
       display: none;
+    }
+    .chapter-hero {
+      overflow: visible;
+    }
+    .chapter-text-box {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      max-width: 100% !important;
+      max-height: 50%;
+      overflow-y: auto;
+      pointer-events: auto;
+      margin-top: 0 !important;
     }
   }
 
