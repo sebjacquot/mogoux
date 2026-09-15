@@ -1,12 +1,25 @@
+/** Nœud texte minimal tel que retourné par l'éditeur Lexical de Payload v3. */
+interface LexicalTextNode {
+  type: string
+  text: string
+  /** Bitmask : 1=bold, 2=italic, 4=underline, 8=strikethrough */
+  format: number
+}
+
+interface LexicalBlock {
+  type: string
+  children?: LexicalTextNode[]
+}
+
 /**
  * Convertit du contenu RichText Lexical (Payload CMS v3) en HTML.
  */
-export function renderLexicalToHTML(lexicalJSON: any[]): string {
+export function renderLexicalToHTML(lexicalJSON: LexicalBlock[]): string {
   return lexicalJSON
     .map((block) => {
       if (block.type === 'paragraph' && Array.isArray(block.children)) {
         const content = block.children
-          .map((child: { type: string; text: string; format: any }) => {
+          .map((child) => {
             if (child.type !== 'text') return ''
             let text = child.text || ''
             const fmt = child.format

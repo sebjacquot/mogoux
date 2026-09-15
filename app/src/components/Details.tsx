@@ -2,25 +2,32 @@ import Audio from './Audio'
 import Video from './Video'
 import ImageFullscreen from './ImageFullscreen'
 import Link from 'next/link'
+import type { Document } from '@/payload-types'
 
-const base = process.env.NEXT_PUBLIC_BASE_PATH || ''
+interface ThematicWithColor {
+  id: number
+  title: string
+  slug: string
+  color?: string | null
+  sectionId?: number | null
+}
 
 interface Props {
   title: string
   date: string
-  description?: string
-  location: any
+  description?: string | null
+  location?: Document['location']
   credits_name: string
-  credits_link?: string
-  tags: any
+  credits_link?: string | null
+  tags?: Document['physical_characteristics']
   type: 'Image' | 'Audio' | 'Video'
-  link_notice?: string
+  link_notice?: string | null
   src: string
   originalSrc?: string
-  legend?: string
+  legend?: string | null
   alt: string
-  preview_audio_video?: any
-  thematics?: any[]
+  preview_audio_video?: string | null
+  thematics?: ThematicWithColor[]
 }
 
 export default function Details({
@@ -62,7 +69,7 @@ export default function Details({
         {/* Thematics */}
         {thematics && thematics.length > 0 && (
           <ul className="mb-5 flex flex-wrap gap-1.5 list-none p-0">
-            {thematics.map((t: any, i: number) => (
+            {thematics.map((t, i) => (
               <li
                 key={i}
                 className="px-1.5 py-0.5 rounded-sm text-base cursor-pointer"
