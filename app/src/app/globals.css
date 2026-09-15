@@ -43,10 +43,16 @@ html, body {
     @apply absolute inset-0 bg-black/35 z-[2] pointer-events-none;
   }
 
+  /* ImageTooltip est le dernier enfant direct : on le force en absolu comme fond */
+  .chapter-entete > div:last-child {
+    position: absolute !important;
+    inset: 0;
+    z-index: 1;
+  }
+
   .chapter-hero {
     @apply absolute inset-0 z-[5] flex flex-col items-center justify-start w-full pointer-events-none;
     padding-top: 1.5rem;
-    overflow-y: hidden;
   }
 
   /* Seulement sur des écrans larges ET hauts (tablettes/desktop, pas paysage téléphone) */
@@ -60,21 +66,22 @@ html, body {
   /* Paysage mobile : boîte texte ancrée en bas du hero, séparateur masqué */
   @media (min-width: 640px) and (max-height: 599px) {
     .chapter-soustitre::before {
-      display: none;
+      display: none !important;
     }
     .chapter-hero {
       overflow: visible;
+      padding-top: 0.5rem;
+    }
+    .chapter-tag {
+      margin-bottom: 0.25rem !important;
     }
     .chapter-text-box {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
+      position: static;
+      margin-top: 0.5rem !important;
       max-width: 100% !important;
-      max-height: 50%;
-      overflow-y: auto;
+      max-height: 30vh !important;
+      overflow-y: auto !important;
       pointer-events: auto;
-      margin-top: 0 !important;
     }
   }
 
@@ -83,13 +90,13 @@ html, body {
   }
 
   .chapter-titre {
-    @apply text-secondary font-bold text-center pointer-events-auto px-4;
+    @apply w-full text-secondary font-bold text-center pointer-events-auto px-4;
     font-size: clamp(26px, 6vw, 60px);
     line-height: 1.15;
   }
 
   .chapter-soustitre {
-    @apply text-secondary font-light text-center px-4;
+    @apply w-full text-secondary font-light text-center px-4;
     font-size: clamp(16px, 3vw, 30px);
   }
 
@@ -151,6 +158,23 @@ html, body {
   .credits-section .credits-inner {
     @apply flex flex-col justify-center items-center text-center font-light mx-auto text-xs px-4;
     max-width: 700px;
+  }
+
+  /* Page /chapitres : liste des chapitres — layout paysage mobile */
+  @media (min-width: 640px) and (max-height: 599px) {
+    .chapitres-list {
+      gap: 1.5rem !important;
+    }
+    .chapitres-item {
+      flex-direction: row !important;
+      gap: 2em !important;
+      align-items: flex-start !important;
+    }
+    .chapitres-img {
+      width: 180px !important;
+      height: 180px !important;
+      flex-shrink: 0;
+    }
   }
 
   /* Hero des lieux-référence — grandes tailles seulement sur écrans hauts (pas paysage téléphone) */
