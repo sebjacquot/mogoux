@@ -84,7 +84,7 @@ export default function Audio({ src, preview_audio_video }: Props) {
 
   // ── Controls bar (shared between inline desktop and fixed mobile) ──────────
   const Controls = ({ className = '' }: { className?: string }) => (
-    <div className={`flex items-center w-full gap-1 bg-nav px-0 py-2.5 ${className}`}>
+    <div className={`flex items-center w-full gap-1 bg-nav px-0 py-2.5 overflow-hidden ${className}`}>
       {/* Play/Pause */}
       <button onClick={play} className="bg-transparent border-none text-white p-0 flex-shrink-0 px-2">
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -112,7 +112,7 @@ export default function Audio({ src, preview_audio_video }: Props) {
       </div>
 
       {/* Volume (desktop only) */}
-      <div className="hidden sm:flex items-center gap-1.5 px-2 w-[160px] min-w-0 flex-shrink">
+      <div className="hidden sm:flex items-center gap-1.5 px-2 min-w-0 flex-shrink overflow-hidden" style={{ width: '160px' }}>
         <button onClick={toggleMute} className="bg-transparent border-none p-0 flex-shrink-0">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -128,7 +128,7 @@ export default function Audio({ src, preview_audio_video }: Props) {
           step={0.1}
           value={volume}
           onChange={(e) => changeVolume(parseFloat(e.target.value))}
-          className="flex-1"
+          className="flex-1 min-w-0"
         />
       </div>
 
