@@ -1,4 +1,5 @@
 import { getPayload } from '@/utils/payload'
+import { toAbsolute } from '@/utils/url'
 import { notFound } from 'next/navigation'
 import Return from '@/components/Return'
 import ImageTooltip from '@/components/ImageTooltip'
@@ -9,13 +10,6 @@ import { sortBySection } from '@/utils/sortGallery'
 
 export const dynamic = 'force-dynamic'
 
-const serverURL = process.env.NEXT_PUBLIC_SERVER_URL || ''
-
-function toAbsolute(url: string | null | undefined): string {
-  if (!url) return ''
-  if (url.startsWith('http')) return url
-  return `${serverURL}${url}`
-}
 
 interface Props {
   params: Promise<{ slug: string }>

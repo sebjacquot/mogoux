@@ -1,18 +1,10 @@
 import { getPayload } from '@/utils/payload'
+import { toAbsolute } from '@/utils/url'
 import DocumentNav from '@/components/DocumentNav'
 import Details from '@/components/Details'
 import { notFound } from 'next/navigation'
 
 export const dynamic = 'force-dynamic'
-
-const serverURL = process.env.NEXT_PUBLIC_SERVER_URL || ''
-
-function toAbsolute(url: string | null | undefined): string {
-  if (!url) return ''
-  if (url.startsWith('http')) return url
-  return `${serverURL}${url}`
-}
-
 
 interface Props {
   params: Promise<{ slug: string }>

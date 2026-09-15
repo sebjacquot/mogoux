@@ -1,4 +1,5 @@
 import { getPayload } from '@/utils/payload'
+import { toAbsolute } from '@/utils/url'
 import Carousel from '@/components/Carousel'
 import Return from '@/components/Return'
 import { notFound } from 'next/navigation'
@@ -15,14 +16,6 @@ type DocItem = {
 
 export const dynamic = 'force-dynamic'
 
-const serverURL = process.env.NEXT_PUBLIC_SERVER_URL || ''
-
-// Rend une URL absolue si elle est relative (compatibilité avec ou sans serverURL Payload)
-function toAbsolute(url: string | null | undefined): string {
-  if (!url) return ''
-  if (url.startsWith('http')) return url
-  return `${serverURL}${url}`
-}
 
 interface Props {
   params: Promise<{ slug: string }>
