@@ -8,10 +8,6 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH || ''
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 		
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-
   basePath,
 
   // Permet de servir les médias uploadés dans PayloadCMS
