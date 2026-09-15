@@ -10,6 +10,13 @@ import { sortBySection } from '@/utils/sortGallery'
 export const dynamic = 'force-dynamic'
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH || ''
+const serverURL = process.env.NEXT_PUBLIC_SERVER_URL || ''
+
+function toAbsolute(url: string | null | undefined): string {
+  if (!url) return ''
+  if (url.startsWith('http')) return url
+  return `${serverURL}${url}`
+}
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -60,11 +67,11 @@ export default async function LieuReferencePage({ params }: Props) {
     .map((doc: any) => {
       if (!doc) return null
 
-      const previewAudioVideoUrl = doc.preview_audio_video?.sizes?.preview?.url
-        || doc.preview_audio_video?.url
-        || null
+      const previewAudioVideoUrl = toAbsolute(
+        doc.preview_audio_video?.sizes?.preview?.url || doc.preview_audio_video?.url
+      ) || null
 
-      const src = doc.sizes?.preview?.url || doc.url || null
+      const src = toAbsolute(doc.sizes?.preview?.url || doc.url) || null
 
       if (!src) return null
 

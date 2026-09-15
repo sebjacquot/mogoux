@@ -16,6 +16,14 @@ type DocItem = {
 export const dynamic = 'force-dynamic'
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH || ''
+const serverURL = process.env.NEXT_PUBLIC_SERVER_URL || ''
+
+// Rend une URL absolue si elle est relative (compatibilité avec ou sans serverURL Payload)
+function toAbsolute(url: string | null | undefined): string {
+  if (!url) return ''
+  if (url.startsWith('http')) return url
+  return `${serverURL}${url}`
+}
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -71,7 +79,7 @@ export default async function ThematiqueDetailPage({ params, searchParams }: Pro
   })
 
   const listThematics = sorted.map((t: any) => ({
-    src: t.background_image?.url || '',
+    src: toAbsolute(t.background_image?.url),
     title: t.title || '',
     slug: t.slug || '',
     alt: t.background_image?.alt || '',
@@ -79,13 +87,13 @@ export default async function ThematiqueDetailPage({ params, searchParams }: Pro
     documents: sortAndDisperseAudios<DocItem>(
       (t.related_documents || []).map((doc: any): DocItem => ({
         type: doc.type as 'Image' | 'Audio' | 'Video',
-        src: doc.sizes?.preview?.url || doc.url || '',
+        src: toAbsolute(doc.sizes?.preview?.url || doc.url),
         alt: doc.alt || '',
         slug: doc.slug || '',
         titre: doc.title || '',
-        preview_audio_video: doc.preview_audio_video?.sizes?.preview?.url
-          || doc.preview_audio_video?.url
-          || null,
+        preview_audio_video: toAbsolute(
+          doc.preview_audio_video?.sizes?.preview?.url || doc.preview_audio_video?.url
+        ) || null,
       })),
     ),
   }))

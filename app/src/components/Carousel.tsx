@@ -71,13 +71,13 @@ export default function Carousel({ thematics, initialSlug }: Props) {
         <div className="absolute top-1/2 -translate-y-1/2 w-full flex justify-between z-10">
           <button
             onClick={() => move(-1)}
-            className="w-[45px] h-[110px] bg-primary text-white text-2xl border-none rounded-tr rounded-br hover:bg-secondary hover:text-black hover:w-[50px] transition-all"
+            className="w-[35px] h-[60px] md:w-[45px] md:h-[110px] bg-primary text-white text-lg md:text-2xl border-none rounded-tr rounded-br hover:bg-secondary hover:text-black hover:w-[40px] md:hover:w-[50px] transition-all"
           >
             &#10094;
           </button>
           <button
             onClick={() => move(1)}
-            className="w-[45px] h-[110px] bg-primary text-white text-2xl border-none rounded-tl rounded-bl hover:bg-secondary hover:text-black hover:w-[50px] transition-all"
+            className="w-[35px] h-[60px] md:w-[45px] md:h-[110px] bg-primary text-white text-lg md:text-2xl border-none rounded-tl rounded-bl hover:bg-secondary hover:text-black hover:w-[40px] md:hover:w-[50px] transition-all"
           >
             &#10095;
           </button>
@@ -108,10 +108,6 @@ export default function Carousel({ thematics, initialSlug }: Props) {
                   style={{
                     fontSize: 'clamp(18px, 3.5vw, 50px)',
                     lineHeight: 1.2,
-                    display: '-webkit-box',
-                    WebkitLineClamp: 2,
-                    WebkitBoxOrient: 'vertical',
-                    overflow: 'hidden',
                   }}
                 >
                   {t.title}
