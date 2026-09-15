@@ -1,12 +1,18 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import ImageTooltip from '@/components/ImageTooltip'
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH || ''
 
 export default function NavigationPage() {
   const ArrowIcon = () => (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img src={`${base}/icones/fleche-goux.svg`} alt="flèche" className="w-6 h-6 shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
+    <Image
+      src={`${base}/icones/fleche-goux.svg`}
+      alt="flèche"
+      width={24}
+      height={24}
+      className="shrink-0 transition-transform duration-300 group-hover:translate-x-1"
+    />
   )
 
   return (
