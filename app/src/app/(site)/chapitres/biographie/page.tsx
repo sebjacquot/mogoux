@@ -1,6 +1,11 @@
+﻿import type { Metadata } from 'next'
 import ImageTooltip from '@/components/ImageTooltip'
 import ImageFullscreen from '@/components/ImageFullscreen'
 import SuggestionsCard from '@/components/SuggestionsCard'
+
+export const metadata: Metadata = {
+  title: 'Jean-Paul Goux, écrivain du Temps | Mémoires Ouvrières',
+}
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH || ''
 
@@ -14,7 +19,7 @@ export default function BiographiePage() {
           <span className="chapter-tag">Biographie</span>
           <h1 className="chapter-titre">Jean-Paul Goux, écrivain du Temps</h1>
           <h2 className="chapter-soustitre">Présentation de l&apos;auteur</h2>
-          <div className="bg-[hsl(0,0%,96%)] w-full max-w-[75em] mt-4 sm:mt-20 pt-5 px-4 md:px-10 pb-5 flex flex-col justify-center max-h-[22vh] overflow-hidden sm:max-h-none sm:overflow-visible">
+          <div className="chapter-text-box bg-[hsl(0,0%,96%)] w-full max-w-[75em] mt-4 sm:mt-20 pt-5 px-4 md:px-10 pb-5 flex flex-col justify-start max-h-[22vh] overflow-y-auto sm:max-h-none sm:overflow-visible">
             <p className="font-serif text-[17px] text-center self-center">
               Découvrez ici une présentation de Jean-Paul Goux, écrivain contemporain majeur et
               exigeant. Si <em>Mémoires de l&apos;Enclave</em> semble être une réalisation marginale
@@ -177,3 +182,5 @@ export default function BiographiePage() {
     </div>
   )
 }
+
+

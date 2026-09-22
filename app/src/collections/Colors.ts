@@ -20,17 +20,6 @@ const Colors: CollectionConfig = {
     access: {
         read: () => true,
     },
-    
-    
-/*    access: {
-  read: () => true,
-  create: ({ req: { user } }) => {
-    console.log('user dans create:', user)
-    return !!user
-  },
-},*/
-    
-    
     fields: [
         {
             name: 'name',

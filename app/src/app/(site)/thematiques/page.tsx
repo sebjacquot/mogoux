@@ -1,6 +1,7 @@
 import { getPayload } from '@/utils/payload'
 import Sections from '@/components/Sections'
 import Link from 'next/link'
+import type { Section, Thematic, MetadataFile } from '@/payload-types'
 
 export const dynamic = 'force-dynamic'
 
@@ -13,18 +14,18 @@ export default async function ThematiquesPage() {
     sort: 'rank',
     depth: 2,
   })
-  const sections = sectionsRes.docs
+  const sections = sectionsRes.docs as Section[]
 
   const metadataRes = await payload.find({
     collection: 'metadata-files',
     limit: 20,
   })
-  const metadataFiles = metadataRes.docs
+  const metadataFiles = metadataRes.docs as MetadataFile[]
 
   return (
     <div className="text-white max-w-[1300px] mx-auto px-4">
       {/* Intro */}
-      <div className="w-full max-w-[800px] mx-auto mt-24 sm:mt-10 mb-24 text-justify">
+      <div className="w-full max-w-[800px] mx-auto mt-24 mb-24 text-justify">
         <h2 className="font-extrabold mb-4" style={{ fontSize: 'clamp(26px, 7vw, 60px)' }}>Thématiques</h2>
         <p className="text-[17px] font-normal leading-snug">
           Découvrez ici différentes thématiques, regroupées au sein de 4 rubriques principales,
@@ -37,19 +38,23 @@ export default async function ThematiquesPage() {
 
       {/* Sections */}
       <div className="flex flex-col gap-[75px]">
-        {sections.map((section: any) => (
+        {sections.map((section) => (
           <Sections
             key={section.id}
             title={section.name}
-            sectionId={section.id}
+            sectionId={String(section.id)}
             color={section.color}
-            thematics={(section.thematics || []).map((t: any) => ({
-              id: t.id,
-              title: t.title || t.value || '',
-              slug: t.slug || t.id,
-              backgroundImageUrl: t.background_image?.url || null,
-              backgroundImageAlt: t.background_image?.alt || t.title || '',
-            }))}
+            thematics={((section.thematics ?? []) as (number | Thematic)[])
+              .filter((t): t is Thematic => typeof t !== 'number')
+              .map((t) => ({
+                id: String(t.id),
+                title: t.title,
+                slug: t.slug,
+                backgroundImageUrl: typeof t.background_image === 'object' && t.background_image
+                  ? t.background_image.url ?? null
+                  : null,
+                backgroundImageAlt: t.title,
+              }))}
           />
         ))}
 
@@ -58,7 +63,7 @@ export default async function ThematiquesPage() {
           <div className="flex flex-col h-[200px] m-5">
             <p className="text-center text-2xl">Exporter l'instrument de recherche</p>
             <div className="w-full h-full flex justify-center items-center gap-8">
-              {metadataFiles.map((file: any) => (
+              {metadataFiles.map((file) => (
                 <a
                   key={file.id}
                   href={file.url || '#'}

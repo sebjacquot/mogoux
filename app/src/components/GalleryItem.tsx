@@ -2,10 +2,10 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import Image from 'next/image'
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH || ''
 const PLACEHOLDER = '/Goux_1000kB_3.jpg'
-const AUDIO_PLACEHOLDER = `${base}/icones/haut-parleur.png`
 
 interface DocItem {
   type: 'Image' | 'Audio' | 'Video'
@@ -50,37 +50,44 @@ export default function GalleryItem({ document: doc, allSlugs }: Props) {
       {isMedia ? (
         <div className="relative w-full h-full bg-[#2C2C2C]">
           {previewSrc ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
+            <Image
               src={previewSrc}
               alt={doc.alt}
-              className="w-full h-full object-cover"
+              fill
+              className="object-cover"
               onError={() => setPreviewSrc(null)}
+              sizes="(max-width: 768px) 100vw, 33vw"
             />
           ) : (
             /* Pas d'image de preview : icône haut-parleur centrée sur fond sombre */
             <div className="w-full h-full flex items-center justify-center bg-[#1a1a1a]">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={AUDIO_PLACEHOLDER}
+              <Image
+                src={`${base}/icones/haut-parleur.png`}
                 alt="audio"
-                className="w-12 h-12 opacity-50"
+                width={48}
+                height={48}
+                className="opacity-50"
               />
             </div>
           )}
           <div className="absolute top-1.5 right-1.5 w-7 h-7 rounded-full bg-black/60 flex items-center justify-center">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={`${base}/icones/play-icon.png`} alt="play" className="w-4 h-4" />
+            <Image
+              src={`${base}/icones/play-icon.png`}
+              alt="play"
+              width={16}
+              height={16}
+            />
           </div>
         </div>
       ) : (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
+        <Image
           src={imgSrc}
           alt={doc.alt}
+          fill
           loading="lazy"
-          className="w-full h-full object-cover block rounded-sm"
+          className="object-cover block rounded-sm"
           onError={() => { if (imgSrc !== PLACEHOLDER) setImgSrc(PLACEHOLDER) }}
+          sizes="(max-width: 768px) 100vw, 33vw"
         />
       )}
 

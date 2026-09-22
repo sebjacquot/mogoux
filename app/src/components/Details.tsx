@@ -2,25 +2,32 @@ import Audio from './Audio'
 import Video from './Video'
 import ImageFullscreen from './ImageFullscreen'
 import Link from 'next/link'
+import type { Document } from '@/payload-types'
 
-const base = process.env.NEXT_PUBLIC_BASE_PATH || ''
+interface ThematicWithColor {
+  id: number
+  title: string
+  slug: string
+  color?: string | null
+  sectionId?: number | null
+}
 
 interface Props {
   title: string
   date: string
-  description?: string
-  location: any
+  description?: string | null
+  location?: Document['location']
   credits_name: string
-  credits_link?: string
-  tags: any
+  credits_link?: string | null
+  tags?: Document['physical_characteristics']
   type: 'Image' | 'Audio' | 'Video'
-  link_notice?: string
+  link_notice?: string | null
   src: string
   originalSrc?: string
-  legend?: string
+  legend?: string | null
   alt: string
-  preview_audio_video?: any
-  thematics?: any[]
+  preview_audio_video?: string | null
+  thematics?: ThematicWithColor[]
 }
 
 export default function Details({
@@ -33,27 +40,27 @@ export default function Details({
     <div className="flex items-start px-4 md:px-[8%] py-[6%] gap-8 text-site-text h-full flex-col md:flex-row">
       {/* Text column */}
       <div className="flex flex-col w-full md:w-[70%] text-base md:text-xl">
-        <h1 className="font-bold mt-24 sm:mt-12 mb-8 leading-tight" style={{ fontSize: 'clamp(22px, 3.5vw, 34px)' }}>{title}</h1>
-        <h3 className="mb-5 font-normal text-base md:text-xl">{dateStr}</h3>
+        <h1 className="font-bold mt-24 sm:mt-12 mb-8 leading-tight" style={{ fontSize: 'clamp(28px, 5vw, 38px)' }}>{title}</h1>
+        <h3 className="mb-5 font-normal text-sm md:text-xl">{dateStr}</h3>
 
         {description && (
           <p className="mb-10 w-[90%] leading-snug text-justify">{description}</p>
         )}
 
-        {/* Physical tags */}
+        {/* Physical tags — les relations Payload peuvent être un id (number) ou l'objet peuplé */}
         <ul className="mb-5 flex flex-wrap gap-1.5 list-none p-0">
-          {tags?.document_types && (
-            <li id="type-de-document" className="bg-legende text-site-text px-1.5 py-0.5 rounded-sm text-base cursor-default">
+          {tags?.document_types && typeof tags.document_types === 'object' && (
+            <li id="type-de-document" className="bg-legende text-site-text px-1.5 py-0.5 rounded-sm text-sm md:text-base cursor-default">
               {tags.document_types.name}
             </li>
           )}
-          {tags?.material_types_and_formats && (
-            <li id="support-et-format" className="bg-legende text-site-text px-1.5 py-0.5 rounded-sm text-base cursor-default">
+          {tags?.material_types_and_formats && typeof tags.material_types_and_formats === 'object' && (
+            <li id="support-et-format" className="bg-legende text-site-text px-1.5 py-0.5 rounded-sm text-sm md:text-base cursor-default">
               {tags.material_types_and_formats.name}
             </li>
           )}
-          {tags?.colors && (
-            <li id="couleur" className="bg-legende text-site-text px-1.5 py-0.5 rounded-sm text-base cursor-default">
+          {tags?.colors && typeof tags.colors === 'object' && (
+            <li id="couleur" className="bg-legende text-site-text px-1.5 py-0.5 rounded-sm text-sm md:text-base cursor-default">
               {tags.colors.name}
             </li>
           )}
@@ -62,7 +69,7 @@ export default function Details({
         {/* Thematics */}
         {thematics && thematics.length > 0 && (
           <ul className="mb-5 flex flex-wrap gap-1.5 list-none p-0">
-            {thematics.map((t: any, i: number) => (
+            {thematics.map((t, i) => (
               <li
                 key={i}
                 className="px-1.5 py-0.5 rounded-sm text-base cursor-pointer"
@@ -81,9 +88,9 @@ export default function Details({
         )}
 
         {/* Info grid */}
-        <div className="grid gap-x-5 gap-y-1 mt-2.5 text-[0.95em]" style={{ gridTemplateColumns: 'minmax(0,auto) 1fr' }}>
-          {/* Location */}
-          {location?.location_reference && (
+        <div className="grid gap-x-5 gap-y-1 mt-2.5 text-xs md:text-[0.95em]" style={{ gridTemplateColumns: 'minmax(0,auto) 1fr' }}>
+          {/* Location — location_reference peut être un id ou l'objet peuplé selon depth */}
+          {location?.location_reference && typeof location.location_reference === 'object' && (
             <>
               <div className="flex items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
@@ -172,7 +179,7 @@ export default function Details({
           />
         ) : (
           <div className="w-full">
-            <ImageFullscreen src={src} originalSrc={originalSrc} alt={alt} legend={legend} className="w-full max-h-[80vh] object-contain cursor-zoom-in" />
+            <ImageFullscreen src={src} originalSrc={originalSrc} alt={alt} legend={legend ?? undefined} className="w-full max-h-[80vh] object-contain cursor-zoom-in" />
           </div>
         )}
       </div>

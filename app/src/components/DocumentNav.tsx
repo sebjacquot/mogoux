@@ -82,7 +82,7 @@ export default function DocumentNav({ currentSlug }: { currentSlug: string }) {
       {prevSlug && (
         <Link
           href={`/documents/${prevSlug}`}
-          className="fixed left-[30px] top-1/2 -translate-y-1/2 text-white text-4xl no-underline z-50 transition-transform hover:scale-125 hover:text-[#c5c5c5]"
+          className="fixed left-[12px] top-1/2 -translate-y-1/2 text-white text-2xl no-underline z-50 transition-transform hover:scale-125 hover:text-[#c5c5c5]"
           aria-label="Document précédent"
         >
           &#10094;
@@ -93,7 +93,7 @@ export default function DocumentNav({ currentSlug }: { currentSlug: string }) {
       {nextSlug && (
         <Link
           href={`/documents/${nextSlug}`}
-          className="fixed right-[30px] top-1/2 -translate-y-1/2 text-white text-4xl no-underline z-50 transition-transform hover:scale-125 hover:text-[#c5c5c5]"
+          className="fixed right-[12px] top-1/2 -translate-y-1/2 text-white text-2xl no-underline z-50 transition-transform hover:scale-125 hover:text-[#c5c5c5]"
           aria-label="Document suivant"
         >
           &#10095;

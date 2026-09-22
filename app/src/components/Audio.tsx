@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef, useState, useEffect } from 'react'
+import Image from 'next/image'
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH || ''
 const PLACEHOLDER = '/Goux_1000kB_3.jpg'
@@ -84,14 +85,15 @@ export default function Audio({ src, preview_audio_video }: Props) {
 
   // ── Controls bar (shared between inline desktop and fixed mobile) ──────────
   const Controls = ({ className = '' }: { className?: string }) => (
-    <div className={`flex items-center w-full gap-1 bg-nav px-0 py-2.5 ${className}`}>
+    <div className={`flex items-center w-full gap-1 bg-nav px-0 py-2.5 overflow-hidden ${className}`}>
       {/* Play/Pause */}
       <button onClick={play} className="bg-transparent border-none text-white p-0 flex-shrink-0 px-2">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <Image
           src={playing ? `${base}/icones/pause-white.png` : `${base}/icones/play-icon.png`}
           alt="lecture"
-          className="w-8 h-8 cursor-pointer"
+          width={32}
+          height={32}
+          className="cursor-pointer"
         />
       </button>
 
@@ -112,13 +114,13 @@ export default function Audio({ src, preview_audio_video }: Props) {
       </div>
 
       {/* Volume (desktop only) */}
-      <div className="hidden sm:flex items-center gap-1.5 px-2 w-[160px] flex-shrink-0">
+      <div className="hidden sm:flex items-center gap-1.5 px-2 min-w-0 flex-shrink overflow-hidden" style={{ width: '160px' }}>
         <button onClick={toggleMute} className="bg-transparent border-none p-0 flex-shrink-0">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             src={muted ? `${base}/icones/muet.png` : `${base}/icones/haut-parleur.png`}
             alt="volume"
-            className="w-7 h-7"
+            width={28}
+            height={28}
           />
         </button>
         <input
@@ -128,7 +130,7 @@ export default function Audio({ src, preview_audio_video }: Props) {
           step={0.1}
           value={volume}
           onChange={(e) => changeVolume(parseFloat(e.target.value))}
-          className="flex-1"
+          className="flex-1 min-w-0"
         />
       </div>
 
@@ -148,21 +150,26 @@ export default function Audio({ src, preview_audio_video }: Props) {
         className="relative w-full cursor-pointer overflow-hidden rounded-sm"
         style={{ aspectRatio: '4/3' }}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <Image
           src={imgSrc}
           alt="aperçu audio"
-          className="w-full h-full object-cover"
+          fill
+          className="object-cover"
           onError={() => { if (imgSrc !== PLACEHOLDER) setImgSrc(PLACEHOLDER) }}
+          sizes="(max-width: 768px) 100vw, 60vw"
         />
         {/* Overlay sombre quand en lecture */}
         <div className={`absolute inset-0 bg-black/40 transition-opacity duration-300 ${playing ? 'opacity-100' : 'opacity-0'}`} />
         {/* Bouton play centré (visible uniquement si pas en lecture) */}
         {!playing && (
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-16 h-16 rounded-full bg-black/60 flex items-center justify-center">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={`${base}/icones/play-icon.png`} alt="Lecture" className="w-8 h-8" />
+            <div className="relative w-16 h-16 rounded-full bg-black/60 flex items-center justify-center">
+              <Image
+                src={`${base}/icones/play-icon.png`}
+                alt="Lecture"
+                width={32}
+                height={32}
+              />
             </div>
           </div>
         )}

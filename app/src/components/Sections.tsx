@@ -100,7 +100,7 @@ export default function Sections({ title, sectionId, color, thematics }: Props) 
         {/* Wrapper masquant */}
         <div ref={wrapperRef} className="overflow-hidden" style={{ width: 'calc(100% - 20px)' }}>
           <div
-            className="flex pl-5"
+            className="flex"
             style={{
               transform: `translateX(-${index * cardSlotPx}px)`,
               transition: 'transform 0.5s ease-in-out',
@@ -175,7 +175,7 @@ const ThematiqueCard = forwardRef<HTMLDivElement, CardProps>(
             onError={() => { if (imgSrc !== PLACEHOLDER) setImgSrc(PLACEHOLDER) }}
           />
           <h3
-            className="absolute bottom-0 left-0 px-[15px] py-[5px] text-[1.1em] font-bold w-[94%] text-white line-clamp-2"
+            className="absolute bottom-0 left-0 px-[15px] py-[5px] text-[1.1em] font-bold w-full text-white line-clamp-2"
             style={{
               backgroundColor: hovered
                 ? `color-mix(in srgb, ${color} 70%, transparent)`

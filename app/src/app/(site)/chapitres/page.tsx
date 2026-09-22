@@ -71,14 +71,14 @@ const chapters = [
 
 export default function ChapitresPage() {
   return (
-    <div className="flex flex-col gap-20 mb-20">
+    <div className="chapitres-list flex flex-col gap-20 mb-20">
       {chapters.map((chapter, index) => (
         <div
           key={index}
-          className="flex justify-center items-center gap-[9em] flex-col md:flex-row px-4"
+          className="chapitres-item flex justify-center items-center gap-[9em] flex-col md:flex-row px-4"
         >
           {/* Image */}
-          <div className="w-full md:w-[500px] h-[350px] md:h-[500px] overflow-hidden relative flex-shrink-0">
+          <div className="chapitres-img w-full md:w-[500px] h-[350px] md:h-[500px] overflow-hidden relative flex-shrink-0">
             <ImageFullscreen
               src={`${base}${chapter.src}`}
               legend={chapter.legend}

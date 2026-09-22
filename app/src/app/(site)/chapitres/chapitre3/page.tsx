@@ -1,6 +1,11 @@
-﻿import ImageTooltip from '@/components/ImageTooltip'
+﻿import type { Metadata } from 'next'
+import ImageTooltip from '@/components/ImageTooltip'
 import ImageFullscreen from '@/components/ImageFullscreen'
 import SuggestionsCard from '@/components/SuggestionsCard'
+
+export const metadata: Metadata = {
+  title: 'Discours du Maître, traces des luttes | Mémoires Ouvrières',
+}
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH || ''
 
@@ -13,7 +18,7 @@ export default function Chapitre3Page() {
           <span className="chapter-tag">CHAPITRE 3</span>
           <h1 className="chapter-titre">Discours du Maître, traces des luttes</h1>
           <h2 className="chapter-soustitre">Paternalisme contre lutte des classes</h2>
-          <div className="bg-[hsl(0,0%,96%)] w-full max-w-[75em] mt-8 pt-5 px-4 md:px-10 pb-5 flex flex-col justify-center max-h-[22vh] overflow-hidden sm:max-h-none sm:overflow-visible">
+          <div className="chapter-text-box bg-[hsl(0,0%,96%)] w-full max-w-[75em] mt-8 pt-5 px-4 md:px-10 pb-5 flex flex-col justify-start max-h-[22vh] overflow-y-auto sm:max-h-none sm:overflow-visible">
             <p className="font-serif text-[17px] text-center self-center">Singulier par son capitalisme animé par un patronat d'origine protestante, le monde industriel du pays de Montbéliard est inséparable d'un paternalisme qui, promouvant un mieux vivre collectif, contrôle tout et s'efforce de contenir toute forme de luttes, sans parvenir à les empêcher.</p>
             <div className="flex justify-center items-center relative mt-5">
               <div className="px-2.5 bg-[hsl(0,0%,96%)] z-[3]" />
@@ -79,4 +84,6 @@ export default function Chapitre3Page() {
     </div>
   )
 }
+
+
 

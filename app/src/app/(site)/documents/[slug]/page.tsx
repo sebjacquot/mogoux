@@ -1,13 +1,29 @@
 import { getPayload } from '@/utils/payload'
+import { toAbsolute } from '@/utils/url'
 import DocumentNav from '@/components/DocumentNav'
 import Details from '@/components/Details'
 import { notFound } from 'next/navigation'
+import type { Metadata } from 'next'
+import type { Document, Section, Thematic } from '@/payload-types'
 
 export const dynamic = 'force-dynamic'
 
-
 interface Props {
   params: Promise<{ slug: string }>
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params
+  const payload = await getPayload()
+  const res = await payload
+    .find({ collection: 'documents', where: { slug: { equals: slug } }, limit: 1, depth: 0 })
+    .catch(() => null)
+  const doc = res?.docs[0] as Document | undefined
+  if (!doc) return {}
+  return {
+    title: `${doc.title} | Mémoires Ouvrières`,
+    description: doc.description ?? undefined,
+  }
 }
 
 export default async function DocumentPage({ params }: Props) {
@@ -15,7 +31,6 @@ export default async function DocumentPage({ params }: Props) {
 
   const payload = await getPayload()
 
-  // Fetch document by slug
   const docRes = await payload
     .find({
       collection: 'documents',
@@ -27,53 +42,78 @@ export default async function DocumentPage({ params }: Props) {
 
   if (!docRes || docRes.docs.length === 0) notFound()
 
-  const doc: any = docRes.docs[0]
+  const doc = docRes.docs[0] as Document
 
-  // Build media src (full absolute URL)
-  const originalSrc = doc.url || ''
-  const src = doc.sizes?.preview?.url || originalSrc
+  const previewMedia = typeof doc.preview_audio_video === 'object' ? doc.preview_audio_video : null
+  const originalSrc = toAbsolute(doc.url)
+  const src = toAbsolute(doc.sizes?.preview?.url) || originalSrc
 
-  const previewAudioVideo = doc.preview_audio_video?.sizes?.preview?.url
-    || doc.preview_audio_video?.url
-    || null
+  const previewAudioVideo = toAbsolute(
+    previewMedia?.sizes?.preview?.url || previewMedia?.url
+  ) || null
 
-  // Fetch sections to resolve thematic colors
-  const thematicIds: string[] = (doc.thematics || []).map((t: any) =>
-    typeof t === 'string' ? t : t.id,
+  // Résoud la couleur de section pour chaque thématique
+  const rawThematics = (doc.thematics ?? []) as (number | Thematic)[]
+  const thematicIds = rawThematics.map((t) =>
+    typeof t === 'number' ? String(t) : String(t.id)
   )
-  let thematicsWithColor: any[] = doc.thematics || []
+
+  interface ThematicItem {
+    id: number
+    title: string
+    slug: string
+    color: string | null
+    sectionId: number | null
+  }
+
+  let thematicsWithColor: ThematicItem[] = rawThematics.map((t) => ({
+    id: typeof t === 'number' ? t : t.id,
+    title: typeof t === 'number' ? '' : t.title,
+    slug: typeof t === 'number' ? '' : t.slug,
+    color: null,
+    sectionId: null,
+  }))
+
   if (thematicIds.length > 0) {
     const sectionsRes = await payload.find({ collection: 'sections', limit: 100 }).catch(() => null)
     if (sectionsRes) {
-      thematicsWithColor = (doc.thematics || []).map((t: any) => {
-        const tid = String(typeof t === 'string' ? t : t.id)
-        const section = sectionsRes.docs.find((s: any) =>
-          (s.thematics || []).some((st: any) => String(typeof st === 'string' ? st : st.id) === tid),
+      thematicsWithColor = rawThematics.map((t) => {
+        const thematic = typeof t === 'number' ? null : t
+        const tid = typeof t === 'number' ? String(t) : String(t.id)
+        const section = sectionsRes.docs.find((s: Section) =>
+          ((s.thematics ?? []) as (number | Thematic)[]).some(
+            (st) => String(typeof st === 'number' ? st : st.id) === tid
+          )
         )
-        return { ...t, color: section?.color || null, sectionId: section?.id || null }
+        return {
+          id: thematic?.id ?? Number(tid),
+          title: thematic?.title ?? '',
+          slug: thematic?.slug ?? '',
+          color: section?.color ?? null,
+          sectionId: section?.id ?? null,
+        }
       })
     }
   }
 
   return (
     <div className="relative min-h-screen w-full flex flex-col">
-      {/* Client component: handles return button + prev/next from sessionStorage */}
       <DocumentNav currentSlug={slug} />
 
       <Details
-        title={doc.title || ''}
-        date={doc.date || ''}
-        description={doc.description || null}
-        location={doc.location || ''}
-        credits_name={doc.credits_name || ''}
-        credits_link={doc.credits_link || ''}
-        tags={doc.physical_characteristics || []}
-        type={doc.type || 'Image'}
-        link_notice={doc.notice || ''}
+        title={doc.title}
+        date={doc.date}
+        description={doc.description}
+        location={doc.location}
+        credits_name={doc.credits_name}
+        credits_link={doc.credits_link}
+        tags={doc.physical_characteristics}
+        type={doc.type}
+        link_notice={doc.notice}
         src={src}
         originalSrc={originalSrc}
-        legend={doc.legend || ''}
-        alt={doc.alt || ''}
+        legend={doc.legend}
+        alt={doc.alt}
         preview_audio_video={previewAudioVideo}
         thematics={thematicsWithColor}
       />

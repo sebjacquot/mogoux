@@ -65,9 +65,7 @@ export default buildConfig({
     api: '/memoires-ouvrieres-goux/cms/api',
     admin: '/memoires-ouvrieres-goux/cms/admin'
   },*/
-  //serverURL: serverURL,
-  //serverURL: process.env.NEXT_PUBLIC_SERVER_URL,
-//  serverURL: process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000',
+  serverURL: serverURL,
   
   // pour accès depuis le FQDN mais en http pour le dev sinon les navigateur n'envoie pas certains header (Origin ou Sec-Fetch-Site )
   csrf: [],

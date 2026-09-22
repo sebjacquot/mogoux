@@ -1,7 +1,6 @@
 interface SortableDoc {
   type: string
   slug: string
-  [key: string]: any
 }
 
 /**

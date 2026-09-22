@@ -10,7 +10,7 @@ export default function DocumentairePage() {
       {/* Hero */}
       <section className="chapter-entete" style={{ height: '50vh' }}>
         <div className="chapter-overlay" />
-        <div className="absolute inset-0 z-[5] flex flex-col items-center justify-center w-full pointer-events-none">
+        <div className="chapter-hero">
           <span className="chapter-tag">Documentaire</span>
           <h1 className="chapter-titre">
             <em>Paroles d&apos;ouvrières</em>

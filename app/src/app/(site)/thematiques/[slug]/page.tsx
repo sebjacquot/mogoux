@@ -1,8 +1,11 @@
 import { getPayload } from '@/utils/payload'
+import { toAbsolute } from '@/utils/url'
 import Carousel from '@/components/Carousel'
 import Return from '@/components/Return'
 import { notFound } from 'next/navigation'
 import { sortAndDisperseAudios } from '@/utils/sortGallery'
+import type { Metadata } from 'next'
+import type { Section, Thematic, Document, Media } from '@/payload-types'
 
 type DocItem = {
   type: 'Image' | 'Audio' | 'Video'
@@ -15,11 +18,22 @@ type DocItem = {
 
 export const dynamic = 'force-dynamic'
 
-const base = process.env.NEXT_PUBLIC_BASE_PATH || ''
-
 interface Props {
   params: Promise<{ slug: string }>
   searchParams: Promise<{ section?: string }>
+}
+
+export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
+  const { section: sectionId } = await searchParams
+  if (!sectionId) return {}
+  const payload = await getPayload()
+  const sectionRes = await payload
+    .findByID({ collection: 'sections', id: sectionId, depth: 0 })
+    .catch(() => null)
+  if (!sectionRes) return {}
+  return {
+    title: `${sectionRes.name} | Thématiques | Mémoires Ouvrières`,
+  }
 }
 
 export default async function ThematiqueDetailPage({ params, searchParams }: Props) {
@@ -30,7 +44,6 @@ export default async function ThematiqueDetailPage({ params, searchParams }: Pro
 
   const payload = await getPayload()
 
-  // Fetch section
   const sectionRes = await payload.findByID({
     collection: 'sections',
     id: sectionId,
@@ -38,11 +51,10 @@ export default async function ThematiqueDetailPage({ params, searchParams }: Pro
   }).catch(() => null)
 
   if (!sectionRes) notFound()
-  const section: any = sectionRes
+  const section = sectionRes as Section
 
-  // Fetch thematics for this section
-  const thematicIds: string[] = (section.thematics || []).map((t: any) =>
-    typeof t === 'string' ? t : t.id,
+  const thematicIds = ((section.thematics ?? []) as (number | Thematic)[]).map((t) =>
+    typeof t === 'number' ? String(t) : String(t.id)
   )
 
   const thematicsRes = await payload.find({
@@ -52,43 +64,50 @@ export default async function ThematiqueDetailPage({ params, searchParams }: Pro
     limit: thematicIds.length || 1,
   })
 
-  // For each thematic, fetch related documents
+  // Récupère les documents de chaque thématique
   const thematicsWithDocs = await Promise.all(
-    thematicsRes.docs.map(async (t: any) => {
+    thematicsRes.docs.map(async (t) => {
       const docsRes = await payload.find({
         collection: 'documents',
         where: { thematics: { equals: t.id } },
         depth: 1,
         limit: 300,
       })
-      return { ...t, related_documents: docsRes.docs }
+      return { ...t, related_documents: docsRes.docs as Document[] }
     }),
   )
 
-  // Sort by rank
-  const sorted = [...thematicsWithDocs].sort((a: any, b: any) => {
-    return (a.rank ?? Infinity) - (b.rank ?? Infinity)
-  })
+  const sorted = [...thematicsWithDocs].sort((a, b) =>
+    (a.rank ?? Infinity) - (b.rank ?? Infinity)
+  )
 
-  const listThematics = sorted.map((t: any) => ({
-    src: t.background_image?.url || '',
-    title: t.title || '',
-    slug: t.slug || '',
-    alt: t.background_image?.alt || '',
-    couleur: section.color || '',
-    documents: sortAndDisperseAudios<DocItem>(
-      (t.related_documents || []).map((doc: any): DocItem => ({
-        type: doc.type as 'Image' | 'Audio' | 'Video',
-        src: doc.sizes?.preview?.url || doc.url || '',
-        alt: doc.alt || '',
-        slug: doc.slug || '',
-        titre: doc.title || '',
-        preview_audio_video: doc.preview_audio_video?.sizes?.preview?.url
-          || doc.preview_audio_video?.url
-          || null,
-      })),
-    ),
-  }))
+  const listThematics = sorted.map((t) => {
+    const bg = typeof t.background_image === 'object' && t.background_image
+      ? t.background_image as Media
+      : null
+    return {
+      src: toAbsolute(bg?.url),
+      title: t.title,
+      slug: t.slug,
+      alt: bg?.filename ?? t.title,
+      couleur: section.color,
+      documents: sortAndDisperseAudios<DocItem>(
+        t.related_documents.map((doc): DocItem => {
+          const previewMedia = doc.preview_audio_video as Media | null
+          return {
+            type: doc.type,
+            src: toAbsolute(doc.sizes?.preview?.url || doc.url),
+            alt: doc.alt,
+            slug: doc.slug,
+            titre: doc.title,
+            preview_audio_video: toAbsolute(
+              previewMedia?.sizes?.preview?.url || previewMedia?.url
+            ) || null,
+          }
+        }),
+      ),
+    }
+  })
 
   return (
     <>
@@ -104,7 +123,7 @@ export default async function ThematiqueDetailPage({ params, searchParams }: Pro
               className="text-center font-bold"
               style={{ color: section.color, fontSize: 'clamp(20px, 5vw, 30px)' }}
             >
-              {section.name || 'Rubrique introuvable'}
+              {section.name}
             </h1>
           </div>
           <Carousel thematics={listThematics} initialSlug={slug} />
