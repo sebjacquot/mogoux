@@ -25,7 +25,8 @@ function getItemsPerView(): number {
   return 3
 }
 
-const PLACEHOLDER = '/Goux_1000kB_3.jpg'
+const base = process.env.NEXT_PUBLIC_BASE_PATH || ''
+const PLACEHOLDER = `${base}/Goux_1000kB_3.jpg`
 
 export default function Sections({ title, sectionId, color, thematics }: Props) {
   const wrapperRef = useRef<HTMLDivElement>(null)

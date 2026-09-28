@@ -22,7 +22,8 @@ import Colors from '@/collections/Colors'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
-const serverURL = process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'
+//const serverURL = process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'
+const serverURL = process.env.NEXT_PUBLIC_SERVER_URL || ''
 
 export default buildConfig({
   i18n: {
@@ -69,6 +70,15 @@ export default buildConfig({
   
   // pour accès depuis le FQDN mais en http pour le dev sinon les navigateur n'envoie pas certains header (Origin ou Sec-Fetch-Site )
   csrf: [],
+  
+  //tests Claude
+  /*csrf: [
+//  process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000',
+  'http://localhost:3000',
+  'http://mogoux-dev-fanum.inframshe.univ-fcomte.fr',
+  'https://fanum.univ-fcomte.fr',
+],*/
+  
     
   /*csrf: [
     // whitelist of domains to allow cookie auth from

@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH || ''
-const PLACEHOLDER = '/Goux_1000kB_3.jpg'
+const PLACEHOLDER = `${base}/Goux_1000kB_3.jpg`
 
 interface DocItem {
   type: 'Image' | 'Audio' | 'Video'

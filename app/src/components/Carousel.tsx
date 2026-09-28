@@ -3,7 +3,8 @@
 import { useState, useEffect, useRef } from 'react'
 import Gallery from './Gallery'
 
-const PLACEHOLDER = '/Goux_1000kB_3.jpg'
+const base = process.env.NEXT_PUBLIC_BASE_PATH || ''
+const PLACEHOLDER = `${base}/Goux_1000kB_3.jpg`
 
 interface ThematicItem {
   src: string
