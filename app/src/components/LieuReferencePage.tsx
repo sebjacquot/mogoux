@@ -12,23 +12,12 @@ export default function LieuReferenceToggle({ descriptionHtml, quoteHtml }: Prop
 
   return (
     <div className="pointer-events-auto w-full">
-      {/* Text container with slide animation */}
-      <div className="overflow-hidden w-full">
+      {/* Text container with fade animation */}
+      <div className="w-full">
         <div
-          className="flex transition-transform duration-500 ease-in-out"
-          style={{ transform: showingQuote ? 'translateX(-100%)' : 'translateX(0%)' }}
-        >
-          {/* Description */}
-          <div
-            className="w-full flex-shrink-0 text-justify text-sm leading-relaxed"
-            dangerouslySetInnerHTML={{ __html: descriptionHtml }}
-          />
-          {/* Quote */}
-          <div
-            className="w-full flex-shrink-0 text-justify text-sm leading-relaxed"
-            dangerouslySetInnerHTML={{ __html: quoteHtml }}
-          />
-        </div>
+          className="text-justify text-sm leading-relaxed transition-opacity duration-300"
+          dangerouslySetInnerHTML={{ __html: showingQuote ? quoteHtml : descriptionHtml }}
+        />
       </div>
 
       {/* Toggle button */}

@@ -179,7 +179,7 @@ html, body {
 
   /* Hero des lieux-référence — grandes tailles seulement sur écrans hauts (pas paysage téléphone) */
   .lieu-hero-content {
-    @apply absolute bottom-0 left-0 w-full z-[5] flex flex-col items-start px-4 pb-3 gap-2 text-white pointer-events-none overflow-hidden;
+    @apply absolute bottom-0 left-0 w-full z-[5] flex flex-col items-start px-4 pb-3 gap-2 text-white pointer-events-none;
   }
 
   .lieu-hero-h2 {
@@ -191,7 +191,7 @@ html, body {
   }
 
   .lieu-hero-toggle {
-    @apply w-full mt-1 text-secondary pointer-events-auto max-h-[20vh] overflow-y-auto;
+    @apply w-full mt-1 text-secondary pointer-events-auto;
   }
 
   @media (min-width: 640px) and (min-height: 600px) {
