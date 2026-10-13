@@ -8,7 +8,7 @@ export default function DocumentairePage() {
   return (
     <div className="bg-[hsl(0,0%,96%)]">
       {/* Hero */}
-      <section className="chapter-entete" style={{ height: '50vh' }}>
+      <section className="chapter-entete" style={{ minHeight: '50vh' }}>
         <div className="chapter-overlay" />
         <div className="chapter-hero">
           <span className="chapter-tag">Documentaire</span>

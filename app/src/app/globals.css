@@ -30,12 +30,12 @@ html, body {
   /* Hero de chapitre / annexe */
   .chapter-entete {
     @apply relative w-full flex justify-center items-center overflow-hidden;
-    height: 50vh;
+    min-height: 50vh;
   }
 
   @media (min-width: 640px) {
     .chapter-entete {
-      height: 75vh;
+      min-height: 75vh;
     }
   }
 
@@ -50,16 +50,16 @@ html, body {
     z-index: 1;
   }
 
+  /* Contenu dans le flux : le hero grandit avec son texte (jamais coupé, jamais de scrollbar) */
   .chapter-hero {
-    @apply absolute inset-0 z-[5] flex flex-col items-center justify-start w-full pointer-events-none;
-    padding-top: 1.5rem;
+    @apply relative z-[5] flex flex-col items-center justify-start w-full pointer-events-none;
+    /* 5.5rem = burger fixe (5rem) + marge : le contenu ne passe jamais sous le menu */
+    padding: 5.5rem 0 1.5rem;
   }
 
-  /* Seulement sur des écrans larges ET hauts (tablettes/desktop, pas paysage téléphone) */
-  @media (min-width: 640px) and (min-height: 600px) {
+  @media (min-width: 1024px) {
     .chapter-hero {
-      justify-content: center;
-      padding-top: 0;
+      padding-top: 1.5rem;
     }
   }
 
@@ -68,20 +68,12 @@ html, body {
     .chapter-soustitre::before {
       display: none !important;
     }
-    .chapter-hero {
-      overflow: visible;
-      padding-top: 0.5rem;
-    }
     .chapter-tag {
       margin-bottom: 0.25rem !important;
     }
     .chapter-text-box {
-      position: static;
       margin-top: 0.5rem !important;
       max-width: 100% !important;
-      max-height: 30vh !important;
-      overflow-y: auto !important;
-      pointer-events: auto;
     }
   }
 
