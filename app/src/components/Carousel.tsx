@@ -121,7 +121,7 @@ export default function Carousel({ thematics, initialSlug }: Props) {
 
       {/* Gallery for active thematic */}
       {thematics[current] && (
-        <Gallery documents={thematics[current].documents} />
+        <Gallery key={thematics[current].slug} documents={thematics[current].documents} />
       )}
     </>
   )

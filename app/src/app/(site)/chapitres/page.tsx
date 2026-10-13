@@ -75,7 +75,7 @@ export default function ChapitresPage() {
       {chapters.map((chapter, index) => (
         <div
           key={index}
-          className="chapitres-item flex justify-center items-center gap-[9em] flex-col md:flex-row px-4"
+          className="chapitres-item flex justify-center items-center gap-6 md:gap-[9em] flex-col md:flex-row px-4"
         >
           {/* Image */}
           <div className="chapitres-img w-full md:w-[500px] h-[350px] md:h-[500px] overflow-hidden relative flex-shrink-0">

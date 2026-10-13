@@ -25,6 +25,14 @@ export default function GalleryItem({ document: doc, allSlugs }: Props) {
   const router = useRouter()
   const [imgSrc, setImgSrc] = useState(doc.src || PLACEHOLDER)
   const [previewSrc, setPreviewSrc] = useState(doc.preview_audio_video || null)
+  const [prevSlug, setPrevSlug] = useState(doc.slug)
+
+  // Réinitialise l'état local si l'instance est réutilisée pour un autre document
+  if (prevSlug !== doc.slug) {
+    setPrevSlug(doc.slug)
+    setImgSrc(doc.src || PLACEHOLDER)
+    setPreviewSrc(doc.preview_audio_video || null)
+  }
 
   const handleClick = () => {
     // Store nav context in sessionStorage for clean, shareable URLs

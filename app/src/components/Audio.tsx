@@ -74,17 +74,23 @@ export default function Audio({ src, preview_audio_video }: Props) {
     const a = audioRef.current
     if (!a) return
     const onTime = () => setCurrent(a.currentTime)
-    const onMeta = () => setDuration(a.duration)
+    const onMeta = () => {
+      if (Number.isFinite(a.duration)) setDuration(a.duration)
+    }
+    // Les métadonnées peuvent être déjà chargées avant l'hydratation
+    if (a.readyState >= 1) onMeta()
     a.addEventListener('timeupdate', onTime)
     a.addEventListener('loadedmetadata', onMeta)
+    a.addEventListener('durationchange', onMeta)
     return () => {
       a.removeEventListener('timeupdate', onTime)
       a.removeEventListener('loadedmetadata', onMeta)
+      a.removeEventListener('durationchange', onMeta)
     }
   }, [])
 
   // ── Controls bar (shared between inline desktop and fixed mobile) ──────────
-  const Controls = ({ className = '' }: { className?: string }) => (
+  const renderControls = (className = '') => (
     <div className={`flex items-center w-full gap-1 bg-nav px-0 py-2.5 overflow-hidden ${className}`}>
       {/* Play/Pause */}
       <button onClick={play} className="bg-transparent border-none text-white p-0 flex-shrink-0 px-2">
@@ -177,7 +183,7 @@ export default function Audio({ src, preview_audio_video }: Props) {
 
       {/* ── Barre inline (desktop md+) : affichée en permanence sous l'image ── */}
       <div className="hidden md:block w-full">
-        <Controls />
+        {renderControls()}
       </div>
 
       {/* ── Barre fixe (mobile uniquement) : apparaît quand la lecture démarre ── */}
@@ -186,7 +192,7 @@ export default function Audio({ src, preview_audio_video }: Props) {
           mobileBarVisible ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'
         }`}
       >
-        <Controls />
+        {renderControls()}
       </div>
     </>
   )
